@@ -1,5 +1,6 @@
 # Rebuilds the specials feed every morning and publishes it with GitHub Pages.
 # The app downloads https://<account>.github.io/<repo>/feed.json on its own.
+# Every price read is also added to the price history on the "data" branch.
 name: Update specials feed
 
 on:
@@ -21,8 +22,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      # To commit the price history to the "data" branch.
+      contents: write
     steps:
       - uses: actions/checkout@v4
+
+      # The price history has a branch of its own, so the commits this job
+      # makes never get in the way of work on main.
+      - uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data
 
       - uses: subosito/flutter-action@v2
         with:
@@ -56,6 +67,19 @@ jobs:
       # shop missing.
       - name: Build the feed
         run: dart run tool/update_feed.dart --strict
+
+      # Shops take old leaflets down, so this file is the only record of
+      # past prices. Nothing is committed on days with no new leaflet.
+      - name: Save the price history
+        working-directory: data
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add history.json
+            git commit -m "Prices read on $(date -u +%F)"
+            git push
+          fi
 
       - uses: actions/upload-pages-artifact@v3
         with:

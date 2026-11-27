@@ -5,6 +5,9 @@
 //   dart run tool/update_feed.dart --ocr-only stop after reading the pages
 //   dart run tool/update_feed.dart --strict   fail if any shop cannot be read
 //                                             (for unattended, scheduled runs)
+//   dart run tool/update_feed.dart --history <file>
+//                                             where old prices are kept
+//                                             (default data/history.json)
 //
 // Needs Python with RapidOCR for reading prices (see tool/ocr.py) and
 // pdftoppm (Poppler) for the shops that publish PDFs. Page images and OCR
@@ -17,6 +20,7 @@ import 'package:zed_specials/src/models.dart';
 import 'package:zed_specials/src/scrape/scrapers.dart';
 
 import 'src/extract.dart';
+import 'src/history.dart';
 import 'src/matching.dart';
 
 const _userAgent =
@@ -25,15 +29,6 @@ const _userAgent =
 
 final _cache = Directory('.cache');
 final _out = Directory('assets/data');
-
-/// Short stable name for a catalogue, used in file names to keep paths short.
-String shortId(String id) {
-  var h = 0x811c9dc5;
-  for (final c in utf8.encode(id)) {
-    h = ((h ^ c) * 0x01000193) & 0xffffffff;
-  }
-  return h.toRadixString(16).padLeft(8, '0');
-}
 
 String _two(int n) => n.toString().padLeft(2, '0');
 
@@ -111,6 +106,15 @@ class _Work {
 Future<void> main(List<String> args) async {
   final ocrOnly = args.contains('--ocr-only');
   final strict = args.contains('--strict');
+  final historyArg = args.indexOf('--history');
+  final historyFile = File(
+    historyArg >= 0 && historyArg + 1 < args.length
+        ? args[historyArg + 1]
+        : 'data/history.json',
+  );
+  // Read first: a damaged history must stop the run before anything is
+  // written over it.
+  final history = PriceHistory.load(historyFile);
   _cache.createSync(recursive: true);
   Directory('${_out.path}/pages').createSync(recursive: true);
   Directory('${_out.path}/crops').createSync(recursive: true);
@@ -233,7 +237,8 @@ Future<void> main(List<String> args) async {
 
   // -------------------------------------------------------- find the items
   final previous = _readPreviousFeed();
-  final today = DateTime.now();
+  final now = DateTime.now();
+  final today = DateTime(now.year, now.month, now.day);
   final catalogues = <Catalogue>[];
   var items = <DealItem>[];
   final cropJobs = <Map<String, dynamic>>[];
@@ -276,6 +281,7 @@ Future<void> main(List<String> args) async {
             category != 'Home & outdoor' &&
             e.price < 1500 &&
             // "Flour 500g + Sugar 500g": a bundle has no single pack size.
+            !e.bundle &&
             !e.name.contains('+');
         items.add(
           DealItem(
@@ -306,7 +312,7 @@ Future<void> main(List<String> args) async {
         validFrom: c.validFrom,
         validTo: c.validTo,
         stores: c.stores?.replaceAll(RegExp(r'\s*,\s*'), ', '),
-        firstSeen: previous[c.id] ?? today,
+        firstSeen: history.firstSeen(c.id) ?? previous[c.id] ?? today,
         pages: pages,
       ),
     );
@@ -322,6 +328,8 @@ Future<void> main(List<String> args) async {
   await runPython(cropJobs, 'Cutting out item pictures');
 
   items = groupSimilar(items);
+  items = history.record(catalogues, items, today);
+  history.save(historyFile);
 
   // Drop page images of leaflets that are no longer published.
   final keep = {for (final w in work) w.sid};
@@ -330,7 +338,7 @@ Future<void> main(List<String> args) async {
     if (!keep.contains(name.split('-').first)) f.deleteSync();
   }
 
-  final feed = Feed(generatedAt: today, catalogues: catalogues, items: items);
+  final feed = Feed(generatedAt: now, catalogues: catalogues, items: items);
   File('${_out.path}/feed.json').writeAsStringSync(
     const JsonEncoder.withIndent(' ').convert(feed.toJson()),
   );
@@ -338,6 +346,12 @@ Future<void> main(List<String> args) async {
   stdout.writeln(
     'Wrote ${_out.path}/feed.json: ${catalogues.length} catalogues, '
     '${items.length} prices, ${groups.length} matched products',
+  );
+  stdout.writeln(
+    'Price history in ${historyFile.path}: ${history.leaflets.length} '
+    'leaflets, ${history.products.length} products, '
+    '${items.where((i) => i.history.isNotEmpty).length} of today\'s prices '
+    'have an earlier price to compare with',
   );
 }
 

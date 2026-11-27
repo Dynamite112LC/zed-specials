@@ -9,9 +9,13 @@ import 'models.dart';
 
 const _bundledFeed = 'assets/data/feed.json';
 
-/// Feed address compiled into the app, so it updates itself without any
-/// setup: flutter build ... --dart-define=FEED_URL=https://.../feed.json
-const builtInFeedUrl = String.fromEnvironment('FEED_URL');
+/// Where the app looks for fresh specials unless settings say otherwise.
+/// Another feed can be compiled in with
+/// flutter build ... --dart-define=FEED_URL=https://.../feed.json
+const builtInFeedUrl = String.fromEnvironment(
+  'FEED_URL',
+  defaultValue: 'https://dynamite112lc.github.io/zed-specials/feed.json',
+);
 const _kFeedUrl = 'feedUrl';
 const _kWatch = 'watchlist';
 const _kSeen = 'seenCatalogues';
@@ -161,11 +165,13 @@ class AppState extends ChangeNotifier {
 
   // ------------------------------------------------------------- images
 
-  /// Resolves a feed image: absolute URLs load from the network, relative
-  /// paths come from the hosted feed folder or the bundled assets.
+  /// Resolves a feed image: absolute URLs load as they are, relative paths
+  /// from the folder of the hosted feed. Leaflet pictures are not packed
+  /// into the app: they change every week and would be stale within days.
   ImageProvider image(String path) {
     if (path.startsWith('http')) return NetworkImage(path);
-    final base = _remoteBase;
+    final base =
+        _remoteBase ?? (feedUrl.isEmpty ? null : Uri.tryParse(feedUrl));
     if (base != null) return NetworkImage(base.resolve(path).toString());
     return AssetImage('assets/data/$path');
   }
@@ -378,6 +384,19 @@ const _monthNames = [
 
 String shortDate(DateTime d) =>
     '${_weekdays[d.weekday - 1]} ${d.day} ${_monthNames[d.month - 1]}';
+
+/// The run of a leaflet: "3 to 16 Nov", "28 Oct to 3 Nov", with the year
+/// when it is not this one.
+String rangeLabel(DateTime from, DateTime? to, DateTime now) {
+  String day(DateTime d) => '${d.day} ${_monthNames[d.month - 1]}';
+  final end = to ?? from;
+  final year = end.year == now.year ? '' : ' ${end.year}';
+  final oneDay =
+      from.year == end.year && from.month == end.month && from.day == end.day;
+  if (oneDay) return '${day(from)}$year';
+  final sameMonth = from.year == end.year && from.month == end.month;
+  return '${sameMonth ? '${from.day}' : day(from)} to ${day(end)}$year';
+}
 
 /// "Ends today", "Ends tomorrow", "Ends Sun 29 Nov".
 String endsLabel(Catalogue c, DateTime now) {

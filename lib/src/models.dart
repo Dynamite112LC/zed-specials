@@ -131,6 +131,39 @@ class Catalogue {
   );
 }
 
+/// What a product cost in an earlier leaflet.
+class PricePoint {
+  const PricePoint({
+    required this.retailerId,
+    required this.from,
+    required this.price,
+    this.to,
+  });
+
+  final String retailerId;
+
+  /// The dates the leaflet ran.
+  final DateTime from;
+  final DateTime? to;
+  final double price;
+
+  Retailer get retailer => Retailer.byId(retailerId);
+
+  Map<String, dynamic> toJson() => {
+    'retailer': retailerId,
+    'from': _date(from),
+    if (to != null) 'to': _date(to!),
+    'price': price,
+  };
+
+  factory PricePoint.fromJson(Map<String, dynamic> j) => PricePoint(
+    retailerId: j['retailer'] as String,
+    from: DateTime.parse(j['from'] as String),
+    to: _parseDate(j['to']),
+    price: (j['price'] as num).toDouble(),
+  );
+}
+
 /// One priced product read from a catalogue page.
 class DealItem {
   const DealItem({
@@ -148,6 +181,7 @@ class DealItem {
     this.groupId,
     this.category = 'Other',
     this.confidence = 1,
+    this.history = const [],
   });
 
   final String id;
@@ -180,6 +214,28 @@ class DealItem {
 
   /// 0..1, how sure the reader was about this item.
   final double confidence;
+
+  /// What the same product cost in leaflets that have since been replaced,
+  /// at this shop and at the others. Oldest first.
+  final List<PricePoint> history;
+
+  /// The most recent earlier price at this item's own shop.
+  PricePoint? get lastPriceHere {
+    for (final h in history.reversed) {
+      if (h.retailerId == retailerId) return h;
+    }
+    return null;
+  }
+
+  /// How much cheaper this is than the shop's previous leaflet price.
+  double? get dropSinceLast {
+    final last = lastPriceHere;
+    if (last == null) return null;
+    // A few ngwee either way is the same price, not a drop.
+    final least = last.price * 0.01 > 0.05 ? last.price * 0.01 : 0.05;
+    if (last.price - price < least) return null;
+    return double.parse((last.price - price).toStringAsFixed(2));
+  }
 
   Retailer get retailer => Retailer.byId(retailerId);
 
@@ -228,7 +284,12 @@ class DealItem {
     return null;
   }
 
-  DealItem copyWith({String? groupId, String? crop, String? category}) =>
+  DealItem copyWith({
+    String? groupId,
+    String? crop,
+    String? category,
+    List<PricePoint>? history,
+  }) =>
       DealItem(
         id: id,
         catalogueId: catalogueId,
@@ -244,6 +305,7 @@ class DealItem {
         groupId: groupId ?? this.groupId,
         category: category ?? this.category,
         confidence: confidence,
+        history: history ?? this.history,
       );
 
   Map<String, dynamic> toJson() => {
@@ -261,6 +323,7 @@ class DealItem {
     if (groupId != null) 'group': groupId,
     'category': category,
     'confidence': double.parse(confidence.toStringAsFixed(2)),
+    if (history.isNotEmpty) 'history': [for (final h in history) h.toJson()],
   };
 
   factory DealItem.fromJson(Map<String, dynamic> j) => DealItem(
@@ -278,6 +341,10 @@ class DealItem {
     groupId: j['group'] as String?,
     category: j['category'] as String? ?? 'Other',
     confidence: (j['confidence'] as num?)?.toDouble() ?? 1,
+    history: [
+      for (final h in (j['history'] as List? ?? const []))
+        PricePoint.fromJson(h as Map<String, dynamic>),
+    ],
   );
 }
 

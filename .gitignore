@@ -47,3 +47,13 @@ app.*.map.json
 # Feed builder working files
 .cache/
 tool/.venv/
+
+# Leaflet pictures are rebuilt on every run and served from the hosted feed
+assets/data/pages/
+assets/data/crops/
+
+# Price history lives on the "data" branch (see README)
+/data/
+
+# Built apps
+/dist/

@@ -9,10 +9,14 @@ shops. Flutter app for Android and web.
 ```
 tool/update_feed.dart   scrapes the shops, reads the leaflets, writes the feed
 assets/data/feed.json   catalogues + every price read (bundled with the app)
-assets/data/pages/      leaflet pages, shrunk for phones
-assets/data/crops/      a small product picture per price
+assets/data/pages/      leaflet pages, shrunk for phones (not in git)
+assets/data/crops/      a small product picture per price (not in git)
+data/history.json       every price from every leaflet seen ("data" branch)
 lib/                    the app, which only reads the feed
 ```
+
+Only `feed.json` is packed into the app. Leaflet pictures change weekly, so
+the app loads them from the hosted feed instead of carrying them around.
 
 ## Automatic updates
 
@@ -21,22 +25,46 @@ Zambian time and publishes it with GitHub Pages at:
 
     https://dynamite112lc.github.io/zed-specials/feed.json
 
-Build the app with that address and it checks for new specials every time
+That address is built into the app. It checks for new specials every time
 it opens, when it comes back to the foreground after a few hours, and on
-pull to refresh. Without an address it shows the feed bundled at build time.
+pull to refresh.
 
 The job runs with `--strict`: if a shop's page cannot be read it fails and
 leaves yesterday's feed online, and GitHub emails you about the failed run.
 To run it by hand, use "Run workflow" on the repository's Actions tab.
 
+## Price history
+
+Shops take a leaflet down when it ends, so the feed builder keeps its own
+record: `data/history.json` holds what each product cost in each leaflet,
+going back 18 months. When a product comes round again the feed carries
+its earlier prices, at the same shop and at the others, and the app shows
+them on the item ("Down K5", "It has been lower: K29.99 at Pick n Pay").
+
+The file lives on the `data` branch, where the daily job commits it, so
+those commits never collide with work on `main`. To have the same history
+when running the feed builder on your own machine:
+
+```
+git fetch origin data
+git worktree add data data
+```
+
+Without that, a local run starts an empty history in `data/`, which git
+ignores. A leaflet that is still published is re-read on every run and its
+recorded prices replaced, so a fix to a price reader also corrects the
+history for current leaflets.
+
 ## Running the app
 
 ```
-flutter run -d chrome --dart-define=FEED_URL=https://dynamite112lc.github.io/zed-specials/feed.json
-flutter build apk --dart-define=FEED_URL=https://dynamite112lc.github.io/zed-specials/feed.json
+flutter run -d chrome
+flutter build apk
 ```
 
-The feed address can also be changed in the app's settings.
+To point a build at another feed, add
+`--dart-define=FEED_URL=https://example.com/feed.json`, or change the
+address in the app's settings.
 
 ## Updating the specials
 
@@ -68,7 +96,8 @@ to its `python` executable.
 | Game | game.co.zm promotions (served by Guzzle) | page images |
 
 Prices are read by OCR and each shop has its own reader in
-`tool/src/extract.dart`. Readings can be wrong: the app says so on every
+`tool/src/extract.dart`. Multi-buys ("ANY 2 FOR K70") are shown as the
+price of one, with the deal in the name. Readings can be wrong: the app says so on every
 item and links back to the leaflet page. `dart run tool/dump_items.dart
 <shop> .cache/<folder>` prints what a reader finds, for checking by eye
 after a shop changes its leaflet design.

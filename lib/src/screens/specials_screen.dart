@@ -8,7 +8,7 @@ import 'catalogue_viewer.dart';
 import 'item_sheet.dart';
 import 'settings_sheet.dart';
 
-enum _Sort { lowest, saving }
+enum _Sort { lowest, saving, drop }
 
 /// This week's leaflets and every price read from them.
 class SpecialsScreen extends StatefulWidget {
@@ -84,6 +84,17 @@ class _SpecialsScreenState extends State<SpecialsScreen>
     if (_sort == _Sort.saving) {
       items.sort((a, b) {
         final c = (b.save ?? 0).compareTo(a.save ?? 0);
+        return c != 0 ? c : a.price.compareTo(b.price);
+      });
+    } else if (_sort == _Sort.drop) {
+      // Share of the old price knocked off, so K5 off K20 beats K5 off K200.
+      double share(DealItem i) {
+        final d = i.dropSinceLast;
+        return d == null ? 0 : d / (i.price + d);
+      }
+
+      items.sort((a, b) {
+        final c = share(b).compareTo(share(a));
         return c != 0 ? c : a.price.compareTo(b.price);
       });
     } else {
@@ -432,6 +443,10 @@ class _SortButton extends StatelessWidget {
       itemBuilder: (_) => const [
         PopupMenuItem(value: _Sort.saving, child: Text('Biggest saving first')),
         PopupMenuItem(value: _Sort.lowest, child: Text('Lowest price first')),
+        PopupMenuItem(
+          value: _Sort.drop,
+          child: Text('Biggest drop since last leaflet'),
+        ),
       ],
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
@@ -441,7 +456,11 @@ class _SortButton extends StatelessWidget {
             Icon(Icons.swap_vert_rounded, size: 20, color: p.ink),
             const SizedBox(width: 4),
             Text(
-              sort == _Sort.saving ? 'Biggest saving' : 'Lowest price',
+              switch (sort) {
+                _Sort.saving => 'Biggest saving',
+                _Sort.lowest => 'Lowest price',
+                _Sort.drop => 'Biggest drop',
+              },
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,

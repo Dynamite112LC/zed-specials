@@ -67,11 +67,15 @@ class ExtractedItem {
     this.sizeUnit,
     this.save,
     this.confidence = 1,
+    this.bundle = false,
   });
 
   final String name;
   final double price;
   final bool perKg;
+
+  /// Several different products sold together for one price.
+  final bool bundle;
   final double? sizeQty;
   final String? sizeUnit;
   final double? save;
@@ -298,9 +302,21 @@ Map<T, List<OcrLine>> _assign<T>(
 
 final _shopritePrice = RegExp(r'''^[Kk"'“”‘’*«]?\s?(\d{1,5})(?:[.,](\d{2}))?$''');
 final _shopriteNoise = RegExp(
-  r'^(MAX\b.*CUSTOMER|SAVE\b.*|ONLY AT.*|.*DAYS ONLY|PAGE \d+|T&C.*|WHILE STOCKS.*|NOT FOR SALE.*|.*DRINK RESPONSIBLY.*|.*TO SUNDAY|.*PERSONS UNDER.*|AT SELECTED STORES?|ALSO AVAILABLE.*|.*NOT INCLUDED.*|SCAN FOR.*|BOTH FOR|ALL FOR|FREE\b.*|LOWER PRICES.*|LOOK\b.*|.*YOU CAN TRUST.*)$',
+  r'^(MAX\b.*CUSTOMER|SAVE\b.*|ONLY AT.*|.*DAYS ONLY|PAGE \d+|T&C.*|WHILE STOCKS.*|NOT FOR SALE.*|.*DRINK RESPONSIBLY.*|.*TO SUNDAY|.*PERSONS UNDER.*|AT SELECTED STORES?|ALSO AVAILABLE.*|.*NOT INCLUDED.*|SCAN FOR.*|BOTH FOR|ALL FOR|(?:BUY\s?)?(?:ANY\s?)?\d{1,2}\s?FOR|(?:GET\s)?ALL\s?\d+\s?FOR|FREE\b.*|LOWER PRICES.*|LOOK\b.*|.*YOU CAN TRUST.*)$',
   caseSensitive: false,
 );
+/// "ANY 2 FOR", "3 FOR": the price printed underneath buys that many.
+final _multiBuy = RegExp(
+  r'^(?:BUY\s?)?(?:ANY\s?)?(\d{1,2})\s?FOR$',
+  caseSensitive: false,
+);
+
+/// "BOTH FOR", "ALL 4 FOR": different products sold together.
+final _bundleFlag = RegExp(
+  r'^(?:GET\s)?(?:BOTH|ALL(?:\s?\d+)?)\s?FOR$',
+  caseSensitive: false,
+);
+
 final _sizeBadge = RegExp(
   r'^(?:\d+\s?[xX]\s?)?\d+(?:[.,]\d+)?\s?(kg|g|ml|l|e|s)$',
   caseSensitive: false,
@@ -439,6 +455,10 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
     },
   );
 
+  final flags = lines
+      .where((l) => _multiBuy.hasMatch(l.t) || _bundleFlag.hasMatch(l.t))
+      .toList();
+
   final items = <ExtractedItem>[];
   for (final p in prices) {
     // Keep only the lines that run on from the price without a break, so
@@ -454,7 +474,31 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
     }
     if (own.isEmpty) continue;
     final raw = _joinLines(own);
-    final (price, certain) = values[p]!;
+    final (total, certain) = values[p]!;
+
+    // "ANY 2 FOR" sits right on top of the price it belongs to.
+    var price = total;
+    var name = cleanName(raw);
+    var bundle = false;
+    var count = 1;
+    for (final f in flags) {
+      if (f.right < p.x || f.x > p.right) continue;
+      if ((p.y - f.bottom).abs() > 0.9 * f.th) continue;
+      final m = _multiBuy.firstMatch(f.t);
+      final n = m == null ? 0 : int.parse(m.group(1)!);
+      if (n > 1) {
+        // Show the price of one, as the other shops' leaflets do.
+        final whole = total == total.roundToDouble();
+        // The leaflet words the size for the lot ("2x50g"): name one pack.
+        name = name.replaceFirst(RegExp('\\b$n\\s?[xX]\\s?(?=\\d)'), '');
+        name = '$name ($n for K${total.toStringAsFixed(whole ? 0 : 2)})';
+        price = double.parse((total / n).toStringAsFixed(2));
+        count = n;
+      } else if (m == null) {
+        bundle = true;
+      }
+    }
+    final multi = price != total;
 
     // "SAVE K18" or "SAVE 50%" printed just above the price.
     double? save;
@@ -466,15 +510,18 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
       ).firstMatch(s.t);
       if (sm == null) continue;
       final n = double.parse(sm.group(1)!);
-      save = sm.group(2) == null ? n : price * n / (100 - n);
+      save = sm.group(2) == null ? n : total * n / (100 - n);
       if (sm.group(2) != null) save = save.roundToDouble();
     }
 
     // A "saving" several times the price means the price was misread.
-    if (save != null && save > 2.5 * price) continue;
+    if (save != null && save > 2.5 * total) continue;
+    // A saving on several packs says nothing about the price of one.
+    if (multi) save = null;
 
     final perKg = RegExp(r'per\s?kg', caseSensitive: false).hasMatch(raw);
-    var size = perKg ? null : parseSize(_fixOcrUnits(raw));
+    var sizeText = _fixOcrUnits(raw);
+    var size = perKg ? null : parseSize(sizeText);
     if (size == null && !perKg) {
       // Fall back to the size badge printed on the product photo above.
       OcrLine? nearest;
@@ -483,10 +530,19 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
       }
       if (nearest != null) {
         // The litre sign is a script "l" that OCR reads as "e".
-        size = parseSize(
-          nearest.t.replaceAll(RegExp(r'e$', caseSensitive: false), 'l'),
+        sizeText = nearest.t.replaceAll(
+          RegExp(r'e$', caseSensitive: false),
+          'l',
         );
+        size = parseSize(sizeText);
       }
+    }
+    // "2x50g" under "ANY 2 FOR" is the size of the lot; the price is now
+    // for one pack, so the size must be too.
+    if (size != null &&
+        count > 1 &&
+        RegExp('\\b$count\\s?[xX]\\s?\\d').hasMatch(sizeText)) {
+      size = (size.$1 / count, size.$2);
     }
 
     // Hero prices are printed much larger than the products they sit on.
@@ -494,12 +550,13 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
     final half = math.max(1.9 * unit, p.w * 0.6);
     items.add(
       ExtractedItem(
-        name: cleanName(raw),
+        name: name,
         price: price,
         perKg: perKg,
         sizeQty: size?.$1,
         sizeUnit: size?.$2,
         save: save,
+        bundle: bundle,
         confidence: certain ? _confidence(p, own) : 0.8 * _confidence(p, own),
         // The product photo sits above the price flash.
         crop: _cropAround(

@@ -154,6 +154,9 @@ class _ItemSheet extends StatelessWidget {
                 ),
             ],
 
+            const SizedBox(height: 24),
+            _PriceHistory(item),
+
             const SizedBox(height: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -223,5 +226,188 @@ class _ItemSheet extends StatelessWidget {
     final amount = formatPrice(double.parse(diff.abs().toStringAsFixed(2)));
     if (diff.abs() < 0.005) return 'Same price$suffix';
     return diff > 0 ? '$amount more$suffix' : '$amount less$suffix';
+  }
+}
+
+/// What the item cost in earlier leaflets, drawn as bars from zero so the
+/// lengths compare honestly.
+class _PriceHistory extends StatelessWidget {
+  const _PriceHistory(this.item);
+
+  final DealItem item;
+
+  static const _shown = 6;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = Palette.of(context);
+    final now = AppScope.of(context).now;
+    final past = item.history.reversed.toList();
+    final heading = Text(
+      'Price history',
+      style: display(context, size: 17, weight: FontWeight.w700),
+    );
+
+    if (past.isEmpty) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          heading,
+          const SizedBox(height: 6),
+          Text(
+            'No earlier price recorded for this item yet. Each new leaflet '
+            'adds to the record.',
+            style: TextStyle(fontSize: 14, color: p.inkSoft, height: 1.4),
+          ),
+        ],
+      );
+    }
+
+    final shown = past.take(_shown).toList();
+    var top = item.price;
+    for (final h in shown) {
+      if (h.price > top) top = h.price;
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        heading,
+        const SizedBox(height: 6),
+        Text(
+          _verdict(past, now),
+          style: TextStyle(
+            fontSize: 14.5,
+            fontWeight: FontWeight.w600,
+            color: p.ink,
+            height: 1.4,
+          ),
+        ),
+        const SizedBox(height: 12),
+        _HistoryBar(
+          label: '${item.retailer.name}, now',
+          price: item.price,
+          share: item.price / top,
+          current: true,
+        ),
+        for (final h in shown)
+          _HistoryBar(
+            label: '${h.retailer.name}, ${rangeLabel(h.from, h.to, now)}',
+            price: h.price,
+            share: h.price / top,
+          ),
+        if (past.length > _shown)
+          Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: Text(
+              past.length - _shown == 1
+                  ? '1 older price is not shown.'
+                  : '${past.length - _shown} older prices are not shown.',
+              style: TextStyle(fontSize: 12.5, color: p.inkSoft),
+            ),
+          ),
+      ],
+    );
+  }
+
+  String _verdict(List<PricePoint> past, DateTime now) {
+    final low = past.reduce((a, b) => b.price < a.price ? b : a);
+    final last = item.lastPriceHere;
+    final parts = <String>[];
+    if (item.price < low.price - 0.005) {
+      parts.add('This is the lowest price recorded for it.');
+    } else if (low.price < item.price - 0.005) {
+      parts.add(
+        'It has been lower: ${formatPrice(low.price)} at '
+        '${low.retailer.name}, ${rangeLabel(low.from, low.to, now)}.',
+      );
+    } else {
+      parts.add('This matches the lowest price recorded for it.');
+    }
+    if (last != null) {
+      final d = item.price - last.price;
+      final amount = formatPrice(double.parse(d.abs().toStringAsFixed(2)));
+      final shop = item.retailer.name;
+      // Skip when the first sentence already made this comparison.
+      final least = last.price * 0.01 > 0.05 ? last.price * 0.01 : 0.05;
+      if (d <= -least) {
+        parts.add("$amount less than in $shop's last leaflet.");
+      } else if (d >= least && !identical(last, low)) {
+        parts.add("$amount more than in $shop's last leaflet.");
+      }
+    }
+    return parts.join(' ');
+  }
+}
+
+class _HistoryBar extends StatelessWidget {
+  const _HistoryBar({
+    required this.label,
+    required this.price,
+    required this.share,
+    this.current = false,
+  });
+
+  final String label;
+  final double price;
+
+  /// Bar length as a fraction of the row, 0..1.
+  final double share;
+  final bool current;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = Palette.of(context);
+    return Semantics(
+      label: '$label, ${formatPrice(price)}',
+      excludeSemantics: true,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.alphabetic,
+              children: [
+                Expanded(
+                  child: Text(
+                    label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 13.5,
+                      fontWeight: current ? FontWeight.w700 : FontWeight.w500,
+                      color: current ? p.ink : p.inkSoft,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  formatPrice(price),
+                  style: display(
+                    context,
+                    size: 15,
+                    weight: FontWeight.w700,
+                    color: current ? p.ink : p.inkSoft,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 5),
+            FractionallySizedBox(
+              widthFactor: share.clamp(0.02, 1.0),
+              child: Container(
+                height: 8,
+                decoration: BoxDecoration(
+                  color: current ? p.tag : p.inkSoft.withValues(alpha: 0.4),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

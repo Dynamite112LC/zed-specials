@@ -53,6 +53,6 @@ flutter:
 
   # The specials feed built by `dart run tool/update_feed.dart`.
   assets:
+    # Only the feed is packed into the app, as a fallback for a first
+    # launch with no connection. Leaflet pictures load from the hosted feed.
     - assets/data/feed.json
-    - assets/data/pages/
-    - assets/data/crops/

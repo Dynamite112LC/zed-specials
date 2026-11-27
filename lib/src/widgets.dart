@@ -259,11 +259,13 @@ class DealTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final p = Palette.of(context);
     final size = item.sizeLabel;
+    final drop = item.dropSinceLast;
     return Semantics(
       button: true,
       label:
           '${item.name}, ${formatPrice(item.price)}'
-          '${item.perKg ? ' per kilogram' : ''} at ${item.retailer.name}',
+          '${item.perKg ? ' per kilogram' : ''} at ${item.retailer.name}'
+          '${drop == null ? '' : ', down ${formatPrice(drop)} since the last leaflet'}',
       excludeSemantics: true,
       child: Material(
         color: p.surface,
@@ -295,6 +297,8 @@ class DealTile extends StatelessWidget {
                         right: 8,
                         child: _SaveBadge(item.save!),
                       ),
+                    if (drop != null)
+                      Positioned(bottom: 8, right: 8, child: DropBadge(drop)),
                   ],
                 ),
               ),
@@ -363,6 +367,35 @@ class _SaveBadge extends StatelessWidget {
           fontSize: 11.5,
           fontWeight: FontWeight.w700,
           color: p.paper,
+          height: 1.1,
+        ),
+      ),
+    );
+  }
+}
+
+/// "Down K5": cheaper than in the shop's previous leaflet, according to
+/// the app's own price history.
+class DropBadge extends StatelessWidget {
+  const DropBadge(this.drop, {super.key});
+
+  final double drop;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = Palette.of(context);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: p.green,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        'Down ${formatPrice(drop)}',
+        style: TextStyle(
+          fontSize: 11.5,
+          fontWeight: FontWeight.w700,
+          color: p.surface,
           height: 1.1,
         ),
       ),

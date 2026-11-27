@@ -9,8 +9,14 @@ const _noise = {
   'flavours', 'flavour',
 };
 
+final _wordsMemo = <String, Set<String>>{};
+final _leadMemo = <String, String?>{};
+
 /// The words that identify a product, without sizes or filler.
-Set<String> productWords(String name) {
+Set<String> productWords(String name) =>
+    _wordsMemo.putIfAbsent(name, () => _productWords(name));
+
+Set<String> _productWords(String name) {
   final cleaned = name
       .toLowerCase()
       .replaceAll(RegExp(r"['’]s\b"), '')
@@ -29,7 +35,10 @@ Set<String> productWords(String name) {
   return words;
 }
 
-String? _leadWord(String name) {
+String? _leadWord(String name) =>
+    _leadMemo.putIfAbsent(name, () => _findLeadWord(name));
+
+String? _findLeadWord(String name) {
   for (final raw in name.toLowerCase().split(RegExp(r'[^a-z0-9]+'))) {
     var w = raw;
     if (w.length < 2 || _noise.contains(w)) continue;
@@ -79,7 +88,10 @@ bool sameProduct(DealItem a, DealItem b) {
     // Fresh meat and produce sold by weight: names are short.
     return jaccard >= 0.6 && shared >= 2;
   }
-  // A missing size makes a match much less certain: ask for more.
+  // A missing size makes a match much less certain: ask for more, and for
+  // prices close enough that a different pack size is unlikely ("Pine Gel
+  // 2" at K56 is not the 1 litre bottle at K35).
+  if (hi / lo > 1.4) return false;
   return shared >= 3 && jaccard >= 0.75;
 }
 
