@@ -2,6 +2,8 @@
 # The app downloads https://<account>.github.io/<repo>/feed.json on its own.
 # Every price read is also added to the price history on the "data" branch,
 # next to the list of leaflets each shop had when it was last reached.
+# New pages are then read a second time by a small vision model that runs on
+# the job's own machine, and the feed is rebuilt with both readings.
 name: Update specials feed
 
 on:
@@ -18,14 +20,15 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: specials-feed
-  cancel-in-progress: false
-
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    # One build at a time. (Not for the whole workflow: the second reader
+    # can take hours and must not hold up the next feed.)
+    concurrency:
+      group: specials-feed-build
+      cancel-in-progress: false
     permissions:
       # To commit the price history to the "data" branch.
       contents: write
@@ -33,6 +36,7 @@ jobs:
       issues: read
     outputs:
       unreachable: ${{ steps.feed.outputs.unreachable }}
+      second_pending: ${{ steps.feed.outputs.second_pending }}
     steps:
       - uses: actions/checkout@v4
 
@@ -86,7 +90,10 @@ jobs:
       # Shops take old leaflets down, so history.json is the only record
       # of past prices. last-scrape.json lets a later run cover for a shop
       # whose site refuses it, and corrections.json keeps the corrections
-      # for a run that cannot reach GitHub's issue list.
+      # for a run that cannot reach GitHub's issue list. second/pending.json
+      # lists the pages the second reader has still to read. Others push to
+      # this branch too (the second reader, the home updater), so the push
+      # is made on top of whatever arrived meanwhile.
       - name: Save the price history
         working-directory: data
         run: |
@@ -95,7 +102,12 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add -A .
             git commit -m "Prices read on $(date -u +%F)"
-            git push
+            pushed=
+            for attempt in 1 2 3; do
+              if git pull --rebase origin data && git push; then pushed=yes; break; fi
+              sleep 5
+            done
+            [ -n "$pushed" ]
           fi
 
       - uses: actions/upload-pages-artifact@v3
@@ -105,6 +117,9 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-latest
+    concurrency:
+      group: specials-feed-publish
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
@@ -125,3 +140,91 @@ jobs:
         run: |
           echo "::error::Out of reach for days: $SHOPS. Run the feed builder on a computer the shop answers and push the data branch."
           exit 1
+
+  # Reads the pages that are new a second time, with a small open vision
+  # model (Qwen3.5 4B) run by llama.cpp on this machine's own processors: no
+  # account, no fee, and the pages go nowhere else. A page takes two to
+  # three minutes, so this runs after the feed is out. Its readings are
+  # saved on the "data" branch and a new run of this workflow then builds
+  # the feed with both readings (tool/src/second_reader.dart).
+  second-reader:
+    needs: build
+    if: needs.build.outputs.second_pending != '' && needs.build.outputs.second_pending != '0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    concurrency:
+      group: specials-feed-second-reader
+      cancel-in-progress: false
+    permissions:
+      # To commit the readings to the "data" branch.
+      contents: write
+      # To start the run that rebuilds the feed.
+      actions: write
+    env:
+      # The llama.cpp build and model the readings were tried with.
+      LLAMA_BUILD: b12815
+      LLAMA_SHA256: 026ecc42e2b8ba93c5d0508a9715f0921aea89a88df6d75eb17831af0ef250e1
+      VISION_MODEL: unsloth/Qwen3.5-4B-GGUF:Q4_K_M
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data
+
+      # The page images the build job has just made.
+      - uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: site
+      - run: tar -xf site/artifact.tar -C site
+
+      - name: Start the vision model
+        run: |
+          curl -sSfL -o llama.tar.gz "https://github.com/ggml-org/llama.cpp/releases/download/$LLAMA_BUILD/llama-$LLAMA_BUILD-bin-ubuntu-x64.tar.gz"
+          echo "$LLAMA_SHA256  llama.tar.gz" | sha256sum -c -
+          mkdir llama && tar -xzf llama.tar.gz -C llama
+          BIN=$(find llama -name llama-server -type f | head -1)
+          export LD_LIBRARY_PATH="$(dirname "$BIN"):${LD_LIBRARY_PATH:-}"
+          # Downloads the model (about 3.4 GB) on first use.
+          nohup "$BIN" -hf "$VISION_MODEL" --host 127.0.0.1 --port 8080 -t "$(nproc)" -c 8192 --reasoning-budget 0 --no-webui > server.log 2>&1 &
+          for i in $(seq 1 180); do
+            if curl -sf http://127.0.0.1:8080/health > /dev/null; then echo "ready"; exit 0; fi
+            if ! pgrep -f llama-server > /dev/null; then break; fi
+            sleep 5
+          done
+          tail -40 server.log
+          exit 1
+
+      - name: Read the pages
+        id: read
+        run: python3 tool/second_reader.py --images site --dir data/second --budget-minutes 300
+
+      - name: Save the readings
+        working-directory: data
+        run: |
+          git add -A second
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Second readings on $(date -u +%F)"
+            pushed=
+            for attempt in 1 2 3; do
+              if git pull --rebase origin data && git push; then pushed=yes; break; fi
+              sleep 5
+            done
+            [ -n "$pushed" ]
+          fi
+
+      # Only when something new was read, so a page that keeps failing
+      # cannot keep this going round.
+      - name: Rebuild the feed with both readings
+        if: steps.read.outputs.read != '' && steps.read.outputs.read != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run update-feed.yml --ref "${{ github.ref_name }}"
+
+      - name: Model server log
+        if: failure()
+        run: tail -60 server.log || true

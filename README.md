@@ -179,6 +179,43 @@ Each item in the feed records where it sits on its page, so the app can
 show that part of the leaflet enlarged: tap an item's picture to compare
 the reading with what is printed.
 
+### The second reader
+
+Pages read by OCR are read a second time by a vision model that looks at
+the whole page and lists every product with its price. It is a small open
+model (Qwen3.5 4B, Apache 2.0) run by llama.cpp on the scheduled job's own
+machine: there is no account and no fee, and the pages are sent nowhere
+else. A page takes two to three minutes there, so the `second-reader` job
+runs after the feed is published, saves its readings in `second/` on the
+`data` branch, and starts a new run that builds the feed with both
+readings. Only new pages are read; a leaflet's readings are dropped when
+the leaflet is.
+
+The two readers fail differently, so they are put together rather than one
+replacing the other (`tool/src/second_reader.dart`):
+
+- A price both give is marked as agreed, and the app says so.
+- A price they differ on keeps the first reading and carries the other
+  one; the app asks you to check the picture. The run's log lists these.
+- Pack sizes the first reader garbled or lost ("2L" read as "2", "36cm" as
+  "3b") are taken from the second. Words keep the first reader's spelling,
+  which is the better one.
+- An item only the second reader names is added when the page's own text
+  shows its price and its words in one place; otherwise it is left out and
+  listed in the log.
+- The second reader sometimes runs raised ngwee into the kwacha (2699 for
+  26.99). The first reader measures the lettering, so its decimal point
+  stands.
+
+To run it on your own computer, start a model server that speaks the
+OpenAI chat API with images (llama.cpp's `llama-server`, or Ollama) and,
+after a feed build, run:
+
+```
+python tool/second_reader.py --server http://127.0.0.1:11434 --model qwen3.5:4b
+dart run tool/update_feed.dart
+```
+
 ### Corrections
 
 When a reading is wrong, "Fix this reading" in the app takes the right
@@ -190,7 +227,8 @@ repository's owner count, and each correction is checked field by field.
 A correction is tied to the reading it was made against, so it lapses on
 its own if the reader later gets the item right.
 
-`test/readers_test.dart` checks the readers against four real pages kept
+`test/readers_test.dart` and `test/second_reader_test.dart` check the
+readers against real pages kept
 in `test/fixtures`. When a shop changes its leaflet design, add a page of
 the new design there with the prices you can see on it.
 

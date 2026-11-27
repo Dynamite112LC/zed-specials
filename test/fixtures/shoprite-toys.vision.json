@@ -1,0 +1,101 @@
+{
+ "model": "qwen3.5-4b-q4_k_m",
+ "items": [
+  {
+   "name": "ZEUS MINI BIKE RIDE-ON EACH",
+   "price": 299.99
+  },
+  {
+   "name": "ZEUS HARLEY LOW RIDER RIDE-ON ALL VARIANTS EACH",
+   "price": 499.99
+  },
+  {
+   "name": "ZEUS QUAD BIKE RIDE-ON EACH",
+   "price": 699.99
+  },
+  {
+   "name": "BOYS / GIRLS' BMX BIKE 30cm EACH",
+   "price": 999.99
+  },
+  {
+   "name": "SUPER RACING CAR ALL VARIANTS EACH",
+   "price": 14.99
+  },
+  {
+   "name": "RACER DIE-CAST CAR ALL VARIANTS 9cm EACH",
+   "price": 19.99
+  },
+  {
+   "name": "SHOPRITE FRITION TRUCK 12cm EACH",
+   "price": 29.99
+  },
+  {
+   "name": "RACING FRITION CAR ALL VARIANTS 10cm EACH",
+   "price": 39.99
+  },
+  {
+   "name": "KING RACING FRITION CAR ALL VARIANTS 22cm EACH",
+   "price": 59.99
+  },
+  {
+   "name": "ROBOTS TRANSFORMING COMBAT FIGURINE ALL VARIANTS EACH",
+   "price": 99.99
+  },
+  {
+   "name": "ROBOTS DEFORMATION PLAY SET ALL VARIANTS PER SET",
+   "price": 129.99
+  },
+  {
+   "name": "TOOLS BUILDING PLAY SET PER SET",
+   "price": 69.99
+  },
+  {
+   "name": "PLASTIC CONSTRUCTION TRUCK 17cm EACH",
+   "price": 59.99
+  },
+  {
+   "name": "ZEUS MINI DUMP TRUCK 26cm EACH",
+   "price": 149.99
+  },
+  {
+   "name": "SUPER CONVOY PLASTIC TRUCK EACH",
+   "price": 149.99
+  },
+  {
+   "name": "ZEUS DUMP TRUCK 36cm EACH",
+   "price": 199.99
+  },
+  {
+   "name": "ENGINEERING SERIES CAR SET 4-PIECE PER SET",
+   "price": 49.99
+  },
+  {
+   "name": "ULTRA DIE-CAST PULL BACK RACING CAR SET 6-PIECE PER SET",
+   "price": 99.99
+  },
+  {
+   "name": "RACE HIGH SPEED BATTERY-OPERATED RACING CAR 15cm EACH",
+   "price": 69.99
+  },
+  {
+   "name": "Z8 BATTERY-OPERATED RACING CAR EACH",
+   "price": 79.99
+  },
+  {
+   "name": "FUTURE POLICE BATTERY-OPERATED CAR EACH",
+   "price": 99.99
+  },
+  {
+   "name": "ROCK CRAWLER REMOTE-CONTROL CAR SCALE 1:16 EACH",
+   "price": 299.99
+  },
+  {
+   "name": "SUPERIOR RADIO-CONTROLLED CAR SCALE 1:12 EACH",
+   "price": 699.99
+  },
+  {
+   "name": "CHALLENGER STUNT RADIO-CONTROLLED VEHICLE EACH",
+   "price": 499.99
+  }
+ ]
+}

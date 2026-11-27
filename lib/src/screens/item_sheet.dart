@@ -254,6 +254,14 @@ class _ItemSheet extends StatelessWidget {
               item.corrected
                   ? 'This reading was checked against the leaflet and '
                         'corrected by a person.'
+                  : item.inDoubt
+                  ? 'This page was read twice and the second reading gave '
+                        '${formatPrice(item.otherPrice!)}. Tap the picture '
+                        'to check which price is printed.'
+                  : item.agreed
+                  ? 'This page was read twice, in two different ways, and '
+                        'both readings gave this price. Tap the picture to '
+                        'see it on the leaflet.'
                   : 'Prices are read from the leaflet automatically and can '
                         'be misread. Tap the picture to check this one '
                         'against the leaflet.',

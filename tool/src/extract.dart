@@ -121,7 +121,45 @@ class ExtractedItem {
     this.confidence = 1,
     this.bundle = false,
     this.parts = const [],
+    this.agreed = false,
+    this.otherPrice,
+    this.firstName,
   });
+
+  /// True when the second reader (see second_reader.dart) gave this price
+  /// too.
+  final bool agreed;
+
+  /// The price the second reader gave, when it gave another one.
+  final double? otherPrice;
+
+  /// The name as first read, when the second reading repaired it.
+  final String? firstName;
+
+  /// This item after the second reader has had its say. A size is only
+  /// replaced when one is given.
+  ExtractedItem copyWith({
+    required String name,
+    String? firstName,
+    double? sizeQty,
+    String? sizeUnit,
+    bool agreed = false,
+    double? otherPrice,
+  }) => ExtractedItem(
+    name: name,
+    price: price,
+    crop: crop,
+    perKg: perKg,
+    sizeQty: sizeQty ?? this.sizeQty,
+    sizeUnit: sizeQty != null ? sizeUnit : this.sizeUnit,
+    save: save,
+    confidence: confidence,
+    bundle: bundle,
+    parts: parts,
+    agreed: agreed,
+    otherPrice: otherPrice,
+    firstName: firstName,
+  );
 
   final String name;
   final double price;
@@ -296,6 +334,7 @@ const _keepUpper = {
   'UHT',
   'IQF',
   'BBQ',
+  'BMX',
   'XL',
   'DVD',
   'AA',
@@ -376,6 +415,8 @@ String cleanName(String raw) {
     RegExp(r'(\d)\s+(kg|g|ml|ltr|l)\b', caseSensitive: false),
     (m) => '${m[1]}${m[2]!.toLowerCase()}',
   );
+  // Litres read better with a capital: "2L", not "2l" (which looks like 21).
+  s = s.replaceAllMapped(RegExp(r'(\d)l\b'), (m) => '${m[1]}L');
   if (s.isNotEmpty) s = s[0].toUpperCase() + s.substring(1);
   return s;
 }

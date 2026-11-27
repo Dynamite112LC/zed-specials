@@ -1,0 +1,73 @@
+{
+ "model": "qwen3.5-4b-q4_k_m",
+ "items": [
+  {
+   "name": "FRUITOP Fruit Juice Blend 1.5 L Assorted",
+   "price": 2699
+  },
+  {
+   "name": "Household Sugar WHITESPOON Household White Sugar 2 kg",
+   "price": 6299
+  },
+  {
+   "name": "SOYOLA Pure Refine Oil 5 L",
+   "price": 20999
+  },
+  {
+   "name": "BOOM Washing Powder 2.7 kg",
+   "price": 10999
+  },
+  {
+   "name": "SURF Hand Washing Powder 5 kg",
+   "price": 18999
+  },
+  {
+   "name": "SKYWORTH 43\" OLED Smart Google TV (43QS6600K)",
+   "price": 9999
+  },
+  {
+   "name": "Hisense 65\" UHD Smart TV (65A60)",
+   "price": 13999
+  },
+  {
+   "name": "SAMSUNG Galaxy A07 64GB 4G Smartphone",
+   "price": 2799
+  },
+  {
+   "name": "Lenovo Slim 3 AMD Ryzen 3",
+   "price": 16499
+  },
+  {
+   "name": "PHILIPS 1000 W Classic Dry Iron (HD1172/27)",
+   "price": 419
+  },
+  {
+   "name": "15-Piece Stainless Steel Cookware Set",
+   "price": 1699
+  },
+  {
+   "name": "LOGIK 30 cm Desk Fan (TS07-30 LT-30D01)",
+   "price": 699
+  },
+  {
+   "name": "Adventure 200 Camping Chair Red",
+   "price": 290
+  },
+  {
+   "name": "Hisense 223 L Titan Inox Bottom Freezer Fridge (H310BIT)",
+   "price": 6999
+  },
+  {
+   "name": "3-Piece Double/Queen Comforter Set Assorted Designs",
+   "price": 279
+  },
+  {
+   "name": "20 L PVA Paint",
+   "price": 610
+  },
+  {
+   "name": "TROJAN Pursuit 400 Stationary Bike",
+   "price": 4490
+  }
+ ]
+}

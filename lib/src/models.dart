@@ -195,6 +195,9 @@ class DealItem {
     this.history = const [],
     this.box,
     this.corrected = false,
+    this.agreed = false,
+    this.otherPrice,
+    this.firstName,
   });
 
   final String id;
@@ -236,6 +239,23 @@ class DealItem {
   /// True when a person checked this item against the leaflet and put the
   /// reading right.
   final bool corrected;
+
+  /// Each page is read twice, by two readers that work differently. True
+  /// when both gave this price.
+  final bool agreed;
+
+  /// The price the second reader gave, when the two differ. The first
+  /// reader's price is the one shown; this one is worth a look at the
+  /// leaflet.
+  final double? otherPrice;
+
+  /// The name as first read, when the second reading repaired it. A
+  /// correction made against the earlier name still finds its item.
+  final String? firstName;
+
+  /// Worth checking against the leaflet: the readers differ and nobody has
+  /// settled it yet.
+  bool get inDoubt => otherPrice != null && !corrected;
 
   /// What the same product cost in leaflets that have since been replaced,
   /// at this shop and at the others. Oldest first.
@@ -332,6 +352,9 @@ class DealItem {
     history: history ?? this.history,
     box: box,
     corrected: corrected ?? this.corrected,
+    agreed: agreed,
+    otherPrice: otherPrice,
+    firstName: firstName,
   );
 
   Map<String, dynamic> toJson() => {
@@ -352,6 +375,9 @@ class DealItem {
     if (history.isNotEmpty) 'history': [for (final h in history) h.toJson()],
     if (box != null) 'box': box,
     if (corrected) 'corrected': true,
+    if (agreed) 'agreed': true,
+    if (otherPrice != null) 'otherPrice': otherPrice,
+    if (firstName != null) 'firstName': firstName,
   };
 
   factory DealItem.fromJson(Map<String, dynamic> j) => DealItem(
@@ -375,6 +401,9 @@ class DealItem {
     ],
     box: (j['box'] as List?)?.map((v) => (v as num).toDouble()).toList(),
     corrected: j['corrected'] as bool? ?? false,
+    agreed: j['agreed'] as bool? ?? false,
+    otherPrice: (j['otherPrice'] as num?)?.toDouble(),
+    firstName: j['firstName'] as String?,
   );
 }
 
@@ -449,7 +478,7 @@ class Correction {
   bool matches(DealItem i) =>
       i.catalogueId == leaflet &&
       i.page == page &&
-      i.name == readName &&
+      (i.name == readName || i.firstName == readName) &&
       (i.price - readPrice).abs() < 0.005;
 
   Map<String, dynamic> toJson() => {

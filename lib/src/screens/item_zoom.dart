@@ -18,6 +18,40 @@ void openItemZoom(BuildContext context, DealItem item) {
   );
 }
 
+/// What reading the page twice came to: the same price, or two.
+class _TwoReadings extends StatelessWidget {
+  const _TwoReadings({required this.item});
+
+  final DealItem item;
+
+  @override
+  Widget build(BuildContext context) {
+    final doubt = item.inDoubt;
+    final colour = doubt ? const Color(0xFFF2C14E) : const Color(0xFF8FD3A8);
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(
+          doubt ? Icons.help_outline_rounded : Icons.done_all_rounded,
+          size: 18,
+          color: colour,
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            doubt
+                ? 'A second reading of this page gave '
+                      '${formatPrice(item.otherPrice!)}. Check which one is '
+                      'printed.'
+                : 'Two separate readings of this page gave this price.',
+            style: TextStyle(fontSize: 13, color: colour, height: 1.35),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _ItemZoom extends StatelessWidget {
   const _ItemZoom({required this.item});
 
@@ -118,6 +152,11 @@ class _ItemZoom extends StatelessWidget {
                         PriceTag(shown.price, size: 24, perKg: shown.perKg),
                       ],
                     ),
+                    if (shown.inDoubt || (shown.agreed && !shown.corrected))
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: _TwoReadings(item: shown),
+                      ),
                   ],
                   const SizedBox(height: 12),
                   Row(

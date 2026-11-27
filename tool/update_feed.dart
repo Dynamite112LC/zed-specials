@@ -23,6 +23,11 @@
 //                                             scheduled job where they do
 //                                             not (tool/update-leaflet-lists.ps1)
 //
+// Pages are read a second time by a vision model, separately
+// (tool/second_reader.py). Its readings are kept in "second/" beside the
+// price history and put together with the first reading here; the pages
+// still waiting for one are listed in second/pending.json.
+//
 // Needs Python with RapidOCR for reading prices (see tool/ocr.py) and
 // pdftoppm (Poppler) for the shops that publish PDFs. Page images and OCR
 // results are cached in .cache/, so repeat runs only process new leaflets.
@@ -293,6 +298,11 @@ Future<void> main(List<String> args) async {
   final today = DateTime(now.year, now.month, now.day);
   final catalogues = <Catalogue>[];
   var fromText = 0;
+  // Second readings of the pages, made by tool/second_reader.py and kept
+  // beside the price history (see tool/src/second_reader.dart).
+  final secondDir = Directory('${historyFile.parent.path}/second');
+  final awaiting = <Map<String, String>>[];
+  var readTwice = 0, agreed = 0, doubted = 0, renamed = 0, added = 0;
   var items = <DealItem>[];
   final cropJobs = <Map<String, dynamic>>[];
 
@@ -319,9 +329,30 @@ Future<void> main(List<String> args) async {
         textFile.writeAsStringSync(jsonEncode(text ?? const {}));
       }
 
-      final reading = readCachedPage(c.retailerId, w.pages[i].path);
+      final key = '${w.sid}-${_two(i + 1)}';
+      final secondFile = File('${secondDir.path}/$key.json');
+      final reading = readCachedPage(
+        c.retailerId,
+        w.pages[i].path,
+        secondFile: secondFile,
+      );
       if (reading == null) continue;
       if (reading.source != 'ocr') fromText++;
+      final second = reading.second;
+      if (second != null) {
+        readTwice++;
+        agreed += second.agreed;
+        doubted += second.doubted;
+        renamed += second.renamed;
+        added += second.added;
+        for (final note in second.notes) {
+          stdout.writeln('  ${c.title} page ${i + 1}: $note');
+        }
+      } else if (reading.source == 'ocr' && _secondAttempts(secondFile) < 2) {
+        // Text taken from a PDF is exact and needs no second reading. A
+        // page the second reader failed on twice is left to the first.
+        awaiting.add({'key': key, 'image': 'pages/$key.jpg'});
+      }
       final found = reading.items;
       for (var k = 0; k < found.length; k++) {
         final e = found[k];
@@ -369,6 +400,9 @@ Future<void> main(List<String> args) async {
             crop: crop,
             category: category,
             confidence: e.confidence,
+            agreed: e.agreed,
+            otherPrice: e.otherPrice,
+            firstName: e.firstName,
             box: () {
               final r = e.regionOn(reading.width, reading.height);
               double part(num v, int of) =>
@@ -401,6 +435,27 @@ Future<void> main(List<String> args) async {
     );
     final n = items.where((i) => i.catalogueId == c.id).length;
     stdout.writeln('${c.retailerId}: ${c.title}: $n prices read');
+  }
+
+  // The list of pages still to be read a second time, for the job that
+  // does it; and no second readings of leaflets that are gone.
+  secondDir.createSync(recursive: true);
+  File('${secondDir.path}/pending.json').writeAsStringSync(
+    '${const JsonEncoder.withIndent(' ').convert(awaiting)}\n',
+  );
+  final live = {for (final w in work) w.sid};
+  for (final f in secondDir.listSync().whereType<File>()) {
+    final name = f.uri.pathSegments.last;
+    if (name != 'pending.json' && !live.contains(name.split('-').first)) {
+      f.deleteSync();
+    }
+  }
+  final ghOutput = Platform.environment['GITHUB_OUTPUT'];
+  if (ghOutput != null) {
+    File(ghOutput).writeAsStringSync(
+      'second_pending=${awaiting.length}\n',
+      mode: FileMode.append,
+    );
   }
 
   // Crops are rewritten each run because item numbering can shift.
@@ -480,6 +535,13 @@ Future<void> main(List<String> args) async {
   if (fromText > 0) {
     stdout.writeln('$fromText pages were read from the text inside their PDF');
   }
+  if (readTwice > 0 || awaiting.isNotEmpty) {
+    stdout.writeln(
+      'Second reader: $readTwice pages read twice ($agreed prices agreed, '
+      '$doubted differ, $renamed names repaired, $added items added); '
+      '${awaiting.length} pages still to read',
+    );
+  }
   stdout.writeln(
     'Price history in ${historyFile.path}: ${history.leaflets.length} '
     'leaflets, ${history.products.length} products, '
@@ -512,6 +574,17 @@ Future<void> main(List<String> args) async {
       'unreachable=${overdue.join(', ')}\n',
       mode: FileMode.append,
     );
+  }
+}
+
+/// How many times the second reader has tried and failed on a page.
+int _secondAttempts(File f) {
+  if (!f.existsSync()) return 0;
+  try {
+    final j = jsonDecode(f.readAsStringSync());
+    return j is Map && j['failed'] is int ? j['failed'] as int : 0;
+  } catch (_) {
+    return 0;
   }
 }
 
