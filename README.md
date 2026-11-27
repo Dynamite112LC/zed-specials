@@ -29,17 +29,37 @@ That address is built into the app. It checks for new specials every time
 it opens, when it comes back to the foreground after a few hours, and on
 pull to refresh.
 
-It runs again at 12:00, because a shop's site sometimes refuses the server
-the morning run happened to get. A shop that cannot be reached is filled
-in with the leaflets it had on the last run that did reach it, for up to
-three days (`tool/src/scrape_memory.dart`). That list is kept on the `data`
-branch as `last-scrape.json`, so running the feed builder on your own
-computer and pushing `data` also covers for the job when a shop refuses
-GitHub's servers.
+It runs again at 12:00.
 
-The job runs with `--strict`: if a shop stays out of reach beyond that, or
-a leaflet's pages are missing, it fails and leaves the last complete feed
-online, and GitHub emails you about the failed run.
+### When a shop refuses GitHub's servers
+
+Shoprite's main site (www.shoprite.co.zm) blocks GitHub's servers; the
+host that serves its leaflets (specials.shoprite.co.zm) does not. So the
+job cannot see which leaflets Shoprite currently lists, but it can read
+any leaflet it already knows about.
+
+A shop that cannot be reached is therefore filled in with the leaflets it
+had on the last run that did reach it, each until its own end date
+(`tool/src/scrape_memory.dart`). The other shops keep updating. What gets
+missed is a new leaflet from the blocked shop. Once a shop has been out of
+reach for more than three days the job still publishes, then fails its
+last step so that GitHub emails you.
+
+The list of known leaflets is kept on the `data` branch as
+`last-scrape.json`. To bring a blocked shop up to date, run the feed
+builder on a computer the shop does answer (a home connection works) and
+push that branch:
+
+```
+dart run tool/update_feed.dart
+git -C data add -A
+git -C data commit -m "Leaflet lists"
+git -C data push origin HEAD:data
+```
+
+The job runs with `--strict`: if a shop fails that has never been reached,
+or a leaflet's pages are missing, it stops and leaves the last complete
+feed online, and GitHub emails you about the failed run.
 To run it by hand, use "Run workflow" on the repository's Actions tab.
 
 ## Price history

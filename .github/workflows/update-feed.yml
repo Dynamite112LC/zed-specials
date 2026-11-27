@@ -29,6 +29,8 @@ jobs:
     permissions:
       # To commit the price history to the "data" branch.
       contents: write
+    outputs:
+      unreachable: ${{ steps.feed.outputs.unreachable }}
     steps:
       - uses: actions/checkout@v4
 
@@ -66,10 +68,13 @@ jobs:
 
       - run: flutter pub get
 
-      # --strict: if any shop's page cannot be read, fail and leave
-      # yesterday's complete feed online rather than publish one with a
-      # shop missing.
+      # A shop whose site refuses this server is filled in with the
+      # leaflets it had when it was last reached, until they end.
+      # --strict: if a shop fails that has never been reached, or a
+      # leaflet's pages are missing, fail and leave the last complete feed
+      # online.
       - name: Build the feed
+        id: feed
         run: dart run tool/update_feed.dart --strict
 
       # Shops take old leaflets down, so history.json is the only record
@@ -99,3 +104,17 @@ jobs:
     steps:
       - id: deploy
         uses: actions/deploy-pages@v4
+
+  # Runs after the feed is published: fails, so that GitHub sends an email,
+  # when a shop has been out of reach for days and its new leaflets are
+  # being missed. The feed itself is already up to date for the others.
+  report:
+    needs: [build, publish]
+    if: needs.build.outputs.unreachable != ''
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          SHOPS: ${{ needs.build.outputs.unreachable }}
+        run: |
+          echo "::error::Out of reach for days: $SHOPS. Run the feed builder on a computer the shop answers and push the data branch."
+          exit 1

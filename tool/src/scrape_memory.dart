@@ -1,10 +1,14 @@
-// Stands in for a shop whose site cannot be reached today.
+// Stands in for a shop whose site cannot be reached.
 //
-// Shops' sites now and then refuse cloud servers for a day. Their leaflets
-// run for a week or more, so the list from the last run that did get
-// through is nearly always still right, and the page images are in the
-// cache already. Without this, one shop having a bad morning would hold
-// back the other shops' new leaflets too.
+// Some shops' sites refuse cloud servers, for a day or for good. (Shoprite's
+// main site blocks GitHub's servers outright, while the separate host that
+// serves its leaflets does not.) A leaflet is valid until the date printed
+// on it, so the leaflets a shop had on the last run that got through keep
+// standing in for it until each one ends. The other shops carry on being
+// updated, and nothing is published that the shop has not itself published.
+//
+// What a stand-in cannot do is notice a NEW leaflet. So the caller is told
+// when each stood-in shop was last reached and can raise the alarm.
 //
 // The memory is kept beside the price history, so a run on any machine
 // that can reach the shop (the scheduled job, or the feed builder run by
@@ -19,10 +23,18 @@ typedef ScrapeResult = ({
   Map<String, String> errors,
 });
 
-/// How many days a shop's last known leaflets may stand in for it. After
-/// that the shop is reported as failed, so a lasting block does not go
-/// unseen.
-const memoryDays = 3;
+typedef RememberedScrape = ({
+  List<ScrapedCatalogue> catalogues,
+
+  /// Shops that failed and were never reached before: nothing to stand in.
+  Map<String, String> errors,
+
+  /// Shops filled in from memory, with the day they were last reached.
+  Map<String, DateTime> standIns,
+});
+
+/// A remembered leaflet with no end date is trusted for this long.
+const undatedLeafletDays = 14;
 
 DateTime _dayOf(DateTime t) => DateTime(t.year, t.month, t.day);
 
@@ -31,10 +43,16 @@ String _dayText(DateTime t) =>
     '${t.month.toString().padLeft(2, '0')}-'
     '${t.day.toString().padLeft(2, '0')}';
 
-/// Runs [scrape]; a shop that failed is filled in from [file] when it was
-/// reached within [memoryDays], and its error is dropped. Shops that were
+/// Whole days from [a] to [b], both taken as calendar days.
+int daysBetween(DateTime a, DateTime b) =>
+    DateTime.utc(b.year, b.month, b.day)
+        .difference(DateTime.utc(a.year, a.month, a.day))
+        .inDays;
+
+/// Runs [scrape]. A shop that failed is filled in with the leaflets it had
+/// when it was last reached and that have not ended yet. Shops that were
 /// reached are remembered in [file] for next time.
-Future<ScrapeResult> scrapeWithMemory(
+Future<RememberedScrape> scrapeWithMemory(
   File file,
   Future<ScrapeResult> Function() scrape, {
   DateTime? now,
@@ -50,32 +68,37 @@ Future<ScrapeResult> scrapeWithMemory(
   }
 
   final live = await scrape();
-  final at = _dayOf(now ?? DateTime.now());
+  final today = _dayOf(now ?? DateTime.now());
   final catalogues = [...live.catalogues];
   final errors = {...live.errors};
+  final standIns = <String, DateTime>{};
 
   for (final shop in live.errors.keys) {
     final m = memory[shop];
     if (m is! Map<String, dynamic>) continue;
     final reached = _dayOf(DateTime.parse(m['at'] as String));
-    if (at.difference(reached).inHours > memoryDays * 24 + 2) continue;
-    final remembered = [
+    final running = [
       for (final c in m['catalogues'] as List)
         ScrapedCatalogue.fromJson(c as Map<String, dynamic>),
-    ];
-    if (remembered.isEmpty) continue;
+    ].where((c) {
+      final end = c.validTo;
+      if (end == null) return daysBetween(reached, today) <= undatedLeafletDays;
+      return daysBetween(today, end) >= 0;
+    }).toList();
     log?.call(
-      '$shop could not be reached (${live.errors[shop]}). Using its '
-      '${remembered.length} leaflets from ${_dayText(reached)}.',
+      '$shop could not be reached (${live.errors[shop]}). Standing in: '
+      '${running.length} of its leaflets from ${_dayText(reached)} that '
+      'are still running.',
     );
-    catalogues.addAll(remembered);
+    catalogues.addAll(running);
     errors.remove(shop);
+    standIns[shop] = reached;
   }
 
   for (final shop in {for (final c in live.catalogues) c.retailerId}) {
     memory[shop] = {
       // The day only, so the file changes at most once a day.
-      'at': _dayText(at),
+      'at': _dayText(today),
       'catalogues': [
         for (final c in live.catalogues)
           if (c.retailerId == shop) c.toJson(),
@@ -86,5 +109,5 @@ Future<ScrapeResult> scrapeWithMemory(
   file.writeAsStringSync(
     '${const JsonEncoder.withIndent(' ').convert(memory)}\n',
   );
-  return (catalogues: catalogues, errors: errors);
+  return (catalogues: catalogues, errors: errors, standIns: standIns);
 }

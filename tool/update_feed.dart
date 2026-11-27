@@ -122,8 +122,8 @@ Future<void> main(List<String> args) async {
 
   final client = http.Client();
   stdout.writeln('Checking the shops\' specials pages');
-  // A shop that cannot be reached today is filled in from the last run
-  // that did reach it (see tool/src/scrape_memory.dart).
+  // A shop that cannot be reached is filled in with the leaflets it had
+  // on the last run that did reach it (see tool/src/scrape_memory.dart).
   final scrape = await scrapeWithMemory(
     File('${historyFile.parent.path}/last-scrape.json'),
     () => scrapeAll(client),
@@ -360,6 +360,34 @@ Future<void> main(List<String> args) async {
     '${items.where((i) => i.history.isNotEmpty).length} of today\'s prices '
     'have an earlier price to compare with',
   );
+
+  // A stood-in shop keeps its known leaflets, but its new ones go unseen.
+  // Say so every time, and raise the alarm once it has gone on for days:
+  // the scheduled job turns the "unreachable" output into a failed step
+  // after publishing, so GitHub sends an email while the feed stays fresh.
+  const alarmAfterDays = 3;
+  final onGitHub = Platform.environment['GITHUB_ACTIONS'] == 'true';
+  final overdue = <String>[];
+  scrape.standIns.forEach((shop, reached) {
+    final since =
+        '${reached.year}-${_two(reached.month)}-${_two(reached.day)}';
+    final line =
+        '$shop has not been reached since $since. Its leaflets from then '
+        'are shown until they end; newer ones are not seen. Run the feed '
+        'builder on a computer the shop does answer and push the "data" '
+        'branch to bring it up to date.';
+    stdout.writeln(onGitHub ? '::warning::$line' : line);
+    if (daysBetween(reached, today) > alarmAfterDays) {
+      overdue.add('$shop (last reached $since)');
+    }
+  });
+  final output = Platform.environment['GITHUB_OUTPUT'];
+  if (overdue.isNotEmpty && output != null) {
+    File(output).writeAsStringSync(
+      'unreachable=${overdue.join(', ')}\n',
+      mode: FileMode.append,
+    );
+  }
 }
 
 /// First-seen dates from the feed written by the previous run.
