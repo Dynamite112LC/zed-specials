@@ -125,7 +125,7 @@ Future<void> main(List<String> args) async {
   // A shop that cannot be reached today is filled in from the last run
   // that did reach it (see tool/src/scrape_memory.dart).
   final scrape = await scrapeWithMemory(
-    File('${_cache.path}/last-scrape.json'),
+    File('${historyFile.parent.path}/last-scrape.json'),
     () => scrapeAll(client),
     log: (m) => stderr.writeln('  $m'),
   );

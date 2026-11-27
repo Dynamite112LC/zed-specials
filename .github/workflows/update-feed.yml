@@ -1,6 +1,7 @@
 # Rebuilds the specials feed every morning and publishes it with GitHub Pages.
 # The app downloads https://<account>.github.io/<repo>/feed.json on its own.
-# Every price read is also added to the price history on the "data" branch.
+# Every price read is also added to the price history on the "data" branch,
+# next to the list of leaflets each shop had when it was last reached.
 name: Update specials feed
 
 on:
@@ -71,15 +72,16 @@ jobs:
       - name: Build the feed
         run: dart run tool/update_feed.dart --strict
 
-      # Shops take old leaflets down, so this file is the only record of
-      # past prices. Nothing is committed on days with no new leaflet.
+      # Shops take old leaflets down, so history.json is the only record
+      # of past prices. last-scrape.json lets a later run cover for a shop
+      # whose site refuses it.
       - name: Save the price history
         working-directory: data
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add history.json
+            git add history.json last-scrape.json
             git commit -m "Prices read on $(date -u +%F)"
             git push
           fi

@@ -32,7 +32,10 @@ pull to refresh.
 It runs again at 12:00, because a shop's site sometimes refuses the server
 the morning run happened to get. A shop that cannot be reached is filled
 in with the leaflets it had on the last run that did reach it, for up to
-three days (`tool/src/scrape_memory.dart`).
+three days (`tool/src/scrape_memory.dart`). That list is kept on the `data`
+branch as `last-scrape.json`, so running the feed builder on your own
+computer and pushing `data` also covers for the job when a shop refuses
+GitHub's servers.
 
 The job runs with `--strict`: if a shop stays out of reach beyond that, or
 a leaflet's pages are missing, it fails and leaves the last complete feed
