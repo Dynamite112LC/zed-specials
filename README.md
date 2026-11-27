@@ -179,6 +179,21 @@ Each item in the feed records where it sits on its page, so the app can
 show that part of the leaflet enlarged: tap an item's picture to compare
 the reading with what is printed.
 
+### Pick n Pay's Smart Shopper prices
+
+Pick n Pay prints a second, lower price for holders of its Smart Shopper
+card in a yellow box under many products. The reader takes it as the
+item's card price (`cardPrice` in the feed), not as a product of its own:
+a price with no description, right under another product's description,
+in line with its price and a little lower. The box's heading is often a
+drawing rather than text, so it is not relied on. A card deal that needs
+several bought together ("10 for K50") is left out.
+
+The app shows the price for everyone and notes the card price beside it.
+With "I have a Smart Shopper card" turned on in the settings, the card
+price is the one shown, sorted and compared, and the price without the
+card is noted instead. The price history keeps to the price for everyone.
+
 ### The second reader
 
 Pages read by OCR are read a second time by a vision model that looks at

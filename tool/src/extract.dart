@@ -125,7 +125,12 @@ class ExtractedItem {
     this.otherPrice,
     this.firstName,
     this.assumedNgwee = false,
+    this.cardPrice,
   });
+
+  /// The lower price printed for holders of the shop's loyalty card
+  /// (Pick n Pay's "Smart Shopper price"), when there is one.
+  final double? cardPrice;
 
   /// True when the raised ngwee were seen but could not be read, and ".99"
   /// was assumed.
@@ -166,6 +171,8 @@ class ExtractedItem {
     agreed: agreed,
     otherPrice: otherPrice,
     firstName: firstName,
+    assumedNgwee: assumedNgwee,
+    cardPrice: cardPrice,
   );
 
   final String name;
@@ -314,6 +321,12 @@ final _countRe = RegExp(
   return null;
 }
 
+/// "per kg" somewhere in [text], or a short line that is OCR's go at it:
+/// the small print under a price comes back as "Pekg" or "Perkg".
+bool saysPerKg(String text) =>
+    RegExp(r'\bper\s?kg\b', caseSensitive: false).hasMatch(text) ||
+    RegExp(r'^pe[re]?\s?kg$', caseSensitive: false).hasMatch(text.trim());
+
 /// Repairs the commonest misreadings of pack sizes: "750mi", "Skg", "Tkg".
 String _fixOcrUnits(String s) => s
     .replaceAllMapped(
@@ -389,7 +402,7 @@ String cleanName(String raw) {
       .replaceAllMapped(RegExp(r'(\d),(\d)'), (m) => '${m[1]}.${m[2]}')
       .replaceAll(
         RegExp(
-          r'\b(EACH|PER PACK|PER SET|PER PAIR|PER KG|EA)\b\.?',
+          r'\b(EACH|PER PACK|PER SET|PER PAIR|PER KG|PE[RE]?KG|EA)\b\.?',
           caseSensitive: false,
         ),
         ' ',
@@ -756,7 +769,9 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
     if (prices.contains(l) || onFlash(l, pad: 0)) return false;
     if (l.th < 0.6 * body || l.th > 1.8 * body) return false;
     if (_shopriteNoise.hasMatch(l.t)) return false;
-    final perKg = RegExp(r'^per\s?kg$', caseSensitive: false).hasMatch(l.t);
+    final perKg =
+        RegExp(r'^per\s?kg$', caseSensitive: false).hasMatch(l.t) ||
+        RegExp(r'^pe[re]?\s?kg$', caseSensitive: false).hasMatch(l.t);
     return perKg || (_letters(l.t) >= 3 && _mostlyUpper(l.t));
   }).toList()..sort((a, b) => _top(a).compareTo(_top(b)));
 
@@ -948,7 +963,9 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
     // A saving on several packs says nothing about the price of one.
     if (multi) save = null;
 
-    final perKg = RegExp(r'per\s?kg', caseSensitive: false).hasMatch(raw);
+    final perKg =
+        RegExp(r'per\s?kg', caseSensitive: false).hasMatch(raw) ||
+        own.any((l) => saysPerKg(l.t));
     var sizeText = _fixOcrUnits(raw);
     var size = perKg ? null : parseSize(sizeText);
     if (size == null && !perKg) {
@@ -1150,6 +1167,27 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
       .where((l) => RegExp(r'^FOR\s?(\d)$', caseSensitive: false).hasMatch(l.t))
       .toList();
 
+  // The Smart Shopper price: a second, lower price in a yellow box right
+  // under the description, in line with the price above it and with no
+  // description of its own. (The box's "SMART SHOPPER PRICE" heading is
+  // often a drawing rather than text, so it cannot be relied on.)
+  _PnpPrice? cardPriceFor(_PnpPrice p, List<OcrLine> own) {
+    final th = p.main.th;
+    final lowest = own.map((o) => o.bottom).reduce(math.max);
+    _PnpPrice? best;
+    for (final c in prices) {
+      if (identical(c, p) || byPrice[c]!.isNotEmpty) continue;
+      final gap = c.main.y - lowest;
+      if (gap < -0.2 * th || gap > 1.3 * th) continue;
+      if ((c.cx - p.cx).abs() > 0.9 * th) continue;
+      if (c.main.th < 0.7 * th || c.main.th > 1.4 * th) continue;
+      // A card price is a little less, never a different price altogether.
+      if (c.value >= p.value || c.value < 0.7 * p.value) continue;
+      if (best == null || c.main.y < best.main.y) best = c;
+    }
+    return best;
+  }
+
   final items = <ExtractedItem>[];
   for (final p in prices) {
     final own = byPrice[p]!;
@@ -1159,6 +1197,7 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
 
     var price = p.value;
     var name = cleanName(raw);
+    var multiBuy = false;
     // "21.00 FOR 2": show the price of one.
     for (final f in forLines) {
       if (f.x > b.cx && f.x < p.right + b.th && (f.cy - b.cy).abs() < b.th) {
@@ -1166,9 +1205,11 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
         if (n > 1) {
           name = '$name ($n for K${price.toStringAsFixed(0)})';
           price = price / n;
+          multiBuy = true;
         }
       }
     }
+    final card = multiBuy ? null : cardPriceFor(p, own);
 
     final perKg = perKgLines.any(
       (l) => l.x > b.x && l.x < p.right + b.th && (l.cy - b.cy).abs() < b.th,
@@ -1200,7 +1241,8 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
         sizeQty: size?.$1,
         sizeUnit: size?.$2,
         save: save,
-        parts: [b, ...own],
+        cardPrice: card?.value,
+        parts: [b, ...own, ?card?.main],
         confidence: p.certain ? _confidence(b, own) : 0.8 * _confidence(b, own),
         // The product photo sits above and to the left of the price panel.
         crop: _cropAround(

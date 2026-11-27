@@ -198,6 +198,8 @@ class DealItem {
     this.agreed = false,
     this.otherPrice,
     this.firstName,
+    this.cardPrice,
+    this.shelfPrice,
   });
 
   final String id;
@@ -253,6 +255,51 @@ class DealItem {
   /// correction made against the earlier name still finds its item.
   final String? firstName;
 
+  /// The lower price for holders of the shop's loyalty card, when the
+  /// leaflet prints one: Pick n Pay's "Smart Shopper price".
+  final double? cardPrice;
+
+  /// Set only inside the app, for someone who has the card: [price] is then
+  /// the card price, and this is the price without the card.
+  final double? shelfPrice;
+
+  bool get cardApplied => shelfPrice != null;
+
+  /// This item as a card holder pays for it.
+  DealItem withCard() {
+    final card = cardPrice;
+    if (card == null || cardApplied || card >= price) return this;
+    return _priced(card, shelf: price);
+  }
+
+  /// This item at the price printed for everyone.
+  DealItem withoutCard() => cardApplied ? _priced(shelfPrice!) : this;
+
+  DealItem _priced(double price, {double? shelf}) => DealItem(
+    id: id,
+    catalogueId: catalogueId,
+    retailerId: retailerId,
+    page: page,
+    name: name,
+    price: price,
+    perKg: perKg,
+    sizeQty: sizeQty,
+    sizeUnit: sizeUnit,
+    save: save,
+    crop: crop,
+    groupId: groupId,
+    category: category,
+    confidence: confidence,
+    history: history,
+    box: box,
+    corrected: corrected,
+    agreed: agreed,
+    otherPrice: otherPrice,
+    firstName: firstName,
+    cardPrice: cardPrice,
+    shelfPrice: shelf,
+  );
+
   /// Worth checking against the leaflet: the readers differ and nobody has
   /// settled it yet.
   bool get inDoubt => otherPrice != null && !corrected;
@@ -275,6 +322,9 @@ class DealItem {
     if (last == null) return null;
     // A few ngwee either way is the same price, not a drop.
     final least = last.price * 0.01 > 0.05 ? last.price * 0.01 : 0.05;
+    // Past prices are the ones printed for everyone, so the comparison is
+    // with today's price for everyone, not the card price.
+    final price = shelfPrice ?? this.price;
     if (last.price - price < least) return null;
     return double.parse((last.price - price).toStringAsFixed(2));
   }
@@ -355,6 +405,12 @@ class DealItem {
     agreed: agreed,
     otherPrice: otherPrice,
     firstName: firstName,
+    // A corrected price at or under the card price leaves no card price.
+    cardPrice:
+        cardPrice != null && cardPrice! < (price ?? shelfPrice ?? this.price)
+        ? cardPrice
+        : null,
+    shelfPrice: shelfPrice,
   );
 
   Map<String, dynamic> toJson() => {
@@ -378,6 +434,7 @@ class DealItem {
     if (agreed) 'agreed': true,
     if (otherPrice != null) 'otherPrice': otherPrice,
     if (firstName != null) 'firstName': firstName,
+    if (cardPrice != null) 'cardPrice': cardPrice,
   };
 
   factory DealItem.fromJson(Map<String, dynamic> j) => DealItem(
@@ -404,6 +461,7 @@ class DealItem {
     agreed: j['agreed'] as bool? ?? false,
     otherPrice: (j['otherPrice'] as num?)?.toDouble(),
     firstName: j['firstName'] as String?,
+    cardPrice: (j['cardPrice'] as num?)?.toDouble(),
   );
 }
 

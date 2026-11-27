@@ -388,6 +388,11 @@ class PriceRow extends StatelessWidget {
       ?size,
       if (unit != null && !item.perKg)
         '${formatPrice(double.parse(unit.toStringAsFixed(2)))} ${item.unitPriceLabel}',
+      // Pick n Pay's Smart Shopper price.
+      if (item.cardApplied)
+        'card price'
+      else if (item.cardPrice != null)
+        '${formatPrice(item.cardPrice!)} with card',
     ].join(', ');
 
     return InkWell(

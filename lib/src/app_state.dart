@@ -22,6 +22,7 @@ const _kWatch = 'watchlist';
 const _kSeen = 'seenCatalogues';
 const _kCachedFeed = 'cachedFeed';
 const _kShopriteStore = 'shopriteStore';
+const _kSmartShopper = 'smartShopper';
 const _kCorrections = 'corrections';
 
 /// A set of items that look like the same product at different shops.
@@ -66,7 +67,10 @@ class AppState extends ChangeNotifier {
     feed = Feed(
       generatedAt: f.generatedAt,
       catalogues: f.catalogues,
-      items: applyCorrections(f.items, corrections),
+      items: [
+        for (final i in applyCorrections(f.items, corrections))
+          smartShopper ? i.withCard() : i,
+      ],
     );
   }
 
@@ -132,6 +136,10 @@ class AppState extends ChangeNotifier {
   /// only the leaflets that apply there are shown.
   ShopriteStore? shopriteStore;
 
+  /// Whether the user has Pick n Pay's Smart Shopper card. With it, the
+  /// card prices on Pick n Pay's leaflets are the ones shown and compared.
+  bool smartShopper = false;
+
   Uri? _remoteBase;
   SharedPreferences? _prefs;
   DateTime? _lastRefresh;
@@ -143,6 +151,7 @@ class AppState extends ChangeNotifier {
     feedUrl = _prefs!.getString(_kFeedUrl) ?? builtInFeedUrl;
     watchlist = _prefs!.getStringList(_kWatch) ?? [];
     shopriteStore = shopriteStoreById(_prefs!.getInt(_kShopriteStore));
+    smartShopper = _prefs!.getBool(_kSmartShopper) ?? false;
     try {
       corrections = [
         for (final j
@@ -249,6 +258,13 @@ class AppState extends ChangeNotifier {
     } else {
       await refresh();
     }
+  }
+
+  Future<void> setSmartShopper(bool has) async {
+    smartShopper = has;
+    await _prefs?.setBool(_kSmartShopper, has);
+    _show(_published);
+    notifyListeners();
   }
 
   Future<void> setShopriteStore(ShopriteStore? store) async {

@@ -267,6 +267,11 @@ class DealTile extends StatelessWidget {
       label:
           '${item.name}, ${formatPrice(item.price)}'
           '${item.perKg ? ' per kilogram' : ''} at ${item.retailer.name}'
+          '${item.cardApplied
+              ? ', Smart Shopper price'
+              : item.cardPrice == null
+              ? ''
+              : ', ${formatPrice(item.cardPrice!)} with a Smart Shopper card'}'
           '${drop == null ? '' : ', down ${formatPrice(drop)} since the last leaflet'}',
       excludeSemantics: true,
       child: Material(
@@ -295,6 +300,8 @@ class DealTile extends StatelessWidget {
                         right: 8,
                         child: _SaveBadge(item.save!),
                       ),
+                    if (item.cardPrice != null)
+                      Positioned(top: 8, left: 8, child: _CardBadge(item)),
                     if (drop != null)
                       Positioned(bottom: 8, right: 8, child: DropBadge(drop)),
                   ],
@@ -365,6 +372,37 @@ class _SaveBadge extends StatelessWidget {
           fontSize: 11.5,
           fontWeight: FontWeight.w700,
           color: p.paper,
+          height: 1.1,
+        ),
+      ),
+    );
+  }
+}
+
+/// Pick n Pay's Smart Shopper price: says that the price shown is the card
+/// price, or what the card price would be.
+class _CardBadge extends StatelessWidget {
+  const _CardBadge(this.item);
+
+  final DealItem item;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        // The yellow of the leaflet's own Smart Shopper box.
+        color: const Color(0xFFFFE23A),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        item.cardApplied
+            ? 'Card price'
+            : '${formatPrice(item.cardPrice!)} with card',
+        style: const TextStyle(
+          fontSize: 11.5,
+          fontWeight: FontWeight.w700,
+          color: Color(0xFF14233F),
           height: 1.1,
         ),
       ),

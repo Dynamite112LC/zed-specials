@@ -152,6 +152,23 @@ class _ItemZoom extends StatelessWidget {
                         PriceTag(shown.price, size: 24, perKg: shown.perKg),
                       ],
                     ),
+                    if (shown.cardPrice != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Text(
+                          shown.cardApplied
+                              ? 'Smart Shopper price. '
+                                    '${formatPrice(shown.shelfPrice!)} '
+                                    'without the card.'
+                              : '${formatPrice(shown.cardPrice!)} with a '
+                                    'Smart Shopper card.',
+                          style: const TextStyle(
+                            fontSize: 13,
+                            color: Color(0xFFC9D6CE),
+                            height: 1.35,
+                          ),
+                        ),
+                      ),
                     if (shown.inDoubt || (shown.agreed && !shown.corrected))
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
@@ -271,7 +288,9 @@ void showCorrectionSheet(BuildContext context, DealItem item) {
     context: context,
     isScrollControlled: true,
     constraints: const BoxConstraints(maxWidth: 560),
-    builder: (_) => _CorrectionSheet(item: item, hostContext: context),
+    // The reading being fixed is the price printed for everyone.
+    builder: (_) =>
+        _CorrectionSheet(item: item.withoutCard(), hostContext: context),
   );
 }
 

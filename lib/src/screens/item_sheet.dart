@@ -148,6 +148,26 @@ class _ItemSheet extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      if (item.cardApplied)
+                        Text(
+                          'Smart Shopper price. '
+                          '${formatPrice(item.shelfPrice!)} without the card',
+                          style: TextStyle(
+                            fontSize: 14.5,
+                            fontWeight: FontWeight.w600,
+                            color: p.ink,
+                          ),
+                        )
+                      else if (item.cardPrice != null)
+                        Text(
+                          '${formatPrice(item.cardPrice!)} with a Smart '
+                          'Shopper card',
+                          style: TextStyle(
+                            fontSize: 14.5,
+                            fontWeight: FontWeight.w600,
+                            color: p.ink,
+                          ),
+                        ),
                       if (unit != null && !item.perKg)
                         Text(
                           'Works out to ${formatPrice(double.parse(unit.toStringAsFixed(2)))} ${item.unitPriceLabel}',
@@ -297,7 +317,8 @@ class _ItemSheet extends StatelessWidget {
 /// What the item cost in earlier leaflets, drawn as bars from zero so the
 /// lengths compare honestly.
 class _PriceHistory extends StatelessWidget {
-  const _PriceHistory(this.item);
+  // Past prices are the ones printed for everyone, so today's is too.
+  _PriceHistory(DealItem item) : item = item.withoutCard();
 
   final DealItem item;
 

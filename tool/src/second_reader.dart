@@ -20,9 +20,12 @@ import 'dart:math' as math;
 import 'extract.dart';
 
 class SecondItem {
-  const SecondItem(this.name, this.price);
+  const SecondItem(this.name, this.price, {this.perKg = false});
   final String name;
   final double price;
+
+  /// The second reader gave this as a price per kilogram.
+  final bool perKg;
 }
 
 /// The items in a saved second reading. Null when the file records a failed
@@ -45,7 +48,7 @@ List<SecondItem>? parseSecondReading(Object? json) {
     );
     if (RegExp(r'[A-Za-z]{3,}').allMatches(cleaned).isEmpty) continue;
     if (cleaned.length > 110) continue;
-    out.add(SecondItem(cleaned, price.toDouble()));
+    out.add(SecondItem(cleaned, price.toDouble(), perKg: saysPerKg(name)));
   }
   return out;
 }
@@ -287,6 +290,13 @@ final _multiBuyNote = RegExp(r'\((\d+) for K(\d+(?:\.\d+)?)\)');
   const unsure = (agreed: false, other: null, price: null);
   final first = mine.price;
   if (_samePrice(first, theirs)) return yes;
+  // The loyalty-card price printed under the usual one is not a second
+  // opinion on the usual one.
+  final card = mine.cardPrice;
+  if (card != null &&
+      (_samePrice(card, theirs) || _samePrice(card * 100, theirs))) {
+    return unsure;
+  }
 
   // "2 for K70" is shown as K35 each; the second reader gives the K70.
   final deal = _multiBuyNote.firstMatch(mine.name);
@@ -574,10 +584,26 @@ ExtractedItem? _confirm(
   final top = math.max(0.0, y0 - growY);
   final right = math.min(page.width.toDouble(), x1 + growX);
   final bottom = math.min(page.height.toDouble(), y1 + growY);
-  final size = parseSize(name);
+  // "per kg" printed with the item: beside its price or under its name.
+  // The second reader mostly leaves it out, so the page's text decides.
+  final reach = 1.6 * bestSpot.th;
+  final perKg =
+      item.perKg ||
+      page.lines.any(
+        (l) =>
+            l.s >= 0.5 &&
+            !usedLines.contains(l) &&
+            saysPerKg(l.t) &&
+            l.cx > x0 - reach &&
+            l.cx < x1 + reach &&
+            l.cy > y0 - reach &&
+            l.cy < y1 + reach,
+      );
+  final size = perKg ? null : parseSize(name);
   return ExtractedItem(
     name: name,
     price: item.price,
+    perKg: perKg,
     sizeQty: size?.$1,
     sizeUnit: size?.$2,
     // Two readers, but the first only in pieces.

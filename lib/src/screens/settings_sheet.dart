@@ -127,6 +127,25 @@ class _SettingsSheetState extends State<_SettingsSheet> {
             ),
             const SizedBox(height: 20),
             Text(
+              'Pick n Pay Smart Shopper',
+              style: display(context, size: 17, weight: FontWeight.w700),
+            ),
+            const SizedBox(height: 2),
+            SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              value: s.smartShopper,
+              onChanged: s.setSmartShopper,
+              title: const Text('I have a Smart Shopper card'),
+              subtitle: Text(
+                s.smartShopper
+                    ? 'Pick n Pay\'s card prices are shown and compared.'
+                    : 'Prices for everyone are shown and compared. The card '
+                          'price is noted beside them.',
+                style: TextStyle(fontSize: 14, color: p.inkSoft, height: 1.35),
+              ),
+            ),
+            const SizedBox(height: 12),
+            Text(
               'Feed address',
               style: display(context, size: 17, weight: FontWeight.w700),
             ),

@@ -27,6 +27,9 @@ void main(List<String> args) {
     for (final i in items) {
       final size = i.sizeQty == null ? '' : ' [${i.sizeQty} ${i.sizeUnit}]';
       final save = i.save == null ? '' : ' save ${i.save}';
+      final card = i.cardPrice == null
+          ? ''
+          : ' CARD K${i.cardPrice!.toStringAsFixed(2)}';
       final second = i.otherPrice != null
           ? '  OTHER READING: K${i.otherPrice!.toStringAsFixed(2)}'
           : i.agreed
@@ -35,7 +38,7 @@ void main(List<String> args) {
       final was = i.firstName == null ? '' : '  (was: ${i.firstName})';
       stdout.writeln(
         '  K${i.price.toStringAsFixed(2)}${i.perKg ? '/kg' : ''}  ${i.name}'
-        '$size$save  (${i.confidence.toStringAsFixed(2)})$second$was',
+        '$size$save$card  (${i.confidence.toStringAsFixed(2)})$second$was',
       );
     }
     final s = reading.second;

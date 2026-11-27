@@ -403,6 +403,7 @@ Future<void> main(List<String> args) async {
             agreed: e.agreed,
             otherPrice: e.otherPrice,
             firstName: e.firstName,
+            cardPrice: e.cardPrice,
             box: () {
               final r = e.regionOn(reading.width, reading.height);
               double part(num v, int of) =>
