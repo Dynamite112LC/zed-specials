@@ -41,16 +41,77 @@ class ScrapedCatalogue {
 
   /// Set when the catalogue is only published as a PDF.
   final String? pdfUrl;
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'retailer': retailerId,
+    'title': title,
+    'sourceUrl': sourceUrl,
+    'coverUrl': coverUrl,
+    'validFrom': validFrom?.toIso8601String(),
+    'validTo': validTo?.toIso8601String(),
+    'stores': stores,
+    'viewImageUrls': viewImageUrls,
+    'ocrImageUrls': ocrImageUrls,
+    'pdfUrl': pdfUrl,
+  };
+
+  factory ScrapedCatalogue.fromJson(Map<String, dynamic> j) =>
+      ScrapedCatalogue(
+        id: j['id'] as String,
+        retailerId: j['retailer'] as String,
+        title: j['title'] as String,
+        sourceUrl: j['sourceUrl'] as String,
+        coverUrl: j['coverUrl'] as String?,
+        validFrom: j['validFrom'] == null
+            ? null
+            : DateTime.parse(j['validFrom'] as String),
+        validTo: j['validTo'] == null
+            ? null
+            : DateTime.parse(j['validTo'] as String),
+        stores: j['stores'] as String?,
+        viewImageUrls: (j['viewImageUrls'] as List).cast<String>(),
+        ocrImageUrls: (j['ocrImageUrls'] as List).cast<String>(),
+        pdfUrl: j['pdfUrl'] as String?,
+      );
 }
 
+/// Pauses between attempts at a page that refuses or fails. Tests and
+/// callers in a hurry can shorten it.
+var retryPauses = const [Duration(seconds: 6), Duration(seconds: 20)];
+
 Future<String> _get(http.Client client, String url) async {
-  final res = await client
-      .get(Uri.parse(url), headers: {'User-Agent': _userAgent})
-      .timeout(const Duration(seconds: 45));
-  if (res.statusCode != 200) {
-    throw http.ClientException('HTTP ${res.statusCode}', Uri.parse(url));
+  for (var attempt = 0; ; attempt++) {
+    Object problem;
+    try {
+      final res = await client
+          .get(Uri.parse(url), headers: {'User-Agent': _userAgent})
+          .timeout(const Duration(seconds: 45));
+      if (res.statusCode == 200) {
+        return utf8.decode(res.bodyBytes, allowMalformed: true);
+      }
+      problem = http.ClientException('HTTP ${res.statusCode}', Uri.parse(url));
+      // A missing page will not appear on a second try; a refusal, a rate
+      // limit or a server error might clear.
+      final worthRetrying =
+          res.statusCode == 403 ||
+          res.statusCode == 429 ||
+          res.statusCode >= 500;
+      if (!worthRetrying) throw problem;
+    } on http.ClientException catch (e) {
+      if (e.message.startsWith('HTTP 4') &&
+          !e.message.startsWith('HTTP 403') &&
+          !e.message.startsWith('HTTP 429')) {
+        rethrow;
+      }
+      problem = e;
+    } catch (e) {
+      // Timeouts and dropped connections.
+      problem = e;
+    }
+    if (attempt >= retryPauses.length) throw problem;
+    await Future<void>.delayed(retryPauses[attempt]);
   }
-  return utf8.decode(res.bodyBytes, allowMalformed: true);
 }
 
 String _decodeEntities(String s) => s

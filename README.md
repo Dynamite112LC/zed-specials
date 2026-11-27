@@ -29,8 +29,14 @@ That address is built into the app. It checks for new specials every time
 it opens, when it comes back to the foreground after a few hours, and on
 pull to refresh.
 
-The job runs with `--strict`: if a shop's page cannot be read it fails and
-leaves yesterday's feed online, and GitHub emails you about the failed run.
+It runs again at 12:00, because a shop's site sometimes refuses the server
+the morning run happened to get. A shop that cannot be reached is filled
+in with the leaflets it had on the last run that did reach it, for up to
+three days (`tool/src/scrape_memory.dart`).
+
+The job runs with `--strict`: if a shop stays out of reach beyond that, or
+a leaflet's pages are missing, it fails and leaves the last complete feed
+online, and GitHub emails you about the failed run.
 To run it by hand, use "Run workflow" on the repository's Actions tab.
 
 ## Price history

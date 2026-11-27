@@ -7,6 +7,9 @@ on:
   schedule:
     # 04:00 UTC is 06:00 in Zambia. GitHub may start scheduled runs late.
     - cron: '0 4 * * *'
+    # A second go at midday: a shop's site sometimes refuses the server
+    # the morning run happened to get.
+    - cron: '0 10 * * *'
   workflow_dispatch:
 
 permissions:

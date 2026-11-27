@@ -22,6 +22,7 @@ import 'package:zed_specials/src/scrape/scrapers.dart';
 import 'src/extract.dart';
 import 'src/history.dart';
 import 'src/matching.dart';
+import 'src/scrape_memory.dart';
 
 const _userAgent =
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
@@ -121,7 +122,13 @@ Future<void> main(List<String> args) async {
 
   final client = http.Client();
   stdout.writeln('Checking the shops\' specials pages');
-  final scrape = await scrapeAll(client);
+  // A shop that cannot be reached today is filled in from the last run
+  // that did reach it (see tool/src/scrape_memory.dart).
+  final scrape = await scrapeWithMemory(
+    File('${_cache.path}/last-scrape.json'),
+    () => scrapeAll(client),
+    log: (m) => stderr.writeln('  $m'),
+  );
   scrape.errors.forEach((shop, e) => stderr.writeln('  $shop failed: $e'));
   if (scrape.catalogues.isEmpty) {
     stderr.writeln('No catalogues found. Keeping the existing feed.');
