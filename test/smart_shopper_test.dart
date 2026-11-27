@@ -205,6 +205,80 @@ void main() {
     });
   });
 
+  group('prices per 100g', () {
+    final page = OcrPage(1753, 2479, [
+      ..._product(
+        557,
+        918,
+        '14',
+        '49',
+        'PnP Chicken',
+        'Biryani',
+        card: ('13', '99'),
+        each: 'Per 100g',
+      ),
+      ..._product(253, 918, '59', '99', 'Whitespoon Household', 'Sugar 2kg'),
+      ..._smallPrint(),
+    ]);
+    final items = extractItems('picknpay', page);
+    final byName = {for (final i in items) i.name: i};
+
+    test('"Per 100g" beside a Pick n Pay price marks it', () {
+      final biryani = byName['PNP Chicken Biryani']!;
+      expect(biryani.per100g, isTrue);
+      expect(biryani.perKg, isFalse);
+      expect(biryani.price, 14.49);
+      // The card price under it is per 100g too.
+      expect(biryani.cardPrice, 13.99);
+      expect(byName['Whitespoon Household Sugar 2kg']!.per100g, isFalse);
+    });
+
+    test('the words are not left in the name', () {
+      expect(
+        cleanName('QUARTER CHICKEN & CHIPS COMBO MEAL per 100g'),
+        'Quarter Chicken & Chips Combo Meal',
+      );
+      expect(saysPer100g('MEAL per 100g'), isTrue);
+      expect(saysPer100g('Per100g'), isTrue);
+      expect(saysPer100g('Oats 100g'), isFalse);
+    });
+
+    test('compares per kilogram with everything else', () {
+      const biryani = DealItem(
+        id: 'a',
+        catalogueId: 'c',
+        retailerId: 'picknpay',
+        page: 2,
+        name: 'PnP Chicken Biryani',
+        price: 14.49,
+        per100g: true,
+        cardPrice: 13.99,
+      );
+      expect(biryani.priceUnit, '100g');
+      expect(biryani.unitPrice, closeTo(144.9, 0.001));
+      expect(biryani.unitPriceLabel, 'per kg');
+      expect(biryani.withCard().unitPrice, closeTo(139.9, 0.001));
+      expect(biryani.withCard().per100g, isTrue);
+      final back = DealItem.fromJson(
+        jsonDecode(jsonEncode(biryani.toJson())) as Map<String, dynamic>,
+      );
+      expect(back.per100g, isTrue);
+      expect(back.copyWith(price: 15).per100g, isTrue);
+      // A per-kilogram price says so, and a pack price says nothing.
+      const roast = DealItem(
+        id: 'b',
+        catalogueId: 'c',
+        retailerId: 'shoprite',
+        page: 4,
+        name: 'Beef Roast',
+        price: 192.99,
+        perKg: true,
+      );
+      expect(roast.priceUnit, 'kg');
+      expect(roast.toJson().containsKey('per100g'), isFalse);
+    });
+  });
+
   group('per kg on items the second reader adds', () {
     test('small print misread by OCR still counts', () {
       expect(saysPerKg('per kg'), isTrue);

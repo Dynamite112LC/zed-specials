@@ -126,7 +126,12 @@ class ExtractedItem {
     this.firstName,
     this.assumedNgwee = false,
     this.cardPrice,
+    this.per100g = false,
   });
+
+  /// True when the price is per 100 grams, as deli counters price salads
+  /// and cooked food.
+  final bool per100g;
 
   /// The lower price printed for holders of the shop's loyalty card
   /// (Pick n Pay's "Smart Shopper price"), when there is one.
@@ -173,6 +178,7 @@ class ExtractedItem {
     firstName: firstName,
     assumedNgwee: assumedNgwee,
     cardPrice: cardPrice,
+    per100g: per100g,
   );
 
   final String name;
@@ -327,6 +333,10 @@ bool saysPerKg(String text) =>
     RegExp(r'\bper\s?kg\b', caseSensitive: false).hasMatch(text) ||
     RegExp(r'^pe[re]?\s?kg$', caseSensitive: false).hasMatch(text.trim());
 
+/// "per 100g" somewhere in [text]: the deli counter's way of pricing.
+bool saysPer100g(String text) =>
+    RegExp(r'\bper\s?100\s?g\b', caseSensitive: false).hasMatch(text);
+
 /// Repairs the commonest misreadings of pack sizes: "750mi", "Skg", "Tkg".
 String _fixOcrUnits(String s) => s
     .replaceAllMapped(
@@ -402,7 +412,7 @@ String cleanName(String raw) {
       .replaceAllMapped(RegExp(r'(\d),(\d)'), (m) => '${m[1]}.${m[2]}')
       .replaceAll(
         RegExp(
-          r'\b(EACH|PER PACK|PER SET|PER PAIR|PER KG|PE[RE]?KG|EA)\b\.?',
+          r'\b(EACH|PER PACK|PER SET|PER PAIR|PER KG|PE[RE]?KG|PER ?100 ?G|EA)\b\.?',
           caseSensitive: false,
         ),
         ' ',
@@ -772,7 +782,10 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
     final perKg =
         RegExp(r'^per\s?kg$', caseSensitive: false).hasMatch(l.t) ||
         RegExp(r'^pe[re]?\s?kg$', caseSensitive: false).hasMatch(l.t);
-    return perKg || (_letters(l.t) >= 3 && _mostlyUpper(l.t));
+    return perKg ||
+        saysPerKg(l.t) ||
+        saysPer100g(l.t) ||
+        (_letters(l.t) >= 3 && _mostlyUpper(l.t));
   }).toList()..sort((a, b) => _top(a).compareTo(_top(b)));
 
   OcrLine? nearestPrice(OcrLine l) {
@@ -966,9 +979,10 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
     final perKg =
         RegExp(r'per\s?kg', caseSensitive: false).hasMatch(raw) ||
         own.any((l) => saysPerKg(l.t));
+    final per100g = !perKg && saysPer100g(raw);
     var sizeText = _fixOcrUnits(raw);
-    var size = perKg ? null : parseSize(sizeText);
-    if (size == null && !perKg) {
+    var size = perKg || per100g ? null : parseSize(sizeText);
+    if (size == null && !perKg && !per100g) {
       // Fall back to the size badge printed on the product photo above.
       OcrLine? nearest;
       for (final b in badgeByPrice[p]!) {
@@ -1003,6 +1017,7 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
         sizeUnit: size?.$2,
         save: save,
         bundle: bundle,
+        per100g: per100g,
         parts: [p, ...own],
         assumedNgwee: assumed.contains(p),
         confidence: certain ? _confidence(p, own) : 0.8 * _confidence(p, own),
@@ -1134,7 +1149,7 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
     // "SMART SHOPPER PRICE" flags.
     if (_mostlyUpper(l.t) && _letters(l.t) > 5) return false;
     return !RegExp(
-      r'^(each|per\s?kg|save|for\s?\d|promotion valid.*|smart shopper.*)$',
+      r'^(each|per\s?kg|per\s?100\s?g|save|for\s?\d|promotion valid.*|smart shopper.*)$',
       caseSensitive: false,
     ).hasMatch(l.t);
   }).toList();
@@ -1162,6 +1177,12 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
 
   final perKgLines = lines
       .where((l) => RegExp(r'^per\s?kg$', caseSensitive: false).hasMatch(l.t))
+      .toList();
+  // The deli counter: "Per 100g" where other products say "Each".
+  final per100gLines = lines
+      .where(
+        (l) => RegExp(r'^per\s?100\s?g$', caseSensitive: false).hasMatch(l.t),
+      )
       .toList();
   final forLines = lines
       .where((l) => RegExp(r'^FOR\s?(\d)$', caseSensitive: false).hasMatch(l.t))
@@ -1215,6 +1236,13 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
       (l) => l.x > b.x && l.x < p.right + b.th && (l.cy - b.cy).abs() < b.th,
     );
 
+    final per100g =
+        !perKg &&
+        per100gLines.any(
+          (l) =>
+              l.x > b.x && l.x < p.right + b.th && (l.cy - b.cy).abs() < b.th,
+        );
+
     // The saving sits in a badge at the top left of the product's cell.
     double? save;
     for (final s in saveWords) {
@@ -1231,7 +1259,7 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
     }
     if (save != null && save >= price * 4) save = null;
 
-    final size = parseSize(raw);
+    final size = per100g ? null : parseSize(raw);
     final width = math.max(3.6 * b.th, p.right - p.left + 1.2 * b.th);
     items.add(
       ExtractedItem(
@@ -1241,6 +1269,7 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
         sizeQty: size?.$1,
         sizeUnit: size?.$2,
         save: save,
+        per100g: per100g,
         cardPrice: card?.value,
         parts: [b, ...own, ?card?.main],
         confidence: p.certain ? _confidence(b, own) : 0.8 * _confidence(b, own),

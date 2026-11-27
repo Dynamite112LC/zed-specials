@@ -200,6 +200,7 @@ class DealItem {
     this.firstName,
     this.cardPrice,
     this.shelfPrice,
+    this.per100g = false,
   });
 
   final String id;
@@ -215,6 +216,17 @@ class DealItem {
 
   /// True when the price is per kilogram rather than per pack.
   final bool perKg;
+
+  /// True when the price is per 100 grams, as deli counters price cooked
+  /// food and salads.
+  final bool per100g;
+
+  /// What the price is for when it is not for a pack: "kg" or "100g".
+  String? get priceUnit => perKg
+      ? 'kg'
+      : per100g
+      ? '100g'
+      : null;
 
   /// Pack size normalised to a base unit: g, ml or count ("ea").
   final double? sizeQty;
@@ -283,6 +295,7 @@ class DealItem {
     name: name,
     price: price,
     perKg: perKg,
+    per100g: per100g,
     sizeQty: sizeQty,
     sizeUnit: sizeUnit,
     save: save,
@@ -334,6 +347,7 @@ class DealItem {
   /// Price per kg, per litre or per unit, when the size is known.
   double? get unitPrice {
     if (perKg) return price;
+    if (per100g) return price * 10;
     final q = sizeQty;
     if (q == null || q <= 0) return null;
     switch (sizeUnit) {
@@ -347,7 +361,7 @@ class DealItem {
   }
 
   String? get unitPriceLabel {
-    if (perKg) return 'per kg';
+    if (perKg || per100g) return 'per kg';
     switch (sizeUnit) {
       case 'g':
         return 'per kg';
@@ -392,6 +406,7 @@ class DealItem {
     name: name ?? this.name,
     price: price ?? this.price,
     perKg: perKg,
+    per100g: per100g,
     sizeQty: sizeQty,
     sizeUnit: sizeUnit,
     save: save,
@@ -421,6 +436,7 @@ class DealItem {
     'name': name,
     'price': price,
     if (perKg) 'perKg': true,
+    if (per100g) 'per100g': true,
     if (sizeQty != null) 'sizeQty': sizeQty,
     if (sizeUnit != null) 'sizeUnit': sizeUnit,
     if (save != null) 'save': save,
@@ -445,6 +461,7 @@ class DealItem {
     name: j['name'] as String,
     price: (j['price'] as num).toDouble(),
     perKg: j['perKg'] as bool? ?? false,
+    per100g: j['per100g'] as bool? ?? false,
     sizeQty: (j['sizeQty'] as num?)?.toDouble(),
     sizeUnit: j['sizeUnit'] as String?,
     save: (j['save'] as num?)?.toDouble(),

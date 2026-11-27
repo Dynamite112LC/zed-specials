@@ -394,6 +394,7 @@ Future<void> main(List<String> args) async {
             name: e.name,
             price: e.price,
             perKg: e.perKg,
+            per100g: e.per100g,
             sizeQty: sized ? e.sizeQty : null,
             sizeUnit: sized ? e.sizeUnit : null,
             save: e.save,

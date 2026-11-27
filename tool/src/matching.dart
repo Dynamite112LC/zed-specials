@@ -87,7 +87,7 @@ bool _sameSize(DealItem a, DealItem b) {
 
 /// True when [a] and [b] look like the same product in the same pack size.
 bool sameProduct(DealItem a, DealItem b) {
-  if (a.perKg != b.perKg) return false;
+  if (a.perKg != b.perKg || a.per100g != b.per100g) return false;
   final wa = productWords(a.name), wb = productWords(b.name);
   if (wa.isEmpty || wb.isEmpty) return false;
 
@@ -111,8 +111,8 @@ bool sameProduct(DealItem a, DealItem b) {
     if (!_sameSize(a, b)) return false;
     return shared >= 2 && jaccard >= 0.6;
   }
-  if (a.perKg) {
-    // Fresh meat and produce sold by weight: names are short.
+  if (a.perKg || a.per100g) {
+    // Fresh meat, produce and deli food sold by weight: names are short.
     return jaccard >= 0.6 && shared >= 2;
   }
   // A missing size makes a match much less certain: ask for more, and for

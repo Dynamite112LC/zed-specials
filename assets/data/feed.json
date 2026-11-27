@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-27T20:56:25.092611Z",
+ "generatedAt": "2026-11-27T22:03:41.766359Z",
  "catalogues": [
   {
    "id": "shoprite-zmblackfriday26nov29nov2026",
@@ -3502,10 +3502,29 @@
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
+   "name": "Pork Leg Roast",
+   "price": 129.99,
+   "perKg": true,
+   "crop": "crops/d3b29df2-04-04.jpg",
+   "category": "Meat & fish",
+   "confidence": 1.0,
+   "box": [
+    0.4157,
+    0.1134,
+    0.2196,
+    0.113
+   ],
+   "agreed": true
+  },
+  {
+   "id": "d3b29df2-04-05",
+   "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
+   "retailer": "shoprite",
+   "page": 4,
    "name": "Beef Roast",
    "price": 192.99,
    "perKg": true,
-   "crop": "crops/d3b29df2-04-04.jpg",
+   "crop": "crops/d3b29df2-04-05.jpg",
    "group": "g43",
    "category": "Meat & fish",
    "confidence": 0.92,
@@ -3518,7 +3537,7 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-05",
+   "id": "d3b29df2-04-06",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
@@ -3526,7 +3545,7 @@
    "price": 129.99,
    "sizeQty": 1000.0,
    "sizeUnit": "g",
-   "crop": "crops/d3b29df2-04-05.jpg",
+   "crop": "crops/d3b29df2-04-06.jpg",
    "category": "Meat & fish",
    "confidence": 0.98,
    "box": [
@@ -3538,13 +3557,13 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-06",
+   "id": "d3b29df2-04-07",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
    "name": "Sweet Chocolate/ Vanilla Dessert Topping",
    "price": 124.99,
-   "crop": "crops/d3b29df2-04-06.jpg",
+   "crop": "crops/d3b29df2-04-07.jpg",
    "category": "Snacks & sweets",
    "confidence": 0.99,
    "box": [
@@ -3556,7 +3575,7 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-07",
+   "id": "d3b29df2-04-08",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
@@ -3564,7 +3583,7 @@
    "price": 114.99,
    "sizeQty": 1000.0,
    "sizeUnit": "g",
-   "crop": "crops/d3b29df2-04-07.jpg",
+   "crop": "crops/d3b29df2-04-08.jpg",
    "category": "Meat & fish",
    "confidence": 0.88,
    "box": [
@@ -3576,13 +3595,13 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-08",
+   "id": "d3b29df2-04-09",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
    "name": "Farmer's Choice Frozen Whole",
    "price": 59.99,
-   "crop": "crops/d3b29df2-04-08.jpg",
+   "crop": "crops/d3b29df2-04-09.jpg",
    "category": "Other",
    "confidence": 0.99,
    "box": [
@@ -3594,7 +3613,7 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-09",
+   "id": "d3b29df2-04-10",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
@@ -3602,7 +3621,7 @@
    "price": 26.99,
    "sizeQty": 200.0,
    "sizeUnit": "g",
-   "crop": "crops/d3b29df2-04-09.jpg",
+   "crop": "crops/d3b29df2-04-10.jpg",
    "category": "Meat & fish",
    "confidence": 0.87,
    "box": [
@@ -3614,7 +3633,7 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-10",
+   "id": "d3b29df2-04-11",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
@@ -3622,7 +3641,7 @@
    "price": 59.99,
    "sizeQty": 250.0,
    "sizeUnit": "g",
-   "crop": "crops/d3b29df2-04-10.jpg",
+   "crop": "crops/d3b29df2-04-11.jpg",
    "category": "Meat & fish",
    "confidence": 0.97,
    "box": [
@@ -3634,7 +3653,7 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-11",
+   "id": "d3b29df2-04-12",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
@@ -3642,7 +3661,7 @@
    "price": 69.99,
    "sizeQty": 1500.0,
    "sizeUnit": "g",
-   "crop": "crops/d3b29df2-04-11.jpg",
+   "crop": "crops/d3b29df2-04-12.jpg",
    "category": "Other",
    "confidence": 0.93,
    "box": [
@@ -3654,7 +3673,7 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-12",
+   "id": "d3b29df2-04-13",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
@@ -3662,7 +3681,7 @@
    "price": 34.99,
    "sizeQty": 200.0,
    "sizeUnit": "g",
-   "crop": "crops/d3b29df2-04-12.jpg",
+   "crop": "crops/d3b29df2-04-13.jpg",
    "category": "Meat & fish",
    "confidence": 0.86,
    "box": [
@@ -3674,7 +3693,7 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-13",
+   "id": "d3b29df2-04-14",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
@@ -3682,7 +3701,7 @@
    "price": 39.99,
    "sizeQty": 200.0,
    "sizeUnit": "g",
-   "crop": "crops/d3b29df2-04-13.jpg",
+   "crop": "crops/d3b29df2-04-14.jpg",
    "category": "Other",
    "confidence": 0.9,
    "box": [
@@ -3694,7 +3713,7 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-14",
+   "id": "d3b29df2-04-15",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
@@ -3702,7 +3721,7 @@
    "price": 99.99,
    "sizeQty": 500.0,
    "sizeUnit": "g",
-   "crop": "crops/d3b29df2-04-14.jpg",
+   "crop": "crops/d3b29df2-04-15.jpg",
    "category": "Fruit & veg",
    "confidence": 1.0,
    "box": [
@@ -3714,13 +3733,13 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-15",
+   "id": "d3b29df2-04-16",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
    "name": "Vegetable/ Cury Flavour Stew",
    "price": 39.99,
-   "crop": "crops/d3b29df2-04-15.jpg",
+   "crop": "crops/d3b29df2-04-16.jpg",
    "category": "Other",
    "confidence": 0.91,
    "box": [
@@ -3732,13 +3751,13 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-16",
+   "id": "d3b29df2-04-17",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
    "name": "Matebeto Combo Meal Assorted",
    "price": 54.99,
-   "crop": "crops/d3b29df2-04-16.jpg",
+   "crop": "crops/d3b29df2-04-17.jpg",
    "category": "Pantry",
    "confidence": 0.96,
    "box": [
@@ -3750,7 +3769,7 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-17",
+   "id": "d3b29df2-04-18",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
@@ -3758,7 +3777,7 @@
    "price": 24.99,
    "sizeQty": 150.0,
    "sizeUnit": "g",
-   "crop": "crops/d3b29df2-04-17.jpg",
+   "crop": "crops/d3b29df2-04-18.jpg",
    "category": "Meat & fish",
    "confidence": 0.91,
    "box": [
@@ -3770,25 +3789,26 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-18",
+   "id": "d3b29df2-04-19",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
-   "name": "Quarter Chicken & Chips Combo",
+   "name": "Quarter Chicken & Chips Combo Meal",
    "price": 21.99,
-   "crop": "crops/d3b29df2-04-18.jpg",
+   "per100g": true,
+   "crop": "crops/d3b29df2-04-19.jpg",
    "category": "Snacks & sweets",
-   "confidence": 0.98,
+   "confidence": 0.97,
    "box": [
     0.7693,
     0.62,
     0.2157,
-    0.1117
+    0.1172
    ],
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-19",
+   "id": "d3b29df2-04-20",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
@@ -3796,7 +3816,7 @@
    "price": 14.99,
    "sizeQty": 75.0,
    "sizeUnit": "g",
-   "crop": "crops/d3b29df2-04-19.jpg",
+   "crop": "crops/d3b29df2-04-20.jpg",
    "category": "Meat & fish",
    "confidence": 0.99,
    "box": [
@@ -3808,13 +3828,13 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-21",
+   "id": "d3b29df2-04-22",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
    "name": "Cheese& Tomato Roll",
    "price": 8.99,
-   "crop": "crops/d3b29df2-04-21.jpg",
+   "crop": "crops/d3b29df2-04-22.jpg",
    "category": "Pantry",
    "confidence": 0.94,
    "box": [
@@ -3826,13 +3846,13 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-22",
+   "id": "d3b29df2-04-23",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
    "name": "Ring Doughnut Assorted",
    "price": 8.99,
-   "crop": "crops/d3b29df2-04-22.jpg",
+   "crop": "crops/d3b29df2-04-23.jpg",
    "category": "Other",
    "confidence": 0.99,
    "box": [
@@ -3844,14 +3864,14 @@
    "agreed": true
   },
   {
-   "id": "d3b29df2-04-24",
+   "id": "d3b29df2-04-25",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 4,
    "name": "Hyper Value Beef Forequarter Bulk Pack",
    "price": 134.99,
    "perKg": true,
-   "crop": "crops/d3b29df2-04-24.jpg",
+   "crop": "crops/d3b29df2-04-25.jpg",
    "category": "Meat & fish",
    "confidence": 0.78,
    "box": [
@@ -3859,25 +3879,6 @@
     0.0,
     0.3392,
     0.2153
-   ],
-   "agreed": true
-  },
-  {
-   "id": "d3b29df2-04-25",
-   "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
-   "retailer": "shoprite",
-   "page": 4,
-   "name": "Pork Leg Roast",
-   "price": 129.99,
-   "perKg": true,
-   "crop": "crops/d3b29df2-04-25.jpg",
-   "category": "Meat & fish",
-   "confidence": 0.8,
-   "box": [
-    0.4196,
-    0.135,
-    0.2242,
-    0.1456
    ],
    "agreed": true
   },
@@ -11721,6 +11722,7 @@
    "page": 2,
    "name": "PNP Chicken Biryani",
    "price": 14.49,
+   "per100g": true,
    "crop": "crops/63b1ddcc-02-10.jpg",
    "category": "Meat & fish",
    "confidence": 1.0,
@@ -11739,6 +11741,7 @@
    "page": 2,
    "name": "PNP Smoked Chicken",
    "price": 34.99,
+   "per100g": true,
    "crop": "crops/63b1ddcc-02-11.jpg",
    "category": "Meat & fish",
    "confidence": 1.0,
@@ -11757,6 +11760,7 @@
    "page": 2,
    "name": "PNP Savoury Mince",
    "price": 16.99,
+   "per100g": true,
    "crop": "crops/63b1ddcc-02-12.jpg",
    "category": "Meat & fish",
    "confidence": 1.0,

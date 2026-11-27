@@ -149,7 +149,7 @@ class _ItemZoom extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 12),
-                        PriceTag(shown.price, size: 24, perKg: shown.perKg),
+                        PriceTag(shown.price, size: 24, unit: shown.priceUnit),
                       ],
                     ),
                     if (shown.cardPrice != null)

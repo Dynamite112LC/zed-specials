@@ -142,7 +142,7 @@ class _ItemSheet extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                PriceTag(item.price, size: 44, perKg: item.perKg),
+                PriceTag(item.price, size: 44, unit: item.priceUnit),
                 const SizedBox(width: 16),
                 Expanded(
                   child: Column(

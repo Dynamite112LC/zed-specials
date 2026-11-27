@@ -441,7 +441,7 @@ class PriceRow extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            PriceTag(item.price, size: 22, perKg: item.perKg, plain: !best),
+            PriceTag(item.price, size: 22, unit: item.priceUnit, plain: !best),
           ],
         ),
       ),

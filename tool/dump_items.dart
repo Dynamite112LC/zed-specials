@@ -37,7 +37,11 @@ void main(List<String> args) {
           : '';
       final was = i.firstName == null ? '' : '  (was: ${i.firstName})';
       stdout.writeln(
-        '  K${i.price.toStringAsFixed(2)}${i.perKg ? '/kg' : ''}  ${i.name}'
+        '  K${i.price.toStringAsFixed(2)}${i.perKg
+            ? '/kg'
+            : i.per100g
+            ? '/100g'
+            : ''}  ${i.name}'
         '$size$save$card  (${i.confidence.toStringAsFixed(2)})$second$was',
       );
     }

@@ -5,13 +5,20 @@ import 'models.dart';
 import 'theme.dart';
 
 /// Shelf-label price: the one loud element in the app.
+/// How a price's unit is read out: " per kilogram", " per 100 grams".
+String _spoken(String? unit) => switch (unit) {
+  'kg' => ' per kilogram',
+  '100g' => ' per 100 grams',
+  _ => '',
+};
+
 /// The "K" and the ngwee sit raised and small, the way leaflets print them.
 class PriceTag extends StatelessWidget {
   const PriceTag(
     this.price, {
     super.key,
     this.size = 24,
-    this.perKg = false,
+    this.unit,
     this.plain = false,
   });
 
@@ -19,7 +26,9 @@ class PriceTag extends StatelessWidget {
 
   /// Font size of the kwacha digits.
   final double size;
-  final bool perKg;
+
+  /// What the price is for when it is not for a pack: "kg" or "100g".
+  final String? unit;
 
   /// Plain tags drop the yellow label: used for the dearer options in a
   /// comparison so only the best price shouts.
@@ -51,11 +60,11 @@ class PriceTag extends StatelessWidget {
             padding: EdgeInsets.only(top: size * 0.08, left: 1),
             child: Text(ngwee.toString().padLeft(2, '0'), style: small),
           ),
-        if (perKg)
+        if (unit != null)
           Padding(
             padding: EdgeInsets.only(top: size * 0.46, left: 3),
             child: Text(
-              '/kg',
+              '/$unit',
               style: TextStyle(
                 fontSize: size * 0.42,
                 fontWeight: FontWeight.w700,
@@ -67,7 +76,7 @@ class PriceTag extends StatelessWidget {
       ],
     );
 
-    final semantics = '${formatPrice(price)}${perKg ? ' per kilogram' : ''}';
+    final semantics = '${formatPrice(price)}${_spoken(unit)}';
     if (plain) {
       return Semantics(label: semantics, excludeSemantics: true, child: label);
     }
@@ -266,7 +275,7 @@ class DealTile extends StatelessWidget {
       button: true,
       label:
           '${item.name}, ${formatPrice(item.price)}'
-          '${item.perKg ? ' per kilogram' : ''} at ${item.retailer.name}'
+          '${_spoken(item.priceUnit)} at ${item.retailer.name}'
           '${item.cardApplied
               ? ', Smart Shopper price'
               : item.cardPrice == null
@@ -292,7 +301,11 @@ class DealTile extends StatelessWidget {
                     Positioned(
                       left: 10,
                       bottom: -14,
-                      child: PriceTag(item.price, size: 26, perKg: item.perKg),
+                      child: PriceTag(
+                        item.price,
+                        size: 26,
+                        unit: item.priceUnit,
+                      ),
                     ),
                     if (item.save != null)
                       Positioned(

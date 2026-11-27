@@ -179,6 +179,13 @@ Each item in the feed records where it sits on its page, so the app can
 show that part of the leaflet enlarged: tap an item's picture to compare
 the reading with what is printed.
 
+### Prices by weight
+
+A price printed "per kg" (butchery, loose produce) or "per 100g" (the deli
+counter) is marked as such in the feed (`perKg`, `per100g`) and shown with
+"/kg" or "/100g" on its price. Both are compared with everything else per
+kilogram.
+
 ### Pick n Pay's Smart Shopper prices
 
 Pick n Pay prints a second, lower price for holders of its Smart Shopper
