@@ -1,0 +1,72 @@
+# Rebuilds the specials feed every morning and publishes it with GitHub Pages.
+# The app downloads https://<account>.github.io/<repo>/feed.json on its own.
+name: Update specials feed
+
+on:
+  schedule:
+    # 04:00 UTC is 06:00 in Zambia. GitHub may start scheduled runs late.
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: specials-feed
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: tool/requirements.txt
+
+      - name: Install the leaflet readers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+          pip install -r tool/requirements.txt
+
+      # Page images and OCR results from earlier runs, so only new leaflets
+      # are read. A new cache is saved after every run.
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: feed-cache-${{ github.run_id }}
+          restore-keys: feed-cache-
+
+      - run: flutter pub get
+
+      # --strict: if any shop's page cannot be read, fail and leave
+      # yesterday's complete feed online rather than publish one with a
+      # shop missing.
+      - name: Build the feed
+        run: dart run tool/update_feed.dart --strict
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: assets/data
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
