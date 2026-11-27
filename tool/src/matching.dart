@@ -3,10 +3,34 @@
 import 'package:zed_specials/src/models.dart';
 
 const _noise = {
-  'each', 'assorted', 'all', 'variants', 'variant', 'per', 'pack', 'or',
-  'and', 'with', 'the', 'in', 'of', 'selected', 'excl', 'incl', 'only',
-  'new', 'for', 'kg', 'ml', 'ltr', 'litre', 'litres', 'pnp', 'range',
-  'flavours', 'flavour',
+  'each',
+  'assorted',
+  'all',
+  'variants',
+  'variant',
+  'per',
+  'pack',
+  'or',
+  'and',
+  'with',
+  'the',
+  'in',
+  'of',
+  'selected',
+  'excl',
+  'incl',
+  'only',
+  'new',
+  'for',
+  'kg',
+  'ml',
+  'ltr',
+  'litre',
+  'litres',
+  'pnp',
+  'range',
+  'flavours',
+  'flavour',
 };
 
 final _wordsMemo = <String, Set<String>>{};
@@ -20,7 +44,10 @@ Set<String> _productWords(String name) {
   final cleaned = name
       .toLowerCase()
       .replaceAll(RegExp(r"['’]s\b"), '')
-      .replaceAll(RegExp(r'\d+(?:[.,]\d+)?\s?(?:kg|g|ml|l|ltr|litres?|s|pack|x)\b'), ' ')
+      .replaceAll(
+        RegExp(r'\d+(?:[.,]\d+)?\s?(?:kg|g|ml|l|ltr|litres?|s|pack|x)\b'),
+        ' ',
+      )
       .replaceAll(RegExp(r'[^a-z0-9]+'), ' ');
   final words = <String>{};
   for (var w in cleaned.split(' ')) {

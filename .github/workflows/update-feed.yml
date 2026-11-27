@@ -29,6 +29,8 @@ jobs:
     permissions:
       # To commit the price history to the "data" branch.
       contents: write
+      # To read the price corrections filed as issues.
+      issues: read
     outputs:
       unreachable: ${{ steps.feed.outputs.unreachable }}
     steps:
@@ -73,20 +75,25 @@ jobs:
       # --strict: if a shop fails that has never been reached, or a
       # leaflet's pages are missing, fail and leave the last complete feed
       # online.
+      # Price corrections filed as issues by the repository's owner (from
+      # "Fix this reading" in the app) are applied to the readings.
       - name: Build the feed
         id: feed
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: dart run tool/update_feed.dart --strict
 
       # Shops take old leaflets down, so history.json is the only record
       # of past prices. last-scrape.json lets a later run cover for a shop
-      # whose site refuses it.
+      # whose site refuses it, and corrections.json keeps the corrections
+      # for a run that cannot reach GitHub's issue list.
       - name: Save the price history
         working-directory: data
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add history.json last-scrape.json
+            git add -A .
             git commit -m "Prices read on $(date -u +%F)"
             git push
           fi

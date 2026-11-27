@@ -65,7 +65,12 @@ class _SpecialsScreenState extends State<SpecialsScreen>
   }
 
   String _dayName(DateTime d) => const [
-    'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
     'Sunday',
   ][d.weekday - 1];
 
@@ -493,7 +498,10 @@ class _Empty extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: display(context, size: 20, weight: FontWeight.w700)),
+          Text(
+            title,
+            style: display(context, size: 20, weight: FontWeight.w700),
+          ),
           const SizedBox(height: 8),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 520),

@@ -120,6 +120,7 @@ class ExtractedItem {
     this.save,
     this.confidence = 1,
     this.bundle = false,
+    this.parts = const [],
   });
 
   final String name;
@@ -128,6 +129,34 @@ class ExtractedItem {
 
   /// Several different products sold together for one price.
   final bool bundle;
+
+  /// The price and the description lines this item was read from.
+  final List<OcrLine> parts;
+
+  /// The part of the page that shows the whole item: its picture, its
+  /// price and its description. For looking at what was actually printed.
+  CropBox regionOn(int pageWidth, int pageHeight) {
+    var x0 = crop.x.toDouble(), y0 = crop.y.toDouble();
+    var x1 = x0 + crop.w, y1 = y0 + crop.h;
+    for (final l in parts) {
+      x0 = math.min(x0, l.x);
+      y0 = math.min(y0, l.y);
+      x1 = math.max(x1, l.right);
+      y1 = math.max(y1, l.bottom);
+    }
+    final pad = 0.012 * pageWidth;
+    x0 = math.max(0, x0 - pad);
+    y0 = math.max(0, y0 - pad);
+    x1 = math.min(pageWidth.toDouble(), x1 + pad);
+    y1 = math.min(pageHeight.toDouble(), y1 + pad);
+    return CropBox(
+      x0.round(),
+      y0.round(),
+      math.max(2, (x1 - x0).round()),
+      math.max(2, (y1 - y0).round()),
+    );
+  }
+
   final double? sizeQty;
   final String? sizeUnit;
   final double? save;
@@ -904,6 +933,7 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
         sizeUnit: size?.$2,
         save: save,
         bundle: bundle,
+        parts: [p, ...own],
         confidence: certain ? _confidence(p, own) : 0.8 * _confidence(p, own),
         // The product photo sits above the price flash.
         crop: _cropAround(
@@ -1116,6 +1146,7 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
         sizeQty: size?.$1,
         sizeUnit: size?.$2,
         save: save,
+        parts: [b, ...own],
         confidence: p.certain ? _confidence(b, own) : 0.8 * _confidence(b, own),
         // The product photo sits above and to the left of the price panel.
         crop: _cropAround(
@@ -1384,6 +1415,7 @@ List<ExtractedItem> _readGame(OcrPage page, List<OcrLine> lines) {
         price: p.value,
         sizeQty: size?.$1,
         sizeUnit: size?.$2,
+        parts: [m, ...b.lines],
         confidence: p.certain
             ? _confidence(m, named)
             : 0.8 * _confidence(m, named),

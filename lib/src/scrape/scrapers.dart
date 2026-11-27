@@ -387,7 +387,9 @@ Future<List<ScrapedCatalogue>> scrapeGame(http.Client client) async {
       viewImageUrls: [
         for (final p in pages) '${byPage[p]}.1240x10000_q90.webp',
       ],
-      ocrImageUrls: [for (final p in pages) '${byPage[p]}.1800x10000_q90.webp'],
+      // Guzzle caps this at the scan's own width (about 2200 px), a quarter
+      // more than the 1800 it offers by default; small print reads better.
+      ocrImageUrls: [for (final p in pages) '${byPage[p]}.2400x10000_q90.webp'],
     ),
   ];
 }

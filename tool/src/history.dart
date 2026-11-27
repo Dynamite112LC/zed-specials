@@ -226,9 +226,7 @@ class PriceHistory {
     final byIdentity = <String, List<Product>>{};
     for (final p in products) {
       byShop.putIfAbsent(p.retailerId, () => []).add(p);
-      byIdentity
-          .putIfAbsent('${p.retailerId}|${p.identity}', () => [])
-          .add(p);
+      byIdentity.putIfAbsent('${p.retailerId}|${p.identity}', () => []).add(p);
     }
 
     bool plausiblePrice(double a, double b) {

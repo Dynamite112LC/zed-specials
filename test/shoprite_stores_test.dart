@@ -36,10 +36,9 @@ void main() {
   test('one store stands for each province and kind of shop', () {
     final areas = shopriteAreaStores;
     expect(areas.map((s) => s.area).toSet(), hasLength(areas.length));
-    expect(
-      areas.map((s) => s.area).toSet(),
-      {for (final s in shopriteStores) s.area},
-    );
+    expect(areas.map((s) => s.area).toSet(), {
+      for (final s in shopriteStores) s.area,
+    });
     // Far fewer requests than one per store.
     expect(areas.length, lessThan(shopriteStores.length ~/ 2));
   });

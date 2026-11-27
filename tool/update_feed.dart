@@ -8,6 +8,11 @@
 //   dart run tool/update_feed.dart --history <file>
 //                                             where old prices are kept
 //                                             (default data/history.json)
+//   dart run tool/update_feed.dart --corrections-repo owner/name
+//                                             apply the price corrections
+//                                             filed as issues on that GitHub
+//                                             repository (the scheduled job
+//                                             uses its own repository)
 //   dart run tool/update_feed.dart --lists-only
 //                                             only note which leaflets each
 //                                             shop lists today, in
@@ -28,9 +33,12 @@ import 'package:http/http.dart' as http;
 import 'package:zed_specials/src/models.dart';
 import 'package:zed_specials/src/scrape/scrapers.dart';
 
+import 'src/corrections.dart';
 import 'src/extract.dart';
 import 'src/history.dart';
 import 'src/matching.dart';
+import 'src/page_reader.dart';
+import 'src/pdf_text.dart';
 import 'src/scrape_memory.dart';
 
 const _userAgent =
@@ -182,8 +190,13 @@ Future<void> main(List<String> args) async {
       final done = File('${dir.path}/pdf.done');
       if (!done.existsSync() && await download(client, c.pdfUrl!, pdf)) {
         final r = await Process.run('pdftoppm', [
-          '-r', '150', '-jpeg', '-jpegopt', 'quality=88',
-          pdf.path, '${dir.path}/p',
+          '-r',
+          '150',
+          '-jpeg',
+          '-jpegopt',
+          'quality=88',
+          pdf.path,
+          '${dir.path}/p',
         ]);
         if (r.exitCode == 0) {
           done.writeAsStringSync('ok');
@@ -262,8 +275,11 @@ Future<void> main(List<String> args) async {
       w.coverPath = 'pages/${w.sid}-cover.jpg';
       if (!File(cover).existsSync()) {
         jobs.add({
-          'op': 'resize', 'src': w.pages.first.path, 'out': cover,
-          'maxHeight': 560, 'quality': 80,
+          'op': 'resize',
+          'src': w.pages.first.path,
+          'out': cover,
+          'maxHeight': 560,
+          'quality': 80,
         });
       }
     }
@@ -276,6 +292,7 @@ Future<void> main(List<String> args) async {
   final now = DateTime.now();
   final today = DateTime(now.year, now.month, now.day);
   final catalogues = <Catalogue>[];
+  var fromText = 0;
   var items = <DealItem>[];
   final cropJobs = <Map<String, dynamic>>[];
 
@@ -287,23 +304,37 @@ Future<void> main(List<String> args) async {
       if (!view.existsSync()) continue;
       pages.add(CataloguePage(image: 'pages/${w.sid}-${_two(i + 1)}.jpg'));
 
-      final ocrFile = File('${w.pages[i].path}.ocr.json');
-      if (!ocrFile.existsSync()) continue;
-      final flashFile = File('${w.pages[i].path}.flashes.json');
-      final page = OcrPage.fromJson(
-        jsonDecode(ocrFile.readAsStringSync()) as Map<String, dynamic>,
-        flashes: flashFile.existsSync()
-            ? jsonDecode(flashFile.readAsStringSync()) as Map<String, dynamic>
-            : null,
-      );
-      final found = extractItems(c.retailerId, page);
+      // A leaflet published as a PDF may still hold its words as text,
+      // which is exact where OCR is not.
+      final textFile = File('${w.pages[i].path}.text.json');
+      if (c.pdfUrl != null && !textFile.existsSync()) {
+        final n = RegExp(r'p-(\d+)\.jpg$').firstMatch(w.pages[i].path);
+        final text = n == null
+            ? null
+            : await readPdfText(
+                '${_cache.path}/${w.sid}/c.pdf',
+                int.parse(n.group(1)!),
+              );
+        // An empty file records that there was nothing to read.
+        textFile.writeAsStringSync(jsonEncode(text ?? const {}));
+      }
+
+      final reading = readCachedPage(c.retailerId, w.pages[i].path);
+      if (reading == null) continue;
+      if (reading.source != 'ocr') fromText++;
+      final found = reading.items;
       for (var k = 0; k < found.length; k++) {
         final e = found[k];
         final id = '${w.sid}-${_two(i + 1)}-${_two(k + 1)}';
         final crop = 'crops/$id.jpg';
         cropJobs.add({
-          'op': 'crop', 'src': w.pages[i].path, 'out': '${_out.path}/$crop',
-          'x': e.crop.x, 'y': e.crop.y, 'w': e.crop.w, 'h': e.crop.h,
+          'op': 'crop',
+          'src': w.pages[i].path,
+          'out': '${_out.path}/$crop',
+          'x': e.crop.x,
+          'y': e.crop.y,
+          'w': e.crop.w,
+          'h': e.crop.h,
           'maxSide': 360,
         });
         final category = categorise(e.name);
@@ -338,6 +369,17 @@ Future<void> main(List<String> args) async {
             crop: crop,
             category: category,
             confidence: e.confidence,
+            box: () {
+              final r = e.regionOn(reading.width, reading.height);
+              double part(num v, int of) =>
+                  double.parse((v / of).clamp(0, 1).toStringAsFixed(4));
+              return [
+                part(r.x, reading.width),
+                part(r.y, reading.height),
+                part(r.w, reading.width),
+                part(r.h, reading.height),
+              ];
+            }(),
           ),
         );
       }
@@ -368,26 +410,76 @@ Future<void> main(List<String> args) async {
   }
   await runPython(cropJobs, 'Cutting out item pictures');
 
+  // Corrections people filed come before anything is compared or
+  // recorded, so matches and the price history use the right figures.
+  final repoArg = args.indexOf('--corrections-repo');
+  final repo = repoArg >= 0 && repoArg + 1 < args.length
+      ? args[repoArg + 1]
+      : Platform.environment['GITHUB_REPOSITORY'];
+  final correctionsFile = File('${historyFile.parent.path}/corrections.json');
+  List<Correction>? corrections;
+  if (repo != null && repo.isNotEmpty) {
+    final gh = http.Client();
+    corrections = await fetchCorrections(
+      gh,
+      repo,
+      token: Platform.environment['GITHUB_TOKEN'],
+    );
+    gh.close();
+    if (corrections == null) {
+      stderr.writeln('Could not read the corrections from $repo.');
+    } else {
+      correctionsFile.parent.createSync(recursive: true);
+      correctionsFile.writeAsStringSync(
+        '${const JsonEncoder.withIndent(' ').convert([for (final c in corrections) c.toJson()])}\n',
+      );
+    }
+  }
+  // GitHub out of reach, or a run with no repository named: use the last
+  // list that was saved.
+  if (corrections == null && correctionsFile.existsSync()) {
+    try {
+      corrections = [
+        for (final j in jsonDecode(correctionsFile.readAsStringSync()) as List)
+          ?Correction.tryParse(j),
+      ];
+    } catch (_) {}
+  }
+  if (corrections != null && corrections.isNotEmpty) {
+    final before = items;
+    items = applyCorrections(items, corrections);
+    final fixed = items.where((i) => i.corrected).length;
+    stdout.writeln(
+      'Corrections: ${corrections.length} on file, $fixed applied, '
+      '${before.length - items.length} readings removed',
+    );
+  }
+
   items = groupSimilar(items);
   items = history.record(catalogues, items, today);
   history.save(historyFile);
 
   // Drop page images of leaflets that are no longer published.
   final keep = {for (final w in work) w.sid};
-  for (final f in Directory('${_out.path}/pages').listSync().whereType<File>()) {
+  for (final f in Directory(
+    '${_out.path}/pages',
+  ).listSync().whereType<File>()) {
     final name = f.uri.pathSegments.last;
     if (!keep.contains(name.split('-').first)) f.deleteSync();
   }
 
   final feed = Feed(generatedAt: now, catalogues: catalogues, items: items);
-  File('${_out.path}/feed.json').writeAsStringSync(
-    const JsonEncoder.withIndent(' ').convert(feed.toJson()),
-  );
+  File(
+    '${_out.path}/feed.json',
+  ).writeAsStringSync(const JsonEncoder.withIndent(' ').convert(feed.toJson()));
   final groups = items.map((i) => i.groupId).whereType<String>().toSet();
   stdout.writeln(
     'Wrote ${_out.path}/feed.json: ${catalogues.length} catalogues, '
     '${items.length} prices, ${groups.length} matched products',
   );
+  if (fromText > 0) {
+    stdout.writeln('$fromText pages were read from the text inside their PDF');
+  }
   stdout.writeln(
     'Price history in ${historyFile.path}: ${history.leaflets.length} '
     'leaflets, ${history.products.length} products, '
@@ -403,8 +495,7 @@ Future<void> main(List<String> args) async {
   final onGitHub = Platform.environment['GITHUB_ACTIONS'] == 'true';
   final overdue = <String>[];
   scrape.standIns.forEach((shop, reached) {
-    final since =
-        '${reached.year}-${_two(reached.month)}-${_two(reached.day)}';
+    final since = '${reached.year}-${_two(reached.month)}-${_two(reached.day)}';
     final line =
         '$shop has not been reached since $since. Its leaflets from then '
         'are shown until they end; newer ones are not seen. Run the feed '

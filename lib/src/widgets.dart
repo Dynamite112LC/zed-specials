@@ -42,7 +42,10 @@ class PriceTag extends StatelessWidget {
           padding: EdgeInsets.only(top: size * 0.08, right: 1),
           child: Text('K', style: small),
         ),
-        Text(digits, style: display(context, size: size, color: fg, height: 1)),
+        Text(
+          digits,
+          style: display(context, size: size, color: fg, height: 1),
+        ),
         if (ngwee > 0)
           Padding(
             padding: EdgeInsets.only(top: size * 0.08, left: 1),
@@ -64,8 +67,7 @@ class PriceTag extends StatelessWidget {
       ],
     );
 
-    final semantics =
-        '${formatPrice(price)}${perKg ? ' per kilogram' : ''}';
+    final semantics = '${formatPrice(price)}${perKg ? ' per kilogram' : ''}';
     if (plain) {
       return Semantics(label: semantics, excludeSemantics: true, child: label);
     }
@@ -285,11 +287,7 @@ class DealTile extends StatelessWidget {
                     Positioned(
                       left: 10,
                       bottom: -14,
-                      child: PriceTag(
-                        item.price,
-                        size: 26,
-                        perKg: item.perKg,
-                      ),
+                      child: PriceTag(item.price, size: 26, perKg: item.perKg),
                     ),
                     if (item.save != null)
                       Positioned(

@@ -193,6 +193,8 @@ class DealItem {
     this.category = 'Other',
     this.confidence = 1,
     this.history = const [],
+    this.box,
+    this.corrected = false,
   });
 
   final String id;
@@ -225,6 +227,15 @@ class DealItem {
 
   /// 0..1, how sure the reader was about this item.
   final double confidence;
+
+  /// Where the whole item (picture, price, description) is on its page:
+  /// left, top, width and height as fractions of the page. Null in feeds
+  /// made before this was recorded.
+  final List<double>? box;
+
+  /// True when a person checked this item against the leaflet and put the
+  /// reading right.
+  final bool corrected;
 
   /// What the same product cost in leaflets that have since been replaced,
   /// at this shop and at the others. Oldest first.
@@ -300,24 +311,28 @@ class DealItem {
     String? crop,
     String? category,
     List<PricePoint>? history,
-  }) =>
-      DealItem(
-        id: id,
-        catalogueId: catalogueId,
-        retailerId: retailerId,
-        page: page,
-        name: name,
-        price: price,
-        perKg: perKg,
-        sizeQty: sizeQty,
-        sizeUnit: sizeUnit,
-        save: save,
-        crop: crop ?? this.crop,
-        groupId: groupId ?? this.groupId,
-        category: category ?? this.category,
-        confidence: confidence,
-        history: history ?? this.history,
-      );
+    String? name,
+    double? price,
+    bool? corrected,
+  }) => DealItem(
+    id: id,
+    catalogueId: catalogueId,
+    retailerId: retailerId,
+    page: page,
+    name: name ?? this.name,
+    price: price ?? this.price,
+    perKg: perKg,
+    sizeQty: sizeQty,
+    sizeUnit: sizeUnit,
+    save: save,
+    crop: crop ?? this.crop,
+    groupId: groupId ?? this.groupId,
+    category: category ?? this.category,
+    confidence: confidence,
+    history: history ?? this.history,
+    box: box,
+    corrected: corrected ?? this.corrected,
+  );
 
   Map<String, dynamic> toJson() => {
     'id': id,
@@ -335,6 +350,8 @@ class DealItem {
     'category': category,
     'confidence': double.parse(confidence.toStringAsFixed(2)),
     if (history.isNotEmpty) 'history': [for (final h in history) h.toJson()],
+    if (box != null) 'box': box,
+    if (corrected) 'corrected': true,
   };
 
   factory DealItem.fromJson(Map<String, dynamic> j) => DealItem(
@@ -356,6 +373,8 @@ class DealItem {
       for (final h in (j['history'] as List? ?? const []))
         PricePoint.fromJson(h as Map<String, dynamic>),
     ],
+    box: (j['box'] as List?)?.map((v) => (v as num).toDouble()).toList(),
+    corrected: j['corrected'] as bool? ?? false,
   );
 }
 
@@ -400,3 +419,106 @@ String _date(DateTime d) =>
     '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
 
 DateTime? _parseDate(Object? v) => v is String ? DateTime.tryParse(v) : null;
+
+/// A person's fix to one reading: what the leaflet really says, for the item
+/// that was read as [readName] at [readPrice] on [page] of [leaflet].
+class Correction {
+  const Correction({
+    required this.leaflet,
+    required this.page,
+    required this.readName,
+    required this.readPrice,
+    this.name,
+    this.price,
+    this.remove = false,
+  });
+
+  /// Catalogue id.
+  final String leaflet;
+  final int page;
+  final String readName;
+  final double readPrice;
+
+  /// The right name and price; null leaves that part as it was read.
+  final String? name;
+  final double? price;
+
+  /// True when what was read is not a product at all.
+  final bool remove;
+
+  bool matches(DealItem i) =>
+      i.catalogueId == leaflet &&
+      i.page == page &&
+      i.name == readName &&
+      (i.price - readPrice).abs() < 0.005;
+
+  Map<String, dynamic> toJson() => {
+    'leaflet': leaflet,
+    'page': page,
+    'read': {'name': readName, 'price': readPrice},
+    if (remove) 'remove': true else 'correct': {'name': ?name, 'price': ?price},
+  };
+
+  /// Null when [j] is not a usable correction. Lenient about types and
+  /// strict about values, since this is read from text a person submitted.
+  static Correction? tryParse(Object? j) {
+    if (j is! Map) return null;
+    final read = j['read'];
+    final leaflet = j['leaflet'], page = j['page'];
+    if (read is! Map || leaflet is! String || page is! int) return null;
+    final readName = read['name'], readPrice = read['price'];
+    if (readName is! String || readPrice is! num) return null;
+    if (leaflet.length > 200 || readName.length > 200) return null;
+
+    final remove = j['remove'] == true;
+    final correct = j['correct'];
+    String? name;
+    double? price;
+    if (correct is Map) {
+      final n = correct['name'], p = correct['price'];
+      if (n is String) {
+        final clean = n.replaceAll(RegExp(r'[\x00-\x1f]'), ' ').trim();
+        if (clean.isEmpty || clean.length > 120) return null;
+        name = clean;
+      }
+      if (p is num) {
+        if (p <= 0 || p > 1000000) return null;
+        price = double.parse(p.toStringAsFixed(2));
+      }
+    }
+    if (!remove && name == null && price == null) return null;
+    return Correction(
+      leaflet: leaflet,
+      page: page,
+      readName: readName,
+      readPrice: readPrice.toDouble(),
+      name: name,
+      price: price,
+      remove: remove,
+    );
+  }
+}
+
+/// Applies [corrections] to [items]: fixed items are marked corrected, and
+/// the ones that were not products are dropped.
+List<DealItem> applyCorrections(
+  List<DealItem> items,
+  Iterable<Correction> corrections,
+) {
+  final list = corrections.toList();
+  if (list.isEmpty) return items;
+  final out = <DealItem>[];
+  for (final item in items) {
+    Correction? fix;
+    // The latest correction for an item wins.
+    for (final c in list) {
+      if (c.matches(item)) fix = c;
+    }
+    if (fix == null) {
+      out.add(item);
+    } else if (!fix.remove) {
+      out.add(item.copyWith(name: fix.name, price: fix.price, corrected: true));
+    }
+  }
+  return out;
+}

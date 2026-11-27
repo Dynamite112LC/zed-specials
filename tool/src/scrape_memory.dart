@@ -44,10 +44,11 @@ String _dayText(DateTime t) =>
     '${t.day.toString().padLeft(2, '0')}';
 
 /// Whole days from [a] to [b], both taken as calendar days.
-int daysBetween(DateTime a, DateTime b) =>
-    DateTime.utc(b.year, b.month, b.day)
-        .difference(DateTime.utc(a.year, a.month, a.day))
-        .inDays;
+int daysBetween(DateTime a, DateTime b) => DateTime.utc(
+  b.year,
+  b.month,
+  b.day,
+).difference(DateTime.utc(a.year, a.month, a.day)).inDays;
 
 /// Runs [scrape]. A shop that failed is filled in with the leaflets it had
 /// when it was last reached and that have not ended yet. Shops that were
@@ -77,14 +78,17 @@ Future<RememberedScrape> scrapeWithMemory(
     final m = memory[shop];
     if (m is! Map<String, dynamic>) continue;
     final reached = _dayOf(DateTime.parse(m['at'] as String));
-    final running = [
-      for (final c in m['catalogues'] as List)
-        ScrapedCatalogue.fromJson(c as Map<String, dynamic>),
-    ].where((c) {
-      final end = c.validTo;
-      if (end == null) return daysBetween(reached, today) <= undatedLeafletDays;
-      return daysBetween(today, end) >= 0;
-    }).toList();
+    final running =
+        [
+          for (final c in m['catalogues'] as List)
+            ScrapedCatalogue.fromJson(c as Map<String, dynamic>),
+        ].where((c) {
+          final end = c.validTo;
+          if (end == null) {
+            return daysBetween(reached, today) <= undatedLeafletDays;
+          }
+          return daysBetween(today, end) >= 0;
+        }).toList();
     log?.call(
       '$shop could not be reached (${live.errors[shop]}). Standing in: '
       '${running.length} of its leaflets from ${_dayText(reached)} that '

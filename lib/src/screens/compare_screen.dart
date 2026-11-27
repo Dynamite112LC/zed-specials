@@ -9,9 +9,26 @@ import 'catalogue_viewer.dart' show PriceRow;
 
 /// Everyday items people compare. Only the ones on special are offered.
 const _staples = [
-  'Cooking oil', 'Sugar', 'Rice', 'Mealie meal', 'Chicken', 'Milk', 'Eggs',
-  'Margarine', 'Beef', 'Washing powder', 'Tissue', 'Juice', 'Flour', 'Tea',
-  'Noodles', 'Beans', 'Soap', 'Diapers', 'Biscuits', 'Beer',
+  'Cooking oil',
+  'Sugar',
+  'Rice',
+  'Mealie meal',
+  'Chicken',
+  'Milk',
+  'Eggs',
+  'Margarine',
+  'Beef',
+  'Washing powder',
+  'Tissue',
+  'Juice',
+  'Flour',
+  'Tea',
+  'Noodles',
+  'Beans',
+  'Soap',
+  'Diapers',
+  'Biscuits',
+  'Beer',
 ];
 
 class CompareScreen extends StatefulWidget {

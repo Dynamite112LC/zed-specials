@@ -96,25 +96,23 @@ TextStyle display(
 
 ThemeData buildTheme(Brightness brightness) {
   final p = brightness == Brightness.dark ? Palette.dark : Palette.light;
-  final scheme = ColorScheme.fromSeed(
-    seedColor: p.green,
-    brightness: brightness,
-  ).copyWith(
-    primary: p.green,
-    onPrimary: p.onGreen,
-    surface: p.surface,
-    onSurface: p.ink,
-    onSurfaceVariant: p.inkSoft,
-    outline: p.line,
-    outlineVariant: p.line,
-    error: p.urgent,
-    surfaceContainerHighest: p.sunken,
-    surfaceContainerHigh: p.sunken,
-    surfaceContainer: p.surface,
-    surfaceContainerLow: p.surface,
-    secondaryContainer: p.green.withValues(alpha: 0.14),
-    onSecondaryContainer: p.ink,
-  );
+  final scheme =
+      ColorScheme.fromSeed(seedColor: p.green, brightness: brightness).copyWith(
+        primary: p.green,
+        onPrimary: p.onGreen,
+        surface: p.surface,
+        onSurface: p.ink,
+        onSurfaceVariant: p.inkSoft,
+        outline: p.line,
+        outlineVariant: p.line,
+        error: p.urgent,
+        surfaceContainerHighest: p.sunken,
+        surfaceContainerHigh: p.sunken,
+        surfaceContainer: p.surface,
+        surfaceContainerLow: p.surface,
+        secondaryContainer: p.green.withValues(alpha: 0.14),
+        onSecondaryContainer: p.ink,
+      );
 
   final base = ThemeData(
     useMaterial3: true,
@@ -125,10 +123,9 @@ ThemeData buildTheme(Brightness brightness) {
     splashFactory: InkSparkle.splashFactory,
   );
 
-  final text = GoogleFonts.figtreeTextTheme(base.textTheme).apply(
-    bodyColor: p.ink,
-    displayColor: p.ink,
-  );
+  final text = GoogleFonts.figtreeTextTheme(
+    base.textTheme,
+  ).apply(bodyColor: p.ink, displayColor: p.ink);
 
   return base.copyWith(
     textTheme: text.copyWith(

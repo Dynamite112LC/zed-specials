@@ -79,7 +79,9 @@ class _ShellState extends State<_Shell> with WidgetsBindingObserver {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         final n = s.takeNotice();
         if (n != null && mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(n)));
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(n)));
         }
       });
     }

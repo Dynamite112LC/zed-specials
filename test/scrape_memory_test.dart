@@ -34,28 +34,29 @@ void main() {
     ],
     errors: <String, String>{},
   );
-  Future<ScrapeResult> shopriteRefuses() async => (
-    catalogues: [cat('p2', 'picknpay')],
-    errors: {'shoprite': 'HTTP 403'},
-  );
+  Future<ScrapeResult> shopriteRefuses() async =>
+      (catalogues: [cat('p2', 'picknpay')], errors: {'shoprite': 'HTTP 403'});
 
-  test('a shop that refuses today is filled in from the last good run', () async {
-    await scrapeWithMemory(file, allGood, now: DateTime(2026, 11, 27, 6));
-    final r = await scrapeWithMemory(
-      file,
-      shopriteRefuses,
-      now: DateTime(2026, 11, 28, 6),
-    );
-    expect(r.errors, isEmpty);
-    expect(
-      r.catalogues.map((c) => c.id),
-      unorderedEquals(['p2', 's1', 's-short']),
-    );
-    expect(r.standIns, {'shoprite': DateTime(2026, 11, 27)});
-    final s1 = r.catalogues.firstWhere((c) => c.id == 's1');
-    expect(s1.validTo, DateTime(2026, 12, 6));
-    expect(s1.ocrImageUrls, ['https://example.com/s1/p1.jpg']);
-  });
+  test(
+    'a shop that refuses today is filled in from the last good run',
+    () async {
+      await scrapeWithMemory(file, allGood, now: DateTime(2026, 11, 27, 6));
+      final r = await scrapeWithMemory(
+        file,
+        shopriteRefuses,
+        now: DateTime(2026, 11, 28, 6),
+      );
+      expect(r.errors, isEmpty);
+      expect(
+        r.catalogues.map((c) => c.id),
+        unorderedEquals(['p2', 's1', 's-short']),
+      );
+      expect(r.standIns, {'shoprite': DateTime(2026, 11, 27)});
+      final s1 = r.catalogues.firstWhere((c) => c.id == 's1');
+      expect(s1.validTo, DateTime(2026, 12, 6));
+      expect(s1.ocrImageUrls, ['https://example.com/s1/p1.jpg']);
+    },
+  );
 
   test('a leaflet stands in until the day it ends, then drops out', () async {
     await scrapeWithMemory(file, allGood, now: DateTime(2026, 11, 27, 6));
@@ -78,22 +79,33 @@ void main() {
     expect(after.standIns, {'shoprite': DateTime(2026, 11, 27)});
   });
 
-  test('when every remembered leaflet has ended the shop is simply absent', () async {
-    await scrapeWithMemory(file, allGood, now: DateTime(2026, 11, 27, 6));
-    final r = await scrapeWithMemory(
-      file,
-      shopriteRefuses,
-      now: DateTime(2026, 12, 20, 6),
-    );
-    expect(r.errors, isEmpty);
-    expect(r.catalogues.map((c) => c.id), ['p2']);
-    expect(r.standIns.keys, ['shoprite']);
-  });
+  test(
+    'when every remembered leaflet has ended the shop is simply absent',
+    () async {
+      await scrapeWithMemory(file, allGood, now: DateTime(2026, 11, 27, 6));
+      final r = await scrapeWithMemory(
+        file,
+        shopriteRefuses,
+        now: DateTime(2026, 12, 20, 6),
+      );
+      expect(r.errors, isEmpty);
+      expect(r.catalogues.map((c) => c.id), ['p2']);
+      expect(r.standIns.keys, ['shoprite']);
+    },
+  );
 
   test('reaching the shop again ends the stand-in', () async {
     await scrapeWithMemory(file, allGood, now: DateTime(2026, 11, 27, 6));
-    await scrapeWithMemory(file, shopriteRefuses, now: DateTime(2026, 11, 28, 6));
-    final r = await scrapeWithMemory(file, allGood, now: DateTime(2026, 11, 29, 6));
+    await scrapeWithMemory(
+      file,
+      shopriteRefuses,
+      now: DateTime(2026, 11, 28, 6),
+    );
+    final r = await scrapeWithMemory(
+      file,
+      allGood,
+      now: DateTime(2026, 11, 29, 6),
+    );
     expect(r.standIns, isEmpty);
     expect(r.errors, isEmpty);
   });
@@ -105,7 +117,10 @@ void main() {
   });
 
   test('days are counted on the calendar', () {
-    expect(daysBetween(DateTime(2026, 11, 27, 23), DateTime(2026, 11, 28, 1)), 1);
+    expect(
+      daysBetween(DateTime(2026, 11, 27, 23), DateTime(2026, 11, 28, 1)),
+      1,
+    );
     expect(daysBetween(DateTime(2026, 11, 27), DateTime(2026, 11, 27, 22)), 0);
   });
 }

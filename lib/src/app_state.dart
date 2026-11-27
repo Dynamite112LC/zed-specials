@@ -22,6 +22,7 @@ const _kWatch = 'watchlist';
 const _kSeen = 'seenCatalogues';
 const _kCachedFeed = 'cachedFeed';
 const _kShopriteStore = 'shopriteStore';
+const _kCorrections = 'corrections';
 
 /// A set of items that look like the same product at different shops.
 class PriceGroup {
@@ -45,7 +46,75 @@ class PriceGroup {
 }
 
 class AppState extends ChangeNotifier {
+  /// The feed as shown: with this shopper's own corrections applied.
   Feed feed = Feed.empty;
+
+  /// The feed as it was read by the feed builder.
+  Feed _published = Feed.empty;
+
+  /// Fixes this shopper made to readings, newest last. They show at once
+  /// on this device; sending one to the feed's owner fixes it for everyone.
+  List<Correction> corrections = [];
+
+  void _show(Feed f) {
+    _published = f;
+    // Keep only the fixes for leaflets that are still in the feed.
+    final ids = {for (final c in f.catalogues) c.id};
+    if (f.catalogues.isNotEmpty) {
+      corrections = corrections.where((c) => ids.contains(c.leaflet)).toList();
+    }
+    feed = Feed(
+      generatedAt: f.generatedAt,
+      catalogues: f.catalogues,
+      items: applyCorrections(f.items, corrections),
+    );
+  }
+
+  /// The reading the feed builder made of an item that has since been
+  /// corrected here, or the item itself.
+  DealItem asPublished(DealItem item) {
+    for (final i in _published.items) {
+      if (i.id == item.id) return i;
+    }
+    return item;
+  }
+
+  Future<void> correct(Correction c) async {
+    corrections = [...corrections, c];
+    await _prefs?.setString(
+      _kCorrections,
+      jsonEncode([for (final c in corrections) c.toJson()]),
+    );
+    _show(_published);
+    notifyListeners();
+  }
+
+  /// Where a correction can be sent so the feed itself is fixed: the
+  /// "new issue" page of the GitHub repository that publishes the feed.
+  /// Null when the feed is not hosted on GitHub Pages.
+  Uri? correctionReportUrl(Correction c, {String? note}) {
+    final m = RegExp(
+      r'^https://([A-Za-z0-9-]+)\.github\.io/([A-Za-z0-9._-]+)/',
+    ).firstMatch(feedUrl);
+    if (m == null) return null;
+    final what = c.remove
+        ? 'is not a product'
+        : 'should be ${c.name ?? c.readName} at ${formatPrice(c.price ?? c.readPrice)}';
+    final body = [
+      'On page ${c.page} of ${c.leaflet}, "${c.readName}" at '
+          '${formatPrice(c.readPrice)} $what.',
+      if (note != null && note.isNotEmpty) note,
+      '',
+      '```json',
+      const JsonEncoder.withIndent('  ').convert(c.toJson()),
+      '```',
+    ].join('\n');
+    return Uri.https('github.com', '/${m.group(1)}/${m.group(2)}/issues/new', {
+      'title': 'Price correction: ${c.name ?? c.readName}',
+      'body': body,
+    });
+  }
+
   bool loading = true;
   bool refreshing = false;
 
@@ -74,14 +143,23 @@ class AppState extends ChangeNotifier {
     feedUrl = _prefs!.getString(_kFeedUrl) ?? builtInFeedUrl;
     watchlist = _prefs!.getStringList(_kWatch) ?? [];
     shopriteStore = shopriteStoreById(_prefs!.getInt(_kShopriteStore));
+    try {
+      corrections = [
+        for (final j
+            in jsonDecode(_prefs!.getString(_kCorrections) ?? '[]') as List)
+          ?Correction.tryParse(j),
+      ];
+    } catch (_) {
+      corrections = [];
+    }
     final seenList = _prefs!.getStringList(_kSeen);
     seen = seenList?.toSet() ?? {};
 
     try {
       final raw = await rootBundle.loadString(_bundledFeed);
-      feed = Feed.fromJson(jsonDecode(raw) as Map<String, dynamic>);
+      _show(Feed.fromJson(jsonDecode(raw) as Map<String, dynamic>));
     } catch (_) {
-      feed = Feed.empty;
+      _show(Feed.empty);
     }
 
     // A previously downloaded feed wins if it is newer than the bundled one.
@@ -90,7 +168,7 @@ class AppState extends ChangeNotifier {
       try {
         final f = Feed.fromJson(jsonDecode(cached) as Map<String, dynamic>);
         if (f.generatedAt.isAfter(feed.generatedAt)) {
-          feed = f;
+          _show(f);
           _remoteBase = Uri.parse(feedUrl);
         }
       } catch (_) {}
@@ -127,7 +205,7 @@ class AppState extends ChangeNotifier {
       if (res.statusCode != 200) throw 'The feed replied ${res.statusCode}';
       final body = utf8.decode(res.bodyBytes);
       final f = Feed.fromJson(jsonDecode(body) as Map<String, dynamic>);
-      feed = f;
+      _show(f);
       _remoteBase = uri;
       await _prefs?.setString(_kCachedFeed, body);
       if (!silent) notice = 'Specials are up to date.';
@@ -166,7 +244,7 @@ class AppState extends ChangeNotifier {
       _remoteBase = null;
       await _prefs?.remove(_kCachedFeed);
       final raw = await rootBundle.loadString(_bundledFeed);
-      feed = Feed.fromJson(jsonDecode(raw) as Map<String, dynamic>);
+      _show(Feed.fromJson(jsonDecode(raw) as Map<String, dynamic>));
       notifyListeners();
     } else {
       await refresh();

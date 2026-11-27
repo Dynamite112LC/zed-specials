@@ -141,7 +141,7 @@ to its `python` executable.
 | Shop | Source | Format |
 |---|---|---|
 | Shoprite | shoprite.co.zm/specials.html, one store per province and kind of shop | page images |
-| Pick n Pay | picknpayzambia.com/specials | PDF |
+| Pick n Pay | picknpayzambia.com/specials | PDF (its own text where it has it) |
 | Game | game.co.zm promotions (served by Guzzle) | page images |
 
 ### Shoprite's stores
@@ -167,6 +167,28 @@ while a red-on-yellow or yellow-on-red price can be cut out cleanly and
 its kwacha and raised ngwee read separately. Descriptions are then matched
 to the nearest price, whether they sit under it (food), beside or above it
 (toys, homeware) or around a price box (Game's appliances).
+
+Where a shop publishes its leaflet as a PDF that still holds its words as
+text (two of Pick n Pay's three did when this was written), that text is
+used instead of OCR (`tool/src/pdf_text.dart`). It is exact, where OCR was
+misreading many of the small raised ngwee. OCR still runs on those pages,
+as the check on the text and to fill in letter pairs such as "ff" that
+some PDFs cannot name.
+
+Each item in the feed records where it sits on its page, so the app can
+show that part of the leaflet enlarged: tap an item's picture to compare
+the reading with what is printed.
+
+### Corrections
+
+When a reading is wrong, "Fix this reading" in the app takes the right
+price or name. The fix shows on that device at once. "Save and send to the
+feed" also opens a filled-in issue on this repository; once submitted, the
+feed builder applies it at its next run (`tool/src/corrections.dart`), so
+it reaches every device and the price history. Only issues written by the
+repository's owner count, and each correction is checked field by field.
+A correction is tied to the reading it was made against, so it lapses on
+its own if the reader later gets the item right.
 
 `test/readers_test.dart` checks the readers against four real pages kept
 in `test/fixtures`. When a shop changes its leaflet design, add a page of

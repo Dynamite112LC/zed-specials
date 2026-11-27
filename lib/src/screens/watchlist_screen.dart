@@ -101,7 +101,10 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                           ),
                         ),
                         const SizedBox(width: 10),
-                        FilledButton(onPressed: _add, child: const Text('Watch')),
+                        FilledButton(
+                          onPressed: _add,
+                          child: const Text('Watch'),
+                        ),
                       ],
                     ),
                   ),
@@ -124,7 +127,11 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                   'Add the things you buy most, like cooking oil, sugar or '
                   'mealie meal. Whenever a leaflet has one on special, it '
                   'appears here with the lowest price first.',
-                  style: TextStyle(fontSize: 15, color: p.inkSoft, height: 1.45),
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: p.inkSoft,
+                    height: 1.45,
+                  ),
                 ),
               ),
             ),

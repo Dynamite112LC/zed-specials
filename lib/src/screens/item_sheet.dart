@@ -5,13 +5,25 @@ import '../models.dart';
 import '../theme.dart';
 import '../widgets.dart';
 import 'catalogue_viewer.dart';
+import 'item_zoom.dart';
 
 /// A short phrase to watch for, taken from an item's name:
 /// "Ultra Fat Free Spread 500g Each" becomes "ultra fat free".
 String watchTermFor(DealItem item) {
   const noise = {
-    'each', 'assorted', 'all', 'variants', 'per', 'kg', 'pack', 'or', 'and',
-    'with', 'the', 'in', 'selected',
+    'each',
+    'assorted',
+    'all',
+    'variants',
+    'per',
+    'kg',
+    'pack',
+    'or',
+    'and',
+    'with',
+    'the',
+    'in',
+    'selected',
   };
   final words = item.name
       .toLowerCase()
@@ -31,11 +43,8 @@ void showItemSheet(
     context: context,
     isScrollControlled: true,
     constraints: const BoxConstraints(maxWidth: 560),
-    builder: (_) => _ItemSheet(
-      item: item,
-      fromViewer: fromViewer,
-      hostContext: context,
-    ),
+    builder: (_) =>
+        _ItemSheet(item: item, fromViewer: fromViewer, hostContext: context),
   );
 }
 
@@ -71,12 +80,41 @@ class _ItemSheet extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(14),
-                  child: SizedBox(
-                    width: 112,
-                    height: 112,
-                    child: FeedImage(item.crop),
+                // Tap the picture to see the item as printed, enlarged.
+                Semantics(
+                  button: true,
+                  label: 'Enlarge to check against the leaflet',
+                  child: InkWell(
+                    onTap: () => openItemZoom(hostContext, item),
+                    borderRadius: BorderRadius.circular(14),
+                    child: Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(14),
+                          child: SizedBox(
+                            width: 112,
+                            height: 112,
+                            child: FeedImage(item.crop),
+                          ),
+                        ),
+                        Positioned(
+                          right: 6,
+                          bottom: 6,
+                          child: Container(
+                            padding: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              color: p.ink.withValues(alpha: 0.78),
+                              borderRadius: BorderRadius.circular(9),
+                            ),
+                            child: Icon(
+                              Icons.zoom_in_rounded,
+                              size: 18,
+                              color: p.paper,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -170,7 +208,9 @@ class _ItemSheet extends StatelessWidget {
                         openCatalogue(hostContext, catalogue, page: item.page);
                       },
                       child: Text(
-                        fromViewer ? 'Back to the page' : 'See it on the leaflet',
+                        fromViewer
+                            ? 'Back to the page'
+                            : 'See it on the leaflet',
                       ),
                     ),
                   ),
@@ -186,7 +226,9 @@ class _ItemSheet extends StatelessWidget {
                           );
                           await s.unwatch(existing);
                           messenger.showSnackBar(
-                            SnackBar(content: Text('Stopped watching "$term".')),
+                            SnackBar(
+                              content: Text('Stopped watching "$term".'),
+                            ),
                           );
                         } else {
                           await s.watch(term);
@@ -209,9 +251,24 @@ class _ItemSheet extends StatelessWidget {
             ),
             const SizedBox(height: 14),
             Text(
-              'Prices are read from the leaflet automatically and can be '
-              'misread. Check the leaflet before you make the trip.',
+              item.corrected
+                  ? 'This reading was checked against the leaflet and '
+                        'corrected by a person.'
+                  : 'Prices are read from the leaflet automatically and can '
+                        'be misread. Tap the picture to check this one '
+                        'against the leaflet.',
               style: TextStyle(fontSize: 12.5, color: p.inkSoft, height: 1.4),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  minimumSize: const Size(0, 44),
+                ),
+                onPressed: () => showCorrectionSheet(hostContext, item),
+                child: const Text('Something wrong? Fix this reading'),
+              ),
             ),
           ],
         ),

@@ -37,9 +37,24 @@ DealItem item(
 );
 
 void main() {
-  final a = leaflet('a', 'shoprite', DateTime(2026, 11, 1), DateTime(2026, 11, 14));
-  final b = leaflet('b', 'shoprite', DateTime(2026, 11, 15), DateTime(2026, 11, 28));
-  final c = leaflet('c', 'picknpay', DateTime(2026, 11, 16), DateTime(2026, 11, 29));
+  final a = leaflet(
+    'a',
+    'shoprite',
+    DateTime(2026, 11, 1),
+    DateTime(2026, 11, 14),
+  );
+  final b = leaflet(
+    'b',
+    'shoprite',
+    DateTime(2026, 11, 15),
+    DateTime(2026, 11, 28),
+  );
+  final c = leaflet(
+    'c',
+    'picknpay',
+    DateTime(2026, 11, 16),
+    DateTime(2026, 11, 29),
+  );
 
   DealItem marg(String cat, double price, {String shop = 'shoprite'}) => item(
     '$cat-1',
@@ -102,7 +117,17 @@ void main() {
     h.record([a], [marg('a', 35)], DateTime(2026, 11, 2));
     final out = h.record(
       [b],
-      [item('b-1', 'b', 'shoprite', 'Buttercup Margarine 1kg', 62, qty: 1000, unit: 'g')],
+      [
+        item(
+          'b-1',
+          'b',
+          'shoprite',
+          'Buttercup Margarine 1kg',
+          62,
+          qty: 1000,
+          unit: 'g',
+        ),
+      ],
       DateTime(2026, 11, 15),
     );
     expect(out.single.history, isEmpty);
@@ -155,7 +180,12 @@ void main() {
   test('leaflets that ended long ago are forgotten', () {
     final h = PriceHistory();
     h.record([a], [marg('a', 35)], DateTime(2026, 11, 2));
-    final late = leaflet('z', 'shoprite', DateTime(2028, 6, 1), DateTime(2028, 6, 14));
+    final late = leaflet(
+      'z',
+      'shoprite',
+      DateTime(2028, 6, 1),
+      DateTime(2028, 6, 14),
+    );
     final out = h.record([late], [marg('z', 40)], DateTime(2028, 6, 1));
     expect(out.single.history, isEmpty);
     expect(h.leaflets.keys, [shortId('z')]);
@@ -163,7 +193,15 @@ void main() {
 
   test('an unsized match needs close prices', () {
     final two = item('1', 'a', 'shoprite', 'Pine Gel Boom Pine Gel 2', 56);
-    final one = item('2', 'c', 'picknpay', 'Boom Pine Gel 1Litre', 34.99, qty: 1000, unit: 'ml');
+    final one = item(
+      '2',
+      'c',
+      'picknpay',
+      'Boom Pine Gel 1Litre',
+      34.99,
+      qty: 1000,
+      unit: 'ml',
+    );
     expect(sameProduct(two, one), isFalse);
   });
 }
