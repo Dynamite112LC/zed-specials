@@ -264,15 +264,25 @@ final _multiBuyNote = RegExp(r'\((\d+) for K(\d+(?:\.\d+)?)\)');
 
 /// How the second reader's price sits with the first reader's item.
 ///
-/// [agreed]: the same price. [other]: a different price, to be checked.
-/// [price]: the price to show instead of the first reader's, where that one
-/// rested on an assumption the second reading settles. None of the three:
-/// the digits agree but not where the point goes, which the first reader
-/// decides because it measures the lettering.
+/// [agreed]: the same price. [price]: the price to show, when it is not
+/// the first reader's. [other]: the reading that lost out, kept for a
+/// person to check against the leaflet. None of the three: nothing to
+/// conclude, and the first reading stands as it is.
+///
+/// What the second reader gets wrong is known from checking its readings
+/// against the leaflets: it runs raised ngwee into the kwacha (2699 for
+/// 26.99), loses a digit doing so (2699 for 269.99), or leaves the ngwee
+/// out (399 for 399.99). It loses digits; it does not make them up. So
+/// ngwee it does report, where the first reader has none or had to assume
+/// them, are believed, and ngwee it leaves out say nothing.
+///
+/// [wholeKwachaPage]: both readers find whole-kwacha prices all over this
+/// page, so ngwee on one item are the odd ones out.
 ({bool agreed, double? other, double? price}) _compare(
   ExtractedItem mine,
-  double theirs,
-) {
+  double theirs, {
+  bool wholeKwachaPage = false,
+}) {
   const yes = (agreed: true, other: null, price: null);
   const unsure = (agreed: false, other: null, price: null);
   final first = mine.price;
@@ -284,25 +294,38 @@ final _multiBuyNote = RegExp(r'\((\d+) for K(\d+(?:\.\d+)?)\)');
     final total = double.parse(deal.group(2)!);
     if (_samePrice(total, theirs)) return yes;
     if (_samePrice(total * 100, theirs)) return unsure;
+    return (agreed: false, other: theirs, price: null);
   }
 
-  // The raised ngwee could not be read and ".99" was assumed. The second
-  // reader gives the same kwacha: its ngwee are the ones that were read.
-  if (mine.assumedNgwee && theirs.floor() == first.floor()) {
-    return (agreed: true, other: null, price: theirs);
-  }
-
-  // The second reader sometimes runs the small raised ngwee into the
-  // kwacha: 2699 for 26.99.
+  // Raised ngwee run into the kwacha: 2699 for 26.99, 1799 for 17.99.
+  var said = theirs;
   final whole = theirs == theirs.roundToDouble();
   if (whole && theirs >= 100 && (theirs ~/ 100) == first.floor()) {
-    final meant = theirs / 100;
-    if (_samePrice(meant, first)) return unsure;
-    // Same kwacha, other ngwee: 1799 against 17.00 is a reading of 17.99.
-    if (mine.assumedNgwee) return (agreed: true, other: null, price: meant);
-    return (agreed: false, other: meant, price: null);
+    said = theirs / 100;
+    if (_samePrice(said, first)) return unsure;
   }
-  // The same, with a digit lost on the way: 2699 for 269.99.
+
+  if (said.floor() == first.floor()) {
+    // The kwacha agree; the ngwee do not.
+    final mineNgwee = (first * 100).round() % 100;
+    final saidNgwee = (said * 100).round() % 100;
+    if (saidNgwee == 0) {
+      // Left out, most likely. Only ngwee the first reader could not read
+      // and assumed, on a page priced in whole kwacha, give way.
+      if (mine.assumedNgwee && wholeKwachaPage) {
+        return (agreed: true, other: null, price: said);
+      }
+      return unsure;
+    }
+    final believed =
+        !wholeKwachaPage &&
+        (mineNgwee == 0 || mine.assumedNgwee || saidNgwee == 99);
+    return believed
+        ? (agreed: false, other: first, price: said)
+        : (agreed: false, other: said, price: null);
+  }
+
+  // The same digits with one lost on the way: 2699 for 269.99.
   if (whole && theirs > 5 * first) {
     final a = (first * 100).round().toString();
     final b = theirs.round().toString();
@@ -341,8 +364,19 @@ CombinedReading combineReadings(
     }
   }
 
+  // Whether this page is priced in whole kwacha, as far as both readers
+  // can tell (leaving out ngwee the first reader only assumed).
+  final read = first.where((i) => !i.assumedNgwee).toList();
+  bool round(double p) => p == p.roundToDouble();
+  final wholeKwachaPage =
+      read.length >= 3 &&
+      read.where((i) => round(i.price)).length >= 0.8 * read.length &&
+      second.where((i) => round(i.price)).length >= 0.8 * second.length;
+  ({bool agreed, double? other, double? price}) compare(int c, int v) =>
+      _compare(first[c], second[v].price, wholeKwachaPage: wholeKwachaPage);
+
   // Prices that fit and names that overlap: the same item, read twice.
-  pair((c, v) => _compare(first[c], second[v].price).other == null, 0.34);
+  pair((c, v) => compare(c, v).other == null, 0.34);
   // Clearly the same name with another price: a disagreement.
   pair((c, v) => true, 0.6);
 
@@ -364,19 +398,16 @@ CombinedReading combineReadings(
     // A repaired name may now show the size the first reader lost.
     final size = renamed ? parseSize(name) : null;
     if (renamed) out.renamed++;
-    final verdict = _compare(mine, theirs.price);
+    final verdict = compare(c, v);
     if (verdict.agreed) out.agreed++;
-    if (verdict.price != null) {
-      out.notes.add(
-        '"${mine.name}": K${mine.price.toStringAsFixed(2)} assumed its '
-        'ngwee; the second reader read K${verdict.price!.toStringAsFixed(2)}',
-      );
-    }
-    if (verdict.other != null) {
-      out.doubted++;
+    if (verdict.other != null) out.doubted++;
+    if (verdict.other != null || verdict.price != null) {
+      final shown = verdict.price ?? mine.price;
       out.notes.add(
         '"${mine.name}": first reader K${mine.price.toStringAsFixed(2)}, '
-        'second reader K${verdict.other!.toStringAsFixed(2)}',
+        'second reader K${theirs.price.toStringAsFixed(2)}; '
+        'shown K${shown.toStringAsFixed(2)}'
+        '${verdict.other == null ? '' : ', to be checked'}',
       );
     }
     out.items.add(
@@ -436,25 +467,29 @@ ExtractedItem? _confirm(
   // Places where this price is printed. The second reader may have run
   // raised ngwee into the kwacha (2699 for 26.99), so the place has to
   // settle where the point goes too.
+  //
+  // It also leaves ngwee out (16 for 16.99). So a whole-kwacha price is
+  // only taken from it where the colour reader saw no raised digits, or
+  // on a page that is priced in whole kwacha throughout.
+  final wholeKwachaPage =
+      have.length >= 3 &&
+      have.where((i) => i.price == i.price.roundToDouble()).length >=
+          0.8 * have.length;
   final spots = <OcrLine>[];
   for (final f in page.flashes) {
     // The colour reader tells full-size digits from raised ones. Raised
     // glyphs it could not read may be ngwee or a dash after whole kwacha.
     if (int.tryParse(f.kwacha) != kwacha) continue;
-    final read = RegExp(r'^\d{2}$').hasMatch(f.ngwee);
     if (f.raised == 0 && ngwee > 0) continue;
-    if (read && ngwee == 0) continue;
+    if (f.raised > 0 && ngwee == 0 && !wholeKwachaPage) continue;
     spots.add(OcrLine('K${f.kwacha}', f.x, f.y, f.w, f.h, f.th, f.ks));
   }
-  // A page whose prices are all whole kwacha has no raised ngwee to run in.
-  final wholeKwachaPage =
-      have.length >= 3 && have.every((i) => i.price == i.price.roundToDouble());
   for (final l in page.lines) {
     if (l.s < 0.5 || !RegExp(r'^[Kk]?\s?\d[\d ,.]*$').hasMatch(l.t)) continue;
     final digits = l.t.replaceAll(RegExp(r'\D'), '');
     final fits = ngwee > 0
         ? digits == '$kwacha' || digits == '$kwacha$two'
-        : digits == '$kwacha' && (kwacha < 100 || wholeKwachaPage);
+        : digits == '$kwacha' && wholeKwachaPage;
     if (fits) spots.add(l);
   }
   bool overlaps(OcrLine a, OcrLine b) =>

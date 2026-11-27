@@ -121,16 +121,45 @@ void main() {
       expect(r.agreed, 1);
     });
 
-    test('a different price keeps the first and carries the second', () {
+    test('other kwacha: the first stands and the second is carried', () {
       final r = combineReadings(
-        [_item('Meru Gold Cooking Oil 5L', 59.00)],
-        [const SecondItem('Meru Gold Cooking Oil 5L', 59.99)],
+        [_item('Freehand Colour Base Stemless Glass', 24.99)],
+        [const SecondItem('Freehand Colour Base Stemless Glass', 19.99)],
       );
-      expect(r.items.single.price, 59.00);
+      expect(r.items.single.price, 24.99);
       expect(r.items.single.agreed, isFalse);
-      expect(r.items.single.otherPrice, 59.99);
+      expect(r.items.single.otherPrice, 19.99);
       expect(r.doubted, 1);
-      expect(r.notes.single, contains('59.99'));
+      expect(r.notes.single, contains('to be checked'));
+    });
+
+    test('ngwee only the second reader saw are believed, and flagged', () {
+      // The first reader missed the raised 99.
+      final r = combineReadings(
+        [_item('Bestmade Plush Bear 1m', 399)],
+        [const SecondItem('Bestmade Plush Bear 1m', 399.99)],
+      );
+      expect(r.items.single.price, 399.99);
+      expect(r.items.single.otherPrice, 399);
+      expect(r.items.single.agreed, isFalse);
+      // "90" for the raised "99".
+      final ninety = combineReadings(
+        [_item('Parmalat Cheese Slices 200g', 53.90)],
+        [const SecondItem('Parmalat Cheese Slices 200g', 53.99)],
+      );
+      expect(ninety.items.single.price, 53.99);
+      expect(ninety.items.single.otherPrice, 53.90);
+    });
+
+    test('ngwee the second reader left out say nothing', () {
+      final r = combineReadings(
+        [_item('Softex 2-ply Toilet Rolls 10', 67.99)],
+        [const SecondItem('Softex 2-ply Toilet Rolls 10', 67)],
+      );
+      expect(r.items.single.price, 67.99);
+      expect(r.items.single.otherPrice, isNull);
+      expect(r.items.single.agreed, isFalse);
+      expect(r.doubted, 0);
     });
 
     test('a dropped decimal point is not a disagreement, nor agreement', () {
@@ -181,27 +210,72 @@ void main() {
       expect(r.items.single.sizeQty, isNull);
     });
 
-    test('ngwee the first reader assumed are taken from the second', () {
-      final rice = ExtractedItem(
+    test('assumed ngwee give way on a page priced in whole kwacha', () {
+      ExtractedItem rice() => ExtractedItem(
         name: 'White Rice 5kg',
         price: 99.99,
         crop: const CropBox(0, 0, 10, 10),
         assumedNgwee: true,
       );
+      final cover = combineReadings(
+        [
+          rice(),
+          _item('Blue Band Margarine 1kg', 65),
+          _item('Africa Milling Maize Meal 10kg', 69),
+          _item('Lacto Milk Drink 250ml', 5),
+        ],
+        const [
+          SecondItem('Parboiled White Rice', 99),
+          SecondItem('Blue Band Margarine', 65),
+          SecondItem('Africa Milling Breakfast Meal', 69),
+          SecondItem('Lacto Milk Drink', 5),
+        ],
+      );
+      expect(cover.items.first.price, 99);
+      expect(cover.items.first.agreed, isTrue);
+      expect(cover.items.first.otherPrice, isNull);
+
+      // On a page of .99 prices the assumption is the better guess: the
+      // second reader has only left the ngwee out.
+      final household = combineReadings(
+        [
+          rice(),
+          _item('Softex 2-ply Toilet Rolls 10', 67.99),
+          _item('Nugget Black Shoe Polish 100ml', 42.99),
+          _item('Doom Insecticide Assorted 300ml', 39.99),
+        ],
+        const [
+          SecondItem('Parboiled White Rice', 99),
+          SecondItem('Softex 2-ply Toilet Rolls 10', 67.99),
+          SecondItem('Nugget Black Shoe Polish 100ml', 42.99),
+          SecondItem('Doom Insecticide Assorted 300ml', 39.99),
+        ],
+      );
+      expect(household.items.first.price, 99.99);
+      expect(household.items.first.otherPrice, isNull);
+    });
+
+    test('lone ngwee on a whole-kwacha page are doubted, not believed', () {
       final r = combineReadings(
-        [rice],
-        [const SecondItem('Parboiled White Rice', 99)],
+        [
+          _item('Boom Washing Powder 1kg', 55),
+          _item('Rapid Washing Powder Bucket 1.5kg', 79),
+          _item('Air Scents Air Freshener 200ml', 25),
+          _item('Mortein Insecticide 300ml', 32),
+          _item('Kiwi Shoe Polish 100ml', 40),
+          _item('Dawn Body Lotion 400ml', 36),
+        ],
+        const [
+          SecondItem('Boom Washing Powder 1kg', 55.99),
+          SecondItem('Rapid Washing Powder Bucket 1.5kg', 79),
+          SecondItem('Air Scents Air Freshener 200ml', 25),
+          SecondItem('Mortein Insecticide 300ml', 32),
+          SecondItem('Kiwi Shoe Polish 100ml', 40),
+          SecondItem('Dawn Body Lotion 400ml', 36),
+        ],
       );
-      expect(r.items.single.price, 99);
-      expect(r.items.single.agreed, isTrue);
-      expect(r.items.single.otherPrice, isNull);
-      // Read ngwee are not overruled like that.
-      final sure = combineReadings(
-        [_item('White Rice 5kg', 99.99)],
-        [const SecondItem('Parboiled White Rice', 99)],
-      );
-      expect(sure.items.single.price, 99.99);
-      expect(sure.items.single.otherPrice, 99);
+      expect(r.items.first.price, 55);
+      expect(r.items.first.otherPrice, 55.99);
     });
 
     test('a dropped point with other ngwee is read as that price', () {
@@ -210,8 +284,8 @@ void main() {
         [_item('Buttercup Margarine Brick 250g', 17)],
         [const SecondItem('Buttercup Margarine Brick 250g', 1799)],
       );
-      expect(r.items.single.price, 17);
-      expect(r.items.single.otherPrice, 17.99);
+      expect(r.items.single.price, 17.99);
+      expect(r.items.single.otherPrice, 17);
     });
 
     test('a dropped point with a digit lost is not a second opinion', () {
@@ -399,6 +473,22 @@ void main() {
     test('a correction settles a doubt', () {
       final fixed = item(other: 65).copyWith(price: 65, corrected: true);
       expect(fixed.inDoubt, isFalse);
+    });
+
+    test('a correction against either reading applies', () {
+      // Made when K399 was shown; the second reading has since put K399.99
+      // in its place and carries the K399.
+      final fix = Correction(
+        leaflet: 'c',
+        page: 1,
+        readName: 'Boom Pine Gel 2L',
+        readPrice: 399,
+        price: 389.99,
+      );
+      final now = item(other: 399).copyWith(price: 399.99);
+      final out = applyCorrections([now], [fix]);
+      expect(out.single.price, 389.99);
+      expect(out.single.inDoubt, isFalse);
     });
 
     test('a correction made before the name was repaired still applies', () {

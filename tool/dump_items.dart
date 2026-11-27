@@ -28,7 +28,7 @@ void main(List<String> args) {
       final size = i.sizeQty == null ? '' : ' [${i.sizeQty} ${i.sizeUnit}]';
       final save = i.save == null ? '' : ' save ${i.save}';
       final second = i.otherPrice != null
-          ? '  SECOND READER: K${i.otherPrice!.toStringAsFixed(2)}'
+          ? '  OTHER READING: K${i.otherPrice!.toStringAsFixed(2)}'
           : i.agreed
           ? '  agreed'
           : '';

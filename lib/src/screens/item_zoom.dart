@@ -40,7 +40,7 @@ class _TwoReadings extends StatelessWidget {
         Expanded(
           child: Text(
             doubt
-                ? 'A second reading of this page gave '
+                ? 'Another reading of this page gave '
                       '${formatPrice(item.otherPrice!)}. Check which one is '
                       'printed.'
                 : 'Two separate readings of this page gave this price.',

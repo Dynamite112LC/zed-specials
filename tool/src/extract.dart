@@ -135,7 +135,8 @@ class ExtractedItem {
   /// too.
   final bool agreed;
 
-  /// The price the second reader gave, when it gave another one.
+  /// The price of the reading that was not believed, when the two
+  /// readers differ and a person should check.
   final double? otherPrice;
 
   /// The name as first read, when the second reading repaired it.

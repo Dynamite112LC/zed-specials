@@ -195,17 +195,28 @@ The two readers fail differently, so they are put together rather than one
 replacing the other (`tool/src/second_reader.dart`):
 
 - A price both give is marked as agreed, and the app says so.
-- A price they differ on keeps the first reading and carries the other
-  one; the app asks you to check the picture. The run's log lists these.
+- Where the kwacha differ, the first reading is shown and the other one is
+  carried; the app asks you to check the picture. The run's log lists
+  these. Checked against the leaflets, either reader can be the one that
+  is right here.
+- Where only the ngwee differ, what is known of the second reader decides.
+  It loses digits but does not make them up: it runs raised ngwee into the
+  kwacha (2699 for 26.99), loses one doing so (2699 for 269.99), or leaves
+  them out (399 for 399.99). So ngwee it reports where the first reader
+  has none ("K399" for a printed K399.99) are shown, with the first
+  reading carried for checking; ngwee it leaves out change nothing.
+- Where the first reader could not read the raised ngwee and assumed
+  ".99", a whole-kwacha price from the second reader replaces it only on a
+  page both readers find priced in whole kwacha.
+- A multi-buy ("2 for K70", shown as K35 each) agrees when the second
+  reader gives the K70.
 - Pack sizes the first reader garbled or lost ("2L" read as "2", "36cm" as
   "3b") are taken from the second. Words keep the first reader's spelling,
   which is the better one.
 - An item only the second reader names is added when the page's own text
   shows its price and its words in one place; otherwise it is left out and
-  listed in the log.
-- The second reader sometimes runs raised ngwee into the kwacha (2699 for
-  26.99). The first reader measures the lettering, so its decimal point
-  stands.
+  listed in the log. Several products it gives one price (a combo listed
+  piece by piece) are left out.
 
 To run it on your own computer, start a model server that speaks the
 OpenAI chat API with images (llama.cpp's `llama-server`, or Ollama) and,

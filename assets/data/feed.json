@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-27T17:49:26.541731Z",
+ "generatedAt": "2026-11-27T20:07:37.211524Z",
  "catalogues": [
   {
    "id": "shoprite-zmblackfriday26nov29nov2026",
@@ -297,7 +297,7 @@
    "retailer": "shoprite",
    "page": 1,
    "name": "White Rice 5kg",
-   "price": 99.99,
+   "price": 99.0,
    "sizeQty": 5000.0,
    "sizeUnit": "g",
    "crop": "crops/a17b17d6-01-01.jpg",
@@ -308,7 +308,8 @@
     0.6193,
     0.2175,
     0.1931
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-01-02",
@@ -327,7 +328,8 @@
     0.6278,
     0.2103,
     0.1851
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-01-03",
@@ -344,7 +346,8 @@
     0.6265,
     0.2129,
     0.1842
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-01-04",
@@ -363,7 +366,100 @@
     0.1681,
     0.1927,
     0.1719
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "a17b17d6-01-05",
+   "catalogue": "shoprite-zmblackfriday26nov29nov2026",
+   "retailer": "shoprite",
+   "page": 1,
+   "name": "Coca-Cola/Fanta/Sprite",
+   "price": 20.0,
+   "crop": "crops/a17b17d6-01-05.jpg",
+   "category": "Drinks",
+   "confidence": 0.8,
+   "box": [
+    0.1914,
+    0.2254,
+    0.224,
+    0.1456
+   ],
+   "agreed": true
+  },
+  {
+   "id": "a17b17d6-01-06",
+   "catalogue": "shoprite-zmblackfriday26nov29nov2026",
+   "retailer": "shoprite",
+   "page": 1,
+   "name": "Whitespoon Household White Sugar",
+   "price": 52.0,
+   "crop": "crops/a17b17d6-01-06.jpg",
+   "group": "g1",
+   "category": "Pantry",
+   "confidence": 0.8,
+   "box": [
+    0.3815,
+    0.2012,
+    0.224,
+    0.1456
+   ],
+   "agreed": true
+  },
+  {
+   "id": "a17b17d6-01-07",
+   "catalogue": "shoprite-zmblackfriday26nov29nov2026",
+   "retailer": "shoprite",
+   "page": 1,
+   "name": "Zamchick Mixed Chicken Portions",
+   "price": 108.0,
+   "crop": "crops/a17b17d6-01-07.jpg",
+   "group": "g2",
+   "category": "Meat & fish",
+   "confidence": 0.8,
+   "box": [
+    0.7766,
+    0.1952,
+    0.2234,
+    0.1456
+   ],
+   "agreed": true
+  },
+  {
+   "id": "a17b17d6-01-08",
+   "catalogue": "shoprite-zmblackfriday26nov29nov2026",
+   "retailer": "shoprite",
+   "page": 1,
+   "name": "Bigtree Original Corn Flakes",
+   "price": 72.0,
+   "crop": "crops/a17b17d6-01-08.jpg",
+   "category": "Pantry",
+   "confidence": 0.8,
+   "box": [
+    0.3971,
+    0.6999,
+    0.224,
+    0.1456
+   ],
+   "agreed": true
+  },
+  {
+   "id": "a17b17d6-01-09",
+   "catalogue": "shoprite-zmblackfriday26nov29nov2026",
+   "retailer": "shoprite",
+   "page": 1,
+   "name": "Just Pineapple/Orange/Grannyapple Squash Concentrate",
+   "price": 132.0,
+   "crop": "crops/a17b17d6-01-09.jpg",
+   "category": "Drinks",
+   "confidence": 0.8,
+   "box": [
+    0.7773,
+    0.6723,
+    0.2227,
+    0.1456
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-01",
@@ -382,7 +478,8 @@
     0.0722,
     0.2528,
     0.222
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-02",
@@ -401,7 +498,8 @@
     0.0734,
     0.2528,
     0.2241
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-03",
@@ -413,7 +511,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "ml",
    "crop": "crops/a17b17d6-02-03.jpg",
-   "group": "g1",
+   "group": "g3",
    "category": "Drinks",
    "confidence": 0.96,
    "box": [
@@ -421,7 +519,8 @@
     0.0717,
     0.2528,
     0.2262
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-04",
@@ -440,7 +539,8 @@
     0.0764,
     0.2528,
     0.2233
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-05",
@@ -453,7 +553,7 @@
    "sizeUnit": "g",
    "save": 3.0,
    "crop": "crops/a17b17d6-02-05.jpg",
-   "group": "g2",
+   "group": "g4",
    "category": "Snacks & sweets",
    "confidence": 0.99,
    "box": [
@@ -461,7 +561,8 @@
     0.5649,
     0.1855,
     0.163
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-06",
@@ -481,7 +582,8 @@
     0.4843,
     0.1855,
     0.1626
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-07",
@@ -501,7 +603,8 @@
     0.6367,
     0.1855,
     0.1677
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-08",
@@ -521,7 +624,8 @@
     0.483,
     0.1829,
     0.1609
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-09",
@@ -534,7 +638,7 @@
    "sizeUnit": "g",
    "save": 15.0,
    "crop": "crops/a17b17d6-02-09.jpg",
-   "group": "g3",
+   "group": "g5",
    "category": "Pantry",
    "confidence": 0.97,
    "box": [
@@ -542,7 +646,8 @@
     0.483,
     0.1829,
     0.1672
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-10",
@@ -561,7 +666,8 @@
     0.747,
     0.1829,
     0.163
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-11",
@@ -579,7 +685,8 @@
     0.4822,
     0.1855,
     0.1613
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-12",
@@ -599,7 +706,8 @@
     0.6426,
     0.1855,
     0.1626
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-13",
@@ -618,7 +726,8 @@
     0.826,
     0.1953,
     0.1685
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-14",
@@ -638,7 +747,8 @@
     0.3311,
     0.1509,
     0.1401
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-15",
@@ -658,7 +768,8 @@
     0.5042,
     0.162,
     0.143
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-16",
@@ -670,7 +781,7 @@
    "perKg": true,
    "save": 50.0,
    "crop": "crops/a17b17d6-02-16.jpg",
-   "group": "g4",
+   "group": "g6",
    "category": "Meat & fish",
    "confidence": 0.96,
    "box": [
@@ -678,7 +789,8 @@
     0.8536,
     0.1509,
     0.1396
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-17",
@@ -697,7 +809,8 @@
     0.8553,
     0.1535,
     0.1367
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-18",
@@ -716,7 +829,8 @@
     0.8536,
     0.1509,
     0.1401
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-19",
@@ -729,7 +843,7 @@
    "sizeUnit": "ml",
    "save": 10.0,
    "crop": "crops/a17b17d6-02-19.jpg",
-   "group": "g5",
+   "group": "g7",
    "category": "Liquor",
    "confidence": 0.97,
    "box": [
@@ -737,7 +851,8 @@
     0.8234,
     0.1535,
     0.1447
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-20",
@@ -757,7 +872,8 @@
     0.5072,
     0.1509,
     0.1392
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-21",
@@ -777,7 +893,8 @@
     0.3315,
     0.1509,
     0.1392
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-22",
@@ -797,7 +914,8 @@
     0.3251,
     0.1535,
     0.1409
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-23",
@@ -817,7 +935,8 @@
     0.3251,
     0.1535,
     0.1409
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-24",
@@ -830,7 +949,7 @@
    "sizeUnit": "g",
    "save": 1.0,
    "crop": "crops/a17b17d6-02-24.jpg",
-   "group": "g6",
+   "group": "g8",
    "category": "Snacks & sweets",
    "confidence": 0.98,
    "box": [
@@ -838,7 +957,8 @@
     0.6634,
     0.1483,
     0.1384
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-25",
@@ -858,7 +978,8 @@
     0.281,
     0.2155,
     0.1851
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-02-26",
@@ -871,7 +992,7 @@
    "sizeUnit": "g",
    "save": 6.0,
    "crop": "crops/a17b17d6-02-26.jpg",
-   "group": "g7",
+   "group": "g9",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -879,7 +1000,26 @@
     0.6121,
     0.2227,
     0.1923
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "a17b17d6-02-27",
+   "catalogue": "shoprite-zmblackfriday26nov29nov2026",
+   "retailer": "shoprite",
+   "page": 2,
+   "name": "Cookies Joe Ginger cookie",
+   "price": 5.0,
+   "crop": "crops/a17b17d6-02-27.jpg",
+   "category": "Snacks & sweets",
+   "confidence": 0.8,
+   "box": [
+    0.5258,
+    0.6566,
+    0.2391,
+    0.1456
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-01",
@@ -898,16 +1038,17 @@
     0.07,
     0.2632,
     0.2254
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-02",
    "catalogue": "shoprite-zmblackfriday26nov29nov2026",
    "retailer": "shoprite",
    "page": 3,
-   "name": "Farmer's Choice IQF Mixed Chicken Portions",
+   "name": "Farmer's Choice IQF 1kg Mixed Chicken Portions",
    "price": 290.0,
-   "sizeQty": 5000.0,
+   "sizeQty": 1000.0,
    "sizeUnit": "g",
    "crop": "crops/a17b17d6-03-02.jpg",
    "category": "Meat & fish",
@@ -917,7 +1058,9 @@
     0.0705,
     0.2443,
     0.2313
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Farmer's Choice IQF Mixed Chicken Portions"
   },
   {
    "id": "a17b17d6-03-03",
@@ -936,7 +1079,8 @@
     0.073,
     0.2508,
     0.222
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-04",
@@ -948,7 +1092,7 @@
    "sizeQty": 3000.0,
    "sizeUnit": "g",
    "crop": "crops/a17b17d6-03-04.jpg",
-   "group": "g8",
+   "group": "g10",
    "category": "Pantry",
    "confidence": 0.93,
    "box": [
@@ -956,7 +1100,8 @@
     0.0717,
     0.2528,
     0.2271
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-05",
@@ -969,7 +1114,7 @@
    "sizeUnit": "ml",
    "save": 15.0,
    "crop": "crops/a17b17d6-03-05.jpg",
-   "group": "g9",
+   "group": "g11",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -977,7 +1122,8 @@
     0.8022,
     0.1855,
     0.1655
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-06",
@@ -997,7 +1143,8 @@
     0.635,
     0.1855,
     0.1634
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-07",
@@ -1017,7 +1164,8 @@
     0.3098,
     0.1855,
     0.163
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-08",
@@ -1030,7 +1178,7 @@
    "sizeUnit": "ml",
    "save": 5.0,
    "crop": "crops/a17b17d6-03-08.jpg",
-   "group": "g10",
+   "group": "g12",
    "category": "Pantry",
    "confidence": 0.97,
    "box": [
@@ -1038,7 +1186,8 @@
     0.4822,
     0.1855,
     0.1626
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-09",
@@ -1051,7 +1200,7 @@
    "sizeUnit": "g",
    "save": 5.0,
    "crop": "crops/a17b17d6-03-09.jpg",
-   "group": "g11",
+   "group": "g13",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -1059,7 +1208,8 @@
     0.6367,
     0.1855,
     0.1672
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-10",
@@ -1072,7 +1222,7 @@
    "sizeUnit": "ml",
    "save": 5.0,
    "crop": "crops/a17b17d6-03-10.jpg",
-   "group": "g12",
+   "group": "g14",
    "category": "Drinks",
    "confidence": 0.99,
    "box": [
@@ -1080,7 +1230,8 @@
     0.6367,
     0.1835,
     0.1621
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-11",
@@ -1100,7 +1251,8 @@
     0.6367,
     0.1855,
     0.1643
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-12",
@@ -1113,7 +1265,7 @@
    "sizeUnit": "ml",
    "save": 30.0,
    "crop": "crops/a17b17d6-03-12.jpg",
-   "group": "g13",
+   "group": "g15",
    "category": "Liquor",
    "confidence": 0.98,
    "box": [
@@ -1121,7 +1273,8 @@
     0.8022,
     0.1855,
     0.1655
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-13",
@@ -1134,7 +1287,7 @@
    "sizeUnit": "g",
    "save": 11.0,
    "crop": "crops/a17b17d6-03-13.jpg",
-   "group": "g14",
+   "group": "g16",
    "category": "Pantry",
    "confidence": 0.97,
    "box": [
@@ -1142,7 +1295,8 @@
     0.483,
     0.1829,
     0.1609
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-14",
@@ -1162,7 +1316,8 @@
     0.3141,
     0.1855,
     0.1626
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-15",
@@ -1182,7 +1337,8 @@
     0.6367,
     0.1855,
     0.1621
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-16",
@@ -1202,7 +1358,8 @@
     0.4809,
     0.1855,
     0.1621
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-17",
@@ -1215,7 +1372,7 @@
    "sizeUnit": "ml",
    "save": 100.0,
    "crop": "crops/a17b17d6-03-17.jpg",
-   "group": "g15",
+   "group": "g17",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -1223,7 +1380,8 @@
     0.8234,
     0.1535,
     0.1473
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-18",
@@ -1236,7 +1394,7 @@
    "sizeUnit": "ml",
    "save": 90.0,
    "crop": "crops/a17b17d6-03-18.jpg",
-   "group": "g16",
+   "group": "g18",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -1244,7 +1402,8 @@
     0.8234,
     0.1535,
     0.1418
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-19",
@@ -1264,7 +1423,8 @@
     0.8251,
     0.1509,
     0.1435
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-20",
@@ -1284,7 +1444,8 @@
     0.3281,
     0.1535,
     0.1418
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-21",
@@ -1297,7 +1458,7 @@
    "sizeUnit": "g",
    "save": 12.0,
    "crop": "crops/a17b17d6-03-21.jpg",
-   "group": "g17",
+   "group": "g19",
    "category": "Pantry",
    "confidence": 0.99,
    "box": [
@@ -1305,7 +1466,8 @@
     0.5034,
     0.1535,
     0.1413
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-22",
@@ -1318,7 +1480,7 @@
    "sizeUnit": "g",
    "save": 10.0,
    "crop": "crops/a17b17d6-03-22.jpg",
-   "group": "g18",
+   "group": "g20",
    "category": "Pantry",
    "confidence": 0.99,
    "box": [
@@ -1326,14 +1488,15 @@
     0.5038,
     0.1509,
     0.1396
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-23",
    "catalogue": "shoprite-zmblackfriday26nov29nov2026",
    "retailer": "shoprite",
    "page": 3,
-   "name": "Queen Tomato Paste 32oeach",
+   "name": "Queen Tomato Paste 320g",
    "price": 20.0,
    "sizeQty": 320.0,
    "sizeUnit": "g",
@@ -1346,7 +1509,9 @@
     0.5051,
     0.1509,
     0.1388
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Queen Tomato Paste 32oeach"
   },
   {
    "id": "a17b17d6-03-24",
@@ -1366,7 +1531,8 @@
     0.3298,
     0.1509,
     0.143
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-25",
@@ -1386,7 +1552,8 @@
     0.3306,
     0.1535,
     0.1405
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-26",
@@ -1399,7 +1566,7 @@
    "sizeUnit": "g",
    "save": 11.0,
    "crop": "crops/a17b17d6-03-26.jpg",
-   "group": "g19",
+   "group": "g21",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -1407,16 +1574,17 @@
     0.6596,
     0.1509,
     0.1396
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-03-27",
    "catalogue": "shoprite-zmblackfriday26nov29nov2026",
    "retailer": "shoprite",
    "page": 3,
-   "name": "Four Cousins",
+   "name": "Four Cousins 750ml",
    "price": 8.0,
-   "sizeQty": 1980.0,
+   "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/a17b17d6-03-27.jpg",
    "category": "Other",
@@ -1426,7 +1594,9 @@
     0.8162,
     0.1666,
     0.09
-   ]
+   ],
+   "otherPrice": 224.0,
+   "firstName": "Four Cousins"
   },
   {
    "id": "a17b17d6-03-28",
@@ -1446,7 +1616,29 @@
     0.455,
     0.2077,
     0.1889
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "a17b17d6-03-29",
+   "catalogue": "shoprite-zmblackfriday26nov29nov2026",
+   "retailer": "shoprite",
+   "page": 3,
+   "name": "Hunter's Dry Gold Cider NRB 6x330ml",
+   "price": 160.0,
+   "sizeQty": 1980.0,
+   "sizeUnit": "ml",
+   "crop": "crops/a17b17d6-03-29.jpg",
+   "group": "g22",
+   "category": "Liquor",
+   "confidence": 0.8,
+   "box": [
+    0.4128,
+    0.8243,
+    0.224,
+    0.1456
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-01",
@@ -1465,7 +1657,8 @@
     0.0085,
     0.2528,
     0.2296
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-02",
@@ -1484,7 +1677,8 @@
     0.0157,
     0.2528,
     0.2254
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-03",
@@ -1503,16 +1697,20 @@
     0.0076,
     0.2528,
     0.2211
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-04",
    "catalogue": "shoprite-zmblackfriday26nov29nov2026",
    "retailer": "shoprite",
    "page": 4,
-   "name": "Sta-soft Fabric Softener Alss AA",
+   "name": "Sta-soft Fabric Softener Assorted 2L",
    "price": 56.0,
+   "sizeQty": 2000.0,
+   "sizeUnit": "ml",
    "crop": "crops/a17b17d6-04-04.jpg",
+   "group": "g23",
    "category": "Household",
    "confidence": 0.81,
    "box": [
@@ -1520,7 +1718,9 @@
     0.0,
     0.2528,
     0.1583
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Sta-soft Fabric Softener Alss AA"
   },
   {
    "id": "a17b17d6-04-05",
@@ -1540,18 +1740,19 @@
     0.438,
     0.1829,
     0.1621
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-06",
    "catalogue": "shoprite-zmblackfriday26nov29nov2026",
    "retailer": "shoprite",
    "page": 4,
-   "name": "Xssentials Mini Oven 24",
+   "name": "Xssentials Mini Oven 24L",
    "price": 2200.0,
    "save": 300.0,
    "crop": "crops/a17b17d6-04-06.jpg",
-   "group": "g20",
+   "group": "g24",
    "category": "Electronics & appliances",
    "confidence": 0.97,
    "box": [
@@ -1559,7 +1760,9 @@
     0.7958,
     0.1835,
     0.1401
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Xssentials Mini Oven 24"
   },
   {
    "id": "a17b17d6-04-07",
@@ -1572,7 +1775,7 @@
    "sizeUnit": "g",
    "save": 7.0,
    "crop": "crops/a17b17d6-04-07.jpg",
-   "group": "g21",
+   "group": "g25",
    "category": "Baby & personal care",
    "confidence": 0.99,
    "box": [
@@ -1580,7 +1783,8 @@
     0.2704,
     0.1855,
     0.1655
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-08",
@@ -1600,7 +1804,8 @@
     0.2687,
     0.1855,
     0.1621
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-09",
@@ -1620,7 +1825,8 @@
     0.1817,
     0.1855,
     0.1626
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-10",
@@ -1633,7 +1839,7 @@
    "sizeUnit": "ml",
    "save": 6.0,
    "crop": "crops/a17b17d6-04-10.jpg",
-   "group": "g22",
+   "group": "g26",
    "category": "Baby & personal care",
    "confidence": 0.98,
    "box": [
@@ -1641,7 +1847,8 @@
     0.2687,
     0.1777,
     0.1634
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-11",
@@ -1652,7 +1859,7 @@
    "price": 450.0,
    "save": 150.0,
    "crop": "crops/a17b17d6-04-11.jpg",
-   "group": "g23",
+   "group": "g27",
    "category": "Home & outdoor",
    "confidence": 1.0,
    "box": [
@@ -1660,20 +1867,21 @@
     0.7967,
     0.1535,
     0.1401
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-12",
    "catalogue": "shoprite-zmblackfriday26nov29nov2026",
    "retailer": "shoprite",
    "page": 4,
-   "name": "Shield Splash Car Shampoo 5",
+   "name": "Shield Splash Car Shampoo 5L",
    "price": 220.0,
    "sizeQty": 5000.0,
    "sizeUnit": "ml",
    "save": 80.0,
    "crop": "crops/a17b17d6-04-12.jpg",
-   "group": "g24",
+   "group": "g28",
    "category": "Baby & personal care",
    "confidence": 0.96,
    "box": [
@@ -1681,18 +1889,20 @@
     0.6244,
     0.1535,
     0.1401
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Shield Splash Car Shampoo 5"
   },
   {
    "id": "a17b17d6-04-13",
    "catalogue": "shoprite-zmblackfriday26nov29nov2026",
    "retailer": "shoprite",
    "page": 4,
-   "name": "Polar Chill Cooler Box 22",
+   "name": "Polar Chill Cooler Box 22L",
    "price": 300.0,
    "save": 50.0,
    "crop": "crops/a17b17d6-04-13.jpg",
-   "group": "g25",
+   "group": "g29",
    "category": "Home & outdoor",
    "confidence": 0.98,
    "box": [
@@ -1700,7 +1910,9 @@
     0.7967,
     0.1535,
     0.1392
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Polar Chill Cooler Box 22"
   },
   {
    "id": "a17b17d6-04-14",
@@ -1711,7 +1923,7 @@
    "price": 350.0,
    "save": 100.0,
    "crop": "crops/a17b17d6-04-14.jpg",
-   "group": "g26",
+   "group": "g30",
    "category": "Home & outdoor",
    "confidence": 0.97,
    "box": [
@@ -1719,7 +1931,8 @@
     0.7988,
     0.1509,
     0.1392
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-15",
@@ -1730,7 +1943,7 @@
    "price": 150.0,
    "save": 20.0,
    "crop": "crops/a17b17d6-04-15.jpg",
-   "group": "g27",
+   "group": "g31",
    "category": "Home & outdoor",
    "confidence": 0.98,
    "box": [
@@ -1738,7 +1951,8 @@
     0.7958,
     0.1679,
     0.1401
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-16",
@@ -1758,7 +1972,8 @@
     0.2903,
     0.1541,
     0.1452
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-17",
@@ -1798,7 +2013,8 @@
     0.6244,
     0.1535,
     0.1413
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-19",
@@ -1818,7 +2034,8 @@
     0.4597,
     0.1509,
     0.143
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-20",
@@ -1838,15 +2055,18 @@
     0.2903,
     0.1535,
     0.1418
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-21",
    "catalogue": "shoprite-zmblackfriday26nov29nov2026",
    "retailer": "shoprite",
    "page": 4,
-   "name": "Oh So Heavenly Foam Bath Assorted 2",
+   "name": "Oh So Heavenly Foam Bath Assorted 2L",
    "price": 80.0,
+   "sizeQty": 2000.0,
+   "sizeUnit": "ml",
    "save": 35.0,
    "crop": "crops/a17b17d6-04-21.jpg",
    "category": "Baby & personal care",
@@ -1856,7 +2076,9 @@
     0.2903,
     0.1535,
     0.1405
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Oh So Heavenly Foam Bath Assorted 2"
   },
   {
    "id": "a17b17d6-04-22",
@@ -1876,7 +2098,8 @@
     0.292,
     0.1509,
     0.1401
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-23",
@@ -1896,7 +2119,8 @@
     0.4593,
     0.1613,
     0.1409
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-24",
@@ -1909,7 +2133,7 @@
    "sizeUnit": "ml",
    "save": 14.0,
    "crop": "crops/a17b17d6-04-24.jpg",
-   "group": "g28",
+   "group": "g32",
    "category": "Household",
    "confidence": 0.98,
    "box": [
@@ -1917,7 +2141,8 @@
     0.4597,
     0.1509,
     0.1396
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-25",
@@ -1937,7 +2162,8 @@
     0.4584,
     0.1535,
     0.1413
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-26",
@@ -1957,7 +2183,8 @@
     0.1736,
     0.1535,
     0.1443
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-27",
@@ -1977,7 +2204,8 @@
     0.6265,
     0.1535,
     0.1401
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-28",
@@ -1997,7 +2225,8 @@
     0.4597,
     0.1509,
     0.143
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-29",
@@ -2017,16 +2246,17 @@
     0.4584,
     0.1535,
     0.1422
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-30",
    "catalogue": "shoprite-zmblackfriday26nov29nov2026",
    "retailer": "shoprite",
    "page": 4,
-   "name": "Boom Pine Gel 2",
+   "name": "Boom Pine Gel 2L",
    "price": 56.0,
-   "sizeQty": 100.0,
+   "sizeQty": 2000.0,
    "sizeUnit": "ml",
    "save": 29.0,
    "crop": "crops/a17b17d6-04-30.jpg",
@@ -2037,7 +2267,9 @@
     0.5789,
     0.2175,
     0.1876
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Boom Pine Gel 2"
   },
   {
    "id": "a17b17d6-04-31",
@@ -2050,7 +2282,7 @@
    "sizeUnit": "ml",
    "save": 8.0,
    "crop": "crops/a17b17d6-04-31.jpg",
-   "group": "g29",
+   "group": "g33",
    "category": "Household",
    "confidence": 0.99,
    "box": [
@@ -2058,7 +2290,8 @@
     0.5828,
     0.2129,
     0.1842
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-32",
@@ -2078,7 +2311,8 @@
     0.5751,
     0.2227,
     0.1914
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "a17b17d6-04-33",
@@ -2098,7 +2332,8 @@
     0.5751,
     0.2227,
     0.1944
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-01-01",
@@ -2132,7 +2367,8 @@
     0.541,
     0.2111,
     0.138
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-01-03",
@@ -2149,7 +2385,8 @@
     0.5495,
     0.2131,
     0.1363
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-01-04",
@@ -2161,7 +2398,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-01-04.jpg",
-   "group": "g1",
+   "group": "g3",
    "category": "Drinks",
    "confidence": 0.92,
    "box": [
@@ -2188,7 +2425,8 @@
     0.3495,
     0.1804,
     0.1367
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-01-06",
@@ -2200,7 +2438,7 @@
    "sizeQty": 2000.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-01-06.jpg",
-   "group": "g30",
+   "group": "g1",
    "category": "Pantry",
    "confidence": 0.99,
    "box": [
@@ -2208,7 +2446,8 @@
     0.5461,
     0.1804,
     0.1363
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-01-07",
@@ -2220,7 +2459,7 @@
    "sizeQty": 3000.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-01-07.jpg",
-   "group": "g8",
+   "group": "g10",
    "category": "Pantry",
    "confidence": 0.99,
    "box": [
@@ -2228,7 +2467,8 @@
     0.5444,
     0.183,
     0.138
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-01-08",
@@ -2264,7 +2504,8 @@
     0.1885,
     0.183,
     0.138
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-01-10",
@@ -2276,7 +2517,7 @@
    "sizeQty": 250.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-01-10.jpg",
-   "group": "g31",
+   "group": "g34",
    "category": "Dairy & eggs",
    "confidence": 0.99,
    "box": [
@@ -2284,7 +2525,26 @@
     0.3834,
     0.2327,
     0.1346
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "d3b29df2-01-11",
+   "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
+   "retailer": "shoprite",
+   "page": 1,
+   "name": "Farmer's Choice 10F Mixed Chicken Portions",
+   "price": 329.99,
+   "crop": "crops/d3b29df2-01-11.jpg",
+   "category": "Meat & fish",
+   "confidence": 0.8,
+   "box": [
+    0.3863,
+    0.2429,
+    0.2627,
+    0.2068
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-01",
@@ -2303,7 +2563,8 @@
     0.0,
     0.2601,
     0.1389
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-02",
@@ -2330,11 +2591,11 @@
    "retailer": "shoprite",
    "page": 2,
    "name": "Fatti's & Moni's Macaroni/spaghetti 500g",
-   "price": 25.0,
+   "price": 25.99,
    "sizeQty": 500.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-02-03.jpg",
-   "group": "g32",
+   "group": "g35",
    "category": "Pantry",
    "confidence": 0.98,
    "box": [
@@ -2342,7 +2603,8 @@
     0.0,
     0.2641,
     0.2285
-   ]
+   ],
+   "otherPrice": 25.0
   },
   {
    "id": "d3b29df2-02-04",
@@ -2380,7 +2642,8 @@
     0.8488,
     0.1922,
     0.1456
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-06",
@@ -2390,7 +2653,7 @@
    "name": "It's Wild! Chama White Rice Sk",
    "price": 132.99,
    "crop": "crops/d3b29df2-02-06.jpg",
-   "group": "g33",
+   "group": "g36",
    "category": "Pantry",
    "confidence": 0.89,
    "box": [
@@ -2398,7 +2661,8 @@
     0.8454,
     0.1758,
     0.1456
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-07",
@@ -2408,7 +2672,7 @@
    "name": "Clover Olive Pride Blend of Seed Oils & Extra Virgin Olive Oilach",
    "price": 114.99,
    "crop": "crops/d3b29df2-02-07.jpg",
-   "group": "g34",
+   "group": "g37",
    "category": "Other",
    "confidence": 0.94,
    "box": [
@@ -2416,7 +2680,8 @@
     0.6246,
     0.1614,
     0.1495
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-08",
@@ -2435,7 +2700,8 @@
     0.2828,
     0.1634,
     0.1456
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-09",
@@ -2454,7 +2720,8 @@
     0.6323,
     0.166,
     0.1478
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-10",
@@ -2473,7 +2740,8 @@
     0.2811,
     0.1634,
     0.1456
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-11",
@@ -2485,7 +2753,7 @@
    "sizeQty": 400.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-02-11.jpg",
-   "group": "g35",
+   "group": "g38",
    "category": "Pantry",
    "confidence": 0.99,
    "box": [
@@ -2493,7 +2761,8 @@
     0.4357,
     0.166,
     0.1473
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-12",
@@ -2505,7 +2774,7 @@
    "sizeQty": 300.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-02-12.jpg",
-   "group": "g36",
+   "group": "g39",
    "category": "Meat & fish",
    "confidence": 0.84,
    "box": [
@@ -2513,7 +2782,8 @@
     0.4344,
     0.166,
     0.1469
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-13",
@@ -2525,7 +2795,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-02-13.jpg",
-   "group": "g17",
+   "group": "g19",
    "category": "Pantry",
    "confidence": 0.99,
    "box": [
@@ -2533,7 +2803,8 @@
     0.6272,
     0.1667,
     0.1516
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-14",
@@ -2545,7 +2816,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-02-14.jpg",
-   "group": "g37",
+   "group": "g40",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -2553,7 +2824,8 @@
     0.29,
     0.1608,
     0.1444
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-15",
@@ -2572,7 +2844,8 @@
     0.4352,
     0.1634,
     0.1452
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-16",
@@ -2591,7 +2864,8 @@
     0.4361,
     0.1634,
     0.1452
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-17",
@@ -2610,7 +2884,8 @@
     0.8255,
     0.1634,
     0.1503
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-18",
@@ -2629,7 +2904,8 @@
     0.2832,
     0.166,
     0.1465
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-19",
@@ -2641,7 +2917,7 @@
    "sizeQty": 500.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-02-19.jpg",
-   "group": "g38",
+   "group": "g41",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -2649,7 +2925,8 @@
     0.2803,
     0.1634,
     0.1452
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-20",
@@ -2666,7 +2943,8 @@
     0.4318,
     0.166,
     0.1473
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-21",
@@ -2685,7 +2963,8 @@
     0.8395,
     0.168,
     0.1435
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-22",
@@ -2702,7 +2981,8 @@
     0.6467,
     0.1386,
     0.1291
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-02-23",
@@ -2710,7 +2990,7 @@
    "retailer": "shoprite",
    "page": 2,
    "name": "Cremora Coffee & Tea Creamer Tsos",
-   "price": 78.0,
+   "price": 78.99,
    "sizeQty": 1000.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-02-23.jpg",
@@ -2721,7 +3001,8 @@
     0.0,
     0.2641,
     0.2229
-   ]
+   ],
+   "otherPrice": 78.0
   },
   {
    "id": "d3b29df2-02-24",
@@ -2740,7 +3021,8 @@
     0.4038,
     0.1967,
     0.169
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-01",
@@ -2759,7 +3041,8 @@
     0.2769,
     0.183,
     0.138
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-02",
@@ -2778,7 +3061,8 @@
     0.2764,
     0.1608,
     0.1444
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-03",
@@ -2797,7 +3081,8 @@
     0.2773,
     0.1608,
     0.1427
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-04",
@@ -2809,7 +3094,7 @@
    "sizeQty": 105.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-03-04.jpg",
-   "group": "g7",
+   "group": "g9",
    "category": "Snacks & sweets",
    "confidence": 0.99,
    "box": [
@@ -2817,7 +3102,8 @@
     0.6429,
     0.1634,
     0.1452
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-05",
@@ -2836,16 +3122,17 @@
     0.6565,
     0.1634,
     0.152
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-06",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 3,
-   "name": "Lynx Premium Concentrate Syrup Assorted 2",
+   "name": "Lynx Premium Concentrate Syrup Assorted 2L",
    "price": 44.99,
-   "sizeQty": 990.0,
+   "sizeQty": 2000.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-03-06.jpg",
    "category": "Pantry",
@@ -2855,7 +3142,9 @@
     0.8416,
     0.1817,
     0.1406
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Lynx Premium Concentrate Syrup Assorted 2"
   },
   {
    "id": "d3b29df2-03-07",
@@ -2874,7 +3163,8 @@
     0.645,
     0.1634,
     0.1512
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-08",
@@ -2886,7 +3176,7 @@
    "sizeQty": 500.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-03-08.jpg",
-   "group": "g12",
+   "group": "g14",
    "category": "Drinks",
    "confidence": 0.99,
    "box": [
@@ -2894,7 +3184,8 @@
     0.8357,
     0.166,
     0.1435
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-09",
@@ -2906,7 +3197,7 @@
    "sizeQty": 200.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-03-09.jpg",
-   "group": "g11",
+   "group": "g13",
    "category": "Snacks & sweets",
    "confidence": 0.99,
    "box": [
@@ -2914,7 +3205,8 @@
     0.4603,
     0.1765,
     0.1414
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-10",
@@ -2926,7 +3218,7 @@
    "sizeQty": 150.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-03-10.jpg",
-   "group": "g6",
+   "group": "g8",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -2934,7 +3226,8 @@
     0.6561,
     0.1608,
     0.1414
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-11",
@@ -2953,7 +3246,8 @@
     0.4671,
     0.1634,
     0.1465
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-12",
@@ -2972,7 +3266,8 @@
     0.8318,
     0.166,
     0.1452
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-13",
@@ -2989,7 +3284,8 @@
     0.2883,
     0.1405,
     0.1312
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-14",
@@ -3008,7 +3304,8 @@
     0.4866,
     0.1386,
     0.121
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-15",
@@ -3025,7 +3322,8 @@
     0.5006,
     0.1412,
     0.1214
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-16",
@@ -3042,7 +3340,8 @@
     0.6565,
     0.1412,
     0.1197
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-17",
@@ -3059,7 +3358,8 @@
     0.8442,
     0.1425,
     0.1321
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-03-18",
@@ -3085,7 +3385,7 @@
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 3,
-   "name": "Crosse & Blackwell Tangy Mayonnaise 750g+ All Gold Tomato SAUUEOml",
+   "name": "Crosse & Blackwell Tangy Mayonnaise 750g+ All Gold Tomato Sauce 700ml",
    "price": 125.0,
    "crop": "crops/d3b29df2-03-19.jpg",
    "category": "Pantry",
@@ -3095,7 +3395,9 @@
     0.0,
     0.268,
     0.2301
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Crosse & Blackwell Tangy Mayonnaise 750g+ All Gold Tomato SAUUEOml"
   },
   {
    "id": "d3b29df2-03-20",
@@ -3114,7 +3416,28 @@
     0.6858,
     0.2033,
     0.166
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "d3b29df2-03-21",
+   "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
+   "retailer": "shoprite",
+   "page": 3,
+   "name": "Society Candy Assorted 40x30g Jar",
+   "price": 5.99,
+   "sizeQty": 1200.0,
+   "sizeUnit": "g",
+   "crop": "crops/d3b29df2-03-21.jpg",
+   "category": "Snacks & sweets",
+   "confidence": 0.8,
+   "box": [
+    0.0,
+    0.5155,
+    0.215,
+    0.1456
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-01",
@@ -3132,7 +3455,8 @@
     0.2166,
     0.2105,
     0.121
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-02",
@@ -3150,7 +3474,8 @@
     0.2166,
     0.2379,
     0.1176
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-03",
@@ -3161,7 +3486,7 @@
    "price": 102.99,
    "perKg": true,
    "crop": "crops/d3b29df2-04-03.jpg",
-   "group": "g39",
+   "group": "g42",
    "category": "Meat & fish",
    "confidence": 1.0,
    "box": [
@@ -3169,7 +3494,8 @@
     0.1185,
     0.2098,
     0.1151
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-04",
@@ -3188,7 +3514,8 @@
     0.4064,
     0.2176,
     0.121
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-05",
@@ -3205,7 +3532,8 @@
     0.5287,
     0.2327,
     0.1155
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-06",
@@ -3224,7 +3552,8 @@
     0.4064,
     0.2059,
     0.1172
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-07",
@@ -3241,7 +3570,8 @@
     0.2166,
     0.219,
     0.1134
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-08",
@@ -3260,7 +3590,8 @@
     0.3146,
     0.151,
     0.1134
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-09",
@@ -3279,7 +3610,8 @@
     0.4132,
     0.2065,
     0.1146
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-10",
@@ -3298,7 +3630,8 @@
     0.8701,
     0.1503,
     0.1121
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-11",
@@ -3317,7 +3650,8 @@
     0.3163,
     0.2111,
     0.1219
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-12",
@@ -3336,7 +3670,8 @@
     0.4102,
     0.202,
     0.118
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-13",
@@ -3355,7 +3690,8 @@
     0.8739,
     0.2111,
     0.1172
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-14",
@@ -3372,7 +3708,8 @@
     0.704,
     0.2111,
     0.1134
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-15",
@@ -3389,7 +3726,8 @@
     0.7057,
     0.2052,
     0.1146
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-16",
@@ -3408,7 +3746,8 @@
     0.2726,
     0.2072,
     0.1146
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-17",
@@ -3425,7 +3764,8 @@
     0.62,
     0.2157,
     0.1117
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-18",
@@ -3444,7 +3784,8 @@
     0.6263,
     0.1458,
     0.1096
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-20",
@@ -3461,7 +3802,8 @@
     0.6934,
     0.1908,
     0.1142
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-21",
@@ -3478,7 +3820,8 @@
     0.5316,
     0.2052,
     0.1142
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-04-23",
@@ -3496,7 +3839,80 @@
     0.0,
     0.3392,
     0.2153
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "d3b29df2-04-24",
+   "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
+   "retailer": "shoprite",
+   "page": 4,
+   "name": "Pork Leg Roast",
+   "price": 129.99,
+   "crop": "crops/d3b29df2-04-24.jpg",
+   "category": "Meat & fish",
+   "confidence": 0.8,
+   "box": [
+    0.4196,
+    0.135,
+    0.2242,
+    0.1456
+   ],
+   "agreed": true
+  },
+  {
+   "id": "d3b29df2-04-25",
+   "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
+   "retailer": "shoprite",
+   "page": 4,
+   "name": "Beef Roast",
+   "price": 192.99,
+   "crop": "crops/d3b29df2-04-25.jpg",
+   "category": "Meat & fish",
+   "confidence": 0.8,
+   "box": [
+    0.5542,
+    0.2403,
+    0.2242,
+    0.1456
+   ],
+   "agreed": true
+  },
+  {
+   "id": "d3b29df2-04-27",
+   "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
+   "retailer": "shoprite",
+   "page": 4,
+   "name": "Jam Doughnut",
+   "price": 18.0,
+   "crop": "crops/d3b29df2-04-27.jpg",
+   "category": "Pantry",
+   "confidence": 0.8,
+   "box": [
+    0.5327,
+    0.5299,
+    0.2242,
+    0.1456
+   ],
+   "agreed": true
+  },
+  {
+   "id": "d3b29df2-04-28",
+   "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
+   "retailer": "shoprite",
+   "page": 4,
+   "name": "Carrots",
+   "price": 24.99,
+   "crop": "crops/d3b29df2-04-28.jpg",
+   "category": "Fruit & veg",
+   "confidence": 0.8,
+   "box": [
+    0.0464,
+    0.8794,
+    0.2242,
+    0.1206
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-01",
@@ -3515,7 +3931,8 @@
     0.558,
     0.2529,
     0.2251
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-02",
@@ -3534,14 +3951,15 @@
     0.6739,
     0.1471,
     0.1193
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-03",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 5,
-   "name": "Clover Salted/unsalted Butter Soech",
+   "name": "Clover Salted/unsalted Butter Soech 500g",
    "price": 159.99,
    "sizeQty": 500.0,
    "sizeUnit": "g",
@@ -3553,7 +3971,9 @@
     0.0866,
     0.1477,
     0.1197
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Clover Salted/unsalted Butter Soech"
   },
   {
    "id": "d3b29df2-05-04",
@@ -3572,15 +3992,18 @@
     0.676,
     0.1484,
     0.1193
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-05",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 5,
-   "name": "Rich's Versatié Cream Iach",
+   "name": "Rich's Versatié Cream Iach 1L",
    "price": 129.99,
+   "sizeQty": 1000.0,
+   "sizeUnit": "ml",
    "crop": "crops/d3b29df2-05-05.jpg",
    "category": "Dairy & eggs",
    "confidence": 0.79,
@@ -3589,7 +4012,9 @@
     0.2832,
     0.1471,
     0.1197
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Rich's Versatié Cream Iach"
   },
   {
    "id": "d3b29df2-05-06",
@@ -3608,7 +4033,8 @@
     0.4947,
     0.1464,
     0.1202
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-07",
@@ -3627,15 +4053,18 @@
     0.3962,
     0.1458,
     0.1223
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-08",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 5,
-   "name": "Carnival Supreme Ice Cream Assorted 2",
+   "name": "Carnival Supreme Ice Cream Assorted 2L",
    "price": 79.99,
+   "sizeQty": 2000.0,
+   "sizeUnit": "ml",
    "crop": "crops/d3b29df2-05-08.jpg",
    "category": "Dairy & eggs",
    "confidence": 0.98,
@@ -3644,7 +4073,9 @@
     0.5176,
     0.1386,
     0.1206
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Carnival Supreme Ice Cream Assorted 2"
   },
   {
    "id": "d3b29df2-05-09",
@@ -3652,7 +4083,7 @@
    "retailer": "shoprite",
    "page": 5,
    "name": "Parmalat Cheese Slices Assorted 200g",
-   "price": 53.9,
+   "price": 53.99,
    "sizeQty": 200.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-05-09.jpg",
@@ -3663,7 +4094,8 @@
     0.3979,
     0.1386,
     0.1227
-   ]
+   ],
+   "otherPrice": 53.9
   },
   {
    "id": "d3b29df2-05-10",
@@ -3681,7 +4113,8 @@
     0.6747,
     0.1359,
     0.1257
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-11",
@@ -3700,7 +4133,8 @@
     0.8467,
     0.1359,
     0.1206
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-12",
@@ -3719,7 +4153,8 @@
     0.8425,
     0.1386,
     0.1219
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-13",
@@ -3738,7 +4173,8 @@
     0.0985,
     0.1359,
     0.121
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-14",
@@ -3757,7 +4193,8 @@
     0.3987,
     0.1359,
     0.121
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-15",
@@ -3776,7 +4213,8 @@
     0.8442,
     0.1359,
     0.1197
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-16",
@@ -3812,15 +4250,18 @@
     0.3975,
     0.1386,
     0.1231
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-18",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 5,
-   "name": "Today Frozen Original Puff Pastry",
+   "name": "Today Frozen Original Puff Pastry 400g",
    "price": 39.99,
+   "sizeQty": 400.0,
+   "sizeUnit": "g",
    "crop": "crops/d3b29df2-05-18.jpg",
    "category": "Other",
    "confidence": 0.99,
@@ -3829,7 +4270,9 @@
     0.49,
     0.1386,
     0.1202
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Today Frozen Original Puff Pastry"
   },
   {
    "id": "d3b29df2-05-19",
@@ -3848,7 +4291,8 @@
     0.3987,
     0.1359,
     0.1253
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-20",
@@ -3867,7 +4311,8 @@
     0.8433,
     0.1359,
     0.1202
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-21",
@@ -3886,7 +4331,8 @@
     0.2442,
     0.1333,
     0.1202
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-22",
@@ -3905,7 +4351,8 @@
     0.3873,
     0.1333,
     0.1197
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-23",
@@ -3924,7 +4371,8 @@
     0.4794,
     0.1458,
     0.1236
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-24",
@@ -3943,7 +4391,8 @@
     0.2357,
     0.1359,
     0.1202
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-25",
@@ -3962,7 +4411,8 @@
     0.228,
     0.1386,
     0.1206
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-26",
@@ -3981,7 +4431,8 @@
     0.0531,
     0.2007,
     0.1626
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-05-27",
@@ -3993,7 +4444,7 @@
    "sizeQty": 475.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-05-27.jpg",
-   "group": "g40",
+   "group": "g43",
    "category": "Dairy & eggs",
    "confidence": 0.99,
    "box": [
@@ -4001,7 +4452,29 @@
     0.203,
     0.2229,
     0.1771
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "d3b29df2-05-28",
+   "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
+   "retailer": "shoprite",
+   "page": 5,
+   "name": "Zamchick Frozen Mixed Chicken Portions 2kg",
+   "price": 119.99,
+   "sizeQty": 2000.0,
+   "sizeUnit": "g",
+   "crop": "crops/d3b29df2-05-28.jpg",
+   "group": "g2",
+   "category": "Meat & fish",
+   "confidence": 0.8,
+   "box": [
+    0.668,
+    0.0594,
+    0.2621,
+    0.1456
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-01",
@@ -4013,7 +4486,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-01.jpg",
-   "group": "g41",
+   "group": "g44",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -4021,7 +4494,8 @@
     0.7992,
     0.1784,
     0.1015
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-02",
@@ -4033,7 +4507,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-02.jpg",
-   "group": "g15",
+   "group": "g17",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -4041,7 +4515,8 @@
     0.4522,
     0.1654,
     0.1079
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-03",
@@ -4053,7 +4528,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-03.jpg",
-   "group": "g16",
+   "group": "g18",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -4061,7 +4536,8 @@
     0.7945,
     0.1647,
     0.1074
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-04",
@@ -4069,7 +4545,7 @@
    "retailer": "shoprite",
    "page": 6,
    "name": "Jameson Caskmates Stout Edition Irish Whiskey 750ml",
-   "price": 699.9,
+   "price": 699.99,
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-04.jpg",
@@ -4080,7 +4556,8 @@
     0.8008,
     0.1582,
     0.1019
-   ]
+   ],
+   "otherPrice": 699.9
   },
   {
    "id": "d3b29df2-06-05",
@@ -4092,7 +4569,7 @@
    "sizeQty": 700.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-05.jpg",
-   "group": "g42",
+   "group": "g45",
    "category": "Other",
    "confidence": 1.0,
    "box": [
@@ -4100,15 +4577,18 @@
     0.6127,
     0.1575,
     0.1036
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-06",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Fat Bastard Wine Assorted 7soeach",
+   "name": "Fat Bastard Wine Assorted 750ml",
    "price": 379.99,
+   "sizeQty": 750.0,
+   "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-06.jpg",
    "category": "Liquor",
    "confidence": 0.94,
@@ -4117,7 +4597,9 @@
     0.4577,
     0.1569,
     0.1019
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Fat Bastard Wine Assorted 7soeach"
   },
   {
    "id": "d3b29df2-06-07",
@@ -4129,7 +4611,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-07.jpg",
-   "group": "g43",
+   "group": "g46",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -4137,19 +4619,20 @@
     0.2896,
     0.1497,
     0.1057
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-08",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Amarula Premium African Gin",
+   "name": "Amarula Premium African Gin 750ml",
    "price": 499.99,
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-08.jpg",
-   "group": "g44",
+   "group": "g47",
    "category": "Liquor",
    "confidence": 0.96,
    "box": [
@@ -4157,7 +4640,9 @@
     0.6208,
     0.1562,
     0.0998
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Amarula Premium African Gin"
   },
   {
    "id": "d3b29df2-06-09",
@@ -4169,7 +4654,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-09.jpg",
-   "group": "g45",
+   "group": "g48",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -4177,7 +4662,8 @@
     0.8,
     0.1529,
     0.1002
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-10",
@@ -4189,7 +4675,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-10.jpg",
-   "group": "g46",
+   "group": "g49",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -4197,14 +4683,15 @@
     0.6132,
     0.1471,
     0.1019
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-11",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Brutal Fruit Ruby Apple/ Litchi Séche Sparkling Spritzer",
+   "name": "Brutal Fruit Ruby Apple/ Litchi Séche Sparkling Spritzer 6x500ml",
    "price": 159.99,
    "sizeQty": 3000.0,
    "sizeUnit": "ml",
@@ -4216,14 +4703,16 @@
     0.1516,
     0.1536,
     0.1036
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Brutal Fruit Ruby Apple/ Litchi Séche Sparkling Spritzer"
   },
   {
    "id": "d3b29df2-06-12",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Heineken Beer Assorted Perpack",
+   "name": "Heineken Beer Assorted Perpack 6x330ml",
    "price": 189.99,
    "sizeQty": 1980.0,
    "sizeUnit": "ml",
@@ -4235,19 +4724,21 @@
     0.1546,
     0.1464,
     0.1036
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Heineken Beer Assorted Perpack"
   },
   {
    "id": "d3b29df2-06-13",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Corona Extra Beer",
+   "name": "Corona Extra Beer 6x355ml",
    "price": 199.99,
    "sizeQty": 2130.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-13.jpg",
-   "group": "g13",
+   "group": "g15",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -4255,7 +4746,9 @@
     0.1533,
     0.1484,
     0.1002
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Corona Extra Beer"
   },
   {
    "id": "d3b29df2-06-14",
@@ -4274,15 +4767,18 @@
     0.6136,
     0.1451,
     0.1019
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-15",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Robertson Winery Non-alcoholic Sparkling Wine Assorted 7sooeach",
+   "name": "Robertson Winery Non-alcoholic Sparkling Wine Assorted 750ml",
    "price": 179.99,
+   "sizeQty": 750.0,
+   "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-15.jpg",
    "category": "Liquor",
    "confidence": 0.94,
@@ -4291,7 +4787,9 @@
     0.2951,
     0.1471,
     0.1015
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Robertson Winery Non-alcoholic Sparkling Wine Assorted 7sooeach"
   },
   {
    "id": "d3b29df2-06-16",
@@ -4303,7 +4801,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-16.jpg",
-   "group": "g47",
+   "group": "g50",
    "category": "Other",
    "confidence": 0.91,
    "box": [
@@ -4311,16 +4809,20 @@
     0.7987,
     0.1471,
     0.1002
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-17",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Hunter's Gold/dry Cider",
-   "price": 179.9,
+   "name": "Hunter's Gold/dry Cider 6x330ml",
+   "price": 179.99,
+   "sizeQty": 1980.0,
+   "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-17.jpg",
+   "group": "g22",
    "category": "Liquor",
    "confidence": 0.98,
    "box": [
@@ -4328,19 +4830,21 @@
     0.2909,
     0.1464,
     0.1002
-   ]
+   ],
+   "otherPrice": 179.9,
+   "firstName": "Hunter's Gold/dry Cider"
   },
   {
    "id": "d3b29df2-06-18",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Tiger Eye Rum",
+   "name": "Tiger Eye Rum 750ml",
    "price": 139.99,
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-18.jpg",
-   "group": "g48",
+   "group": "g51",
    "category": "Liquor",
    "confidence": 0.96,
    "box": [
@@ -4348,7 +4852,9 @@
     0.4522,
     0.1464,
     0.1015
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Tiger Eye Rum"
   },
   {
    "id": "d3b29df2-06-19",
@@ -4367,7 +4873,8 @@
     0.2964,
     0.1431,
     0.1002
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-20",
@@ -4384,7 +4891,8 @@
     0.6025,
     0.1412,
     0.1197
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-21",
@@ -4394,7 +4902,7 @@
    "name": "Four Cousins Wine Assorted (2 for K250)",
    "price": 125.0,
    "crop": "crops/d3b29df2-06-21.jpg",
-   "group": "g49",
+   "group": "g52",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -4402,7 +4910,8 @@
     0.4416,
     0.1386,
     0.1176
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-22",
@@ -4412,7 +4921,7 @@
    "name": "Robertson Winery Chapel Wine Assorted (2 for K270)",
    "price": 135.0,
    "crop": "crops/d3b29df2-06-22.jpg",
-   "group": "g50",
+   "group": "g53",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -4420,7 +4929,8 @@
     0.4352,
     0.1386,
     0.1185
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-23",
@@ -4439,7 +4949,8 @@
     0.0416,
     0.1359,
     0.1019
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-24",
@@ -4451,7 +4962,7 @@
    "sizeQty": 440.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-24.jpg",
-   "group": "g51",
+   "group": "g54",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -4459,15 +4970,18 @@
     0.0454,
     0.1333,
     0.1002
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-06-25",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Chibuku Super Opaque/banana Beer 1.25",
+   "name": "Chibuku Super Opaque/banana Beer 1.2L",
    "price": 11.99,
+   "sizeQty": 1200.0,
+   "sizeUnit": "ml",
    "crop": "crops/d3b29df2-06-25.jpg",
    "category": "Liquor",
    "confidence": 0.97,
@@ -4476,7 +4990,9 @@
     0.2955,
     0.1366,
     0.1006
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Chibuku Super Opaque/banana Beer 1.25"
   },
   {
    "id": "d3b29df2-06-26",
@@ -4514,7 +5030,50 @@
     0.7444,
     0.1817,
     0.1244
-   ]
+   ],
+   "otherPrice": 249.99
+  },
+  {
+   "id": "d3b29df2-06-28",
+   "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
+   "retailer": "shoprite",
+   "page": 6,
+   "name": "Castle Lite Beer 6x330ml NRB",
+   "price": 119.99,
+   "sizeQty": 1980.0,
+   "sizeUnit": "ml",
+   "crop": "crops/d3b29df2-06-28.jpg",
+   "group": "g7",
+   "category": "Liquor",
+   "confidence": 0.8,
+   "box": [
+    0.7281,
+    0.0386,
+    0.2242,
+    0.1614
+   ],
+   "agreed": true
+  },
+  {
+   "id": "d3b29df2-06-29",
+   "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
+   "retailer": "shoprite",
+   "page": 6,
+   "name": "Gordon's London Dry Gin Assorted 750ml",
+   "price": 174.99,
+   "sizeQty": 750.0,
+   "sizeUnit": "ml",
+   "crop": "crops/d3b29df2-06-29.jpg",
+   "group": "g55",
+   "category": "Liquor",
+   "confidence": 0.8,
+   "box": [
+    0.0,
+    0.5975,
+    0.2065,
+    0.1456
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-01",
@@ -4531,7 +5090,8 @@
     0.3983,
     0.215,
     0.1083
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-02",
@@ -4543,7 +5103,7 @@
    "sizeQty": 140.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-07-02.jpg",
-   "group": "g21",
+   "group": "g25",
    "category": "Baby & personal care",
    "confidence": 0.93,
    "box": [
@@ -4551,7 +5111,8 @@
     0.513,
     0.1595,
     0.1134
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-03",
@@ -4568,7 +5129,8 @@
     0.403,
     0.2,
     0.1074
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-04",
@@ -4587,7 +5149,8 @@
     0.518,
     0.151,
     0.1134
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-05",
@@ -4606,7 +5169,8 @@
     0.8331,
     0.151,
     0.1372
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-06",
@@ -4625,7 +5189,8 @@
     0.6161,
     0.1484,
     0.1117
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-07",
@@ -4644,7 +5209,8 @@
     0.0076,
     0.1484,
     0.1367
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-08",
@@ -4663,7 +5229,8 @@
     0.1626,
     0.1458,
     0.1291
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-09",
@@ -4682,7 +5249,8 @@
     0.0047,
     0.1458,
     0.1363
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-10",
@@ -4701,7 +5269,8 @@
     0.5321,
     0.1477,
     0.1096
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-11",
@@ -4720,7 +5289,8 @@
     0.1673,
     0.1458,
     0.1291
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-12",
@@ -4758,7 +5328,8 @@
     0.8531,
     0.1595,
     0.1113
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-14",
@@ -4777,7 +5348,8 @@
     0.1677,
     0.1431,
     0.127
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-15",
@@ -4796,7 +5368,8 @@
     0.6132,
     0.1484,
     0.1113
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-17",
@@ -4804,7 +5377,7 @@
    "retailer": "shoprite",
    "page": 7,
    "name": "Jolly Tots Gripper Cup with Straw",
-   "price": 99.9,
+   "price": 99.99,
    "sizeQty": 300.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-07-17.jpg",
@@ -4815,7 +5388,8 @@
     0.2297,
     0.1412,
     0.1244
-   ]
+   ],
+   "otherPrice": 99.9
   },
   {
    "id": "d3b29df2-07-18",
@@ -4834,7 +5408,8 @@
     0.3015,
     0.1412,
     0.1248
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-19",
@@ -4846,7 +5421,7 @@
    "sizeQty": 175.0,
    "sizeUnit": "g",
    "crop": "crops/d3b29df2-07-19.jpg",
-   "group": "g52",
+   "group": "g56",
    "category": "Baby & personal care",
    "confidence": 0.98,
    "box": [
@@ -4854,7 +5429,8 @@
     0.5227,
     0.1484,
     0.1117
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-20",
@@ -4871,7 +5447,8 @@
     0.279,
     0.1386,
     0.1236
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-21",
@@ -4890,7 +5467,8 @@
     0.69,
     0.1484,
     0.1117
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-22",
@@ -4907,7 +5485,8 @@
     0.3907,
     0.1386,
     0.1244
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-23",
@@ -4924,7 +5503,8 @@
     0.3868,
     0.1412,
     0.1257
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-24",
@@ -4941,7 +5521,8 @@
     0.2794,
     0.1412,
     0.1299
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-25",
@@ -4958,7 +5539,8 @@
     0.3877,
     0.1386,
     0.1227
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-26",
@@ -4975,7 +5557,8 @@
     0.2972,
     0.1412,
     0.124
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-27",
@@ -4992,7 +5575,8 @@
     0.2951,
     0.1386,
     0.1223
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-28",
@@ -5009,7 +5593,8 @@
     0.6934,
     0.1261,
     0.1231
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-29",
@@ -5043,7 +5628,8 @@
     0.0454,
     0.1209,
     0.1134
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-31",
@@ -5060,7 +5646,8 @@
     0.0535,
     0.1804,
     0.1529
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-32",
@@ -5068,7 +5655,7 @@
    "retailer": "shoprite",
    "page": 7,
    "name": "Comfort Care Gold Disposable Nappies 36/40/42/48",
-   "price": 108.0,
+   "price": 108.99,
    "sizeQty": 48.0,
    "sizeUnit": "ea",
    "crop": "crops/d3b29df2-07-32.jpg",
@@ -5079,7 +5666,8 @@
     0.0234,
     0.3418,
     0.2594
-   ]
+   ],
+   "otherPrice": 108.0
   },
   {
    "id": "d3b29df2-07-33",
@@ -5113,7 +5701,8 @@
     0.8136,
     0.183,
     0.155
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-07-35",
@@ -5130,15 +5719,18 @@
     0.8051,
     0.1758,
     0.1614
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-08-01",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Cobra/dettol All Purpose Cleaner Assorted Itsah",
+   "name": "Cobra/dettol All Purpose Cleaner Assorted Itsah 1.5L",
    "price": 109.99,
+   "sizeQty": 1500.0,
+   "sizeUnit": "ml",
    "crop": "crops/d3b29df2-08-01.jpg",
    "category": "Household",
    "confidence": 0.87,
@@ -5147,14 +5739,15 @@
     0.4807,
     0.1608,
     0.1117
-   ]
+   ],
+   "firstName": "Cobra/dettol All Purpose Cleaner Assorted Itsah"
   },
   {
    "id": "d3b29df2-08-02",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Essentials Manual Microwave Oven 20",
+   "name": "Essentials Manual Microwave Oven 20w",
    "price": 2199.99,
    "crop": "crops/d3b29df2-08-02.jpg",
    "category": "Electronics & appliances",
@@ -5164,7 +5757,8 @@
     0.8093,
     0.2333,
     0.1066
-   ]
+   ],
+   "firstName": "Essentials Manual Microwave Oven 20"
   },
   {
    "id": "d3b29df2-08-03",
@@ -5174,7 +5768,7 @@
    "name": "Carbon Steel Cookware Set 7-piece",
    "price": 399.99,
    "crop": "crops/d3b29df2-08-03.jpg",
-   "group": "g23",
+   "group": "g27",
    "category": "Home & outdoor",
    "confidence": 0.8,
    "box": [
@@ -5208,7 +5802,7 @@
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Essentials Glass Cordless Kettle Tleah",
+   "name": "Essentials Glass Cordless Kettle Tleah 1.7L",
    "price": 449.99,
    "crop": "crops/d3b29df2-08-05.jpg",
    "category": "Electronics & appliances",
@@ -5218,16 +5812,18 @@
     0.8098,
     0.1961,
     0.1113
-   ]
+   ],
+   "firstName": "Essentials Glass Cordless Kettle Tleah"
   },
   {
    "id": "d3b29df2-08-06",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Platinum Iron Steam 2oweach",
+   "name": "Platinum Iron Steam 2000w",
    "price": 549.99,
    "crop": "crops/d3b29df2-08-06.jpg",
+   "group": "g57",
    "category": "Electronics & appliances",
    "confidence": 0.88,
    "box": [
@@ -5235,7 +5831,8 @@
     0.8115,
     0.1993,
     0.1023
-   ]
+   ],
+   "firstName": "Platinum Iron Steam 2oweach"
   },
   {
    "id": "d3b29df2-08-07",
@@ -5280,9 +5877,12 @@
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Harpic Toilet Cleaner Assorted 7tso Eeach",
+   "name": "Harpic Toilet Cleaner Assorted 750ml Eeach",
    "price": 38.99,
+   "sizeQty": 750.0,
+   "sizeUnit": "ml",
    "crop": "crops/d3b29df2-08-11.jpg",
+   "group": "g58",
    "category": "Household",
    "confidence": 0.92,
    "box": [
@@ -5290,16 +5890,20 @@
     0.318,
     0.151,
     0.1134
-   ]
+   ],
+   "firstName": "Harpic Toilet Cleaner Assorted 7tso Eeach"
   },
   {
    "id": "d3b29df2-08-12",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Sta-soft Fabric Softener Assorted",
+   "name": "Sta-soft Fabric Softener Assorted 2L",
    "price": 69.99,
+   "sizeQty": 2000.0,
+   "sizeUnit": "ml",
    "crop": "crops/d3b29df2-08-12.jpg",
+   "group": "g23",
    "category": "Household",
    "confidence": 0.94,
    "box": [
@@ -5307,19 +5911,20 @@
     0.1096,
     0.1503,
     0.1117
-   ]
+   ],
+   "firstName": "Sta-soft Fabric Softener Assorted"
   },
   {
    "id": "d3b29df2-08-13",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Air Scents Air Freshener Assorted",
+   "name": "Air Scents Air Freshener Assorted 200ml",
    "price": 32.99,
    "sizeQty": 200.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-08-13.jpg",
-   "group": "g29",
+   "group": "g33",
    "category": "Household",
    "confidence": 0.99,
    "box": [
@@ -5327,15 +5932,18 @@
     0.4807,
     0.151,
     0.1134
-   ]
+   ],
+   "firstName": "Air Scents Air Freshener Assorted"
   },
   {
    "id": "d3b29df2-08-14",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Ritebrand Non-scratch All Purpose Cleaner Assorted 7tso Ach",
+   "name": "Ritebrand Non-scratch All Purpose Cleaner Assorted 750ml Ach",
    "price": 34.99,
+   "sizeQty": 750.0,
+   "sizeUnit": "ml",
    "crop": "crops/d3b29df2-08-14.jpg",
    "category": "Household",
    "confidence": 0.94,
@@ -5344,15 +5952,18 @@
     0.3146,
     0.1542,
     0.1117
-   ]
+   ],
+   "firstName": "Ritebrand Non-scratch All Purpose Cleaner Assorted 7tso Ach"
   },
   {
    "id": "d3b29df2-08-15",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Sunlight sin1 Washing Powder Assorted 2",
+   "name": "Sunlight sin1 Washing Powder Assorted 2kg",
    "price": 94.99,
+   "sizeQty": 2000.0,
+   "sizeUnit": "g",
    "crop": "crops/d3b29df2-08-15.jpg",
    "category": "Household",
    "confidence": 0.92,
@@ -5361,14 +5972,15 @@
     0.11,
     0.1706,
     0.1096
-   ]
+   ],
+   "firstName": "Sunlight sin1 Washing Powder Assorted 2"
   },
   {
    "id": "d3b29df2-08-16",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Nugget Black Shoe Polish 1o",
+   "name": "Nugget Black Shoe Polish 100ml",
    "price": 42.99,
    "sizeQty": 100.0,
    "sizeUnit": "ml",
@@ -5380,7 +5992,8 @@
     0.2034,
     0.1458,
     0.135
-   ]
+   ],
+   "firstName": "Nugget Black Shoe Polish 1o"
   },
   {
    "id": "d3b29df2-08-17",
@@ -5409,7 +6022,7 @@
    "sizeQty": 300.0,
    "sizeUnit": "ml",
    "crop": "crops/d3b29df2-08-18.jpg",
-   "group": "g53",
+   "group": "g59",
    "category": "Household",
    "confidence": 0.99,
    "box": [
@@ -5434,14 +6047,15 @@
     0.6238,
     0.1386,
     0.1291
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-08-20",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Peaceful Sleep Mosquito Repellent 150g + Peaceful Sleep Mosquitoroom Spray",
+   "name": "Peaceful Sleep Mosquito Repellent 150g + Peaceful Sleep Mosquitoroom Spray 180ml",
    "price": 130.0,
    "crop": "crops/d3b29df2-08-20.jpg",
    "category": "Baby & personal care",
@@ -5451,7 +6065,9 @@
     0.6221,
     0.1412,
     0.1227
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Peaceful Sleep Mosquito Repellent 150g + Peaceful Sleep Mosquitoroom Spray"
   },
   {
    "id": "d3b29df2-08-21",
@@ -5468,7 +6084,8 @@
     0.0904,
     0.1359,
     0.1278
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-08-22",
@@ -5485,7 +6102,8 @@
     0.2144,
     0.1386,
     0.1236
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-08-23",
@@ -5504,14 +6122,15 @@
     0.0042,
     0.2948,
     0.2382
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "d3b29df2-08-24",
    "catalogue": "shoprite-zmfestivesavings23nov06dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Shield Car Care Spray Assorted 200ml",
+   "name": "Shield Car Care Spray Assorted 200ml 1L",
    "price": 110.0,
    "crop": "crops/d3b29df2-08-24.jpg",
    "category": "Household",
@@ -5521,7 +6140,9 @@
     0.586,
     0.1954,
     0.1584
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Shield Car Care Spray Assorted 200ml"
   },
   {
    "id": "04cb1f7d-01-01",
@@ -5538,14 +6159,15 @@
     0.3154,
     0.2964,
     0.2767
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-01-02",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 1,
-   "name": "Green Christmas Tree",
+   "name": "Green Christmas Tree 1.8m",
    "price": 599.99,
    "crop": "crops/04cb1f7d-01-02.jpg",
    "category": "Home & outdoor",
@@ -5555,7 +6177,9 @@
     0.3154,
     0.2705,
     0.2572
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Green Christmas Tree"
   },
   {
    "id": "04cb1f7d-01-03",
@@ -5563,7 +6187,7 @@
    "retailer": "shoprite",
    "page": 1,
    "name": "Mx Racer Ride-on",
-   "price": 399.0,
+   "price": 399.99,
    "crop": "crops/04cb1f7d-01-03.jpg",
    "category": "Toys",
    "confidence": 0.98,
@@ -5572,7 +6196,8 @@
     0.2619,
     0.3398,
     0.3188
-   ]
+   ],
+   "otherPrice": 399.0
   },
   {
    "id": "04cb1f7d-01-04",
@@ -5580,7 +6205,7 @@
    "retailer": "shoprite",
    "page": 1,
    "name": "Bestmade Plush Bear 1m",
-   "price": 399.0,
+   "price": 399.99,
    "crop": "crops/04cb1f7d-01-04.jpg",
    "category": "Toys",
    "confidence": 0.99,
@@ -5589,15 +6214,16 @@
     0.4792,
     0.3457,
     0.3226
-   ]
+   ],
+   "otherPrice": 399.0
   },
   {
    "id": "04cb1f7d-01-05",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 1,
-   "name": "Black/white Auto Kettle Essentials Teah",
-   "price": 349.0,
+   "name": "Black/white Auto Kettle Essentials Teah 1.7L",
+   "price": 349.99,
    "crop": "crops/04cb1f7d-01-05.jpg",
    "category": "Electronics & appliances",
    "confidence": 0.86,
@@ -5606,7 +6232,9 @@
     0.4873,
     0.3521,
     0.3247
-   ]
+   ],
+   "otherPrice": 349.0,
+   "firstName": "Black/white Auto Kettle Essentials Teah"
   },
   {
    "id": "04cb1f7d-01-06",
@@ -5614,7 +6242,7 @@
    "retailer": "shoprite",
    "page": 1,
    "name": "Bistro Flute/ Winegagset 4-piece",
-   "price": 139.0,
+   "price": 139.99,
    "crop": "crops/04cb1f7d-01-06.jpg",
    "category": "Other",
    "confidence": 0.89,
@@ -5623,7 +6251,8 @@
     0.4949,
     0.3187,
     0.3192
-   ]
+   ],
+   "otherPrice": 139.0
   },
   {
    "id": "04cb1f7d-02-01",
@@ -5640,7 +6269,8 @@
     0.5781,
     0.2295,
     0.233
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-02",
@@ -5657,7 +6287,8 @@
     0.84,
     0.2283,
     0.1112
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-03",
@@ -5674,7 +6305,8 @@
     0.2322,
     0.2054,
     0.1095
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-04",
@@ -5691,14 +6323,15 @@
     0.8417,
     0.2077,
     0.1112
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-05",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 2,
-   "name": "Plush Sitting Bear Assorted 2o",
+   "name": "Plush Sitting Bear Assorted 20cm",
    "price": 129.99,
    "crop": "crops/04cb1f7d-02-05.jpg",
    "category": "Toys",
@@ -5708,7 +6341,9 @@
     0.2322,
     0.1907,
     0.1091
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Plush Sitting Bear Assorted 2o"
   },
   {
    "id": "04cb1f7d-02-06",
@@ -5725,7 +6360,8 @@
     0.0806,
     0.1291,
     0.1078
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-07",
@@ -5735,7 +6371,7 @@
    "name": "Food Kitchen Play Set Assorted",
    "price": 59.99,
    "crop": "crops/04cb1f7d-02-07.jpg",
-   "group": "g54",
+   "group": "g60",
    "category": "Toys",
    "confidence": 1.0,
    "box": [
@@ -5743,7 +6379,8 @@
     0.3913,
     0.1309,
     0.1091
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-08",
@@ -5760,7 +6397,8 @@
     0.3913,
     0.1309,
     0.1091
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-09",
@@ -5777,7 +6415,8 @@
     0.5734,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-10",
@@ -5794,7 +6433,8 @@
     0.5734,
     0.1315,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-11",
@@ -5811,7 +6451,8 @@
     0.5734,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-12",
@@ -5828,7 +6469,8 @@
     0.393,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-13",
@@ -5845,7 +6487,8 @@
     0.5734,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-14",
@@ -5855,7 +6498,7 @@
    "name": "Kitchen Set Play Set",
    "price": 79.99,
    "crop": "crops/04cb1f7d-02-14.jpg",
-   "group": "g54",
+   "group": "g60",
    "category": "Toys",
    "confidence": 1.0,
    "box": [
@@ -5863,7 +6506,8 @@
     0.5734,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-15",
@@ -5880,7 +6524,8 @@
     0.0823,
     0.1268,
     0.1057
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-16",
@@ -5897,7 +6542,8 @@
     0.3918,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-17",
@@ -5914,7 +6560,8 @@
     0.2322,
     0.1268,
     0.1053
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-18",
@@ -5931,7 +6578,8 @@
     0.0823,
     0.1268,
     0.1057
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-02-19",
@@ -5948,7 +6596,26 @@
     0.393,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "04cb1f7d-02-20",
+   "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
+   "retailer": "shoprite",
+   "page": 2,
+   "name": "Winter Princess Doll Assorted 55cm",
+   "price": 299.99,
+   "crop": "crops/04cb1f7d-02-20.jpg",
+   "category": "Toys",
+   "confidence": 0.8,
+   "box": [
+    0.159,
+    0.0395,
+    0.2242,
+    0.1621
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-01",
@@ -5965,7 +6632,8 @@
     0.6346,
     0.2295,
     0.2339
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-02",
@@ -5982,7 +6650,8 @@
     0.0,
     0.2048,
     0.0722
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-03",
@@ -5999,7 +6668,8 @@
     0.6367,
     0.1508,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-04",
@@ -6016,7 +6686,8 @@
     0.0743,
     0.2259,
     0.1057
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-05",
@@ -6033,7 +6704,8 @@
     0.1842,
     0.2124,
     0.1074
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-06",
@@ -6050,7 +6722,8 @@
     0.3816,
     0.1391,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-07",
@@ -6067,7 +6740,8 @@
     0.4826,
     0.1391,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-08",
@@ -6084,14 +6758,15 @@
     0.4826,
     0.216,
     0.1129
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-09",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 3,
-   "name": "Zeus Dump Truck 3b",
+   "name": "Zeus Dump Truck 36cm",
    "price": 199.99,
    "crop": "crops/04cb1f7d-03-09.jpg",
    "category": "Toys",
@@ -6101,7 +6776,9 @@
     0.4843,
     0.1884,
     0.1053
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Zeus Dump Truck 3b"
   },
   {
    "id": "04cb1f7d-03-10",
@@ -6118,7 +6795,8 @@
     0.3888,
     0.1403,
     0.1074
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-11",
@@ -6135,7 +6813,8 @@
     0.4826,
     0.1866,
     0.1108
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-12",
@@ -6152,7 +6831,8 @@
     0.635,
     0.1309,
     0.1091
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-13",
@@ -6169,7 +6849,8 @@
     0.3638,
     0.2054,
     0.1087
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-14",
@@ -6186,7 +6867,8 @@
     0.5195,
     0.2007,
     0.1074
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-15",
@@ -6203,14 +6885,15 @@
     0.6367,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-16",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 3,
-   "name": "Battery-operated Racing Car",
+   "name": "Z8 Battery-operated Racing Car",
    "price": 79.99,
    "crop": "crops/04cb1f7d-03-16.jpg",
    "category": "Toys",
@@ -6220,7 +6903,9 @@
     0.6367,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Battery-operated Racing Car"
   },
   {
    "id": "04cb1f7d-03-17",
@@ -6237,7 +6922,8 @@
     0.323,
     0.1808,
     0.1108
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-18",
@@ -6254,7 +6940,8 @@
     0.6367,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-19",
@@ -6271,7 +6958,8 @@
     0.3243,
     0.1884,
     0.1061
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-20",
@@ -6288,14 +6976,15 @@
     0.323,
     0.1808,
     0.1108
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-03-21",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 3,
-   "name": "Racer Die-cast Car Assorted 9ceach",
+   "name": "Racer Die-cast Car Assorted 9cm",
    "price": 19.99,
    "crop": "crops/04cb1f7d-03-21.jpg",
    "category": "Toys",
@@ -6305,7 +6994,9 @@
     0.3239,
     0.1755,
     0.1104
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Racer Die-cast Car Assorted 9ceach"
   },
   {
    "id": "04cb1f7d-03-22",
@@ -6322,7 +7013,44 @@
     0.3243,
     0.2001,
     0.1065
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "04cb1f7d-03-23",
+   "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
+   "retailer": "shoprite",
+   "page": 3,
+   "name": "Boys / Girls' BMX Bike 30cm",
+   "price": 999.99,
+   "crop": "crops/04cb1f7d-03-23.jpg",
+   "category": "Toys",
+   "confidence": 0.8,
+   "box": [
+    0.7136,
+    0.1885,
+    0.2242,
+    0.1621
+   ],
+   "agreed": true
+  },
+  {
+   "id": "04cb1f7d-03-24",
+   "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
+   "retailer": "shoprite",
+   "page": 3,
+   "name": "Challenger Stunt Radio-controlled Vehicle",
+   "price": 499.99,
+   "crop": "crops/04cb1f7d-03-24.jpg",
+   "category": "Toys",
+   "confidence": 0.8,
+   "box": [
+    0.4583,
+    0.8179,
+    0.2242,
+    0.1621
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-01",
@@ -6339,7 +7067,8 @@
     0.0,
     0.2295,
     0.2313
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-02",
@@ -6349,7 +7078,7 @@
    "name": "Hi Ball/tumbler/willy Beer/ Zombie Glasses To-piece",
    "price": 149.99,
    "crop": "crops/04cb1f7d-04-02.jpg",
-   "group": "g27",
+   "group": "g31",
    "category": "Home & outdoor",
    "confidence": 0.77,
    "box": [
@@ -6357,7 +7086,8 @@
     0.6418,
     0.2295,
     0.236
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-03",
@@ -6374,7 +7104,8 @@
     0.4983,
     0.216,
     0.1112
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-04",
@@ -6391,7 +7122,8 @@
     0.8413,
     0.2207,
     0.1112
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-05",
@@ -6408,14 +7140,15 @@
     0.6961,
     0.2406,
     0.1104
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-06",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 4,
-   "name": "Eerin Glass Dispenser beEACH",
+   "name": "Eerin 6L Glass Dispenser beEACH",
    "price": 299.99,
    "crop": "crops/04cb1f7d-04-06.jpg",
    "category": "Home & outdoor",
@@ -6425,7 +7158,9 @@
     0.1413,
     0.2007,
     0.1061
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Eerin Glass Dispenser beEACH"
   },
   {
    "id": "04cb1f7d-04-07",
@@ -6442,7 +7177,8 @@
     0.8396,
     0.2031,
     0.1138
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-08",
@@ -6459,7 +7195,8 @@
     0.6273,
     0.1391,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-09",
@@ -6476,7 +7213,8 @@
     0.5021,
     0.2042,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-10",
@@ -6493,7 +7231,8 @@
     0.5017,
     0.2083,
     0.1065
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-11",
@@ -6510,7 +7249,8 @@
     0.3289,
     0.2013,
     0.1074
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-12",
@@ -6527,7 +7267,8 @@
     0.3272,
     0.2107,
     0.1078
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-13",
@@ -6544,7 +7285,8 @@
     0.503,
     0.1866,
     0.1061
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-14",
@@ -6561,7 +7303,8 @@
     0.6961,
     0.1907,
     0.1129
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-15",
@@ -6578,7 +7321,8 @@
     0.3289,
     0.1326,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-16",
@@ -6595,7 +7339,8 @@
     0.1362,
     0.2025,
     0.1104
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-04-17",
@@ -6612,7 +7357,8 @@
     0.1413,
     0.2025,
     0.1091
-   ]
+   ],
+   "otherPrice": 19.99
   },
   {
    "id": "04cb1f7d-04-18",
@@ -6629,14 +7375,33 @@
     0.0008,
     0.1268,
     0.1053
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "04cb1f7d-04-19",
+   "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
+   "retailer": "shoprite",
+   "page": 4,
+   "name": "Lav Misket Glass Range",
+   "price": 119.99,
+   "crop": "crops/04cb1f7d-04-19.jpg",
+   "category": "Home & outdoor",
+   "confidence": 0.8,
+   "box": [
+    0.7852,
+    0.312,
+    0.2148,
+    0.1621
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-05-01",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 5,
-   "name": "Spring Flower Dinner Set 12-piece",
+   "name": "12-piece Spring Flower Dinner Set 12-piece",
    "price": 249.99,
    "crop": "crops/04cb1f7d-05-01.jpg",
    "category": "Home & outdoor",
@@ -6646,14 +7411,16 @@
     0.677,
     0.2805,
     0.2695
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Spring Flower Dinner Set 12-piece"
   },
   {
    "id": "04cb1f7d-05-02",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 5,
-   "name": "Silver Steam Stainless Steel Cookware Set 12-piece",
+   "name": "12-piece Silver Steam Stainless Steel Cookware Set 12-piece",
    "price": 899.99,
    "crop": "crops/04cb1f7d-05-02.jpg",
    "category": "Home & outdoor",
@@ -6663,17 +7430,19 @@
     0.0522,
     0.2758,
     0.267
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Silver Steam Stainless Steel Cookware Set 12-piece"
   },
   {
    "id": "04cb1f7d-05-03",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 5,
-   "name": "Black Cane Dinner Set 16-piece",
+   "name": "16-piece Black Cane Dinner Set 16-piece",
    "price": 349.99,
    "crop": "crops/04cb1f7d-05-03.jpg",
-   "group": "g26",
+   "group": "g30",
    "category": "Home & outdoor",
    "confidence": 0.79,
    "box": [
@@ -6681,17 +7450,19 @@
     0.68,
     0.2758,
     0.2666
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Black Cane Dinner Set 16-piece"
   },
   {
    "id": "04cb1f7d-05-04",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 5,
-   "name": "Carbon Steel Cookware Set 7-piece",
+   "name": "7-piece Carbon Steel Cookware Set 7-piece",
    "price": 499.99,
    "crop": "crops/04cb1f7d-05-04.jpg",
-   "group": "g23",
+   "group": "g27",
    "category": "Home & outdoor",
    "confidence": 1.0,
    "box": [
@@ -6699,14 +7470,16 @@
     0.0696,
     0.2095,
     0.1061
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Carbon Steel Cookware Set 7-piece"
   },
   {
    "id": "04cb1f7d-05-05",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 5,
-   "name": "Majoré Casserole Cookware Set Gpie Set",
+   "name": "6-piece Majoré Casserole Cookware Set Gpie Set",
    "price": 799.99,
    "crop": "crops/04cb1f7d-05-05.jpg",
    "category": "Home & outdoor",
@@ -6716,7 +7489,9 @@
     0.2059,
     0.2254,
     0.1065
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Majoré Casserole Cookware Set Gpie Set"
   },
   {
    "id": "04cb1f7d-05-06",
@@ -6733,7 +7508,44 @@
     0.3502,
     0.1391,
     0.1053
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "04cb1f7d-05-07",
+   "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
+   "retailer": "shoprite",
+   "page": 5,
+   "name": "India Dinner Range",
+   "price": 34.99,
+   "crop": "crops/04cb1f7d-05-07.jpg",
+   "category": "Other",
+   "confidence": 0.8,
+   "box": [
+    0.1309,
+    0.4444,
+    0.2242,
+    0.1621
+   ],
+   "agreed": true
+  },
+  {
+   "id": "04cb1f7d-05-08",
+   "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
+   "retailer": "shoprite",
+   "page": 5,
+   "name": "Opal Dinner Range",
+   "price": 49.99,
+   "crop": "crops/04cb1f7d-05-08.jpg",
+   "category": "Other",
+   "confidence": 0.8,
+   "box": [
+    0.4501,
+    0.4431,
+    0.2242,
+    0.1621
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-06-01",
@@ -6757,10 +7569,10 @@
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Xssentials Mini Oven",
-   "price": 2199.0,
+   "name": "Xssentials Mini Oven 24L",
+   "price": 2199.99,
    "crop": "crops/04cb1f7d-06-02.jpg",
-   "group": "g20",
+   "group": "g24",
    "category": "Electronics & appliances",
    "confidence": 0.97,
    "box": [
@@ -6768,7 +7580,9 @@
     0.6965,
     0.2394,
     0.2296
-   ]
+   ],
+   "otherPrice": 2199.0,
+   "firstName": "Xssentials Mini Oven"
   },
   {
    "id": "04cb1f7d-06-03",
@@ -6785,7 +7599,8 @@
     0.0,
     0.2394,
     0.2415
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-06-04",
@@ -6802,7 +7617,8 @@
     0.6341,
     0.2148,
     0.1091
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-06-05",
@@ -6819,14 +7635,15 @@
     0.5233,
     0.1989,
     0.1104
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-06-06",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Xssentials 360° Glass Cordless",
+   "name": "Xssentials 360° Glass Cordless 1.7L",
    "price": 449.99,
    "crop": "crops/04cb1f7d-06-06.jpg",
    "category": "Home & outdoor",
@@ -6836,7 +7653,9 @@
     0.3697,
     0.1502,
     0.107
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Xssentials 360° Glass Cordless"
   },
   {
    "id": "04cb1f7d-06-07",
@@ -6853,7 +7672,8 @@
     0.6358,
     0.1502,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-06-08",
@@ -6880,6 +7700,7 @@
    "name": "Platinum Eco Steam Iron 2000w",
    "price": 549.99,
    "crop": "crops/04cb1f7d-06-09.jpg",
+   "group": "g57",
    "category": "Electronics & appliances",
    "confidence": 0.98,
    "box": [
@@ -6887,14 +7708,15 @@
     0.3697,
     0.1485,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-06-10",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Xssentials Jug Blender 400w 1.5c",
+   "name": "Xssentials Jug Blender 400w 1.5L",
    "price": 699.99,
    "crop": "crops/04cb1f7d-06-10.jpg",
    "category": "Electronics & appliances",
@@ -6904,14 +7726,16 @@
     0.5238,
     0.1485,
     0.107
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Xssentials Jug Blender 400w 1.5c"
   },
   {
    "id": "04cb1f7d-06-11",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Platinum Bpa Free Cordless Kettle 1.7",
+   "name": "Platinum Bpa Free Cordless Kettle 1.7L",
    "price": 579.99,
    "crop": "crops/04cb1f7d-06-11.jpg",
    "category": "Electronics & appliances",
@@ -6921,7 +7745,9 @@
     0.3697,
     0.152,
     0.107
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Platinum Bpa Free Cordless Kettle 1.7"
   },
   {
    "id": "04cb1f7d-06-12",
@@ -6938,7 +7764,8 @@
     0.6358,
     0.2248,
     0.1121
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-06-13",
@@ -6955,7 +7782,8 @@
     0.461,
     0.1496,
     0.1053
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-06-14",
@@ -6972,14 +7800,15 @@
     0.525,
     0.2042,
     0.1108
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-06-15",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 6,
-   "name": "Ottimo Airryer Sach",
+   "name": "Ottimo Airryer Sach 5L",
    "price": 149.99,
    "sizeQty": 5000.0,
    "sizeUnit": "ml",
@@ -6991,7 +7820,45 @@
     0.6834,
     0.3011,
     0.2508
-   ]
+   ],
+   "otherPrice": 1499.99,
+   "firstName": "Ottimo Airryer Sach"
+  },
+  {
+   "id": "04cb1f7d-06-16",
+   "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
+   "retailer": "shoprite",
+   "page": 6,
+   "name": "Xsessials Black/white Cordless Kettle 1.7L",
+   "price": 399.99,
+   "crop": "crops/04cb1f7d-06-16.jpg",
+   "category": "Electronics & appliances",
+   "confidence": 0.8,
+   "box": [
+    0.3609,
+    0.1053,
+    0.2242,
+    0.1621
+   ],
+   "agreed": true
+  },
+  {
+   "id": "04cb1f7d-06-17",
+   "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
+   "retailer": "shoprite",
+   "page": 6,
+   "name": "Xsessials Broad Plate Hair Straightener",
+   "price": 199.99,
+   "crop": "crops/04cb1f7d-06-17.jpg",
+   "category": "Other",
+   "confidence": 0.8,
+   "box": [
+    0.7612,
+    0.334,
+    0.2242,
+    0.1621
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-07-01",
@@ -7008,7 +7875,8 @@
     0.0696,
     0.2295,
     0.2317
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-07-02",
@@ -7025,17 +7893,18 @@
     0.7118,
     0.2295,
     0.2339
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-07-03",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 7,
-   "name": "Polar Chill Cooler Box Assorted 2each",
+   "name": "Polar Chill Cooler Box Assorted 22L",
    "price": 249.99,
    "crop": "crops/04cb1f7d-07-03.jpg",
-   "group": "g25",
+   "group": "g29",
    "category": "Home & outdoor",
    "confidence": 0.93,
    "box": [
@@ -7043,7 +7912,9 @@
     0.4228,
     0.2054,
     0.1112
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Polar Chill Cooler Box Assorted 2each"
   },
   {
    "id": "04cb1f7d-07-04",
@@ -7060,14 +7931,15 @@
     0.6367,
     0.2113,
     0.1112
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-07-05",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 7,
-   "name": "Addis Cool Cat Cooler Box Assorted 26ech",
+   "name": "Addis Cool Cat Cooler Box Assorted 26L",
    "price": 399.99,
    "crop": "crops/04cb1f7d-07-05.jpg",
    "category": "Home & outdoor",
@@ -7077,15 +7949,19 @@
     0.4228,
     0.2107,
     0.1108
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Addis Cool Cat Cooler Box Assorted 26ech"
   },
   {
    "id": "04cb1f7d-07-06",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 7,
-   "name": "Total Energies Motor Oil Sae 40",
+   "name": "Total Energies Motor Oil Sae 40 5L",
    "price": 589.99,
+   "sizeQty": 5000.0,
+   "sizeUnit": "ml",
    "crop": "crops/04cb1f7d-07-06.jpg",
    "category": "Pantry",
    "confidence": 0.98,
@@ -7094,7 +7970,9 @@
     0.8442,
     0.2177,
     0.107
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Total Energies Motor Oil Sae 40"
   },
   {
    "id": "04cb1f7d-07-07",
@@ -7111,7 +7989,8 @@
     0.2025,
     0.2107,
     0.1074
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-07-08",
@@ -7128,7 +8007,8 @@
     0.2755,
     0.1479,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-07-09",
@@ -7145,7 +8025,8 @@
     0.8442,
     0.1884,
     0.1121
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-07-10",
@@ -7162,19 +8043,20 @@
     0.6129,
     0.1496,
     0.1053
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-07-11",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 7,
-   "name": "Shield Splash Car Shampoo",
+   "name": "Shield Splash Car Shampoo 5L",
    "price": 279.99,
    "sizeQty": 5000.0,
    "sizeUnit": "ml",
    "crop": "crops/04cb1f7d-07-11.jpg",
-   "group": "g24",
+   "group": "g28",
    "category": "Baby & personal care",
    "confidence": 0.92,
    "box": [
@@ -7182,7 +8064,9 @@
     0.6719,
     0.1496,
     0.1053
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Shield Splash Car Shampoo"
   },
   {
    "id": "04cb1f7d-07-12",
@@ -7199,7 +8083,8 @@
     0.8442,
     0.1391,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-07-13",
@@ -7218,7 +8103,8 @@
     0.5441,
     0.1397,
     0.1053
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-07-14",
@@ -7235,14 +8121,15 @@
     0.6358,
     0.1913,
     0.1082
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-07-15",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 7,
-   "name": "Bushbaby Gas Stove Cartridge",
+   "name": "Bushbaby Gas Stove Cartridge 220g",
    "price": 49.99,
    "crop": "crops/04cb1f7d-07-15.jpg",
    "category": "Electronics & appliances",
@@ -7252,14 +8139,16 @@
     0.2025,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Bushbaby Gas Stove Cartridge"
   },
   {
    "id": "04cb1f7d-07-16",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 7,
-   "name": "Brilliant Spray Paint Assorted 30oach",
+   "name": "Brilliant Spray Paint Assorted 300ml",
    "price": 79.99,
    "crop": "crops/04cb1f7d-07-16.jpg",
    "category": "Home & outdoor",
@@ -7269,7 +8158,9 @@
     0.7292,
     0.1784,
     0.1116
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Brilliant Spray Paint Assorted 30oach"
   },
   {
    "id": "04cb1f7d-07-17",
@@ -7286,7 +8177,26 @@
     0.5153,
     0.1291,
     0.107
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "04cb1f7d-07-18",
+   "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
+   "retailer": "shoprite",
+   "page": 7,
+   "name": "Lk's Sandwich Braai Grid",
+   "price": 149.99,
+   "crop": "crops/04cb1f7d-07-18.jpg",
+   "category": "Other",
+   "confidence": 0.8,
+   "box": [
+    0.3732,
+    0.0,
+    0.2523,
+    0.1358
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-01",
@@ -7320,7 +8230,8 @@
     0.4181,
     0.2394,
     0.2411
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-03",
@@ -7337,7 +8248,8 @@
     0.2551,
     0.1502,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-04",
@@ -7354,7 +8266,8 @@
     0.5603,
     0.2019,
     0.1112
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-05",
@@ -7371,7 +8284,8 @@
     0.5603,
     0.1496,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-06",
@@ -7388,7 +8302,8 @@
     0.3981,
     0.186,
     0.1078
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-07",
@@ -7407,7 +8322,8 @@
     0.775,
     0.1972,
     0.1091
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-08",
@@ -7424,7 +8340,8 @@
     0.3964,
     0.1966,
     0.1091
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-09",
@@ -7441,7 +8358,8 @@
     0.5603,
     0.2165,
     0.1074
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-10",
@@ -7465,7 +8383,7 @@
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Shoprite Plastic Ball 21ideach",
+   "name": "Shoprite Plastic Ball 21cm",
    "price": 39.99,
    "crop": "crops/04cb1f7d-08-11.jpg",
    "category": "Other",
@@ -7475,14 +8393,16 @@
     0.3956,
     0.1749,
     0.1082
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Shoprite Plastic Ball 21ideach"
   },
   {
    "id": "04cb1f7d-08-12",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Rainbow Plastic Ball 21each",
+   "name": "Rainbow Plastic Ball 21cm",
    "price": 59.99,
    "crop": "crops/04cb1f7d-08-12.jpg",
    "category": "Other",
@@ -7492,7 +8412,9 @@
     0.3956,
     0.1755,
     0.1082
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Rainbow Plastic Ball 21each"
   },
   {
    "id": "04cb1f7d-08-13",
@@ -7526,7 +8448,8 @@
     0.5603,
     0.1819,
     0.1082
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-15",
@@ -7550,7 +8473,7 @@
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Lila A4 Lined Hardcover Book",
+   "name": "Lila A4 Lined Hardcover Book 192-page",
    "price": 29.99,
    "crop": "crops/04cb1f7d-08-16.jpg",
    "category": "Other",
@@ -7560,7 +8483,9 @@
     0.7784,
     0.1948,
     0.107
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Lila A4 Lined Hardcover Book"
   },
   {
    "id": "04cb1f7d-08-17",
@@ -7577,7 +8502,8 @@
     0.1031,
     0.1719,
     0.1065
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-19",
@@ -7594,7 +8520,8 @@
     0.2564,
     0.1268,
     0.1057
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-20",
@@ -7611,7 +8538,8 @@
     0.2564,
     0.1268,
     0.1057
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-21",
@@ -7628,7 +8556,8 @@
     0.1061,
     0.196,
     0.1074
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-22",
@@ -7645,7 +8574,8 @@
     0.2568,
     0.1866,
     0.1065
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-23",
@@ -7664,15 +8594,18 @@
     0.7797,
     0.1268,
     0.1053
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-24",
    "catalogue": "shoprite-zmfestivesavings23nov27dec2026",
    "retailer": "shoprite",
    "page": 8,
-   "name": "Bubble Magic Bubbles Assorted 10oech",
+   "name": "Bubble Magic Bubbles Assorted 100ml",
    "price": 19.99,
+   "sizeQty": 100.0,
+   "sizeUnit": "ml",
    "crop": "crops/04cb1f7d-08-24.jpg",
    "category": "Other",
    "confidence": 0.94,
@@ -7681,7 +8614,9 @@
     0.2551,
     0.179,
     0.1129
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Bubble Magic Bubbles Assorted 10oech"
   },
   {
    "id": "04cb1f7d-08-25",
@@ -7693,7 +8628,7 @@
    "sizeQty": 2.0,
    "sizeUnit": "ea",
    "crop": "crops/04cb1f7d-08-25.jpg",
-   "group": "g55",
+   "group": "g61",
    "category": "Other",
    "confidence": 0.99,
    "box": [
@@ -7701,7 +8636,8 @@
     0.7789,
     0.1843,
     0.1099
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-26",
@@ -7718,7 +8654,8 @@
     0.7797,
     0.1972,
     0.107
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "04cb1f7d-08-27",
@@ -7730,7 +8667,7 @@
    "sizeQty": 2.0,
    "sizeUnit": "ea",
    "crop": "crops/04cb1f7d-08-27.jpg",
-   "group": "g55",
+   "group": "g61",
    "category": "Other",
    "confidence": 0.99,
    "box": [
@@ -7738,19 +8675,20 @@
     0.7789,
     0.1825,
     0.1112
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-01",
    "catalogue": "shoprite-zmliquorshoplowprices23nov06dec2026",
    "retailer": "shoprite",
    "page": 1,
-   "name": "Johnnie Walker Black Label Blended Scotch Whisky Gift Pack 7so",
-   "price": 949.0,
+   "name": "Johnnie Walker Black Label Blended Scotch Whisky Gift Pack 750ml",
+   "price": 949.99,
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-01-01.jpg",
-   "group": "g45",
+   "group": "g48",
    "category": "Liquor",
    "confidence": 0.9,
    "box": [
@@ -7758,7 +8696,9 @@
     0.1495,
     0.2763,
     0.279
-   ]
+   ],
+   "otherPrice": 949.0,
+   "firstName": "Johnnie Walker Black Label Blended Scotch Whisky Gift Pack 7so"
   },
   {
    "id": "69e74347-01-02",
@@ -7777,7 +8717,8 @@
     0.6611,
     0.2042,
     0.1669
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-03",
@@ -7789,7 +8730,7 @@
    "sizeQty": 3000.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-01-03.jpg",
-   "group": "g9",
+   "group": "g11",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -7797,7 +8738,8 @@
     0.5015,
     0.1922,
     0.1673
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-04",
@@ -7809,7 +8751,7 @@
    "sizeQty": 2130.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-01-04.jpg",
-   "group": "g13",
+   "group": "g15",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -7817,7 +8759,8 @@
     0.6611,
     0.191,
     0.1669
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-05",
@@ -7829,7 +8772,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-01-05.jpg",
-   "group": "g16",
+   "group": "g18",
    "category": "Liquor",
    "confidence": 0.98,
    "box": [
@@ -7837,7 +8780,8 @@
     0.6684,
     0.1904,
     0.1592
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-06",
@@ -7849,7 +8793,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-01-06.jpg",
-   "group": "g15",
+   "group": "g17",
    "category": "Liquor",
    "confidence": 0.97,
    "box": [
@@ -7857,7 +8801,8 @@
     0.6688,
     0.1904,
     0.1605
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-07",
@@ -7876,7 +8821,8 @@
     0.462,
     0.191,
     0.1588
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-08",
@@ -7888,7 +8834,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-01-08.jpg",
-   "group": "g46",
+   "group": "g49",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -7896,7 +8842,8 @@
     0.3062,
     0.176,
     0.1588
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-09",
@@ -7915,7 +8862,8 @@
     0.6662,
     0.1784,
     0.1648
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-10",
@@ -7934,7 +8882,8 @@
     0.3062,
     0.1754,
     0.1584
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-11",
@@ -7946,7 +8895,7 @@
    "sizeQty": 1980.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-01-11.jpg",
-   "group": "g56",
+   "group": "g22",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -7954,7 +8903,8 @@
     0.513,
     0.179,
     0.158
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-12",
@@ -7966,7 +8916,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-01-12.jpg",
-   "group": "g57",
+   "group": "g55",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -7974,7 +8924,8 @@
     0.3091,
     0.1718,
     0.158
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-13",
@@ -7986,7 +8937,7 @@
    "sizeQty": 1980.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-01-13.jpg",
-   "group": "g5",
+   "group": "g7",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -7994,7 +8945,8 @@
     0.5138,
     0.1676,
     0.1567
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-01-14",
@@ -8013,7 +8965,8 @@
     0.2115,
     0.2643,
     0.2522
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-01",
@@ -8025,7 +8978,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-02-01.jpg",
-   "group": "g41",
+   "group": "g44",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -8033,7 +8986,8 @@
     0.4616,
     0.2126,
     0.1592
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-02",
@@ -8045,7 +8999,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-02-02.jpg",
-   "group": "g48",
+   "group": "g51",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -8053,7 +9007,8 @@
     0.0072,
     0.1856,
     0.1703
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-03",
@@ -8065,7 +9020,7 @@
    "sizeQty": 700.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-02-03.jpg",
-   "group": "g42",
+   "group": "g45",
    "category": "Other",
    "confidence": 0.98,
    "box": [
@@ -8073,7 +9028,8 @@
     0.2658,
     0.1898,
     0.1592
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-04",
@@ -8085,7 +9041,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-02-04.jpg",
-   "group": "g44",
+   "group": "g47",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -8093,7 +9049,8 @@
     0.2675,
     0.1904,
     0.1558
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-05",
@@ -8112,7 +9069,8 @@
     0.4645,
     0.1904,
     0.1537
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-06",
@@ -8131,7 +9089,8 @@
     0.3639,
     0.1892,
     0.1656
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-07",
@@ -8150,7 +9109,8 @@
     0.2671,
     0.176,
     0.158
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-08",
@@ -8169,7 +9129,8 @@
     0.29,
     0.1742,
     0.1656
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-09",
@@ -8181,7 +9142,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-02-09.jpg",
-   "group": "g47",
+   "group": "g50",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -8189,7 +9150,8 @@
     0.465,
     0.176,
     0.1537
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-10",
@@ -8201,7 +9163,7 @@
    "sizeQty": 105.0,
    "sizeUnit": "g",
    "crop": "crops/69e74347-02-10.jpg",
-   "group": "g7",
+   "group": "g9",
    "category": "Snacks & sweets",
    "confidence": 0.99,
    "box": [
@@ -8209,7 +9171,8 @@
     0.6195,
     0.1748,
     0.1775
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-11",
@@ -8228,7 +9191,8 @@
     0.6225,
     0.17,
     0.1745
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-12",
@@ -8240,7 +9204,7 @@
    "sizeQty": 440.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-02-12.jpg",
-   "group": "g51",
+   "group": "g54",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -8248,7 +9212,8 @@
     0.6352,
     0.161,
     0.158
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "69e74347-02-13",
@@ -8275,7 +9240,7 @@
    "retailer": "shoprite",
    "page": 2,
    "name": "Papillon Non-alcoholic 100% Red/white Grape Wine 750ml",
-   "price": 124.0,
+   "price": 124.99,
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-02-14.jpg",
@@ -8286,15 +9251,18 @@
     0.2913,
     0.161,
     0.1639
-   ]
+   ],
+   "otherPrice": 124.0
   },
   {
    "id": "69e74347-02-15",
    "catalogue": "shoprite-zmliquorshoplowprices23nov06dec2026",
    "retailer": "shoprite",
    "page": 2,
-   "name": "Chibuku Super Original/banana Beer 1.25",
+   "name": "Chibuku Super Original/banana Beer 1.25L",
    "price": 11.99,
+   "sizeQty": 1250.0,
+   "sizeUnit": "ml",
    "crop": "crops/69e74347-02-15.jpg",
    "category": "Liquor",
    "confidence": 0.98,
@@ -8303,7 +9271,9 @@
     0.3656,
     0.1586,
     0.1648
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Chibuku Super Original/banana Beer 1.25"
   },
   {
    "id": "69e74347-02-16",
@@ -8311,7 +9281,7 @@
    "retailer": "shoprite",
    "page": 2,
    "name": "Blended Malt Scotch Monkey Shoulder Whisky 750ml",
-   "price": 849.0,
+   "price": 849.99,
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-02-16.jpg",
@@ -8322,7 +9292,8 @@
     0.0,
     0.3039,
     0.2416
-   ]
+   ],
+   "otherPrice": 849.0
   },
   {
    "id": "69e74347-02-17",
@@ -8334,7 +9305,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-02-17.jpg",
-   "group": "g49",
+   "group": "g52",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -8354,7 +9325,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/69e74347-02-18.jpg",
-   "group": "g50",
+   "group": "g53",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -8381,7 +9352,8 @@
     0.2416,
     0.227,
     0.214
-   ]
+   ],
+   "otherPrice": 139.99
   },
   {
    "id": "69e74347-02-20",
@@ -8398,7 +9370,8 @@
     0.3915,
     0.2535,
     0.2781
-   ]
+   ],
+   "otherPrice": 16.0
   },
   {
    "id": "69e74347-02-21",
@@ -8417,7 +9390,8 @@
     0.5529,
     0.2727,
     0.2391
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-01",
@@ -8430,7 +9404,7 @@
    "sizeUnit": "ml",
    "save": 21.0,
    "crop": "crops/b5134a8a-01-01.jpg",
-   "group": "g58",
+   "group": "g62",
    "category": "Pantry",
    "confidence": 0.99,
    "box": [
@@ -8438,7 +9412,8 @@
     0.2164,
     0.26,
     0.2386
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-02",
@@ -8451,7 +9426,7 @@
    "sizeUnit": "g",
    "save": 50.0,
    "crop": "crops/b5134a8a-01-02.jpg",
-   "group": "g59",
+   "group": "g63",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -8459,7 +9434,8 @@
     0.2342,
     0.2372,
     0.2229
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-03",
@@ -8472,7 +9448,7 @@
    "sizeUnit": "g",
    "save": 25.0,
    "crop": "crops/b5134a8a-01-03.jpg",
-   "group": "g60",
+   "group": "g64",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -8480,7 +9456,8 @@
     0.1636,
     0.3216,
     0.3039
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-04",
@@ -8493,7 +9470,7 @@
    "sizeUnit": "g",
    "save": 15.0,
    "crop": "crops/b5134a8a-01-04.jpg",
-   "group": "g30",
+   "group": "g1",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -8501,7 +9478,8 @@
     0.2096,
     0.2623,
     0.2588
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-05",
@@ -8514,7 +9492,7 @@
    "sizeUnit": "ml",
    "save": 12.0,
    "crop": "crops/b5134a8a-01-05.jpg",
-   "group": "g61",
+   "group": "g65",
    "category": "Drinks",
    "confidence": 0.98,
    "box": [
@@ -8522,7 +9500,8 @@
     0.4148,
     0.3238,
     0.2979
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-06",
@@ -8542,7 +9521,8 @@
     0.4623,
     0.2662,
     0.2503
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-07",
@@ -8555,7 +9535,7 @@
    "sizeUnit": "g",
    "save": 32.0,
    "crop": "crops/b5134a8a-01-07.jpg",
-   "group": "g62",
+   "group": "g66",
    "category": "Snacks & sweets",
    "confidence": 0.99,
    "box": [
@@ -8563,7 +9543,8 @@
     0.4393,
     0.293,
     0.283
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-08",
@@ -8576,7 +9557,7 @@
    "sizeUnit": "g",
    "save": 25.0,
    "crop": "crops/b5134a8a-01-08.jpg",
-   "group": "g63",
+   "group": "g67",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -8584,7 +9565,8 @@
     0.4603,
     0.2668,
     0.2644
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-09",
@@ -8597,7 +9579,7 @@
    "sizeUnit": "g",
    "save": 42.0,
    "crop": "crops/b5134a8a-01-09.jpg",
-   "group": "g64",
+   "group": "g68",
    "category": "Meat & fish",
    "confidence": 0.99,
    "box": [
@@ -8605,7 +9587,8 @@
     0.7291,
     0.2588,
     0.2543
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-10",
@@ -8625,7 +9608,8 @@
     0.7247,
     0.2623,
     0.2487
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-11",
@@ -8645,7 +9629,8 @@
     0.7291,
     0.2605,
     0.243
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-01-12",
@@ -8665,7 +9650,8 @@
     0.7493,
     0.24,
     0.2237
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "b5134a8a-02-01",
@@ -8678,7 +9664,7 @@
    "sizeUnit": "g",
    "save": 23.0,
    "crop": "crops/b5134a8a-02-01.jpg",
-   "group": "g35",
+   "group": "g38",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -8699,7 +9685,7 @@
    "sizeUnit": "g",
    "save": 14.0,
    "crop": "crops/b5134a8a-02-02.jpg",
-   "group": "g14",
+   "group": "g16",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -8720,7 +9706,7 @@
    "sizeUnit": "ml",
    "save": 15.0,
    "crop": "crops/b5134a8a-02-03.jpg",
-   "group": "g65",
+   "group": "g69",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -8754,10 +9740,13 @@
    "catalogue": "picknpay-pnp1008-black-friday-catalogue-print",
    "retailer": "picknpay",
    "page": 2,
-   "name": "Jungle Oats",
+   "name": "Jungle Oats 500g",
    "price": 26.99,
+   "sizeQty": 500.0,
+   "sizeUnit": "g",
    "save": 20.0,
    "crop": "crops/b5134a8a-02-05.jpg",
+   "group": "g70",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -8765,7 +9754,8 @@
     0.0871,
     0.2372,
     0.214
-   ]
+   ],
+   "firstName": "Jungle Oats"
   },
   {
    "id": "b5134a8a-02-06",
@@ -8778,7 +9768,7 @@
    "sizeUnit": "ml",
    "save": 10.0,
    "crop": "crops/b5134a8a-02-06.jpg",
-   "group": "g66",
+   "group": "g71",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -8799,7 +9789,7 @@
    "sizeUnit": "g",
    "save": 180.0,
    "crop": "crops/b5134a8a-02-07.jpg",
-   "group": "g67",
+   "group": "g72",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -8820,7 +9810,7 @@
    "sizeUnit": "g",
    "save": 13.0,
    "crop": "crops/b5134a8a-02-08.jpg",
-   "group": "g68",
+   "group": "g73",
    "category": "Snacks & sweets",
    "confidence": 0.99,
    "box": [
@@ -8841,7 +9831,7 @@
    "sizeUnit": "g",
    "save": 25.0,
    "crop": "crops/b5134a8a-02-09.jpg",
-   "group": "g69",
+   "group": "g74",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -8862,7 +9852,7 @@
    "sizeUnit": "g",
    "save": 60.0,
    "crop": "crops/b5134a8a-02-10.jpg",
-   "group": "g70",
+   "group": "g75",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -8883,7 +9873,7 @@
    "sizeUnit": "g",
    "save": 8.0,
    "crop": "crops/b5134a8a-02-11.jpg",
-   "group": "g71",
+   "group": "g76",
    "category": "Dairy & eggs",
    "confidence": 0.99,
    "box": [
@@ -8899,7 +9889,7 @@
    "retailer": "picknpay",
    "page": 2,
    "name": "Buttercup Margarine Made fr Brick 250g",
-   "price": 17.0,
+   "price": 17.99,
    "sizeQty": 250.0,
    "sizeUnit": "g",
    "save": 14.0,
@@ -8911,7 +9901,8 @@
     0.2592,
     0.2149,
     0.2019
-   ]
+   ],
+   "otherPrice": 17.0
   },
   {
    "id": "b5134a8a-02-13",
@@ -8919,7 +9910,7 @@
    "retailer": "picknpay",
    "page": 2,
    "name": "Harvest Low Fat Spread Tub 500g",
-   "price": 17.0,
+   "price": 17.99,
    "sizeQty": 500.0,
    "sizeUnit": "g",
    "save": 14.0,
@@ -8931,7 +9922,8 @@
     0.266,
     0.2064,
     0.1939
-   ]
+   ],
+   "otherPrice": 17.0
   },
   {
    "id": "b5134a8a-02-14",
@@ -8944,7 +9936,7 @@
    "sizeUnit": "g",
    "save": 20.0,
    "crop": "crops/b5134a8a-02-14.jpg",
-   "group": "g72",
+   "group": "g77",
    "category": "Meat & fish",
    "confidence": 0.98,
    "box": [
@@ -8965,7 +9957,7 @@
    "sizeUnit": "g",
    "save": 13.0,
    "crop": "crops/b5134a8a-02-15.jpg",
-   "group": "g73",
+   "group": "g78",
    "category": "Baby & personal care",
    "confidence": 0.99,
    "box": [
@@ -8986,7 +9978,7 @@
    "sizeUnit": "g",
    "save": 10.0,
    "crop": "crops/b5134a8a-02-16.jpg",
-   "group": "g74",
+   "group": "g79",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -9027,7 +10019,7 @@
    "sizeUnit": "ml",
    "save": 45.0,
    "crop": "crops/b5134a8a-02-18.jpg",
-   "group": "g75",
+   "group": "g80",
    "category": "Baby & personal care",
    "confidence": 1.0,
    "box": [
@@ -9108,7 +10100,7 @@
    "sizeUnit": "ml",
    "save": 15.0,
    "crop": "crops/b5134a8a-02-22.jpg",
-   "group": "g76",
+   "group": "g81",
    "category": "Household",
    "confidence": 0.99,
    "box": [
@@ -9129,6 +10121,7 @@
    "sizeUnit": "ml",
    "save": 31.0,
    "crop": "crops/b5134a8a-02-23.jpg",
+   "group": "g58",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -9149,7 +10142,7 @@
    "sizeUnit": "ml",
    "save": 27.0,
    "crop": "crops/b5134a8a-02-24.jpg",
-   "group": "g77",
+   "group": "g82",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -9170,7 +10163,7 @@
    "sizeUnit": "ml",
    "save": 18.0,
    "crop": "crops/b5134a8a-02-25.jpg",
-   "group": "g53",
+   "group": "g59",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -9191,7 +10184,7 @@
    "sizeUnit": "ml",
    "save": 30.0,
    "crop": "crops/b5134a8a-02-26.jpg",
-   "group": "g78",
+   "group": "g83",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -9212,7 +10205,7 @@
    "sizeUnit": "ml",
    "save": 80.0,
    "crop": "crops/b5134a8a-02-27.jpg",
-   "group": "g16",
+   "group": "g18",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -9233,7 +10226,7 @@
    "sizeUnit": "ml",
    "save": 80.0,
    "crop": "crops/b5134a8a-02-28.jpg",
-   "group": "g15",
+   "group": "g17",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -9254,7 +10247,7 @@
    "sizeUnit": "ml",
    "save": 55.0,
    "crop": "crops/b5134a8a-02-29.jpg",
-   "group": "g57",
+   "group": "g55",
    "category": "Liquor",
    "confidence": 0.98,
    "box": [
@@ -9294,7 +10287,7 @@
    "sizeQty": 2000.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-01-01.jpg",
-   "group": "g64",
+   "group": "g68",
    "category": "Meat & fish",
    "confidence": 1.0,
    "box": [
@@ -9314,7 +10307,7 @@
    "sizeQty": 5000.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-01-02.jpg",
-   "group": "g58",
+   "group": "g62",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -9334,7 +10327,7 @@
    "sizeQty": 25000.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-01-03.jpg",
-   "group": "g79",
+   "group": "g84",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -9354,7 +10347,7 @@
    "sizeQty": 2000.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-01-04.jpg",
-   "group": "g30",
+   "group": "g1",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -9393,7 +10386,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-01-06.jpg",
-   "group": "g61",
+   "group": "g65",
    "category": "Drinks",
    "confidence": 1.0,
    "box": [
@@ -9413,7 +10406,7 @@
    "sizeQty": 18.0,
    "sizeUnit": "ea",
    "crop": "crops/939a853b-01-07.jpg",
-   "group": "g80",
+   "group": "g85",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -9433,7 +10426,7 @@
    "sizeQty": 5000.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-01-08.jpg",
-   "group": "g81",
+   "group": "g86",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -9543,7 +10536,7 @@
    "sizeQty": 500.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-01.jpg",
-   "group": "g71",
+   "group": "g76",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -9563,7 +10556,7 @@
    "sizeQty": 2000.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-02.jpg",
-   "group": "g82",
+   "group": "g87",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -9602,7 +10595,7 @@
    "sizeQty": 475.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-04.jpg",
-   "group": "g40",
+   "group": "g43",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -9622,7 +10615,7 @@
    "sizeQty": 250.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-05.jpg",
-   "group": "g83",
+   "group": "g88",
    "category": "Drinks",
    "confidence": 1.0,
    "box": [
@@ -9642,7 +10635,7 @@
    "sizeQty": 250.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-06.jpg",
-   "group": "g31",
+   "group": "g34",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -9681,7 +10674,7 @@
    "sizeQty": 500.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-08.jpg",
-   "group": "g38",
+   "group": "g41",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -9720,7 +10713,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-10.jpg",
-   "group": "g37",
+   "group": "g40",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -9759,7 +10752,7 @@
    "sizeQty": 100.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-12.jpg",
-   "group": "g84",
+   "group": "g89",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -9834,7 +10827,7 @@
    "sizeQty": 400.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-16.jpg",
-   "group": "g60",
+   "group": "g64",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -9854,7 +10847,7 @@
    "sizeQty": 5000.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-17.jpg",
-   "group": "g59",
+   "group": "g63",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -9912,7 +10905,7 @@
    "sizeQty": 110.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-20.jpg",
-   "group": "g2",
+   "group": "g4",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -9989,7 +10982,7 @@
    "sizeQty": 175.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-24.jpg",
-   "group": "g74",
+   "group": "g79",
    "category": "Baby & personal care",
    "confidence": 1.0,
    "box": [
@@ -10047,7 +11040,7 @@
    "sizeQty": 140.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-27.jpg",
-   "group": "g73",
+   "group": "g78",
    "category": "Baby & personal care",
    "confidence": 1.0,
    "box": [
@@ -10067,7 +11060,7 @@
    "sizeQty": 100.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-28.jpg",
-   "group": "g22",
+   "group": "g26",
    "category": "Baby & personal care",
    "confidence": 1.0,
    "box": [
@@ -10087,7 +11080,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-29.jpg",
-   "group": "g85",
+   "group": "g90",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -10107,7 +11100,7 @@
    "sizeQty": 500.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-30.jpg",
-   "group": "g86",
+   "group": "g91",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -10127,7 +11120,7 @@
    "sizeQty": 50.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-31.jpg",
-   "group": "g87",
+   "group": "g92",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -10147,7 +11140,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-32.jpg",
-   "group": "g88",
+   "group": "g93",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -10167,7 +11160,7 @@
    "sizeQty": 400.0,
    "sizeUnit": "g",
    "crop": "crops/939a853b-02-33.jpg",
-   "group": "g89",
+   "group": "g94",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -10187,7 +11180,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-34.jpg",
-   "group": "g90",
+   "group": "g95",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -10207,7 +11200,7 @@
    "sizeQty": 3000.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-35.jpg",
-   "group": "g91",
+   "group": "g96",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -10227,7 +11220,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-36.jpg",
-   "group": "g57",
+   "group": "g55",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -10247,7 +11240,7 @@
    "sizeQty": 1980.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-37.jpg",
-   "group": "g56",
+   "group": "g22",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -10267,7 +11260,7 @@
    "sizeQty": 3000.0,
    "sizeUnit": "ml",
    "crop": "crops/939a853b-02-38.jpg",
-   "group": "g92",
+   "group": "g97",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -10287,7 +11280,7 @@
    "sizeQty": 2000.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-01-01.jpg",
-   "group": "g64",
+   "group": "g68",
    "category": "Meat & fish",
    "confidence": 1.0,
    "box": [
@@ -10307,7 +11300,7 @@
    "sizeQty": 500.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-01-02.jpg",
-   "group": "g70",
+   "group": "g75",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -10327,7 +11320,7 @@
    "sizeQty": 5000.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-01-03.jpg",
-   "group": "g59",
+   "group": "g63",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -10347,7 +11340,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-01-04.jpg",
-   "group": "g66",
+   "group": "g71",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -10367,7 +11360,7 @@
    "sizeQty": 5000.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-01-05.jpg",
-   "group": "g58",
+   "group": "g62",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -10387,7 +11380,7 @@
    "sizeQty": 25000.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-01-06.jpg",
-   "group": "g79",
+   "group": "g84",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -10407,7 +11400,7 @@
    "sizeQty": 2000.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-01-07.jpg",
-   "group": "g30",
+   "group": "g1",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -10427,7 +11420,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-01-08.jpg",
-   "group": "g18",
+   "group": "g20",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -10466,7 +11459,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-01-10.jpg",
-   "group": "g61",
+   "group": "g65",
    "category": "Drinks",
    "confidence": 1.0,
    "box": [
@@ -10486,7 +11479,7 @@
    "sizeQty": 18.0,
    "sizeUnit": "ea",
    "crop": "crops/63b1ddcc-01-11.jpg",
-   "group": "g80",
+   "group": "g85",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -10506,7 +11499,7 @@
    "sizeQty": 5000.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-01-12.jpg",
-   "group": "g81",
+   "group": "g86",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -10561,7 +11554,7 @@
    "price": 139.99,
    "perKg": true,
    "crop": "crops/63b1ddcc-02-03.jpg",
-   "group": "g4",
+   "group": "g6",
    "category": "Meat & fish",
    "confidence": 1.0,
    "box": [
@@ -10580,7 +11573,7 @@
    "price": 129.99,
    "perKg": true,
    "crop": "crops/63b1ddcc-02-04.jpg",
-   "group": "g39",
+   "group": "g42",
    "category": "Meat & fish",
    "confidence": 1.0,
    "box": [
@@ -10847,7 +11840,7 @@
    "sizeQty": 475.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-02-19.jpg",
-   "group": "g40",
+   "group": "g43",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -10867,7 +11860,7 @@
    "sizeQty": 250.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-02-20.jpg",
-   "group": "g83",
+   "group": "g88",
    "category": "Drinks",
    "confidence": 1.0,
    "box": [
@@ -11020,7 +12013,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-02-28.jpg",
-   "group": "g72",
+   "group": "g77",
    "category": "Meat & fish",
    "confidence": 1.0,
    "box": [
@@ -11076,7 +12069,7 @@
    "sizeQty": 2000.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-02-31.jpg",
-   "group": "g82",
+   "group": "g87",
    "category": "Dairy & eggs",
    "confidence": 1.0,
    "box": [
@@ -11134,7 +12127,7 @@
    "sizeQty": 200.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-02.jpg",
-   "group": "g67",
+   "group": "g72",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -11192,7 +12185,7 @@
    "sizeQty": 100.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-05.jpg",
-   "group": "g84",
+   "group": "g89",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -11212,6 +12205,7 @@
    "sizeQty": 500.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-06.jpg",
+   "group": "g70",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -11250,7 +12244,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-08.jpg",
-   "group": "g63",
+   "group": "g67",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -11327,7 +12321,7 @@
    "sizeQty": 400.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-12.jpg",
-   "group": "g35",
+   "group": "g38",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -11366,7 +12360,7 @@
    "sizeQty": 115.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-14.jpg",
-   "group": "g93",
+   "group": "g98",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -11386,7 +12380,7 @@
    "sizeQty": 200.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-15.jpg",
-   "group": "g14",
+   "group": "g16",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -11406,7 +12400,7 @@
    "sizeQty": 100.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-16.jpg",
-   "group": "g3",
+   "group": "g5",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -11481,7 +12475,7 @@
    "sizeQty": 375.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-03-20.jpg",
-   "group": "g65",
+   "group": "g69",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -11501,7 +12495,7 @@
    "sizeQty": 500.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-21.jpg",
-   "group": "g32",
+   "group": "g35",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -11521,7 +12515,7 @@
    "sizeQty": 200.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-22.jpg",
-   "group": "g68",
+   "group": "g73",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -11541,7 +12535,7 @@
    "sizeQty": 110.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-23.jpg",
-   "group": "g2",
+   "group": "g4",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -11580,7 +12574,7 @@
    "sizeQty": 200.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-25.jpg",
-   "group": "g69",
+   "group": "g74",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -11600,7 +12594,7 @@
    "sizeQty": 150.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-03-26.jpg",
-   "group": "g62",
+   "group": "g66",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -11791,7 +12785,7 @@
    "sizeQty": 500.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-03-36.jpg",
-   "group": "g12",
+   "group": "g14",
    "category": "Drinks",
    "confidence": 1.0,
    "box": [
@@ -11906,7 +12900,7 @@
    "sizeQty": 175.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-04-06.jpg",
-   "group": "g74",
+   "group": "g79",
    "category": "Baby & personal care",
    "confidence": 1.0,
    "box": [
@@ -11964,7 +12958,7 @@
    "sizeQty": 140.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-04-09.jpg",
-   "group": "g73",
+   "group": "g78",
    "category": "Baby & personal care",
    "confidence": 1.0,
    "box": [
@@ -11984,7 +12978,7 @@
    "sizeQty": 400.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-10.jpg",
-   "group": "g75",
+   "group": "g80",
    "category": "Baby & personal care",
    "confidence": 1.0,
    "box": [
@@ -12023,7 +13017,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-12.jpg",
-   "group": "g85",
+   "group": "g90",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -12043,7 +13037,7 @@
    "sizeQty": 500.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-04-13.jpg",
-   "group": "g86",
+   "group": "g91",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -12063,7 +13057,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-14.jpg",
-   "group": "g76",
+   "group": "g81",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -12121,7 +13115,7 @@
    "sizeQty": 600.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-17.jpg",
-   "group": "g94",
+   "group": "g99",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -12177,7 +13171,7 @@
    "sizeQty": 200.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-20.jpg",
-   "group": "g29",
+   "group": "g33",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -12197,7 +13191,7 @@
    "sizeQty": 300.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-21.jpg",
-   "group": "g53",
+   "group": "g59",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -12236,7 +13230,7 @@
    "sizeQty": 50.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-23.jpg",
-   "group": "g87",
+   "group": "g92",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -12256,7 +13250,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-04-24.jpg",
-   "group": "g88",
+   "group": "g93",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -12276,7 +13270,7 @@
    "sizeQty": 400.0,
    "sizeUnit": "g",
    "crop": "crops/63b1ddcc-04-25.jpg",
-   "group": "g89",
+   "group": "g94",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -12296,7 +13290,7 @@
    "sizeQty": 500.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-26.jpg",
-   "group": "g77",
+   "group": "g82",
    "category": "Baby & personal care",
    "confidence": 1.0,
    "box": [
@@ -12445,7 +13439,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-34.jpg",
-   "group": "g15",
+   "group": "g17",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -12503,7 +13497,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-37.jpg",
-   "group": "g57",
+   "group": "g55",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -12561,7 +13555,7 @@
    "sizeQty": 3000.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-40.jpg",
-   "group": "g91",
+   "group": "g96",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -12600,7 +13594,7 @@
    "sizeQty": 3000.0,
    "sizeUnit": "ml",
    "crop": "crops/63b1ddcc-04-42.jpg",
-   "group": "g92",
+   "group": "g97",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -12625,7 +13619,8 @@
     0.7419,
     0.1541,
     0.1907
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-01-02",
@@ -12635,7 +13630,7 @@
    "name": "Adventure 200 Camping Chair Red",
    "price": 290.0,
    "crop": "crops/897807db-01-02.jpg",
-   "group": "g95",
+   "group": "g100",
    "category": "Home & outdoor",
    "confidence": 0.99,
    "box": [
@@ -12643,7 +13638,8 @@
     0.5979,
     0.1271,
     0.1665
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-01-03",
@@ -12660,7 +13656,8 @@
     0.429,
     0.1518,
     0.1705
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-01-04",
@@ -12677,7 +13674,8 @@
     0.5727,
     0.1581,
     0.1917
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-01-05",
@@ -12694,7 +13692,8 @@
     0.7241,
     0.1617,
     0.2068
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-01-06",
@@ -12711,7 +13710,8 @@
     0.6156,
     0.1581,
     0.1913
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-01-07",
@@ -12728,7 +13728,8 @@
     0.3337,
     0.2381,
     0.1386
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-01-08",
@@ -12745,7 +13746,8 @@
     0.4743,
     0.252,
     0.1326
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-01-09",
@@ -12762,7 +13764,8 @@
     0.473,
     0.2309,
     0.147
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-01-10",
@@ -12779,7 +13782,8 @@
     0.6435,
     0.2394,
     0.1457
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-01-11",
@@ -12829,7 +13833,7 @@
    "sizeQty": 2000.0,
    "sizeUnit": "g",
    "crop": "crops/897807db-01-13.jpg",
-   "group": "g30",
+   "group": "g1",
    "category": "Pantry",
    "confidence": 0.98,
    "box": [
@@ -12890,7 +13894,8 @@
     0.7506,
     0.1581,
     0.1937
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-01-17",
@@ -12907,7 +13912,8 @@
     0.7946,
     0.2848,
     0.1558
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-01",
@@ -12936,7 +13942,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "ml",
    "crop": "crops/897807db-02-02.jpg",
-   "group": "g34",
+   "group": "g37",
    "category": "Pantry",
    "confidence": 0.99,
    "box": [
@@ -12944,7 +13950,8 @@
     0.7768,
     0.1393,
     0.1806
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-03",
@@ -12961,7 +13968,8 @@
     0.4787,
     0.2448,
     0.1477
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-04",
@@ -12980,7 +13988,8 @@
     0.7848,
     0.1662,
     0.1739
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-05",
@@ -12999,7 +14008,8 @@
     0.0436,
     0.2426,
     0.1477
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-06",
@@ -13011,7 +14021,7 @@
    "sizeQty": 200.0,
    "sizeUnit": "g",
    "crop": "crops/897807db-02-06.jpg",
-   "group": "g67",
+   "group": "g72",
    "category": "Pantry",
    "confidence": 0.99,
    "box": [
@@ -13019,7 +14029,8 @@
     0.4488,
     0.1267,
     0.1735
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-07",
@@ -13038,7 +14049,8 @@
     0.5982,
     0.1707,
     0.1803
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-08",
@@ -13057,7 +14069,8 @@
     0.7687,
     0.1725,
     0.1897
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-09",
@@ -13088,7 +14101,7 @@
    "sizeQty": 5000.0,
    "sizeUnit": "g",
    "crop": "crops/897807db-02-10.jpg",
-   "group": "g33",
+   "group": "g36",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -13096,7 +14109,8 @@
     0.6009,
     0.1253,
     0.1769
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-11",
@@ -13108,7 +14122,7 @@
    "sizeQty": 700.0,
    "sizeUnit": "ml",
    "crop": "crops/897807db-02-11.jpg",
-   "group": "g10",
+   "group": "g12",
    "category": "Pantry",
    "confidence": 1.0,
    "box": [
@@ -13116,7 +14130,8 @@
     0.5626,
     0.1604,
     0.1709
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-12",
@@ -13135,7 +14150,8 @@
     0.6002,
     0.1662,
     0.1782
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-13",
@@ -13147,7 +14163,7 @@
    "sizeQty": 300.0,
    "sizeUnit": "g",
    "crop": "crops/897807db-02-13.jpg",
-   "group": "g36",
+   "group": "g39",
    "category": "Meat & fish",
    "confidence": 1.0,
    "box": [
@@ -13155,7 +14171,8 @@
     0.0973,
     0.1765,
     0.1883
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-14",
@@ -13167,7 +14184,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "g",
    "crop": "crops/897807db-02-14.jpg",
-   "group": "g18",
+   "group": "g20",
    "category": "Pantry",
    "confidence": 0.98,
    "box": [
@@ -13175,7 +14192,8 @@
     0.3682,
     0.1707,
     0.1793
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-15",
@@ -13213,7 +14231,8 @@
     0.0168,
     0.2435,
     0.1534
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-17",
@@ -13232,7 +14251,8 @@
     0.4455,
     0.1644,
     0.1769
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-18",
@@ -13263,7 +14283,7 @@
    "sizeQty": 115.0,
    "sizeUnit": "g",
    "crop": "crops/897807db-02-19.jpg",
-   "group": "g93",
+   "group": "g98",
    "category": "Pantry",
    "confidence": 0.99,
    "box": [
@@ -13271,7 +14291,8 @@
     0.7919,
     0.2278,
     0.1464
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-02-20",
@@ -13290,7 +14311,8 @@
     0.2367,
     0.2408,
     0.1427
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-01",
@@ -13309,7 +14331,8 @@
     0.6039,
     0.2307,
     0.1412
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-02",
@@ -13328,7 +14351,8 @@
     0.2194,
     0.2298,
     0.1445
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-03",
@@ -13347,7 +14371,8 @@
     0.6144,
     0.1755,
     0.1896
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-04",
@@ -13359,7 +14384,7 @@
    "sizeQty": 105.0,
    "sizeUnit": "g",
    "crop": "crops/897807db-03-04.jpg",
-   "group": "g7",
+   "group": "g9",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -13367,7 +14392,8 @@
     0.2945,
     0.1653,
     0.1831
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-05",
@@ -13386,7 +14412,8 @@
     0.827,
     0.2147,
     0.1429
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-06",
@@ -13405,7 +14432,8 @@
     0.132,
     0.2027,
     0.1496
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-07",
@@ -13417,7 +14445,7 @@
    "sizeQty": 200.0,
    "sizeUnit": "g",
    "crop": "crops/897807db-03-07.jpg",
-   "group": "g69",
+   "group": "g74",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -13425,7 +14453,8 @@
     0.459,
     0.1755,
     0.1947
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-08",
@@ -13444,7 +14473,8 @@
     0.4611,
     0.1737,
     0.1919
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-09",
@@ -13463,7 +14493,8 @@
     0.7888,
     0.2379,
     0.1503
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-10",
@@ -13482,7 +14513,8 @@
     0.6154,
     0.1653,
     0.1869
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-11",
@@ -13494,7 +14526,7 @@
    "sizeQty": 80.0,
    "sizeUnit": "g",
    "crop": "crops/897807db-03-11.jpg",
-   "group": "g19",
+   "group": "g21",
    "category": "Snacks & sweets",
    "confidence": 1.0,
    "box": [
@@ -13502,7 +14534,8 @@
     0.1222,
     0.2307,
     0.1581
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-12",
@@ -13521,7 +14554,8 @@
     0.3104,
     0.1492,
     0.1659
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-13",
@@ -13533,7 +14567,7 @@
    "sizeQty": 1000.0,
    "sizeUnit": "ml",
    "crop": "crops/897807db-03-13.jpg",
-   "group": "g1",
+   "group": "g3",
    "category": "Drinks",
    "confidence": 0.97,
    "box": [
@@ -13541,7 +14575,8 @@
     0.7549,
     0.1737,
     0.1936
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-03-14",
@@ -13560,7 +14595,8 @@
     0.4079,
     0.2307,
     0.15
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-01",
@@ -13577,7 +14613,8 @@
     0.8157,
     0.2293,
     0.1482
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-02",
@@ -13596,7 +14633,8 @@
     0.0678,
     0.2166,
     0.1423
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-03",
@@ -13615,7 +14653,8 @@
     0.0665,
     0.2065,
     0.14
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-04",
@@ -13634,7 +14673,8 @@
     0.6244,
     0.1434,
     0.1916
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-05",
@@ -13653,7 +14693,8 @@
     0.5642,
     0.1653,
     0.183
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-06",
@@ -13670,7 +14711,8 @@
     0.7826,
     0.1631,
     0.18
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-07",
@@ -13682,7 +14724,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/897807db-04-07.jpg",
-   "group": "g28",
+   "group": "g32",
    "category": "Household",
    "confidence": 1.0,
    "box": [
@@ -13690,7 +14732,8 @@
     0.3428,
     0.1653,
     0.1846
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-08",
@@ -13709,7 +14752,8 @@
     0.3514,
     0.1653,
     0.1764
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-09",
@@ -13728,7 +14772,8 @@
     0.643,
     0.1591,
     0.1717
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-10",
@@ -13747,7 +14792,8 @@
     0.5199,
     0.1653,
     0.1737
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-11",
@@ -13764,7 +14810,8 @@
     0.5146,
     0.1346,
     0.1787
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-12",
@@ -13776,7 +14823,7 @@
    "sizeQty": 600.0,
    "sizeUnit": "ml",
    "crop": "crops/897807db-04-12.jpg",
-   "group": "g94",
+   "group": "g99",
    "category": "Household",
    "confidence": 0.99,
    "box": [
@@ -13784,7 +14831,8 @@
     0.3438,
     0.1429,
     0.1837
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-13",
@@ -13803,7 +14851,8 @@
     0.2118,
     0.1574,
     0.1701
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-14",
@@ -13822,7 +14871,8 @@
     0.7488,
     0.1491,
     0.1704
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-15",
@@ -13841,7 +14891,8 @@
     0.2062,
     0.1653,
     0.1767
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-16",
@@ -13860,7 +14911,8 @@
     0.2071,
     0.1631,
     0.1754
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-17",
@@ -13879,7 +14931,8 @@
     0.6499,
     0.1491,
     0.1638
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-18",
@@ -13898,7 +14951,8 @@
     0.7823,
     0.1517,
     0.1803
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-19",
@@ -13910,7 +14964,7 @@
    "sizeQty": 175.0,
    "sizeUnit": "g",
    "crop": "crops/897807db-04-19.jpg",
-   "group": "g52",
+   "group": "g56",
    "category": "Baby & personal care",
    "confidence": 1.0,
    "box": [
@@ -13918,7 +14972,8 @@
     0.2333,
     0.2306,
     0.141
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-20",
@@ -13926,7 +14981,7 @@
    "retailer": "game",
    "page": 4,
    "name": "Dettol Hygiene Soap 175g Assorted",
-   "price": 19.0,
+   "price": 19.99,
    "sizeQty": 175.0,
    "sizeUnit": "g",
    "crop": "crops/897807db-04-20.jpg",
@@ -13937,7 +14992,8 @@
     0.4246,
     0.1837,
     0.1367
-   ]
+   ],
+   "otherPrice": 19.0
   },
   {
    "id": "897807db-04-21",
@@ -13956,7 +15012,8 @@
     0.0473,
     0.2315,
     0.1334
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-22",
@@ -13973,7 +15030,8 @@
     0.0,
     0.1403,
     0.178
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-04-23",
@@ -13992,7 +15050,8 @@
     0.499,
     0.1692,
     0.1949
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-01",
@@ -14009,7 +15068,8 @@
     0.5384,
     0.1536,
     0.1574
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-02",
@@ -14026,7 +15086,8 @@
     0.4555,
     0.1536,
     0.1746
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-03",
@@ -14060,7 +15121,8 @@
     0.8254,
     0.2689,
     0.1376
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-05",
@@ -14077,7 +15139,8 @@
     0.7761,
     0.1657,
     0.188
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-06",
@@ -14096,7 +15159,8 @@
     0.1521,
     0.1545,
     0.1749
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-07",
@@ -14108,7 +15172,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/897807db-05-07.jpg",
-   "group": "g90",
+   "group": "g95",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -14116,7 +15180,8 @@
     0.0,
     0.1657,
     0.1759
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-08",
@@ -14135,7 +15200,8 @@
     0.137,
     0.176,
     0.191
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-09",
@@ -14147,7 +15213,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/897807db-05-09.jpg",
-   "group": "g15",
+   "group": "g17",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -14155,7 +15221,8 @@
     0.0,
     0.1657,
     0.1759
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-10",
@@ -14167,7 +15234,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/897807db-05-10.jpg",
-   "group": "g43",
+   "group": "g46",
    "category": "Liquor",
    "confidence": 0.99,
    "box": [
@@ -14175,7 +15242,8 @@
     0.0,
     0.176,
     0.1769
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-11",
@@ -14187,7 +15255,7 @@
    "sizeQty": 750.0,
    "sizeUnit": "ml",
    "crop": "crops/897807db-05-11.jpg",
-   "group": "g46",
+   "group": "g49",
    "category": "Liquor",
    "confidence": 1.0,
    "box": [
@@ -14195,7 +15263,8 @@
     0.3068,
     0.176,
     0.1846
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-12",
@@ -14212,7 +15281,8 @@
     0.7818,
     0.1577,
     0.1809
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-13",
@@ -14229,7 +15299,8 @@
     0.7959,
     0.1577,
     0.1678
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-14",
@@ -14248,7 +15319,8 @@
     0.2967,
     0.176,
     0.1947
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-15",
@@ -14260,7 +15332,7 @@
    "sizeQty": 3000.0,
    "sizeUnit": "ml",
    "crop": "crops/897807db-05-15.jpg",
-   "group": "g78",
+   "group": "g83",
    "category": "Liquor",
    "confidence": 0.98,
    "box": [
@@ -14268,7 +15340,8 @@
     0.146,
     0.1657,
     0.1809
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-05-16",
@@ -14302,7 +15375,8 @@
     0.2285,
     0.151,
     0.2033
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-02",
@@ -14319,7 +15393,8 @@
     0.2282,
     0.1443,
     0.2036
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-03",
@@ -14336,7 +15411,8 @@
     0.4425,
     0.2468,
     0.1599
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-04",
@@ -14353,7 +15429,8 @@
     0.2395,
     0.1541,
     0.1927
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-05",
@@ -14370,7 +15447,8 @@
     0.1144,
     0.155,
     0.1705
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-06",
@@ -14387,7 +15465,8 @@
     0.7765,
     0.1506,
     0.1811
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-07",
@@ -14404,7 +15483,8 @@
     0.0939,
     0.151,
     0.1917
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-08",
@@ -14421,7 +15501,8 @@
     0.0978,
     0.1399,
     0.1877
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-09",
@@ -14438,7 +15519,8 @@
     0.2531,
     0.151,
     0.1837
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-10",
@@ -14455,7 +15537,8 @@
     0.5751,
     0.2459,
     0.1439
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-11",
@@ -14472,7 +15555,8 @@
     0.8328,
     0.2347,
     0.1383
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-12",
@@ -14489,7 +15573,8 @@
     0.5771,
     0.2517,
     0.143
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-13",
@@ -14506,7 +15591,8 @@
     0.0007,
     0.2566,
     0.1443
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-14",
@@ -14523,7 +15609,8 @@
     0.8292,
     0.2557,
     0.1479
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-15",
@@ -14540,7 +15627,8 @@
     0.002,
     0.2499,
     0.1476
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-06-16",
@@ -14557,7 +15645,8 @@
     0.0066,
     0.249,
     0.1536
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-01",
@@ -14608,7 +15697,8 @@
     0.2316,
     0.1534,
     0.1808
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-04",
@@ -14625,7 +15715,8 @@
     0.7634,
     0.1494,
     0.1589
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-05",
@@ -14642,7 +15733,8 @@
     0.238,
     0.1534,
     0.1745
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-06",
@@ -14659,7 +15751,8 @@
     0.0844,
     0.1657,
     0.1831
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-07",
@@ -14676,7 +15769,8 @@
     0.7521,
     0.1534,
     0.2077
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-08",
@@ -14693,7 +15787,8 @@
     0.7521,
     0.1534,
     0.207
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-09",
@@ -14710,7 +15805,8 @@
     0.0987,
     0.1454,
     0.1675
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-10",
@@ -14727,7 +15823,8 @@
     0.2273,
     0.1375,
     0.1851
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-11",
@@ -14761,7 +15858,8 @@
     0.4875,
     0.1556,
     0.1951
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-13",
@@ -14778,7 +15876,8 @@
     0.5201,
     0.1494,
     0.1618
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-14",
@@ -14795,7 +15894,8 @@
     0.4945,
     0.1534,
     0.1878
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-15",
@@ -14812,7 +15912,8 @@
     0.2765,
     0.2314,
     0.1396
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-16",
@@ -14829,7 +15930,8 @@
     0.1167,
     0.2539,
     0.1648
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-07-17",
@@ -14846,7 +15948,8 @@
     0.0492,
     0.1494,
     0.1878
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-08-01",
@@ -14863,7 +15966,8 @@
     0.5305,
     0.1331,
     0.1722
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-08-02",
@@ -14880,14 +15984,15 @@
     0.5305,
     0.1537,
     0.1715
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-08-03",
    "catalogue": "game-105788",
    "retailer": "game",
    "page": 8,
-   "name": "Hisense 75\"4K Qled Smart TV (75Q6Q)",
+   "name": "Hisense 75\" Qled Smart TV (75Q6Q)",
    "price": 20999.0,
    "crop": "crops/897807db-08-03.jpg",
    "category": "Electronics & appliances",
@@ -14897,7 +16002,9 @@
     0.2517,
     0.1358,
     0.1722
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Hisense 75\"4K Qled Smart TV (75Q6Q)"
   },
   {
    "id": "897807db-08-04",
@@ -14914,14 +16021,15 @@
     0.0316,
     0.1559,
     0.1645
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-08-05",
    "catalogue": "game-105788",
    "retailer": "game",
    "page": 8,
-   "name": "Hisense 55\"4K Qled Smart TV (55Q6Q)",
+   "name": "Hisense 55\" Qled Smart TV (55Q6Q)",
    "price": 11999.0,
    "crop": "crops/897807db-08-05.jpg",
    "category": "Electronics & appliances",
@@ -14931,7 +16039,9 @@
     0.0793,
     0.2518,
     0.1389
-   ]
+   ],
+   "agreed": true,
+   "firstName": "Hisense 55\"4K Qled Smart TV (55Q6Q)"
   },
   {
    "id": "897807db-08-06",
@@ -14948,7 +16058,8 @@
     0.7972,
     0.2406,
     0.1568
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-08-07",
@@ -14965,14 +16076,15 @@
     0.8095,
     0.2496,
     0.1452
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-08-08",
    "catalogue": "game-105788",
    "retailer": "game",
    "page": 8,
-   "name": "55\" Mini-LED TV 4k",
+   "name": "55\" Mini-LED TV 4k (55m70h)",
    "price": 13999.0,
    "crop": "crops/897807db-08-08.jpg",
    "category": "Electronics & appliances",
@@ -14982,7 +16094,27 @@
     0.2731,
     0.1447,
     0.1645
-   ]
+   ],
+   "agreed": true,
+   "firstName": "55\" Mini-LED TV 4k"
+  },
+  {
+   "id": "897807db-08-09",
+   "catalogue": "game-105788",
+   "retailer": "game",
+   "page": 8,
+   "name": "Samsung 75\" 4k Crystal UHD TV (75u8000h)",
+   "price": 28999.0,
+   "crop": "crops/897807db-08-09.jpg",
+   "category": "Electronics & appliances",
+   "confidence": 0.8,
+   "box": [
+    0.6066,
+    0.6587,
+    0.2527,
+    0.1665
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-09-01",
@@ -14999,7 +16131,8 @@
     0.0,
     0.1443,
     0.1601
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-09-02",
@@ -15016,7 +16149,8 @@
     0.4928,
     0.1536,
     0.1859
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-09-03",
@@ -15026,7 +16160,7 @@
    "name": "Smart Tank 530 Wireless All-in-One Colour Printer",
    "price": 8499.0,
    "crop": "crops/897807db-09-03.jpg",
-   "group": "g96",
+   "group": "g101",
    "category": "Electronics & appliances",
    "confidence": 1.0,
    "box": [
@@ -15034,7 +16168,8 @@
     0.7263,
     0.1536,
     0.2077
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-09-04",
@@ -15051,7 +16186,8 @@
     0.2814,
     0.2604,
     0.1387
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-09-05",
@@ -15068,7 +16204,8 @@
     0.0,
     0.1514,
     0.1615
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-09-06",
@@ -15085,7 +16222,8 @@
     0.0,
     0.1514,
     0.1615
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-09-07",
@@ -15102,7 +16240,8 @@
     0.0,
     0.138,
     0.1608
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-09-08",
@@ -15119,7 +16258,8 @@
     0.7843,
     0.2541,
     0.1658
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-09-09",
@@ -15136,7 +16276,8 @@
     0.2848,
     0.2608,
     0.14
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-09-10",
@@ -15153,7 +16294,8 @@
     0.2841,
     0.243,
     0.1447
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-09-11",
@@ -15163,7 +16305,7 @@
    "name": "Smart Tank 581 All-in-One Colour Printer",
    "price": 7500.0,
    "crop": "crops/897807db-09-11.jpg",
-   "group": "g96",
+   "group": "g101",
    "category": "Electronics & appliances",
    "confidence": 0.99,
    "box": [
@@ -15171,7 +16313,8 @@
     0.5625,
     0.172,
     0.1745
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-01",
@@ -15188,7 +16331,8 @@
     0.0,
     0.1521,
     0.1334
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-02",
@@ -15205,7 +16349,8 @@
     0.1009,
     0.1521,
     0.178
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-03",
@@ -15222,7 +16367,8 @@
     0.6013,
     0.1482,
     0.2025
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-04",
@@ -15239,7 +16385,8 @@
     0.4944,
     0.1565,
     0.1774
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-05",
@@ -15258,7 +16405,8 @@
     0.2641,
     0.1295,
     0.1668
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-06",
@@ -15275,7 +16423,8 @@
     0.64,
     0.1543,
     0.1641
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-07",
@@ -15292,7 +16441,8 @@
     0.7942,
     0.1478,
     0.1621
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-08",
@@ -15309,7 +16459,8 @@
     0.0,
     0.1325,
     0.133
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-09",
@@ -15326,7 +16477,8 @@
     0.2591,
     0.1565,
     0.1724
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-10",
@@ -15343,7 +16495,8 @@
     0.7363,
     0.231,
     0.1436
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-11",
@@ -15362,7 +16515,8 @@
     0.0913,
     0.1338,
     0.1876
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-12",
@@ -15379,7 +16533,8 @@
     0.679,
     0.2476,
     0.1393
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-13",
@@ -15396,7 +16551,8 @@
     0.2919,
     0.2293,
     0.1459
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-14",
@@ -15413,7 +16569,8 @@
     0.5344,
     0.235,
     0.1506
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-15",
@@ -15430,7 +16587,8 @@
     0.0483,
     0.2245,
     0.1476
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-16",
@@ -15447,7 +16605,8 @@
     0.5364,
     0.2236,
     0.1413
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-17",
@@ -15464,7 +16623,8 @@
     0.2981,
     0.2511,
     0.1453
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-18",
@@ -15481,7 +16641,8 @@
     0.8355,
     0.2554,
     0.1396
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-19",
@@ -15498,7 +16659,8 @@
     0.541,
     0.238,
     0.1353
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-10-20",
@@ -15515,7 +16677,8 @@
     0.1496,
     0.2602,
     0.1446
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-02",
@@ -15532,7 +16695,8 @@
     0.0,
     0.1246,
     0.1163
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-03",
@@ -15549,7 +16713,8 @@
     0.5978,
     0.1541,
     0.1932
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-05",
@@ -15566,7 +16731,8 @@
     0.6059,
     0.1559,
     0.1827
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-06",
@@ -15583,7 +16749,8 @@
     0.0,
     0.1541,
     0.114
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-07",
@@ -15600,7 +16767,8 @@
     0.4562,
     0.1178,
     0.2009
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-08",
@@ -15617,7 +16785,8 @@
     0.1123,
     0.2401,
     0.1622
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-09",
@@ -15634,7 +16803,8 @@
     0.6335,
     0.2464,
     0.1679
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-10",
@@ -15651,7 +16821,8 @@
     0.0388,
     0.2531,
     0.1453
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-11",
@@ -15668,7 +16839,8 @@
     0.265,
     0.2576,
     0.175
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-12",
@@ -15685,7 +16857,8 @@
     0.5196,
     0.25,
     0.1558
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-13",
@@ -15702,7 +16875,8 @@
     0.7913,
     0.2643,
     0.1784
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-14",
@@ -15719,7 +16893,8 @@
     0.8318,
     0.2003,
     0.1419
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-15",
@@ -15729,7 +16904,7 @@
    "name": "Adventure 200 Camping Chair",
    "price": 349.0,
    "crop": "crops/897807db-11-15.jpg",
-   "group": "g95",
+   "group": "g100",
    "category": "Home & outdoor",
    "confidence": 1.0,
    "box": [
@@ -15737,7 +16912,8 @@
     0.8065,
     0.1559,
     0.1622
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-16",
@@ -15754,7 +16930,8 @@
     0.821,
     0.2236,
     0.1558
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-17",
@@ -15771,7 +16948,8 @@
     0.1365,
     0.2455,
     0.1497
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-18",
@@ -15788,7 +16966,8 @@
     0.0,
     0.1559,
     0.121
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-19",
@@ -15805,7 +16984,8 @@
     0.1365,
     0.2522,
     0.1379
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-20",
@@ -15822,7 +17002,8 @@
     0.5246,
     0.2231,
     0.1443
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-11-21",
@@ -15841,7 +17022,8 @@
     0.4869,
     0.1604,
     0.1831
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-01",
@@ -15858,7 +17040,8 @@
     0.5156,
     0.1536,
     0.1846
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-02",
@@ -15875,7 +17058,8 @@
     0.208,
     0.1536,
     0.1997
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-03",
@@ -15892,7 +17076,8 @@
     0.5015,
     0.1536,
     0.199
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-04",
@@ -15909,7 +17094,8 @@
     0.3709,
     0.1657,
     0.1769
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-05",
@@ -15926,7 +17112,8 @@
     0.5846,
     0.2528,
     0.1347
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-06",
@@ -15943,7 +17130,8 @@
     0.4017,
     0.1639,
     0.1611
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-07",
@@ -15960,7 +17148,8 @@
     0.7176,
     0.1536,
     0.1705
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-08",
@@ -15977,7 +17166,8 @@
     0.0,
     0.1456,
     0.1491
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-09",
@@ -15994,7 +17184,29 @@
     0.2358,
     0.1639,
     0.1866
-   ]
+   ],
+   "agreed": true
+  },
+  {
+   "id": "897807db-12-10",
+   "catalogue": "game-105788",
+   "retailer": "game",
+   "page": 12,
+   "name": "Wax 5L Splash",
+   "price": 329.0,
+   "sizeQty": 5000.0,
+   "sizeUnit": "ml",
+   "crop": "crops/897807db-12-10.jpg",
+   "category": "Other",
+   "confidence": 1.0,
+   "box": [
+    0.5074,
+    0.1273,
+    0.2113,
+    0.1645
+   ],
+   "agreed": true,
+   "firstName": "Wax Splash"
   },
   {
    "id": "897807db-12-11",
@@ -16011,7 +17223,8 @@
     0.0,
     0.1577,
     0.1444
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-12",
@@ -16028,7 +17241,8 @@
     0.7541,
     0.2385,
     0.138
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-13",
@@ -16045,7 +17259,8 @@
     0.3678,
     0.1496,
     0.1849
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-14",
@@ -16062,7 +17277,8 @@
     0.1166,
     0.1577,
     0.1752
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-15",
@@ -16079,7 +17295,8 @@
     0.0399,
     0.1514,
     0.1809
-   ]
+   ],
+   "agreed": true
   },
   {
    "id": "897807db-12-16",
@@ -16096,7 +17313,8 @@
     0.2332,
     0.1577,
     0.1883
-   ]
+   ],
+   "agreed": true
   }
  ]
 }

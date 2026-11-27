@@ -244,9 +244,9 @@ class DealItem {
   /// when both gave this price.
   final bool agreed;
 
-  /// The price the second reader gave, when the two differ. The first
-  /// reader's price is the one shown; this one is worth a look at the
-  /// leaflet.
+  /// The price the other reader gave, when the two differ and it is not
+  /// plain which is right. The likelier one is shown; this one is worth a
+  /// look at the leaflet.
   final double? otherPrice;
 
   /// The name as first read, when the second reading repaired it. A
@@ -479,7 +479,9 @@ class Correction {
       i.catalogueId == leaflet &&
       i.page == page &&
       (i.name == readName || i.firstName == readName) &&
-      (i.price - readPrice).abs() < 0.005;
+      // Either reading: which of two is shown can change between runs.
+      ((i.price - readPrice).abs() < 0.005 ||
+          (i.otherPrice != null && (i.otherPrice! - readPrice).abs() < 0.005));
 
   Map<String, dynamic> toJson() => {
     'leaflet': leaflet,
