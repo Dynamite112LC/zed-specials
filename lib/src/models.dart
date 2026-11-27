@@ -74,6 +74,7 @@ class Catalogue {
     this.validTo,
     this.stores,
     this.firstSeen,
+    this.areas = const [],
   });
 
   final String id;
@@ -88,6 +89,14 @@ class Catalogue {
   final String? stores;
   final DateTime? firstSeen;
   final List<CataloguePage> pages;
+
+  /// For a shop whose leaflets differ by area, the areas this one was
+  /// listed for (see ShopriteStore.area). Empty means everywhere.
+  final List<String> areas;
+
+  /// Whether a shopper in [area] gets this leaflet.
+  bool appliesTo(String? area) =>
+      area == null || areas.isEmpty || areas.contains(area);
 
   Retailer get retailer => Retailer.byId(retailerId);
 
@@ -111,6 +120,7 @@ class Catalogue {
     if (validTo != null) 'validTo': _date(validTo!),
     if (stores != null) 'stores': stores,
     if (firstSeen != null) 'firstSeen': _date(firstSeen!),
+    if (areas.isNotEmpty) 'areas': areas,
     'pages': [for (final p in pages) p.toJson()],
   };
 
@@ -124,6 +134,7 @@ class Catalogue {
     validTo: _parseDate(j['validTo']),
     stores: j['stores'] as String?,
     firstSeen: _parseDate(j['firstSeen']),
+    areas: (j['areas'] as List? ?? const []).cast<String>(),
     pages: [
       for (final p in (j['pages'] as List? ?? const []))
         CataloguePage.fromJson(p as Map<String, dynamic>),

@@ -57,3 +57,6 @@ assets/data/crops/
 
 # Built apps
 /dist/
+
+# Local preview settings
+.claude/

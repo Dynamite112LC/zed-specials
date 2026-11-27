@@ -14,8 +14,14 @@ void main(List<String> args) {
           .toList()
         ..sort((a, b) => a.path.compareTo(b.path));
   for (final f in files) {
+    final flashes = File(
+      f.path.replaceFirst(RegExp(r'\.ocr\.json$'), '.flashes.json'),
+    );
     final page = OcrPage.fromJson(
       jsonDecode(f.readAsStringSync()) as Map<String, dynamic>,
+      flashes: flashes.existsSync()
+          ? jsonDecode(flashes.readAsStringSync()) as Map<String, dynamic>
+          : null,
     );
     final items = extractItems(args[0], page);
     stdout.writeln('== ${f.uri.pathSegments.last}: ${items.length} items');

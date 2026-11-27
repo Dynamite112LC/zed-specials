@@ -5,6 +5,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../shoprite_stores.dart';
+
 const _userAgent =
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
     '(KHTML, like Gecko) Chrome/126.0 Safari/537.36';
@@ -22,6 +24,7 @@ class ScrapedCatalogue {
     this.viewImageUrls = const [],
     this.ocrImageUrls = const [],
     this.pdfUrl,
+    this.areas = const [],
   });
 
   final String id;
@@ -42,6 +45,10 @@ class ScrapedCatalogue {
   /// Set when the catalogue is only published as a PDF.
   final String? pdfUrl;
 
+  /// Where the catalogue applies, for a shop that varies them by area
+  /// (see [ShopriteStore.area]). Empty means everywhere.
+  final List<String> areas;
+
   Map<String, dynamic> toJson() => {
     'id': id,
     'retailer': retailerId,
@@ -54,26 +61,27 @@ class ScrapedCatalogue {
     'viewImageUrls': viewImageUrls,
     'ocrImageUrls': ocrImageUrls,
     'pdfUrl': pdfUrl,
+    if (areas.isNotEmpty) 'areas': areas,
   };
 
-  factory ScrapedCatalogue.fromJson(Map<String, dynamic> j) =>
-      ScrapedCatalogue(
-        id: j['id'] as String,
-        retailerId: j['retailer'] as String,
-        title: j['title'] as String,
-        sourceUrl: j['sourceUrl'] as String,
-        coverUrl: j['coverUrl'] as String?,
-        validFrom: j['validFrom'] == null
-            ? null
-            : DateTime.parse(j['validFrom'] as String),
-        validTo: j['validTo'] == null
-            ? null
-            : DateTime.parse(j['validTo'] as String),
-        stores: j['stores'] as String?,
-        viewImageUrls: (j['viewImageUrls'] as List).cast<String>(),
-        ocrImageUrls: (j['ocrImageUrls'] as List).cast<String>(),
-        pdfUrl: j['pdfUrl'] as String?,
-      );
+  factory ScrapedCatalogue.fromJson(Map<String, dynamic> j) => ScrapedCatalogue(
+    id: j['id'] as String,
+    retailerId: j['retailer'] as String,
+    title: j['title'] as String,
+    sourceUrl: j['sourceUrl'] as String,
+    coverUrl: j['coverUrl'] as String?,
+    validFrom: j['validFrom'] == null
+        ? null
+        : DateTime.parse(j['validFrom'] as String),
+    validTo: j['validTo'] == null
+        ? null
+        : DateTime.parse(j['validTo'] as String),
+    stores: j['stores'] as String?,
+    viewImageUrls: (j['viewImageUrls'] as List).cast<String>(),
+    ocrImageUrls: (j['ocrImageUrls'] as List).cast<String>(),
+    pdfUrl: j['pdfUrl'] as String?,
+    areas: (j['areas'] as List? ?? const []).cast<String>(),
+  );
 }
 
 /// Pauses between attempts at a page that refuses or fails. Tests and
@@ -124,8 +132,18 @@ String _decodeEntities(String s) => s
     .replaceAll('&quot;', '"');
 
 const _months = {
-  'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
-  'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12,
+  'jan': 1,
+  'feb': 2,
+  'mar': 3,
+  'apr': 4,
+  'may': 5,
+  'jun': 6,
+  'jul': 7,
+  'aug': 8,
+  'sep': 9,
+  'oct': 10,
+  'nov': 11,
+  'dec': 12,
 };
 
 int? _month(String? name) {
@@ -160,36 +178,70 @@ String _slug(String s) => s
 
 // ---------------------------------------------------------------- Shoprite
 
-/// Shoprite lists leaflets per store; without a store it shows the default
-/// Lusaka store (Cairo Road).
-Future<List<ScrapedCatalogue>> scrapeShoprite(http.Client client) async {
+/// Wait between two requests to the same site, so a run that asks about
+/// several stores does not arrive as a burst. Tests shorten it.
+var politePause = const Duration(milliseconds: 1500);
+
+/// Shoprite lists leaflets per store: each store sees the leaflets for its
+/// province and its kind of shop (the LiquorShops have their own). One store
+/// is asked for each such area, and a leaflet listed in several areas is
+/// read once and remembers all of them.
+Future<List<ScrapedCatalogue>> scrapeShoprite(
+  http.Client client, {
+  List<ShopriteStore>? stores,
+}) async {
   const listUrl = 'https://www.shoprite.co.zm/specials.html';
-  final html = await _get(client, listUrl);
+  final viewers = <String>[]; // in the order first seen
+  final covers = <String, String?>{};
+  final until = <String, DateTime?>{};
+  final areas = <String, List<String>>{};
+
+  var first = true;
+  for (final store in stores ?? shopriteAreaStores) {
+    if (!first) await Future<void>.delayed(politePause);
+    first = false;
+    final html = await _get(
+      client,
+      '$listUrl?storeId=${store.id}&provinceId=${store.provinceId}',
+    );
+    final chunks = html.split('cmp-leaflets-specials__leaflets__item ').skip(1);
+    for (final chunk in chunks) {
+      final viewer = RegExp(
+        r'data-leaflet-external-url="([^"]+)"',
+      ).firstMatch(chunk)?.group(1);
+      if (viewer == null) continue;
+      if (!areas.containsKey(viewer)) {
+        viewers.add(viewer);
+        areas[viewer] = [];
+        final cover = RegExp(
+          r'<img[^>]+src="([^"]+)"',
+        ).firstMatch(chunk)?.group(1);
+        covers[viewer] = cover == null
+            ? null
+            : Uri.parse(listUrl).resolve(cover).toString();
+        final ts = RegExp(
+          r'data-valid-until-timestamp="(\d+)"',
+        ).firstMatch(chunk)?.group(1);
+        if (ts != null) {
+          // The timestamp is 23:59 Zambian time (UTC+2) on the last day.
+          final end = DateTime.fromMillisecondsSinceEpoch(
+            int.parse(ts),
+            isUtc: true,
+          ).add(const Duration(hours: 2));
+          until[viewer] = DateTime(end.year, end.month, end.day);
+        }
+      }
+      if (!areas[viewer]!.contains(store.area)) areas[viewer]!.add(store.area);
+    }
+  }
+
   final out = <ScrapedCatalogue>[];
-
-  final chunks = html.split('cmp-leaflets-specials__leaflets__item ').skip(1);
-  for (final chunk in chunks) {
-    final viewer = RegExp(
-      r'data-leaflet-external-url="([^"]+)"',
-    ).firstMatch(chunk)?.group(1);
-    if (viewer == null) continue;
-    final cover = RegExp(r'<img[^>]+src="([^"]+)"').firstMatch(chunk)?.group(1);
-    final ts = RegExp(
-      r'data-valid-until-timestamp="(\d+)"',
-    ).firstMatch(chunk)?.group(1);
-
+  for (final viewer in viewers) {
     final base = viewer.substring(0, viewer.lastIndexOf('/'));
     final slug = base.substring(base.lastIndexOf('/') + 1);
 
     var (from, to) = parseDateRange(slug);
-    if (ts != null) {
-      // The timestamp is 23:59 Zambian time (UTC+2) on the last day.
-      final end = DateTime.fromMillisecondsSinceEpoch(
-        int.parse(ts),
-        isUtc: true,
-      ).add(const Duration(hours: 2));
-      to = DateTime(end.year, end.month, end.day);
-    }
+    if (until[viewer] != null) to = until[viewer];
 
     var title = 'Specials';
     final view = <String>[];
@@ -221,7 +273,8 @@ Future<List<ScrapedCatalogue>> scrapeShoprite(http.Client client) async {
       final ext = (defaults['substrateFormat'] as String?) ?? 'jpg';
       for (final n in (pages['structure'] as List).cast<String>()) {
         final page = n.padLeft(4, '0');
-        final stem = '$base/files/assets/common/page-html5-substrates/page$page';
+        final stem =
+            '$base/files/assets/common/page-html5-substrates/page$page';
         view.add('${stem}_$viewIdx.$ext');
         ocr.add('${stem}_$ready.$ext');
       }
@@ -235,14 +288,13 @@ Future<List<ScrapedCatalogue>> scrapeShoprite(http.Client client) async {
         retailerId: 'shoprite',
         title: title,
         sourceUrl: viewer,
-        coverUrl: cover == null
-            ? null
-            : Uri.parse(listUrl).resolve(cover).toString(),
+        coverUrl: covers[viewer],
         validFrom: from,
         validTo: to,
-        stores: 'Lusaka stores (Cairo Road leaflet)',
+        stores: describeShopriteAreas(areas[viewer]!),
         viewImageUrls: view,
         ocrImageUrls: ocr,
+        areas: areas[viewer]!,
       ),
     );
   }
@@ -286,9 +338,7 @@ Future<List<ScrapedCatalogue>> scrapePicknPay(http.Client client) async {
         validTo: to,
         stores: stores == null
             ? null
-            : _decodeEntities(
-                stores,
-              ).trim().replaceAll(RegExp(r',\s*$'), ''),
+            : _decodeEntities(stores).trim().replaceAll(RegExp(r',\s*$'), ''),
         pdfUrl: pdf,
       ),
     );
@@ -337,9 +387,7 @@ Future<List<ScrapedCatalogue>> scrapeGame(http.Client client) async {
       viewImageUrls: [
         for (final p in pages) '${byPage[p]}.1240x10000_q90.webp',
       ],
-      ocrImageUrls: [
-        for (final p in pages) '${byPage[p]}.1800x10000_q90.webp',
-      ],
+      ocrImageUrls: [for (final p in pages) '${byPage[p]}.1800x10000_q90.webp'],
     ),
   ];
 }

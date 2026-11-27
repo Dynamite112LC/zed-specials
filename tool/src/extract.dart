@@ -28,15 +28,67 @@ class OcrLine {
   String toString() => '"$t" @${x.round()},${y.round()}';
 }
 
+/// A price found by its colours rather than by general OCR (see
+/// find_flashes in tool/ocr.py): the full-size kwacha digits and the small
+/// raised ngwee, each read on its own.
+class PriceFlash {
+  PriceFlash({
+    required this.x,
+    required this.y,
+    required this.w,
+    required this.h,
+    required this.th,
+    required this.kwacha,
+    required this.ngwee,
+    required this.ks,
+    required this.ns,
+    required this.raised,
+  });
+
+  final double x, y, w, h;
+
+  /// Height of the full-size digits.
+  final double th;
+  final String kwacha, ngwee;
+
+  /// Recognition confidence of each part, 0..1.
+  final double ks, ns;
+
+  /// How many small raised glyphs follow the kwacha digits.
+  final int raised;
+
+  factory PriceFlash.fromJson(Map<String, dynamic> j) => PriceFlash(
+    x: (j['x'] as num).toDouble(),
+    y: (j['y'] as num).toDouble(),
+    w: (j['w'] as num).toDouble(),
+    h: (j['h'] as num).toDouble(),
+    th: (j['th'] as num).toDouble(),
+    kwacha: j['kwacha'] as String,
+    ngwee: j['ngwee'] as String? ?? '',
+    ks: (j['ks'] as num).toDouble(),
+    ns: (j['ns'] as num?)?.toDouble() ?? 0,
+    raised: j['raised'] as int? ?? 0,
+  );
+}
+
 class OcrPage {
-  OcrPage(this.width, this.height, this.lines);
+  OcrPage(this.width, this.height, this.lines, {this.flashes = const []});
 
   final int width, height;
   final List<OcrLine> lines;
+  final List<PriceFlash> flashes;
 
-  factory OcrPage.fromJson(Map<String, dynamic> j) => OcrPage(
+  /// [flashes] is the content of the page's ".flashes.json", when it has one.
+  factory OcrPage.fromJson(
+    Map<String, dynamic> j, {
+    Map<String, dynamic>? flashes,
+  }) => OcrPage(
     j['width'] as int,
     j['height'] as int,
+    flashes: [
+      for (final f in (flashes?['flashes'] as List? ?? const []))
+        PriceFlash.fromJson(f as Map<String, dynamic>),
+    ],
     [
       for (final l in j['lines'] as List)
         OcrLine(
@@ -91,7 +143,9 @@ List<ExtractedItem> extractItems(String retailerId, OcrPage page) {
         (l) =>
             l.s >= 0.5 &&
             l.t.isNotEmpty &&
-            !RegExp(r'[^\x00-ɏ‘-‟]').hasMatch(l.t),
+            !RegExp(
+              r'[^\x00-\u024F\u2010-\u2027\u2030-\u203A\u20AC\u2122]',
+            ).hasMatch(l.t),
       )
       .toList();
   final List<ExtractedItem> items;
@@ -201,22 +255,70 @@ String _fixOcrUnits(String s) => s
       (m) => '${m[1]}L ${m[2]}',
     );
 
-const _keepUpper = {'TV', 'LED', 'UHD', 'HD', 'USB', 'LG', 'JBL', 'HP', 'UHT', 'IQF', 'BBQ', 'XL', 'DVD', 'AA', 'AAA', 'PNP', 'KIC', 'SMEG', 'NRB', 'RTD', 'A4'};
-const _keepLower = {'kg', 'g', 'ml', 'l', 'ltr', 'x', 'or', 'and', 'in', 'with', 'per', 'of', 'the', 'for'};
+const _keepUpper = {
+  'TV',
+  'LED',
+  'UHD',
+  'HD',
+  'USB',
+  'LG',
+  'JBL',
+  'HP',
+  'UHT',
+  'IQF',
+  'BBQ',
+  'XL',
+  'DVD',
+  'AA',
+  'AAA',
+  'PNP',
+  'KIC',
+  'SMEG',
+  'NRB',
+  'RTD',
+  'A4',
+};
+const _keepLower = {
+  'kg',
+  'g',
+  'ml',
+  'l',
+  'ltr',
+  'x',
+  'or',
+  'and',
+  'in',
+  'with',
+  'per',
+  'of',
+  'the',
+  'for',
+};
 
 /// Tidies a description: fixes spacing, drops selling words, and turns
 /// SHOUTED leaflet text into normal capitalisation.
 String cleanName(String raw) {
   // Game lists features and a stock number after a bullet: keep the name.
-  final cut = RegExp(r'\s*[·•]|\s*\bItem no\b', caseSensitive: false)
-      .firstMatch(raw);
+  final cut = RegExp(
+    r'\s*[·•]|\s*\bItem no\b',
+    caseSensitive: false,
+  ).firstMatch(raw);
   if (cut != null && cut.start > 8) raw = raw.substring(0, cut.start);
   var s = _fixOcrUnits(raw)
       // "EACH" misread or run into the word before it.
-      .replaceAll(RegExp(r'\b(S?EA?CH|SECH|EAH|EAC)\b', caseSensitive: false), ' ')
+      .replaceAll(
+        RegExp(r'\b(S?EA?CH|SECH|EAH|EAC)\b', caseSensitive: false),
+        ' ',
+      )
       .replaceAll(RegExp(r'\s+'), ' ')
       .replaceAllMapped(RegExp(r'(\d),(\d)'), (m) => '${m[1]}.${m[2]}')
-      .replaceAll(RegExp(r'\b(EACH|PER PACK|PER KG|EA)\b\.?', caseSensitive: false), ' ')
+      .replaceAll(
+        RegExp(
+          r'\b(EACH|PER PACK|PER SET|PER PAIR|PER KG|EA)\b\.?',
+          caseSensitive: false,
+        ),
+        ' ',
+      )
       .replaceAll(RegExp(r'\bALL VARIANTS\b', caseSensitive: false), 'Assorted')
       .replaceAll(RegExp(r'\s+'), ' ')
       .trim();
@@ -300,11 +402,14 @@ Map<T, List<OcrLine>> _assign<T>(
 //   BUTTERCUP
 //   MARGARINE 500g EACH
 
-final _shopritePrice = RegExp(r'''^[Kk"'“”‘’*«]?\s?(\d{1,5})(?:[.,](\d{2}))?$''');
+final _shopritePrice = RegExp(
+  r'''^[Kk"'“”‘’*«]?\s?(\d{1,5})(?:[.,](\d{2}))?$''',
+);
 final _shopriteNoise = RegExp(
-  r'^(MAX\b.*CUSTOMER|SAVE\b.*|ONLY AT.*|.*DAYS ONLY|PAGE \d+|T&C.*|WHILE STOCKS.*|NOT FOR SALE.*|.*DRINK RESPONSIBLY.*|.*TO SUNDAY|.*PERSONS UNDER.*|AT SELECTED STORES?|ALSO AVAILABLE.*|.*NOT INCLUDED.*|SCAN FOR.*|BOTH FOR|ALL FOR|(?:BUY\s?)?(?:ANY\s?)?\d{1,2}\s?FOR|(?:GET\s)?ALL\s?\d+\s?FOR|FREE\b.*|LOWER PRICES.*|LOOK\b.*|.*YOU CAN TRUST.*)$',
+  r'^(MAX\b.*CUSTOMER|SAVE\b.*|ONLY AT.*|.*DAYS ONLY|PAGE \d+|T&C.*|WHILE STOCKS.*|NOT FOR SALE.*|.*DRINK RESPONSIBLY.*|.*TO SUNDAY|.*PERSONS UNDER.*|AT SELECTED STORES?|ALSO AVAILABLE.*|.*NOT INCLUDED.*|SCAN FOR.*|ALSO|AVAILABLE+|IN SELECTED STORES ONLY|SELECTED|STORES ONLY|SELECTED STORES ONLY|RADIO-?|CONTROLLED|BOTH FOR|ALL FOR|(?:BUY\s?)?(?:ANY\s?)?\d{1,2}\s?FOR|(?:GET\s)?ALL\s?\d+\s?FOR|FREE\b.*|LOWER PRICES.*|LOOK\b.*|.*YOU CAN TRUST.*)$',
   caseSensitive: false,
 );
+
 /// "ANY 2 FOR", "3 FOR": the price printed underneath buys that many.
 final _multiBuy = RegExp(
   r'^(?:BUY\s?)?(?:ANY\s?)?(\d{1,2})\s?FOR$',
@@ -328,8 +433,9 @@ final _sizeBadge = RegExp(
 /// tell full-size digits from raised ones.
 Map<OcrLine, (double, bool)> _shopriteValues(
   List<OcrLine> prices,
-  List<OcrLine> lines,
-) {
+  List<OcrLine> lines, {
+  bool ngweeHint = false,
+}) {
   double bigWidth(String digits) {
     var w = 0.0;
     for (final c in digits.split('')) {
@@ -362,10 +468,12 @@ Map<OcrLine, (double, bool)> _shopriteValues(
   }
 
   // Does this page print ngwee at all?
-  final ngweePage = prices.any((p) {
-    final d = digitsOf(p);
-    return raisedFor(p) != null || (d.length >= 4 && looksRaised(p, d));
-  });
+  final ngweePage =
+      ngweeHint ||
+      prices.any((p) {
+        final d = digitsOf(p);
+        return raisedFor(p) != null || (d.length >= 4 && looksRaised(p, d));
+      });
 
   final out = <OcrLine, (double, bool)>{};
   for (final p in prices) {
@@ -396,12 +504,50 @@ Map<OcrLine, (double, bool)> _shopriteValues(
       } else {
         out[p] = (double.parse(digits), true);
       }
+    } else if (ngweePage &&
+        digits.length >= 4 &&
+        digits.endsWith('9') &&
+        !digits.endsWith('99')) {
+      // "K134" + "99" read as "K1349": one raised digit was missed.
+      out[p] = (
+        double.parse(digits.substring(0, digits.length - 1)) + 0.99,
+        false,
+      );
     } else {
       out[p] = (double.parse(digits), true);
     }
   }
   return out;
 }
+
+/// A stack of description lines: "ZEUS QUAD BIKE / RIDE-ON / EACH".
+class _TextBlock {
+  _TextBlock(OcrLine first) : lines = [first];
+
+  final List<OcrLine> lines;
+
+  /// Set once the block has reached its "EACH" or "PER SET".
+  bool closed = false;
+
+  double get x => lines.map((l) => l.x).reduce(math.min);
+  double get y => lines.map(_top).reduce(math.min);
+  double get right => lines.map((l) => l.right).reduce(math.max);
+  double get bottom => lines.map(_bottom).reduce(math.max);
+  double get cx => (x + right) / 2;
+  bool get ended => lines.any((l) => _descriptionEnd.hasMatch(l.t));
+}
+
+// The box of a tilted line (starburst prices and their descriptions are
+// set at an angle) is much taller than its lettering. These give the
+// extent of the lettering itself.
+double _top(OcrLine l) => l.cy - l.th / 2;
+double _bottom(OcrLine l) => l.cy + l.th / 2;
+
+/// Shoprite ends a description with what the price buys.
+final _descriptionEnd = RegExp(
+  r'(EACH|EAH|\bPER\s?(SET|KG|PACK|BAG|PAIR|ROLL|TRAY|BOX|CASE|BUNCH|PUNNET|DOZEN|LITRE|METRE|m))\.?\s*$',
+  caseSensitive: false,
+);
 
 List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
   final caps = lines
@@ -412,32 +558,243 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
     fallback: page.height / 120,
   );
 
-  final prices = lines
+  // Prices found by their colours come first: both parts of the price are
+  // read exactly there. General OCR supplies the rest (the starburst
+  // prices, which are not red on yellow).
+  final values = <OcrLine, (double, bool)>{};
+  final prices = <OcrLine>[];
+
+  // What general OCR made of the big price lettering, for cross-checking.
+  final readPrices = lines
       .where(
-        (l) =>
-            l.th >= 2.6 * body && l.s >= 0.6 && _shopritePrice.hasMatch(l.t),
+        (l) => l.th >= 2.6 * body && l.s >= 0.6 && _shopritePrice.hasMatch(l.t),
       )
       .toList();
+  bool centreInside(
+    double cx,
+    double cy,
+    double x,
+    double y,
+    double r,
+    double b,
+    double pad,
+  ) => cx > x - pad && cx < r + pad && cy > y - pad && cy < b + pad;
+
+  // The same flash can be found twice (once per colour scheme): keep the
+  // better reading. Largest first, so a fragment never displaces a whole.
+  final found = [...page.flashes]
+    ..sort((a, b) => (b.w * b.h).compareTo(a.w * a.h));
+  final kept = <PriceFlash>[];
+  for (final f in found) {
+    if (f.ks < 0.8) continue;
+    final twin = kept.any(
+      (k) => centreInside(
+        f.x + f.w / 2,
+        f.y + f.h / 2,
+        k.x,
+        k.y,
+        k.x + k.w,
+        k.y + k.h,
+        0,
+      ),
+    );
+    if (!twin) kept.add(f);
+  }
+
+  for (final f in kept) {
+    if (f.th < 1.5 * body) continue;
+    final kwacha = int.tryParse(f.kwacha);
+    if (kwacha == null) continue;
+    // Starburst prices have outlined digits that the colour reader only
+    // catches part of ("6" of "K56"). Where general OCR read the whole
+    // number there, it is the one to believe.
+    final fuller = readPrices.any((l) {
+      final digits = _shopritePrice.firstMatch(l.t)!.group(1)!;
+      return f.raised == 0 &&
+          digits.length > f.kwacha.length &&
+          digits.contains(f.kwacha) &&
+          centreInside(
+            f.x + f.w / 2,
+            f.y + f.h / 2,
+            l.x,
+            l.y,
+            l.right,
+            l.bottom,
+            0.2 * l.th,
+          );
+    });
+    if (fuller) continue;
+    var certain = f.ks >= 0.85;
+    var score = f.ks;
+    double value = kwacha.toDouble();
+    if (f.raised > 0) {
+      var ngwee = RegExp(r'^\d{2}$').hasMatch(f.ngwee)
+          ? int.parse(f.ngwee)
+          : null;
+      // The raised "99" is small and now and then comes back as "66".
+      if (ngwee == 66) ngwee = 99;
+      if (ngwee == null) {
+        // Raised digits were seen but not read: nearly always 99.
+        ngwee = 99;
+        certain = false;
+      } else {
+        score = math.min(score, f.ns);
+      }
+      value += ngwee / 100;
+    }
+    final line = OcrLine('K${f.kwacha}', f.x, f.y, f.w, f.h, f.th, score);
+    prices.add(line);
+    values[line] = (value, certain);
+  }
+  final flashes = [...prices];
+  // [pad] in price heights: generous when asking whether OCR read the same
+  // price, none when asking whether a line of text is printed on the flash
+  // (a starburst's description sits right under its big digits).
+  bool onFlash(OcrLine l, {double pad = 0.3}) => flashes.any(
+    (f) =>
+        l.cx > f.x - pad * f.th &&
+        l.cx < f.right + pad * f.th &&
+        l.cy > f.y - pad * f.th &&
+        l.cy < f.bottom + pad * f.th,
+  );
+  final read = readPrices.where((l) => !onFlash(l)).toList();
+  // Whether this leaflet prints ngwee at all, as told by the flashes.
+  final withNgwee = kept.where((f) => f.raised > 0).length;
+  values.addAll(
+    _shopriteValues(
+      read,
+      lines,
+      ngweeHint: kept.length >= 3 && withNgwee >= 0.6 * kept.length,
+    ),
+  );
+  prices.addAll(read);
   if (prices.isEmpty) return const [];
-  final values = _shopriteValues(prices, lines);
 
   final desc = lines.where((l) {
-    if (prices.contains(l)) return false;
+    if (prices.contains(l) || onFlash(l, pad: 0)) return false;
     if (l.th < 0.6 * body || l.th > 1.8 * body) return false;
     if (_shopriteNoise.hasMatch(l.t)) return false;
     final perKg = RegExp(r'^per\s?kg$', caseSensitive: false).hasMatch(l.t);
     return perKg || (_letters(l.t) >= 3 && _mostlyUpper(l.t));
-  }).toList();
+  }).toList()..sort((a, b) => _top(a).compareTo(_top(b)));
 
-  // Descriptions sit under their price, roughly centred on it.
-  final byPrice = _assign<OcrLine>(desc, prices, (line, p) {
-    if (line.y < p.bottom - 0.15 * p.th) return null;
-    final dy = line.y - p.bottom;
-    if (dy > 1.5 * p.th) return null;
-    final reach = math.min(1.3 * p.th, 5 * body);
-    if (line.right < p.x - reach || line.x > p.right + reach) return null;
-    return _gap(line, p);
-  });
+  OcrLine? nearestPrice(OcrLine l) {
+    OcrLine? best;
+    var bestGap = double.infinity;
+    for (final p in prices) {
+      // By centres: a description is centred under its price, or starts
+      // beside it, while a wide neighbour can come closer edge to edge.
+      final g = (l.cx - p.cx).abs() + 0.5 * (l.cy - p.cy).abs();
+      if (g < bestGap) {
+        bestGap = g;
+        best = p;
+      }
+    }
+    return best;
+  }
+
+  // Stack the description lines into blocks. A block is finished by its
+  // "EACH" or "PER SET", so two products printed one above the other stay
+  // apart.
+  final blocks = <_TextBlock>[];
+  for (final l in desc) {
+    _TextBlock? home;
+    var nearest = double.infinity;
+    for (final b in blocks) {
+      final last = b.lines.last;
+      final ratio = l.th / last.th;
+      if (ratio < 0.7 || ratio > 1.45) continue;
+      // The rest of a line that OCR split in two. On a crowded page the
+      // next product's description starts on the same row, a space away:
+      // that one belongs to another price.
+      final sameRow =
+          (l.cy - last.cy).abs() < 0.5 * l.th &&
+          l.x - last.right > -0.3 * l.th &&
+          l.x - last.right < 1.5 * l.th &&
+          identical(nearestPrice(l), nearestPrice(last));
+      if (sameRow) {
+        home = b;
+        break;
+      }
+      if (b.closed) continue;
+      final gap = _top(l) - b.bottom;
+      if (gap < -0.5 * l.th || gap > 0.75 * l.th) continue;
+      // Lines of one description share a left edge (set beside a price)
+      // or a centre (set under one). The neighbouring product's lines,
+      // level with these on a crowded page, share neither.
+      final wide = math.max(l.w, b.right - b.x);
+      final flushLeft = (l.x - b.x).abs() < 0.8 * l.th;
+      final centred = (l.cx - b.cx).abs() < 0.8 * l.th + 0.12 * wide;
+      if (!flushLeft && !centred) continue;
+      if (gap.abs() < nearest) {
+        nearest = gap.abs();
+        home = b;
+      }
+    }
+    if (home == null) {
+      home = _TextBlock(l);
+      blocks.add(home);
+    } else {
+      home.lines.add(l);
+    }
+    if (_descriptionEnd.hasMatch(l.t)) home.closed = true;
+  }
+
+  // Pair each price with one block, closest pairs first. Food leaflets put
+  // the description under the price; the leaflets for toys and household
+  // goods put it beside the price or just above it.
+  final pairs = <(double, OcrLine, _TextBlock)>[];
+  for (final p in prices) {
+    final unit = p.th;
+    final pTop = _top(p), pBottom = _bottom(p);
+    for (final b in blocks) {
+      // Stray capitals from the packaging come as a lone line with no
+      // "EACH" to end it.
+      if (!b.ended && b.lines.length < 2) continue;
+      double? cost;
+      void consider(double c) {
+        if (cost == null || c < cost!) cost = c;
+      }
+
+      // Underneath, roughly centred.
+      final below = b.y - pBottom;
+      if (below > -0.35 * unit && below < 1.5 * unit) {
+        final reach = math.min(1.3 * unit, 5 * body);
+        if (b.right > p.x - reach && b.x < p.right + reach) {
+          consider(math.max(0, below) + 0.25 * (b.cx - p.cx).abs());
+        }
+      }
+      // To the right, starting level with the price.
+      final beside = b.x - p.right;
+      if (beside > -0.25 * unit &&
+          beside < 1.0 * unit &&
+          b.y > pTop - 0.7 * unit &&
+          b.y < pBottom) {
+        consider(math.max(0, beside) + 0.5 * (b.y - pTop).abs());
+      }
+      // Just above, starting over the price.
+      final above = pTop - b.bottom;
+      if (above > -0.2 * unit &&
+          above < 0.8 * unit &&
+          b.x > p.x - 1.0 * unit &&
+          b.x < p.right + 0.5 * unit) {
+        consider(math.max(0, above) + 0.25 * (b.x - p.x).abs() + 0.4 * unit);
+      }
+      if (cost == null) continue;
+      // A real description ends with "EACH" or the like; stray capitals
+      // from the packaging do not.
+      if (!b.ended) cost = cost! + 0.6 * unit;
+      pairs.add((cost!, p, b));
+    }
+  }
+  pairs.sort((a, b) => a.$1.compareTo(b.$1));
+  final blockOf = <OcrLine, _TextBlock>{};
+  final taken = <_TextBlock>{};
+  for (final (_, p, b) in pairs) {
+    if (blockOf.containsKey(p) || taken.contains(b)) continue;
+    blockOf[p] = b;
+    taken.add(b);
+  }
 
   final saves = lines
       .where((l) => RegExp(r'^SAVE', caseSensitive: false).hasMatch(l.t))
@@ -461,18 +818,8 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
 
   final items = <ExtractedItem>[];
   for (final p in prices) {
-    // Keep only the lines that run on from the price without a break, so
-    // text from the next row of products is not swept in.
-    final stacked = byPrice[p]!..sort((a, b) => a.y.compareTo(b.y));
-    final own = <OcrLine>[];
-    for (final l in stacked) {
-      if (own.isNotEmpty) {
-        final lowest = own.map((o) => o.bottom).reduce(math.max);
-        if (l.y - lowest > 1.3 * body) break;
-      }
-      own.add(l);
-    }
-    if (own.isEmpty) continue;
+    final own = blockOf[p]?.lines;
+    if (own == null) continue;
     final raw = _joinLines(own);
     final (total, certain) = values[p]!;
 
@@ -613,9 +960,7 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
   final digitLines = lines
       .where((l) => RegExp(r'^\d{1,6}$').hasMatch(l.t))
       .toList();
-  final saveWords = lines
-      .where((l) => l.t.toUpperCase() == 'SAVE')
-      .toList();
+  final saveWords = lines.where((l) => l.t.toUpperCase() == 'SAVE').toList();
 
   bool isSaveNumber(OcrLine l) => saveWords.any(
     (s) =>
@@ -885,35 +1230,42 @@ List<ExtractedItem> _readGame(OcrPage page, List<OcrLine> lines) {
         continue;
       }
     }
-    // The ngwee were not read; the kwacha amount is still right.
-    prices.add(_GamePrice(l, double.parse(digits), l.right, false));
+    // No raised ngwee. Appliances are priced in whole kwacha ("K13999"),
+    // and there the box is as wide as its digits; a box wider than that
+    // had ngwee that were not read, though the kwacha amount is right.
+    final fits = (widthOf(digits, 0) - l.w).abs() <= 0.15 * l.w;
+    prices.add(_GamePrice(l, double.parse(digits), l.right, fits));
   }
   if (prices.isEmpty) return const [];
 
   final priceLines = {for (final p in prices) p.main};
   final candidates = lines.where((l) {
     if (priceLines.contains(l)) return false;
-    if (l.th < 0.72 * body || l.th > 1.4 * body) return false;
+    // Brand names are set a little larger than the rest of a description.
+    if (l.th < 0.72 * body || l.th > 1.75 * body) return false;
+    // A logo read as text comes back as a low-scoring jumble.
+    if (l.s < 0.6) return false;
     if (_letters(l.t) < 2 && parseSize(l.t) == null) return false;
     return !RegExp(
       r'^(each|per\s?kg|save.*|was\b.*|now\b.*|t&c.*|while stocks.*|black friday.*)$',
       caseSensitive: false,
     ).hasMatch(l.t);
-  }).toList()..sort((a, b) => a.y.compareTo(b.y));
+  }).toList()..sort((a, b) => _top(a).compareTo(_top(b)));
 
-  // Stack lines into left-aligned blocks.
+  // Stack lines into left-aligned blocks. Boxes of neighbouring lines often
+  // overlap a little, so the lettering's own extent is used.
   final blocks = <_Block>[];
   for (final l in candidates) {
     _Block? home;
     for (final b in blocks) {
       final last = b.lines.last;
-      final gap = l.y - last.bottom;
+      final gap = _top(l) - _bottom(last);
       final ratio = l.th / last.th;
-      if ((l.x - last.x).abs() <= 0.6 * l.th &&
-          gap > -0.35 * l.th &&
+      if ((l.x - last.x).abs() <= 0.7 * math.max(l.th, last.th) &&
+          gap > -0.5 * l.th &&
           gap < 0.9 * l.th &&
-          ratio > 0.72 &&
-          ratio < 1.38) {
+          ratio > 0.6 &&
+          ratio < 1.65) {
         home = b;
       }
     }
@@ -924,39 +1276,89 @@ List<ExtractedItem> _readGame(OcrPage page, List<OcrLine> lines) {
     }
   }
 
-  // Pair each price with its nearest block, closest pairs first.
+  // The whole price box: "NOW" above the price and "SAVE 161" under it.
+  final labels = lines
+      .where(
+        (l) =>
+            RegExp(r'^(now|save\s?\d+)$', caseSensitive: false).hasMatch(l.t),
+      )
+      .toList();
+  (double, double) boxOf(OcrLine m) {
+    var top = _top(m), bottom = _bottom(m);
+    for (final l in labels) {
+      if (l.right < m.x - 0.3 * m.th || l.x > m.right + 0.3 * m.th) continue;
+      if (_bottom(l) <= m.cy && _top(m) - _bottom(l) < 0.6 * m.th) {
+        top = math.min(top, _top(l));
+      }
+      if (_top(l) >= m.cy && _top(l) - _bottom(m) < 0.6 * m.th) {
+        bottom = math.max(bottom, _bottom(l));
+      }
+    }
+    return (top, bottom);
+  }
+
+  // Pair each price with its nearest block, closest pairs first. Groceries
+  // have the description to the left of the price; appliances have it
+  // above or below the price box.
   final pairs = <(double, _GamePrice, _Block)>[];
   for (final p in prices) {
     final m = p.main;
+    final unit = m.th;
+    final (boxTop, boxBottom) = boxOf(m);
+    // A price with "NOW" or "SAVE" on it is the appliance style, whose
+    // description sits above or below. On a plain grocery price, text
+    // above it is far more likely to be print on the packaging.
+    final plain = boxTop == _top(m) && boxBottom == _bottom(m);
+    final offAxis = plain ? 0.6 * unit : 0.0;
     for (final b in blocks) {
       double? cost;
-      // Block to the left of the price, overlapping it vertically.
-      final hGap = m.x - b.right;
-      if (hGap > -0.3 * m.th &&
-          hGap < 3.2 * m.th &&
-          b.y < m.bottom + 0.5 * m.th &&
-          b.bottom > m.y - 0.5 * m.th) {
-        cost = math.max(0, hGap).toDouble();
+      void consider(double c) {
+        if (cost == null || c < cost!) cost = c;
       }
-      // Block just above the price, starting at about the same left edge.
-      final vGap = m.y - b.bottom;
+
+      final bTop = _top(b.lines.first), bBottom = _bottom(b.lines.last);
       final shift = (b.x - m.x).abs();
-      if (vGap > -0.4 * m.th && vGap < 2.2 * m.th && shift < 1.5 * m.th) {
-        final c = math.max(0, vGap) + shift;
-        if (cost == null || c < cost) cost = c;
+      final overlapsAcross =
+          b.right > m.x - 0.5 * unit && b.x < p.right + 0.5 * unit;
+
+      // Block to the left of the price, level with it.
+      final hGap = m.x - b.right;
+      if (hGap > -0.3 * unit &&
+          hGap < 3.2 * unit &&
+          bTop < boxBottom + 0.5 * unit &&
+          bBottom > boxTop - 0.5 * unit) {
+        consider(math.max(0, hGap).toDouble());
+      }
+      // Block just above the price box.
+      final above = boxTop - bBottom;
+      if (above > -0.4 * unit &&
+          above < 1.2 * unit &&
+          (shift < 1.5 * unit || overlapsAcross)) {
+        consider(math.max(0, above) + 0.3 * shift + offAxis);
+      }
+      // Block just under the price box.
+      final below = bTop - boxBottom;
+      if (below > -0.4 * unit &&
+          below < 1.0 * unit &&
+          (shift < 1.5 * unit || overlapsAcross)) {
+        consider(math.max(0, below) + 0.3 * shift + 0.3 * unit + offAxis);
       }
       if (cost == null) continue;
       // Real descriptions are neat stacks of clearly printed lines. Stray
       // words from the packaging are single lines, often poorly read.
-      if (b.lines.length == 1) cost += 1.5 * m.th;
+      if (b.lines.length == 1) cost = cost! + 1.5 * unit;
       final score =
           b.lines.map((l) => l.s).reduce((x, y) => x + y) / b.lines.length;
-      cost += (1 - score) * 3 * m.th;
-      pairs.add((cost, p, b));
+      cost = cost! + (1 - score) * 3 * unit;
+      pairs.add((cost!, p, b));
     }
   }
   pairs.sort((a, b) => a.$1.compareTo(b.$1));
 
+  final bullet = RegExp(
+    r'^\s*[·•*▪■\-–]\s?\S|^\s*Item no\b',
+    caseSensitive: false,
+  );
   final usedPrices = <_GamePrice>{};
   final usedBlocks = <_Block>{};
   final items = <ExtractedItem>[];
@@ -965,7 +1367,11 @@ List<ExtractedItem> _readGame(OcrPage page, List<OcrLine> lines) {
     usedPrices.add(p);
     usedBlocks.add(b);
 
-    final raw = b.lines.map((l) => l.t).join(' ');
+    // The name is what comes before the list of features and the stock
+    // number ("· Fixed handlebars", "· Item no: 850001329").
+    final firstBullet = b.lines.indexWhere((l) => bullet.hasMatch(l.t));
+    final named = firstBullet > 0 ? b.lines.sublist(0, firstBullet) : b.lines;
+    final raw = named.map((l) => l.t).join(' ');
     final m = p.main;
     final size = parseSize(raw);
     final left = math.min(b.x, m.x);
@@ -978,7 +1384,9 @@ List<ExtractedItem> _readGame(OcrPage page, List<OcrLine> lines) {
         price: p.value,
         sizeQty: size?.$1,
         sizeUnit: size?.$2,
-        confidence: p.certain ? _confidence(m, b.lines) : 0.8 * _confidence(m, b.lines),
+        confidence: p.certain
+            ? _confidence(m, named)
+            : 0.8 * _confidence(m, named),
         // The product photo sits above the description.
         crop: _cropAround(
           page,
@@ -998,75 +1406,363 @@ List<ExtractedItem> _readGame(OcrPage page, List<OcrLine> lines) {
 // Checked in this order, so "Body Cream" is personal care before "cream"
 // can make it dairy, and "Milk Chocolate Slab" is a snack before "milk".
 const _categories = <String, List<String>>{
+  'Toys': [
+    'doll',
+    'dolls',
+    'toy',
+    'toys',
+    'play set',
+    'tea set',
+    'kitchen set',
+    'beauty set',
+    'make-up set',
+    'racing car',
+    'friction',
+    'die-cast',
+    'ride-on',
+    'dump truck',
+    'plastic truck',
+    'construction truck',
+    'robots',
+    'figurine',
+    'plush',
+    'teddy',
+    'puzzle',
+    'building blocks',
+    'bmx',
+    'radio-controlled',
+    'remote-control',
+    'battery-operated',
+    'car set',
+    'water gun',
+    'board game',
+  ],
   'Electronics & appliances': [
-    'tv', 'television', 'fridge', 'freezer', 'phone', 'laptop', 'kettle',
-    'iron', 'microwave', 'speaker', 'speakers', 'stove', 'blender', 'fan',
-    'heater', 'washing machine', 'soundbar', 'tablet', 'printer',
-    'headphones', 'earbuds', 'fryer', 'cooker', 'toaster', 'decoder',
-    'inverter', 'solar', 'generator', 'smartphone', 'refrigerator', 'vacuum',
-    'oven', 'hob', 'power bank', 'console', 'monitor', 'air conditioner',
-    'clipper', 'hair cutting', 'laminator', 'laminating', 'hood', 'ryzen',
-    'intel', 'smart tank', 'box set', 'chest freezer',
+    'tv',
+    'television',
+    'fridge',
+    'freezer',
+    'phone',
+    'laptop',
+    'kettle',
+    'iron',
+    'microwave',
+    'speaker',
+    'speakers',
+    'stove',
+    'blender',
+    'fan',
+    'heater',
+    'washing machine',
+    'soundbar',
+    'tablet',
+    'printer',
+    'headphones',
+    'earbuds',
+    'fryer',
+    'cooker',
+    'toaster',
+    'decoder',
+    'inverter',
+    'solar',
+    'generator',
+    'smartphone',
+    'refrigerator',
+    'vacuum',
+    'oven',
+    'hob',
+    'power bank',
+    'console',
+    'monitor',
+    'air conditioner',
+    'clipper',
+    'hair cutting',
+    'laminator',
+    'laminating',
+    'hood',
+    'ryzen',
+    'intel',
+    'smart tank',
+    'sandwich maker',
+    'box set',
+    'chest freezer',
   ],
   'Home & outdoor': [
-    'mattress', 'bed', 'chair', 'table', 'pots', 'pan', 'bicycle', 'toy',
-    'toys', 'christmas', 'lights', 'duvet', 'blanket', 'pillow', 'towel',
-    'luggage', 'suitcase', 'tent', 'pool', 'trampoline', 'tyre', 'drill',
-    'paint', 'cutlery', 'dinner set', 'storage', 'couch', 'sofa', 'wardrobe',
-    'curtain', 'ladder', 'cookware', 'comforter', 'stroller', 'scooter',
-    'umbrella', 'patio', 'cot', 'bouncer', 'fry combo', 'camping',
-    'dinnerware', 'casserole', 'flask', 'cooler box', 'bedding',
+    'mattress',
+    'bed',
+    'chair',
+    'table',
+    'pots',
+    'pan',
+    'bicycle',
+    'christmas',
+    'lights',
+    'duvet',
+    'blanket',
+    'pillow',
+    'towel',
+    'luggage',
+    'suitcase',
+    'tent',
+    'pool',
+    'trampoline',
+    'tyre',
+    'drill',
+    'paint',
+    'cutlery',
+    'dinner set',
+    'storage',
+    'couch',
+    'sofa',
+    'wardrobe',
+    'curtain',
+    'ladder',
+    'cookware',
+    'comforter',
+    'stroller',
+    'scooter',
+    'umbrella',
+    'patio',
+    'cot',
+    'bouncer',
+    'fry combo',
+    'camping',
+    'dinnerware',
+    'casserole',
+    'flask',
+    'cooler box',
+    'bedding',
+    'glass',
+    'glasses',
+    'tumbler',
+    'bowl',
+    'bowls',
+    'dispenser',
+    'roaster',
+    'dinner set',
+    'armchair',
+    'padlock',
+    'mortise lock',
+    'batteries',
   ],
   'Baby & personal care': [
-    'diapers', 'nappies', 'lotion', 'toothpaste', 'shampoo', 'pads', 'wipes',
-    'deodorant', 'roll-on', 'roll on', 'petroleum', 'vaseline', 'colgate',
-    'razor', 'sanitary', 'conditioner', 'bath', 'body', 'showergel', 'deo',
-    'liners', 'hand soap', 'antiseptic', 'repellent',
+    'diapers',
+    'nappies',
+    'lotion',
+    'toothpaste',
+    'shampoo',
+    'pads',
+    'wipes',
+    'deodorant',
+    'roll-on',
+    'roll on',
+    'petroleum',
+    'vaseline',
+    'colgate',
+    'razor',
+    'sanitary',
+    'conditioner',
+    'bath',
+    'body',
+    'showergel',
+    'deo',
+    'liners',
+    'hand soap',
+    'antiseptic',
+    'repellent',
   ],
   'Liquor': [
-    'beer', 'wine', 'whisky', 'whiskey', 'lager', 'cider', 'vodka', 'gin',
-    'brandy', 'castle', 'mosi', 'amarula', 'rum', 'liqueur', 'spritzer',
-    'savanna', 'heineken', 'corona',
+    'beer',
+    'wine',
+    'whisky',
+    'whiskey',
+    'lager',
+    'cider',
+    'vodka',
+    'gin',
+    'brandy',
+    'castle',
+    'mosi',
+    'amarula',
+    'rum',
+    'liqueur',
+    'spritzer',
+    'savanna',
+    'heineken',
+    'corona',
   ],
   'Household': [
-    'washing', 'detergent', 'soap', 'tissue', 'toilet', 'bleach', 'cleaner',
-    'dishwashing', 'softener', 'polish', 'insecticide', 'doom', 'candles',
-    'matches', 'foil', 'refuse', 'air freshener', 'paper towel', 'scouring',
-    'cleaning', 'laundry', 'pine gel', 'car care',
+    'washing',
+    'detergent',
+    'soap',
+    'tissue',
+    'toilet',
+    'bleach',
+    'cleaner',
+    'dishwashing',
+    'softener',
+    'polish',
+    'insecticide',
+    'doom',
+    'candles',
+    'matches',
+    'foil',
+    'refuse',
+    'air freshener',
+    'paper towel',
+    'scouring',
+    'cleaning',
+    'laundry',
+    'pine gel',
+    'car care',
   ],
   'Snacks & sweets': [
-    'chips', 'biscuits', 'biscuit', 'cookies', 'chocolate', 'sweets', 'curls',
-    'crisps', 'wafers', 'snacks', 'snack', 'popcorn', 'slab', 'candy',
-    'lollipop', 'jelly', 'marshmallows', 'eclairs', 'peanuts', 'chews',
-    'shortbread', 'marie',
+    'chips',
+    'biscuits',
+    'biscuit',
+    'cookies',
+    'chocolate',
+    'sweets',
+    'curls',
+    'crisps',
+    'wafers',
+    'snacks',
+    'snack',
+    'popcorn',
+    'slab',
+    'candy',
+    'lollipop',
+    'jelly',
+    'marshmallows',
+    'eclairs',
+    'peanuts',
+    'chews',
+    'shortbread',
+    'marie',
   ],
   'Drinks': [
-    'juice', 'drink', 'drinks', 'coke', 'fanta', 'sprite', 'water', 'squash',
-    'cordial', 'energy', 'cola', 'soda', 'nectar', 'mazoe', 'pepsi',
-    'mirinda', 'milkshake', 'milk shake',
+    'juice',
+    'drink',
+    'drinks',
+    'coke',
+    'fanta',
+    'sprite',
+    'water',
+    'squash',
+    'cordial',
+    'energy',
+    'cola',
+    'soda',
+    'nectar',
+    'mazoe',
+    'pepsi',
+    'mirinda',
+    'milkshake',
+    'milk shake',
   ],
   'Pantry': [
-    'rice', 'sugar', 'oil', 'flour', 'meal', 'beans', 'pasta', 'noodles',
-    'sauce', 'salt', 'tea', 'teabags', 'coffee', 'cereal', 'oats', 'jam',
-    'peanut butter', 'macaroni', 'spaghetti', 'soup', 'spice', 'spices',
-    'curry', 'mayonnaise', 'ketchup', 'honey', 'bread', 'corn flakes',
-    'creamer', 'soya', 'soy', 'stock', 'vinegar', 'porridge', 'gravy',
-    'syrup', 'yeast', 'custard', 'mealie', 'samp', 'lentils', 'tomato',
-    'cocoa', 'mchuzi', 'ricoffy', 'paste',
+    'rice',
+    'sugar',
+    'oil',
+    'flour',
+    'meal',
+    'beans',
+    'pasta',
+    'noodles',
+    'sauce',
+    'salt',
+    'tea',
+    'teabags',
+    'coffee',
+    'cereal',
+    'oats',
+    'jam',
+    'peanut butter',
+    'macaroni',
+    'spaghetti',
+    'soup',
+    'spice',
+    'spices',
+    'curry',
+    'mayonnaise',
+    'ketchup',
+    'honey',
+    'bread',
+    'corn flakes',
+    'creamer',
+    'soya',
+    'soy',
+    'stock',
+    'vinegar',
+    'porridge',
+    'gravy',
+    'syrup',
+    'yeast',
+    'custard',
+    'mealie',
+    'samp',
+    'lentils',
+    'tomato',
+    'cocoa',
+    'mchuzi',
+    'ricoffy',
+    'paste',
   ],
   'Meat & fish': [
-    'chicken', 'beef', 'mince', 'sausage', 'wors', 'pork', 'steak', 'fish',
-    'polony', 'bacon', 'vienna', 'burger', 'drumstick', 'tuna', 'pilchard',
-    'pilchards', 'kapenta', 'chops', 'goat', 'lamb', 'hungarian', 'russian',
-    'corned', 'bream', 'gizzard', 'liver', 'hake',
+    'chicken',
+    'beef',
+    'mince',
+    'sausage',
+    'wors',
+    'pork',
+    'steak',
+    'fish',
+    'polony',
+    'bacon',
+    'vienna',
+    'burger',
+    'drumstick',
+    'tuna',
+    'pilchard',
+    'pilchards',
+    'kapenta',
+    'chops',
+    'goat',
+    'lamb',
+    'hungarian',
+    'russian',
+    'corned',
+    'bream',
+    'gizzard',
+    'liver',
+    'hake',
   ],
   'Dairy & eggs': [
-    'milk', 'cheese', 'yoghurt', 'yogurt', 'butter', 'margarine', 'spread',
-    'eggs', 'cream', 'maas', 'lacto',
+    'milk',
+    'cheese',
+    'yoghurt',
+    'yogurt',
+    'butter',
+    'margarine',
+    'spread',
+    'eggs',
+    'cream',
+    'maas',
+    'lacto',
   ],
   'Fruit & veg': [
-    'apples', 'onions', 'potatoes', 'tomatoes', 'bananas', 'oranges',
-    'cabbage', 'carrots', 'grapes', 'lemons', 'avocado', 'peppers',
+    'apples',
+    'onions',
+    'potatoes',
+    'tomatoes',
+    'bananas',
+    'oranges',
+    'cabbage',
+    'carrots',
+    'grapes',
+    'lemons',
+    'avocado',
+    'peppers',
   ],
 };
 

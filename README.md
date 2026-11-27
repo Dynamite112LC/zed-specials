@@ -140,13 +140,39 @@ to its `python` executable.
 
 | Shop | Source | Format |
 |---|---|---|
-| Shoprite | shoprite.co.zm/specials.html (Cairo Road, Lusaka leaflets) | page images |
+| Shoprite | shoprite.co.zm/specials.html, one store per province and kind of shop | page images |
 | Pick n Pay | picknpayzambia.com/specials | PDF |
 | Game | game.co.zm promotions (served by Guzzle) | page images |
 
+### Shoprite's stores
+
+Shoprite shows each store the leaflets for its province and its kind of
+shop (Shoprite, Select, Mini, LiquorShop). The feed builder asks about one
+store for each such area, 17 requests a couple of seconds apart, and reads
+a leaflet listed in several areas once. Each leaflet in the feed says where
+it applies ("All Shoprite supermarkets", "Shoprite LiquorShop stores"), and
+in the app's settings you can choose your own store to see only its
+leaflets. The list of stores is in `lib/src/shoprite_stores.dart`; it was
+copied by hand from Shoprite's store locator and needs a hand edit when
+Shoprite opens or closes a store.
+
+### How the leaflets are read
+
 Prices are read by OCR and each shop has its own reader in
 `tool/src/extract.dart`. Multi-buys ("ANY 2 FOR K70") are shown as the
-price of one, with the deal in the name. Readings can be wrong: the app says so on every
+price of one, with the deal in the name. Shoprite's prices are also read a second way, by
+their colours (`find_flashes` in `tool/ocr.py`): general OCR gets the small
+print right but misreads about a third of the big stylised price digits,
+while a red-on-yellow or yellow-on-red price can be cut out cleanly and
+its kwacha and raised ngwee read separately. Descriptions are then matched
+to the nearest price, whether they sit under it (food), beside or above it
+(toys, homeware) or around a price box (Game's appliances).
+
+`test/readers_test.dart` checks the readers against four real pages kept
+in `test/fixtures`. When a shop changes its leaflet design, add a page of
+the new design there with the prices you can see on it.
+
+Readings can still be wrong: the app says so on every
 item and links back to the leaflet page. `dart run tool/dump_items.dart
 <shop> .cache/<folder>` prints what a reader finds, for checking by eye
 after a shop changes its leaflet design.

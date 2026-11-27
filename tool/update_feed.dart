@@ -246,6 +246,12 @@ Future<void> main(List<String> args) async {
       if (!File('$src.ocr.json').existsSync()) {
         jobs.add({'op': 'ocr', 'src': src, 'out': '$src.ocr.json'});
       }
+      // Shoprite's prices are also read by their colours, which gets the
+      // big stylised digits right where general OCR often does not.
+      if (w.scraped.retailerId == 'shoprite' &&
+          !File('$src.flashes.json').existsSync()) {
+        jobs.add({'op': 'flashes', 'src': src, 'out': '$src.flashes.json'});
+      }
       final view = '${_out.path}/pages/${w.sid}-${_two(i + 1)}.jpg';
       if (!File(view).existsSync()) {
         jobs.add({'op': 'resize', 'src': src, 'out': view, 'maxHeight': 1500});
@@ -283,8 +289,12 @@ Future<void> main(List<String> args) async {
 
       final ocrFile = File('${w.pages[i].path}.ocr.json');
       if (!ocrFile.existsSync()) continue;
+      final flashFile = File('${w.pages[i].path}.flashes.json');
       final page = OcrPage.fromJson(
         jsonDecode(ocrFile.readAsStringSync()) as Map<String, dynamic>,
+        flashes: flashFile.existsSync()
+            ? jsonDecode(flashFile.readAsStringSync()) as Map<String, dynamic>
+            : null,
       );
       final found = extractItems(c.retailerId, page);
       for (var k = 0; k < found.length; k++) {
@@ -343,6 +353,7 @@ Future<void> main(List<String> args) async {
         validTo: c.validTo,
         stores: c.stores?.replaceAll(RegExp(r'\s*,\s*'), ', '),
         firstSeen: history.firstSeen(c.id) ?? previous[c.id] ?? today,
+        areas: c.areas,
         pages: pages,
       ),
     );

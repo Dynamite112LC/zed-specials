@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'models.dart';
+import 'shoprite_stores.dart';
 
 const _bundledFeed = 'assets/data/feed.json';
 
@@ -20,6 +21,7 @@ const _kFeedUrl = 'feedUrl';
 const _kWatch = 'watchlist';
 const _kSeen = 'seenCatalogues';
 const _kCachedFeed = 'cachedFeed';
+const _kShopriteStore = 'shopriteStore';
 
 /// A set of items that look like the same product at different shops.
 class PriceGroup {
@@ -56,6 +58,11 @@ class AppState extends ChangeNotifier {
   Set<String> seen = {};
   String feedUrl = '';
 
+  /// The shopper's own Shoprite, when they have chosen one. Shoprite's
+  /// leaflets differ by province and by kind of shop; with a store chosen
+  /// only the leaflets that apply there are shown.
+  ShopriteStore? shopriteStore;
+
   Uri? _remoteBase;
   SharedPreferences? _prefs;
   DateTime? _lastRefresh;
@@ -66,6 +73,7 @@ class AppState extends ChangeNotifier {
     _prefs = await SharedPreferences.getInstance();
     feedUrl = _prefs!.getString(_kFeedUrl) ?? builtInFeedUrl;
     watchlist = _prefs!.getStringList(_kWatch) ?? [];
+    shopriteStore = shopriteStoreById(_prefs!.getInt(_kShopriteStore));
     final seenList = _prefs!.getStringList(_kSeen);
     seen = seenList?.toSet() ?? {};
 
@@ -103,7 +111,8 @@ class AppState extends ChangeNotifier {
   Future<void> refresh({bool silent = false}) async {
     if (feedUrl.isEmpty) {
       if (!silent) {
-        notice = 'Showing the specials saved with the app. Add a feed '
+        notice =
+            'Showing the specials saved with the app. Add a feed '
             'address in settings to get updates.';
         notifyListeners();
       }
@@ -124,7 +133,8 @@ class AppState extends ChangeNotifier {
       if (!silent) notice = 'Specials are up to date.';
     } catch (e) {
       if (!silent) {
-        notice = "Couldn't update. Check your connection and the feed "
+        notice =
+            "Couldn't update. Check your connection and the feed "
             'address in settings.';
       }
     }
@@ -163,6 +173,20 @@ class AppState extends ChangeNotifier {
     }
   }
 
+  Future<void> setShopriteStore(ShopriteStore? store) async {
+    shopriteStore = store;
+    if (store == null) {
+      await _prefs?.remove(_kShopriteStore);
+    } else {
+      await _prefs?.setInt(_kShopriteStore, store.id);
+    }
+    notifyListeners();
+  }
+
+  /// Whether a catalogue applies where this shopper shops.
+  bool _mine(Catalogue c) =>
+      c.retailerId != Retailer.shoprite.id || c.appliesTo(shopriteStore?.area);
+
   // ------------------------------------------------------------- images
 
   /// Resolves a feed image: absolute URLs load as they are, relative paths
@@ -193,14 +217,16 @@ class AppState extends ChangeNotifier {
   /// Catalogues still valid today, soonest to end first.
   List<Catalogue> get liveCatalogues {
     final list = feed.catalogues
-        .where((c) => c.isLive(now) && _shopOn(c.retailerId))
+        .where((c) => c.isLive(now) && _shopOn(c.retailerId) && _mine(c))
         .toList();
-    list.sort((a, b) => (a.daysLeft(now) ?? 999).compareTo(b.daysLeft(now) ?? 999));
+    list.sort(
+      (a, b) => (a.daysLeft(now) ?? 999).compareTo(b.daysLeft(now) ?? 999),
+    );
     return list;
   }
 
   int get liveCatalogueCountAllShops =>
-      feed.catalogues.where((c) => c.isLive(now)).length;
+      feed.catalogues.where((c) => c.isLive(now) && _mine(c)).length;
 
   Catalogue? catalogue(String id) {
     for (final c in feed.catalogues) {
@@ -213,7 +239,7 @@ class AppState extends ChangeNotifier {
   List<DealItem> get liveItems {
     final live = {
       for (final c in feed.catalogues)
-        if (c.isLive(now)) c.id,
+        if (c.isLive(now) && _mine(c)) c.id,
     };
     return feed.items
         .where((i) => live.contains(i.catalogueId) && _shopOn(i.retailerId))
@@ -330,7 +356,7 @@ class AppState extends ChangeNotifier {
   List<DealItem> get _allLiveItems {
     final live = {
       for (final c in feed.catalogues)
-        if (c.isLive(now)) c.id,
+        if (c.isLive(now) && _mine(c)) c.id,
     };
     return feed.items.where((i) => live.contains(i.catalogueId)).toList();
   }
@@ -378,8 +404,18 @@ String formatPrice(double v) {
 
 const _weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const _monthNames = [
-  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
 ];
 
 String shortDate(DateTime d) =>
