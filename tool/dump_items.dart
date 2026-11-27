@@ -29,7 +29,8 @@ void main(List<String> args) {
       final save = i.save == null ? '' : ' save ${i.save}';
       final card = i.cardPrice == null
           ? ''
-          : ' CARD K${i.cardPrice!.toStringAsFixed(2)}';
+          : ' CARD K${i.cardPrice!.toStringAsFixed(2)}'
+                '${i.cardQty == null ? '' : ' each for ${i.cardQty}'}';
       final second = i.otherPrice != null
           ? '  OTHER READING: K${i.otherPrice!.toStringAsFixed(2)}'
           : i.agreed

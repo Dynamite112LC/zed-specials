@@ -5,6 +5,27 @@ import 'models.dart';
 import 'theme.dart';
 
 /// Shelf-label price: the one loud element in the app.
+/// Pick n Pay's Smart Shopper price in words: what the card price is, or
+/// that the price shown is the card price and what it is without the card.
+/// A card deal for several ("10 for K50") is said as the deal.
+/// [short] is for badges and list rows.
+String cardNote(DealItem i, {bool short = false}) {
+  final deal = i.cardDeal;
+  if (i.cardApplied) {
+    if (short) return deal == null ? 'Card price' : 'Card: $deal';
+    final without = formatPrice(i.shelfPrice!);
+    return deal == null
+        ? 'Smart Shopper price. $without without the card'
+        : 'Smart Shopper price when you buy $deal. $without each without '
+              'the card';
+  }
+  final each = formatPrice(double.parse(i.cardPrice!.toStringAsFixed(2)));
+  if (short) return deal == null ? '$each with card' : '$deal with card';
+  return deal == null
+      ? '$each with a Smart Shopper card'
+      : '$deal with a Smart Shopper card ($each each)';
+}
+
 /// How a price's unit is read out: " per kilogram", " per 100 grams".
 String _spoken(String? unit) => switch (unit) {
   'kg' => ' per kilogram',
@@ -276,11 +297,7 @@ class DealTile extends StatelessWidget {
       label:
           '${item.name}, ${formatPrice(item.price)}'
           '${_spoken(item.priceUnit)} at ${item.retailer.name}'
-          '${item.cardApplied
-              ? ', Smart Shopper price'
-              : item.cardPrice == null
-              ? ''
-              : ', ${formatPrice(item.cardPrice!)} with a Smart Shopper card'}'
+          '${item.cardPrice == null ? '' : ', ${cardNote(item)}'}'
           '${drop == null ? '' : ', down ${formatPrice(drop)} since the last leaflet'}',
       excludeSemantics: true,
       child: Material(
@@ -409,9 +426,7 @@ class _CardBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
-        item.cardApplied
-            ? 'Card price'
-            : '${formatPrice(item.cardPrice!)} with card',
+        cardNote(item, short: true),
         style: const TextStyle(
           fontSize: 11.5,
           fontWeight: FontWeight.w700,

@@ -126,8 +126,13 @@ class ExtractedItem {
     this.firstName,
     this.assumedNgwee = false,
     this.cardPrice,
+    this.cardQty,
     this.per100g = false,
   });
+
+  /// How many have to be bought together to get [cardPrice] on each, when
+  /// the card price is a deal: 10 for "50.00 FOR 10" (K5 each).
+  final int? cardQty;
 
   /// True when the price is per 100 grams, as deli counters price salads
   /// and cooked food.
@@ -178,6 +183,7 @@ class ExtractedItem {
     firstName: firstName,
     assumedNgwee: assumedNgwee,
     cardPrice: cardPrice,
+    cardQty: cardQty,
     per100g: per100g,
   );
 
@@ -1188,23 +1194,68 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
       .where((l) => RegExp(r'^FOR\s?(\d)$', caseSensitive: false).hasMatch(l.t))
       .toList();
 
+  // "FOR 10" under a price's raised ngwee, where "Each" usually is: how
+  // many have to be bought for that price. OCR gives it as one line; a
+  // PDF's text gives "FOR" and the number apart, in different sizes.
+  final forWords = lines
+      .where(
+        (l) =>
+            RegExp(r'^for(\s?\d{1,2})?$', caseSensitive: false).hasMatch(l.t),
+      )
+      .toList();
+  int? howManyFor(_PnpPrice c) {
+    final th = c.main.th;
+    for (final f in forWords) {
+      if (f.x < c.cx - 0.3 * th || f.x > c.right + th) continue;
+      if (f.cy < c.main.cy - 0.1 * th || f.cy > c.main.bottom + 0.4 * th) {
+        continue;
+      }
+      final inLine = RegExp(r'\d+').firstMatch(f.t);
+      if (inLine != null) return int.parse(inLine.group(0)!);
+      for (final n in digitLines) {
+        if (n.t.length > 2 || identical(n, c.main)) continue;
+        final tall = math.max(n.h, f.h);
+        if ((n.cy - f.cy).abs() > tall) continue;
+        if (n.x < f.x - 2 || n.x - f.right > 2 * tall) continue;
+        // Small print, not a price's own digits.
+        if (n.th > 0.5 * th) continue;
+        return int.parse(n.t);
+      }
+    }
+    return null;
+  }
+
   // The Smart Shopper price: a second, lower price in a yellow box right
   // under the description, in line with the price above it and with no
   // description of its own. (The box's "SMART SHOPPER PRICE" heading is
-  // often a drawing rather than text, so it cannot be relied on.)
-  _PnpPrice? cardPriceFor(_PnpPrice p, List<OcrLine> own) {
+  // often a drawing rather than text, so it cannot be relied on.) It may
+  // be a deal for several: "50.00 FOR 10".
+  ({_PnpPrice box, double each, int? many})? cardPriceFor(
+    _PnpPrice p,
+    List<OcrLine> own,
+  ) {
     final th = p.main.th;
     final lowest = own.map((o) => o.bottom).reduce(math.max);
-    _PnpPrice? best;
+    ({_PnpPrice box, double each, int? many})? best;
     for (final c in prices) {
       if (identical(c, p) || byPrice[c]!.isNotEmpty) continue;
       final gap = c.main.y - lowest;
       if (gap < -0.2 * th || gap > 1.3 * th) continue;
       if ((c.cx - p.cx).abs() > 0.9 * th) continue;
       if (c.main.th < 0.7 * th || c.main.th > 1.4 * th) continue;
+      final many = howManyFor(c);
+      final each = many == null || many < 2 ? c.value : c.value / many;
       // A card price is a little less, never a different price altogether.
-      if (c.value >= p.value || c.value < 0.7 * p.value) continue;
-      if (best == null || c.main.y < best.main.y) best = c;
+      // A deal for several may save somewhat more on each.
+      final least = many == null || many < 2 ? 0.7 : 0.5;
+      if (each >= p.value || each < least * p.value) continue;
+      if (best == null || c.main.y < best.box.main.y) {
+        best = (
+          box: c,
+          each: each,
+          many: many == null || many < 2 ? null : many,
+        );
+      }
     }
     return best;
   }
@@ -1270,8 +1321,11 @@ List<ExtractedItem> _readPicknPay(OcrPage page, List<OcrLine> lines) {
         sizeUnit: size?.$2,
         save: save,
         per100g: per100g,
-        cardPrice: card?.value,
-        parts: [b, ...own, ?card?.main],
+        cardPrice: card == null
+            ? null
+            : double.parse(card.each.toStringAsFixed(4)),
+        cardQty: card?.many,
+        parts: [b, ...own, ?card?.box.main],
         confidence: p.certain ? _confidence(b, own) : 0.8 * _confidence(b, own),
         // The product photo sits above and to the left of the price panel.
         crop: _cropAround(

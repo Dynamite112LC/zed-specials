@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zed_specials/src/models.dart';
 
+import 'package:zed_specials/src/widgets.dart';
+
 import '../tool/src/extract.dart';
 import '../tool/src/second_reader.dart';
 
@@ -202,6 +204,148 @@ void main() {
       expect(fixed.withCard().price, 104.99);
       final dearer = chicken.copyWith(price: 119.99, corrected: true);
       expect(dearer.cardPrice, 109.99);
+    });
+  });
+
+  group('Smart Shopper deals for several', () {
+    // "6.99 Each", then in the Smart Shopper box "50.00 FOR 10".
+    List<OcrLine> doughnuts({required bool asOneLine}) => [
+      _line('6', 907, 1293, 44, 59),
+      _line('99', 946, 1295, 49, 35),
+      _line('Each', 956, 1328, 21, 8),
+      _line('PnP Custard', 911, 1347, 86, 17),
+      _line('Doughnuts', 915, 1361, 78, 17),
+      _line('50', 895, 1395, 81, 54),
+      _line('00', 966, 1397, 49, 32),
+      if (asOneLine)
+        // As OCR reads it.
+        _line('FOR 10', 972, 1423, 39, 19)
+      else ...[
+        // As a PDF's text has it: two runs in different sizes.
+        _line('10', 988, 1426, 18, 14),
+        _line('FOR', 974, 1430, 18, 8),
+      ],
+    ];
+    List<OcrLine> smallPrint() => [
+      for (var i = 0; i < 4; i++)
+        _line(
+          'Promotion valid while stocks last at all stores',
+          100,
+          2300.0 + 22 * i,
+          500,
+          17,
+        ),
+    ];
+
+    for (final asOneLine in [true, false]) {
+      test('"50.00 FOR 10" is K5 each for ten '
+          '(${asOneLine ? 'one line' : 'two runs'})', () {
+        final item = extractItems(
+          'picknpay',
+          OcrPage(1753, 2479, [
+            ...doughnuts(asOneLine: asOneLine),
+            ...smallPrint(),
+          ]),
+        ).single;
+        expect(item.name, 'PNP Custard Doughnuts');
+        expect(item.price, 6.99);
+        expect(item.cardPrice, 5);
+        expect(item.cardQty, 10);
+      });
+    }
+
+    test('a price for one has no quantity', () {
+      final page = OcrPage(1753, 2479, [
+        ..._product(
+          253,
+          669,
+          '114',
+          '99',
+          'PnP IQF Chicken',
+          'Mixed Portions 2kg',
+          card: ('109', '99'),
+        ),
+        ..._smallPrint(),
+      ]);
+      final chicken = extractItems('picknpay', page).single;
+      expect(chicken.cardPrice, 109.99);
+      expect(chicken.cardQty, isNull);
+    });
+
+    const doughnut = DealItem(
+      id: 'a',
+      catalogueId: 'c',
+      retailerId: 'picknpay',
+      page: 2,
+      name: 'PnP Custard Doughnuts',
+      price: 6.99,
+      cardPrice: 5,
+      cardQty: 10,
+    );
+    const water = DealItem(
+      id: 'b',
+      catalogueId: 'c',
+      retailerId: 'picknpay',
+      page: 3,
+      name: 'Aqua Smooth Purified Water 500ml',
+      price: 3.49,
+      sizeQty: 500,
+      sizeUnit: 'ml',
+      // 37.99 for 12.
+      cardPrice: 3.1658,
+      cardQty: 12,
+    );
+
+    test('the deal is worded as the leaflet prints it', () {
+      expect(doughnut.cardDeal, '10 for K50');
+      expect(water.cardDeal, '12 for K37.99');
+      expect(cardNote(doughnut, short: true), '10 for K50 with card');
+      expect(
+        cardNote(doughnut),
+        '10 for K50 with a Smart Shopper card (K5 each)',
+      );
+      expect(
+        cardNote(water),
+        '12 for K37.99 with a Smart Shopper card (K3.17 each)',
+      );
+    });
+
+    test('a card holder sees the price of one in the deal', () {
+      final mine = doughnut.withCard();
+      expect(mine.price, 5);
+      expect(mine.shelfPrice, 6.99);
+      expect(mine.cardDeal, '10 for K50');
+      expect(cardNote(mine, short: true), 'Card: 10 for K50');
+      expect(
+        cardNote(mine),
+        'Smart Shopper price when you buy 10 for K50. '
+        'K6.99 each without the card',
+      );
+      // Litres are compared at the deal's price too.
+      expect(water.withCard().unitPrice, closeTo(6.3316, 0.001));
+    });
+
+    test('survives the feed', () {
+      final back = DealItem.fromJson(
+        jsonDecode(jsonEncode(water.toJson())) as Map<String, dynamic>,
+      );
+      expect(back.cardQty, 12);
+      expect(back.cardDeal, '12 for K37.99');
+      expect(back.copyWith(groupId: 'g').cardQty, 12);
+    });
+
+    test('the second reader giving the deal total is not a disagreement', () {
+      final item = extractItems(
+        'picknpay',
+        OcrPage(1753, 2479, [...doughnuts(asOneLine: true), ...smallPrint()]),
+      ).single;
+      final r = combineReadings(
+        [item],
+        [const SecondItem('PnP Custard Doughnuts', 50)],
+      );
+      expect(r.items.single.price, 6.99);
+      expect(r.items.single.otherPrice, isNull);
+      expect(r.items.single.cardQty, 10);
     });
   });
 

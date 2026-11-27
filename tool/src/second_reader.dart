@@ -293,9 +293,14 @@ final _multiBuyNote = RegExp(r'\((\d+) for K(\d+(?:\.\d+)?)\)');
   // The loyalty-card price printed under the usual one is not a second
   // opinion on the usual one.
   final card = mine.cardPrice;
-  if (card != null &&
-      (_samePrice(card, theirs) || _samePrice(card * 100, theirs))) {
-    return unsure;
+  if (card != null) {
+    // Or what the card deal comes to: K50 for ten at K5 each.
+    final deal = card * (mine.cardQty ?? 1);
+    for (final c in {card, deal}) {
+      if ((c - theirs).abs() < 0.01 || (c * 100 - theirs).abs() < 1) {
+        return unsure;
+      }
+    }
   }
 
   // "2 for K70" is shown as K35 each; the second reader gives the K70.

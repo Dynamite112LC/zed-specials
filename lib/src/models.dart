@@ -201,6 +201,7 @@ class DealItem {
     this.cardPrice,
     this.shelfPrice,
     this.per100g = false,
+    this.cardQty,
   });
 
   final String id;
@@ -271,6 +272,23 @@ class DealItem {
   /// leaflet prints one: Pick n Pay's "Smart Shopper price".
   final double? cardPrice;
 
+  /// How many have to be bought together to get [cardPrice] on each, when
+  /// the card price is a deal ("50.00 for 10" is 10, at K5 each). Null
+  /// when the card price is for one.
+  final int? cardQty;
+
+  /// "10 for K50": the card deal in words, when there is one.
+  String? get cardDeal {
+    final many = cardQty;
+    final each = cardApplied ? price : cardPrice;
+    if (many == null || each == null) return null;
+    final total = double.parse((each * many).toStringAsFixed(2));
+    final amount = total == total.roundToDouble()
+        ? total.toStringAsFixed(0)
+        : total.toStringAsFixed(2);
+    return '$many for K$amount';
+  }
+
   /// Set only inside the app, for someone who has the card: [price] is then
   /// the card price, and this is the price without the card.
   final double? shelfPrice;
@@ -311,6 +329,7 @@ class DealItem {
     firstName: firstName,
     cardPrice: cardPrice,
     shelfPrice: shelf,
+    cardQty: cardQty,
   );
 
   /// Worth checking against the leaflet: the readers differ and nobody has
@@ -426,6 +445,7 @@ class DealItem {
         ? cardPrice
         : null,
     shelfPrice: shelfPrice,
+    cardQty: cardQty,
   );
 
   Map<String, dynamic> toJson() => {
@@ -451,6 +471,7 @@ class DealItem {
     if (otherPrice != null) 'otherPrice': otherPrice,
     if (firstName != null) 'firstName': firstName,
     if (cardPrice != null) 'cardPrice': cardPrice,
+    if (cardQty != null) 'cardQty': cardQty,
   };
 
   factory DealItem.fromJson(Map<String, dynamic> j) => DealItem(
@@ -479,6 +500,7 @@ class DealItem {
     otherPrice: (j['otherPrice'] as num?)?.toDouble(),
     firstName: j['firstName'] as String?,
     cardPrice: (j['cardPrice'] as num?)?.toDouble(),
+    cardQty: j['cardQty'] as int?,
   );
 }
 

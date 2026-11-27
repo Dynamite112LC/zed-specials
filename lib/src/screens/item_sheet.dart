@@ -148,20 +148,9 @@ class _ItemSheet extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (item.cardApplied)
+                      if (item.cardPrice != null)
                         Text(
-                          'Smart Shopper price. '
-                          '${formatPrice(item.shelfPrice!)} without the card',
-                          style: TextStyle(
-                            fontSize: 14.5,
-                            fontWeight: FontWeight.w600,
-                            color: p.ink,
-                          ),
-                        )
-                      else if (item.cardPrice != null)
-                        Text(
-                          '${formatPrice(item.cardPrice!)} with a Smart '
-                          'Shopper card',
+                          cardNote(item),
                           style: TextStyle(
                             fontSize: 14.5,
                             fontWeight: FontWeight.w600,

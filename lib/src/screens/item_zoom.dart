@@ -156,12 +156,7 @@ class _ItemZoom extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 8),
                         child: Text(
-                          shown.cardApplied
-                              ? 'Smart Shopper price. '
-                                    '${formatPrice(shown.shelfPrice!)} '
-                                    'without the card.'
-                              : '${formatPrice(shown.cardPrice!)} with a '
-                                    'Smart Shopper card.',
+                          '${cardNote(shown)}.',
                           style: const TextStyle(
                             fontSize: 13,
                             color: Color(0xFFC9D6CE),

@@ -193,8 +193,10 @@ card in a yellow box under many products. The reader takes it as the
 item's card price (`cardPrice` in the feed), not as a product of its own:
 a price with no description, right under another product's description,
 in line with its price and a little lower. The box's heading is often a
-drawing rather than text, so it is not relied on. A card deal that needs
-several bought together ("10 for K50") is left out.
+drawing rather than text, so it is not relied on. Where the box holds a
+deal for several ("50.00 FOR 10"), the card price is the price of one in
+the deal (K5) and `cardQty` says how many must be bought; the app words it
+as "10 for K50 with card".
 
 The app shows the price for everyone and notes the card price beside it.
 With "I have a Smart Shopper card" turned on in the settings, the card
