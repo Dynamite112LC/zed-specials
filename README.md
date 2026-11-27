@@ -14,17 +14,29 @@ assets/data/crops/      a small product picture per price
 lib/                    the app, which only reads the feed
 ```
 
-The app shows the feed bundled at build time. If you host the `assets/data`
-folder somewhere (GitHub Pages, any static host) and enter the address of
-`feed.json` in the app's settings, it downloads fresh specials on refresh
-instead.
+## Automatic updates
+
+`.github/workflows/update-feed.yml` rebuilds the feed every day at 06:00
+Zambian time and publishes it with GitHub Pages at:
+
+    https://dynamite112lc.github.io/zed-specials/feed.json
+
+Build the app with that address and it checks for new specials every time
+it opens, when it comes back to the foreground after a few hours, and on
+pull to refresh. Without an address it shows the feed bundled at build time.
+
+The job runs with `--strict`: if a shop's page cannot be read it fails and
+leaves yesterday's feed online, and GitHub emails you about the failed run.
+To run it by hand, use "Run workflow" on the repository's Actions tab.
 
 ## Running the app
 
 ```
-flutter run -d chrome
-flutter run            # with a phone or emulator connected
+flutter run -d chrome --dart-define=FEED_URL=https://dynamite112lc.github.io/zed-specials/feed.json
+flutter build apk --dart-define=FEED_URL=https://dynamite112lc.github.io/zed-specials/feed.json
 ```
+
+The feed address can also be changed in the app's settings.
 
 ## Updating the specials
 
