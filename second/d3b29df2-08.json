@@ -1,0 +1,103 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 175,
+ "items": [
+  {
+   "name": "ROOM SCOURING POWDER 500g + ROOM LAUNDRY SOAP ALL VARIANTS 500g EACH",
+   "price": 54
+  },
+  {
+   "name": "JIK BLEACH ALL VARIANTS 1.5L EACH",
+   "price": 56
+  },
+  {
+   "name": "STA-SOFT FABRIC SOFTENER ALL VARIANTS 2L EACH",
+   "price": 69
+  },
+  {
+   "name": "SUNLIGHT 5IN1 HANDWASH POWDER 2kg EACH",
+   "price": 94
+  },
+  {
+   "name": "RAPID WASHING POWDER 4.5kg EACH",
+   "price": 215
+  },
+  {
+   "name": "BOOM DISH WASHING PASTE 400g EACH + BOOM DETERGENT PASTE 400g",
+   "price": 42
+  },
+  {
+   "name": "NUGGET BLACK SHOE POLISH 100ml EACH",
+   "price": 42
+  },
+  {
+   "name": "SOFTEX TOILET TISSUE 10 PER PACK",
+   "price": 67
+  },
+  {
+   "name": "DOMESTOS DISHLOCK THICK BLEACH ALL VARIANTS 750ml EACH",
+   "price": 34
+  },
+  {
+   "name": "RITERBRAND NON-SCRATCH ALL PURPOSE CLEANER ALL VARIANTS 750ml EACH",
+   "price": 34
+  },
+  {
+   "name": "HARPIC TOILET CLEANER ALL VARIANTS 750ml EACH",
+   "price": 38
+  },
+  {
+   "name": "CORRA/DIETOL ALL PURPOSE CLEANER ALL VARIANTS 1.5L EACH",
+   "price": 109
+  },
+  {
+   "name": "AIR SCENTS AIR REFRESHER ALL VARIANTS 200ml EACH",
+   "price": 32
+  },
+  {
+   "name": "AIREMA AIR REFRESHER ALL VARIANTS 200g EACH",
+   "price": 54
+  },
+  {
+   "name": "MR. SHEEN MULTI SURFACE CLEANER ALL VARIANTS 300ml EACH",
+   "price": 47
+  },
+  {
+   "name": "ULTRA COMPACT KITCHEN TOWEL ROLL 1 EACH",
+   "price": 49
+  },
+  {
+   "name": "DOOM INSECTICIDE ALL VARIANTS 300ml EACH",
+   "price": 39
+  },
+  {
+   "name": "PEACEFUL SLEEP MOSQUITO REPELLENT 150g + PEACEFUL SLEEP MOSQUITO ROOM SPRAY 180ml",
+   "price": 130
+  },
+  {
+   "name": "SHIELD CAR CARE SPRAY ALL VARIANTS 200ml EACH + SHIELD CAR SHAMPOO 1L",
+   "price": 110
+  },
+  {
+   "name": "Safari Charcoal or Safari Briquettes 4kg + Safari Firelighters 12 per pack",
+   "price": 180
+  },
+  {
+   "name": "CARBON STEEL COOKWARE SET 7-PIECE PER SET",
+   "price": 399
+  },
+  {
+   "name": "ESSENTIALS GLASS CORDLESS KETTLE 1.7L EACH",
+   "price": 449
+  },
+  {
+   "name": "PLATINUM IRON STEAM 2000W EACH",
+   "price": 549
+  },
+  {
+   "name": "ESSENTIALS MANUAL MICROWAVE OVEN 20W EACH",
+   "price": 2199
+  }
+ ]
+}

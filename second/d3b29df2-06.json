@@ -1,0 +1,127 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 207,
+ "items": [
+  {
+   "name": "BELGRAVIA GIN COOLER ALL VARIANTS 440ml CANS EACH",
+   "price": 44.99
+  },
+  {
+   "name": "TINI BONGO SPIRIT COOLER ALL VARIANTS 440ml CANS EACH",
+   "price": 45.99
+  },
+  {
+   "name": "TIPO TIPO SPIRIT COOLER 2x440ml CANS",
+   "price": 80.0
+  },
+  {
+   "name": "ROYAL CIRCLE WHISKY & COLA 2x250ml CANS",
+   "price": 100.0
+  },
+  {
+   "name": "CASTLE LITE BEER 6x330ml NRB PER PACK",
+   "price": 119.99
+  },
+  {
+   "name": "HEINEKEN BEER ALL VARIANTS 6x330ml NRB PER PACK",
+   "price": 189.99
+  },
+  {
+   "name": "CORONA EXTRA BEER 6x355ml NRB PER PACK",
+   "price": 199.99
+  },
+  {
+   "name": "BRUTAL FRUIT SPRITZER RUBY APPLE 6x500ml CANS PER PACK",
+   "price": 159.99
+  },
+  {
+   "name": "HUNTER'S GOLD DRY CIDER 6x330ml NRB PER PACK",
+   "price": 179.99
+  },
+  {
+   "name": "CHIBURU SUPER SPIRIOUS BANANA BEER 1.2L EACH",
+   "price": 11.99
+  },
+  {
+   "name": "PAPILLON NON-ALCOHOLIC SPARKLING WINE ALL VARIANTS 750ml EACH",
+   "price": 124.99
+  },
+  {
+   "name": "ROBERTSON WINERY NON-ALCOHOLIC SPARKLING WINE ALL VARIANTS 750ml EACH",
+   "price": 179.99
+  },
+  {
+   "name": "DROSTOY HOP WINE ALL VARIANTS 750ml EACH",
+   "price": 139.99
+  },
+  {
+   "name": "FOUR COUSINS WINE ALL VARIANTS 2x750ml",
+   "price": 250.0
+  },
+  {
+   "name": "ROBERTSON WINERY CHAPEL WINE ALL VARIANTS 2x750ml",
+   "price": 270.0
+  },
+  {
+   "name": "FAT BASTARD WINE ALL VARIANTS 750ml EACH",
+   "price": 379.99
+  },
+  {
+   "name": "AMARULA CREAM LIQUEUR 750ml EACH",
+   "price": 289.99
+  },
+  {
+   "name": "TIGER EYE RUM 750ml EACH",
+   "price": 139.99
+  },
+  {
+   "name": "GORDON'S LONDON DRY GIN ALL VARIANTS 750ml EACH",
+   "price": 174.99
+  },
+  {
+   "name": "AMARULA PREMIUM AFRICAN GIN 750ml EACH",
+   "price": 499.99
+  },
+  {
+   "name": "DOUBLE SHOT GIN ALL VARIANTS 2x750ml",
+   "price": 200.0
+  },
+  {
+   "name": "OLMECA SILVER TEQUILA 700ml EACH",
+   "price": 599.99
+  },
+  {
+   "name": "MONARCH AGED MALT WHISKY 750ml EACH",
+   "price": 104.99
+  },
+  {
+   "name": "ROYAL CIRCLE WHISKY 750ml EACH",
+   "price": 139.99
+  },
+  {
+   "name": "CLAN MACGREGOR BLENDED SCOTCH WHISKY 750ml EACH",
+   "price": 179.99
+  },
+  {
+   "name": "VAT 69 BLENDED SCOTCH WHISKY 750ml EACH",
+   "price": 249.99
+  },
+  {
+   "name": "JOHNNIE WALKER RED LABEL BLENDED SCOTCH WHISKY 750ml EACH",
+   "price": 389.99
+  },
+  {
+   "name": "JAMESON TRIPLE DISTILLED IRISH WHISKEY 750ml EACH",
+   "price": 489.99
+  },
+  {
+   "name": "JAMESON CASKMATS STOUT EDITION IRISH WHISKEY 750ml EACH",
+   "price": 699.99
+  },
+  {
+   "name": "GLENFIDDIC 12 GLENFIDDIC 15-YEAR-OLD SINGLE MALT SCOTCH WHISKY 750ml EACH",
+   "price": 1399.99
+  }
+ ]
+}

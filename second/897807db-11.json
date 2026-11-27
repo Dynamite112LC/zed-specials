@@ -1,0 +1,91 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 146,
+ "items": [
+  {
+   "name": "12\" Luna OR Jett BMX PLUS Kids Helmet",
+   "price": 699
+  },
+  {
+   "name": "20\" Thrasher Mountain Bike",
+   "price": 2190
+  },
+  {
+   "name": "26\" Storm Mountain Bike",
+   "price": 2900
+  },
+  {
+   "name": "10 ft Trampoline with Steel Ring and Enclosed Safety Net",
+   "price": 3290
+  },
+  {
+   "name": "Zambian Coin Operated Pool Table",
+   "price": 31990
+  },
+  {
+   "name": "Under Desk Cycle",
+   "price": 1190
+  },
+  {
+   "name": "Pro 400 Bench",
+   "price": 1790
+  },
+  {
+   "name": "Strength Bench Combo Set",
+   "price": 2790
+  },
+  {
+   "name": "TR1610 Treadmill",
+   "price": 25990
+  },
+  {
+   "name": "TRS50 Treadmill",
+   "price": 15990
+  },
+  {
+   "name": "4-Piece Firelighters",
+   "price": 59
+  },
+  {
+   "name": "4 kg Briquettes",
+   "price": 119
+  },
+  {
+   "name": "2-Plate Stainless Steel Stove without Hose and Regulator",
+   "price": 590
+  },
+  {
+   "name": "X-Large Charcoal Braai",
+   "price": 790
+  },
+  {
+   "name": "Onyx Series 3-Burner Patio Gas Braai (720-1094)",
+   "price": 7990
+  },
+  {
+   "name": "Double Airbed PLUS Hand Pump Combo",
+   "price": 499
+  },
+  {
+   "name": "Opal Textile Chair Grey OR Blue",
+   "price": 690
+  },
+  {
+   "name": "25 L Cooler Box",
+   "price": 149
+  },
+  {
+   "name": "Adventure 200 Camping Chair",
+   "price": 349
+  },
+  {
+   "name": "Dome 200 Tent",
+   "price": 790
+  },
+  {
+   "name": "3 x 3 m Gazebo",
+   "price": 2690
+  }
+ ]
+}

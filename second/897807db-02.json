@@ -1,0 +1,71 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 149,
+ "items": [
+  {
+   "name": "LUCKY STAR Light Meat Tuna Chunks 170 g Assorted",
+   "price": 49.99
+  },
+  {
+   "name": "KELLOGG'S Instant Noodles 5 x 70 g Assorted",
+   "price": 34.99
+  },
+  {
+   "name": "BULL BRAND Corned Meat 300 g Assorted",
+   "price": 42.99
+  },
+  {
+   "name": "D'LITE Grown Ups Cereal 500 g Assorted",
+   "price": 39.99
+  },
+  {
+   "name": "CROSSE & BLACKWELL Tangy Mayonnaise 750 g",
+   "price": 64.99
+  },
+  {
+   "name": "ALL GOLD Tomato Sauce 700 ml",
+   "price": 59.99
+  },
+  {
+   "name": "RHODES Tomato Paste 115 g",
+   "price": 34.99
+  },
+  {
+   "name": "Freshpak Pure Rooibos Tagless Teabags 80-Pack",
+   "price": 124.99
+  },
+  {
+   "name": "COCOA PRIMO Cocoa Powder 200 g",
+   "price": 64.99
+  },
+  {
+   "name": "JACOBS Gold Instant Coffee 200 g",
+   "price": 312.99
+  },
+  {
+   "name": "BIG TREE Sweet Leaf Ginger Chai Tea 18 g",
+   "price": 39.99
+  },
+  {
+   "name": "NESTLÉ Cocoa Powder 125 g",
+   "price": 124.99
+  },
+  {
+   "name": "IT'S WILD White Chama Rice 5 kg",
+   "price": 139.99
+  },
+  {
+   "name": "D'LITE Medium Grain Parboiled Rice 5 kg",
+   "price": 184.99
+  },
+  {
+   "name": "D'LITE Pure Cooking Oil 2 L",
+   "price": 106.99
+  },
+  {
+   "name": "CLOVER Olive Pride Blend Of Seed Oils & Extra Virgin Olive Oil 1 L",
+   "price": 124.99
+  }
+ ]
+}

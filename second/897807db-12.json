@@ -1,0 +1,71 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 152,
+ "items": [
+  {
+   "name": "STECO 2000 W High Pressure Washer 160 Bar",
+   "price": 5000
+  },
+  {
+   "name": "20 L Roof & Pave Paint",
+   "price": 1799
+  },
+  {
+   "name": "20 L Polvin Premium Washable Paint",
+   "price": 1999
+  },
+  {
+   "name": "5 L Splash Wash & Wax Car Shampoo",
+   "price": 329
+  },
+  {
+   "name": "DECOR WOOD Floating Shelf 900 mm Light Oak",
+   "price": 769
+  },
+  {
+   "name": "Securador Gate White 820 mm x 2000 mm",
+   "price": 1300
+  },
+  {
+   "name": "Securador Gate Brown 820 mm x 2000 mm",
+   "price": 1400
+  },
+  {
+   "name": "Xpanda DIY SAFE: BRICK",
+   "price": 1200
+  },
+  {
+   "name": "120 Amp Inverter Welder",
+   "price": 1899
+  },
+  {
+   "name": "Blue GWS 2000 W Angle Grinder",
+   "price": 3700
+  },
+  {
+   "name": "3-Piece 50 L Compressor (MCFRC117)",
+   "price": 7300
+  },
+  {
+   "name": "RYOBI 40 cc Petrol Chain Saw 380mm (CS-4016)",
+   "price": 2400
+  },
+  {
+   "name": "RYOBI 18V Li-Ion Drill Driver Kit (XD-180)",
+   "price": 1999
+  },
+  {
+   "name": "TRIMTECH 2200 W Electric Lawnmower",
+   "price": 4300
+  },
+  {
+   "name": "RYOBI 43 cc Petrol Brush Cutter (RBC-4300)",
+   "price": 3200
+  },
+  {
+   "name": "RYOBI 1200 W Lawnmower & 300 W Trimmer Combo Kit",
+   "price": 2400
+  }
+ ]
+}

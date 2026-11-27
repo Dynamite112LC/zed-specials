@@ -1,0 +1,51 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 110,
+ "items": [
+  {
+   "name": "Rhodes Ed Grape",
+   "price": 47.99
+  },
+  {
+   "name": "Clover UHT Milk Full Cream / Low Fat",
+   "price": 32.99
+  },
+  {
+   "name": "Farmer's Choice 10F Mixed Chicken Portions",
+   "price": 329.99
+  },
+  {
+   "name": "Bigtree Corn Flakes",
+   "price": 46.99
+  },
+  {
+   "name": "Buttercup Margarine",
+   "price": 19.99
+  },
+  {
+   "name": "Whitespoon Household White Sugar",
+   "price": 58.99
+  },
+  {
+   "name": "Milano Elbow / Macaroni Pasta",
+   "price": 88.99
+  },
+  {
+   "name": "IBC Grade A Nakonde Rice",
+   "price": 157.99
+  },
+  {
+   "name": "Ole Pure Refined Vegetable Oil",
+   "price": 204.99
+  },
+  {
+   "name": "Festive Season Combo",
+   "price": 299.0
+  },
+  {
+   "name": "Shoprite Gift Cards",
+   "price": 0.0
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 141,
+ "items": [
+  {
+   "name": "AMARULA Cream Liqueur 750 ml",
+   "price": 329.99
+  },
+  {
+   "name": "VAN LOVEREN Papillon Non-Alcoholic Sparkling Wine 1 x 750 ml Assorted",
+   "price": 119.99
+  },
+  {
+   "name": "HARRIER Blended South African Whisky 750 ml",
+   "price": 184.99
+  },
+  {
+   "name": "CARLING Black Label Beer Cans 6 x 500 ml",
+   "price": 167.99
+  },
+  {
+   "name": "CASTLE LITE Premium Beer Cans 6 x 500 ml",
+   "price": 159.99
+  },
+  {
+   "name": "4th STREET Wine Range 750 ml Assorted",
+   "price": 102.99
+  },
+  {
+   "name": "SAVANNA Dry Angry Lemon Premium Cooler NRBs 6 x 330 ml",
+   "price": 179.99
+  },
+  {
+   "name": "ROYAL CIRCLE Premium Whisky 1 x 750 ml",
+   "price": 139.99
+  },
+  {
+   "name": "DH Bali 4-Piece Patio Set",
+   "price": 4990.0
+  },
+  {
+   "name": "Cantilever Umbrella",
+   "price": 2490.0
+  },
+  {
+   "name": "Jumbo Scooter Black",
+   "price": 459.0
+  },
+  {
+   "name": "Little Friends Bouncer",
+   "price": 890.0
+  },
+  {
+   "name": "PARENT'S CHOICE Buggy Stroller without Canopy Black",
+   "price": 790.0
+  },
+  {
+   "name": "Quilt Dream Camp Cot PLUS Duck Walking Ring",
+   "price": 2990.0
+  }
+ ]
+}

@@ -1,0 +1,119 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 198,
+ "items": [
+  {
+   "name": "CHRISTMAS LARGE GIFT BAG",
+   "price": 29.99
+  },
+  {
+   "name": "CHRISTMAS FELT HAT EACH",
+   "price": 49.99
+  },
+  {
+   "name": "CHRISTMAS DECOR IN SELECTED STORES ONLY",
+   "price": 99.99
+  },
+  {
+   "name": "CHRISTMAS DECOR IN SELECTED STORES ONLY",
+   "price": 69.99
+  },
+  {
+   "name": "CHRISTMAS DECOR IN SELECTED STORES ONLY",
+   "price": 24.99
+  },
+  {
+   "name": "CHRISTMAS DECOR IN SELECTED STORES ONLY",
+   "price": 99.99
+  },
+  {
+   "name": "CHRISTMAS DECOR IN SELECTED STORES ONLY",
+   "price": 29.99
+  },
+  {
+   "name": "BUBBLE MAGIC BUBBLES ALL VARIANTS 100ML EACH",
+   "price": 19.99
+  },
+  {
+   "name": "MINI BUBBLE TUBE 3-PIECE PER SET",
+   "price": 99.99
+  },
+  {
+   "name": "MAGIC CUBE",
+   "price": 49.99
+  },
+  {
+   "name": "BRIKS INFINITE SMALL VEHICLE BUILDING BLOCKS PER SET",
+   "price": 69.99
+  },
+  {
+   "name": "ZEUS BAT & BALL SET PER SET",
+   "price": 99.99
+  },
+  {
+   "name": "ZEUS BUILDING BLOCKS IN TUBE 100-PIECE PER SET",
+   "price": 299.99
+  },
+  {
+   "name": "SHOPRITE PLASTIC BALL 21CM EACH",
+   "price": 39.99
+  },
+  {
+   "name": "RAINBOW PLASTIC BALL 21CM EACH",
+   "price": 59.99
+  },
+  {
+   "name": "RUBBER DIMPLE SOCCER BALL SIZE 5",
+   "price": 159.99
+  },
+  {
+   "name": "ZAMBIA SOCCER BALL SIZE 5",
+   "price": 169.99
+  },
+  {
+   "name": "CENTILLION PLASTIC ARMCHAIR ALL VARIANTS EACH",
+   "price": 99.99
+  },
+  {
+   "name": "PLUSH SOFT ANIMALS ALL VARIANTS 43CM EACH",
+   "price": 199.99
+  },
+  {
+   "name": "SITTING DOG PLUSH TOY ALL VARIANTS 30CM EACH",
+   "price": 299.99
+  },
+  {
+   "name": "SMART TOUCH TABLET TOY 8 INCH EACH",
+   "price": 99.99
+  },
+  {
+   "name": "8 BIT TV GAME STATION WITH PRE-LOADED GAMES EACH",
+   "price": 499.99
+  },
+  {
+   "name": "SCHOOL JUMBO WAX COLOUR CRAYON SET 8-PIECE PER SET",
+   "price": 14.99
+  },
+  {
+   "name": "BIC CRYSTAL BALL POINT PENS ALL VARIANTS 2 PER PACK",
+   "price": 12.99
+  },
+  {
+   "name": "BIC ORANGE BALL POINT PENS ALL VARIANTS 2 PER PACK",
+   "price": 12.99
+  },
+  {
+   "name": "SCHOOL YELLOW HB PENCILS 10 PER PACK",
+   "price": 29.99
+  },
+  {
+   "name": "LILA A4 LINED HARDCOVER BOOK 192-PAGE",
+   "price": 29.99
+  },
+  {
+   "name": "ROTATRIM A4 PAPER REAM 500 SHEETS",
+   "price": 109.99
+  }
+ ]
+}

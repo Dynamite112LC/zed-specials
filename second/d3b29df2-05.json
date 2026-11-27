@@ -1,0 +1,119 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 177,
+ "items": [
+  {
+   "name": "Ultra Bread Spread 500g Each",
+   "price": 22.99
+  },
+  {
+   "name": "Blue Band Chocolate Spread 2x250g",
+   "price": 40.0
+  },
+  {
+   "name": "Clover Salted/Unsalted Butter 500g Each",
+   "price": 159.99
+  },
+  {
+   "name": "Zamchick Frozen Mixed Chicken Portions 2kg Each",
+   "price": 119.99
+  },
+  {
+   "name": "Milk Flavoured Milk All Variants 250ml Each",
+   "price": 8.99
+  },
+  {
+   "name": "NutraMilk Soy Active Milk 500ml Each",
+   "price": 9.99
+  },
+  {
+   "name": "Creambell Full Cream Fresh Milk 475ml Each",
+   "price": 11.99
+  },
+  {
+   "name": "Dairy Gold Full Cream Milk 2x475ml",
+   "price": 24.0
+  },
+  {
+   "name": "Creambell Lacto Marshi Cultured Milk 2l Each",
+   "price": 62.99
+  },
+  {
+   "name": "Rich's Versatie Cream 1l Each",
+   "price": 129.99
+  },
+  {
+   "name": "Shake It Up Flavoured Milk All Variants 500ml Each",
+   "price": 11.99
+  },
+  {
+   "name": "Clover Super M Protein Shake All Variants 300ml Each",
+   "price": 26.99
+  },
+  {
+   "name": "Creambell Yoghurt All Variants 500g Each",
+   "price": 29.99
+  },
+  {
+   "name": "Danone Ultra Mel Banana Fruit Yoghurt 4x125g Per Pack",
+   "price": 49.99
+  },
+  {
+   "name": "Parmalat Cheese Slices All Variants 200g Each",
+   "price": 53.99
+  },
+  {
+   "name": "Ladismith Cheddar / Gouda Cheese 230g Each",
+   "price": 89.99
+  },
+  {
+   "name": "Clover Feta Style Cheese All Variants 400g Each",
+   "price": 124.99
+  },
+  {
+   "name": "Today Frozen Original Puff Pastry 400g Each",
+   "price": 39.99
+  },
+  {
+   "name": "Polana Ice Lolly All Variants 2x70ml",
+   "price": 10.0
+  },
+  {
+   "name": "Carnival Supreme Ice Cream All Variants 2l Each",
+   "price": 79.99
+  },
+  {
+   "name": "Goldenlay Mixed Eggs 30 Per Tray",
+   "price": 93.99
+  },
+  {
+   "name": "Yalelo Frozen Zambian Bream Whole Round Family Pack",
+   "price": 79.99
+  },
+  {
+   "name": "Yalelo Frozen Kariba Bream Skin-Off Fillet 500g Each",
+   "price": 149.99
+  },
+  {
+   "name": "Bien Donne Frozen Jumbo Quail 3 Per Pack",
+   "price": 159.99
+  },
+  {
+   "name": "Ruya Bamba Frozen Chips All Variants 1kg Each",
+   "price": 64.99
+  },
+  {
+   "name": "Ritebrand Frozen Mixed Vegetables 900g Each",
+   "price": 69.99
+  },
+  {
+   "name": "Pot O' Gold Frozen Garden Peas 900g Each",
+   "price": 84.99
+  },
+  {
+   "name": "Fry's Frozen Plant-Based Chunky Strips 380g Each",
+   "price": 94.99
+  }
+ ]
+}

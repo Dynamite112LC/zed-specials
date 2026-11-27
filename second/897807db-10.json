@@ -1,0 +1,87 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 162,
+ "items": [
+  {
+   "name": "Crown 21-Piece Stainless Steel Cookware Set",
+   "price": 3199
+  },
+  {
+   "name": "Bennett Read Apex 24cm & 28cm Fry Combo Set",
+   "price": 899
+  },
+  {
+   "name": "Bennett Read Copper and Rock 6-Piece Cookware Set",
+   "price": 2599
+  },
+  {
+   "name": "KOGA 12-Piece White Porcelain Scallop Dinner Set",
+   "price": 490
+  },
+  {
+   "name": "Bennett Read Slate & Stone 6-Piece Non-stick Cookware Set",
+   "price": 3699
+  },
+  {
+   "name": "Double Stainless Steel Chafing Dish OR 9.5 L Stainless Steel Chafing Dish",
+   "price": 1299
+  },
+  {
+   "name": "MAINSTAYS 12-Piece White/Blue Stackable Dinner Set",
+   "price": 490
+  },
+  {
+   "name": "MAINSTAYS 12-Piece White Porcelain Dinner Set",
+   "price": 559
+  },
+  {
+   "name": "Floormax Top Mop",
+   "price": 599
+  },
+  {
+   "name": "Ótima 50 L Flip Top All Black Bin",
+   "price": 135
+  },
+  {
+   "name": "3-Piece Double Fitted Sheet Pack Assorted Colours",
+   "price": 159
+  },
+  {
+   "name": "Giana Bath Sheets Assorted Colours",
+   "price": 259
+  },
+  {
+   "name": "MAINSTAYS 4-Pack Hollowfibre Standard Pillows",
+   "price": 169
+  },
+  {
+   "name": "Travelwise Onyx 3-Piece ABS Luggage Set Assorted",
+   "price": 2999
+  },
+  {
+   "name": "Black Recycled Plastic Chair",
+   "price": 45
+  },
+  {
+   "name": "VEGAS Manhattan High Back Office Chair (VOC-950)",
+   "price": 2399
+  },
+  {
+   "name": "Malone Entertainment Unit 1800 mm",
+   "price": 3199
+  },
+  {
+   "name": "MAINSTAYS Nile Sleeper Couch",
+   "price": 2999
+  },
+  {
+   "name": "Picasso Sleeper Couch (PSC1)",
+   "price": 10999
+  },
+  {
+   "name": "Macy Daybed with Ottoman",
+   "price": 18999
+  }
+ ]
+}

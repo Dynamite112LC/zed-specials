@@ -1,0 +1,63 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 145,
+ "items": [
+  {
+   "name": "salton 30 L Mini Kitchen (SFMK-02)",
+   "price": 2999
+  },
+  {
+   "name": "LOGIK 8 L Digital Air Fryer (LT-AF852SD0)",
+   "price": 1999
+  },
+  {
+   "name": "LOGIK 1.7 L Cordless Red Kettle",
+   "price": 299
+  },
+  {
+   "name": "Russell Hobbs 2200 W SteamPro Steam Iron",
+   "price": 519
+  },
+  {
+   "name": "Sunbeam 2-Slice Stainless Steel Toaster (SST-100)",
+   "price": 699
+  },
+  {
+   "name": "Bennett Read 600 W Jug Blender",
+   "price": 999
+  },
+  {
+   "name": "DEFY 1.7 L Stainless Steel Cordless Kettle (WK-51003S)",
+   "price": 699
+  },
+  {
+   "name": "DEFY 1.7 L Tinted Glass Cordless Kettle (WK53000)",
+   "price": 829
+  },
+  {
+   "name": "LOGIK 40 cm Pedestal Fan (LT-40P01)",
+   "price": 799
+  },
+  {
+   "name": "LOGIK 3-in-1 Combination Fan",
+   "price": 1199
+  },
+  {
+   "name": "LOGIK 30 cm Box Fan (KYT30-TX6 LT-30B01)",
+   "price": 699
+  },
+  {
+   "name": "LOGIK 40 cm White Pedestal Fan (ZF-1616)",
+   "price": 1699
+  },
+  {
+   "name": "LOGIK 40 cm Chrome Pedestal Fan (ZF-1616)",
+   "price": 1699
+  },
+  {
+   "name": "LOGIK 12000BTU Split Unit Air Conditioner Set",
+   "price": 14999
+  }
+ ]
+}

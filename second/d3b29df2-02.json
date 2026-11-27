@@ -1,0 +1,107 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 155,
+ "items": [
+  {
+   "name": "FATTI'S & MONI'S MACARONI/SPAGHETTI",
+   "price": 25.99
+  },
+  {
+   "name": "GOLDEN FOODS PEANUT BUTTER",
+   "price": 57.99
+  },
+  {
+   "name": "CREMORA COFFEE & TEA CREAMER",
+   "price": 78.99
+  },
+  {
+   "name": "D'LITE PURE COOKING OIL",
+   "price": 96.99
+  },
+  {
+   "name": "TANGANDA TIPS TAGLESS TEABAGS",
+   "price": 54.99
+  },
+  {
+   "name": "CREAMBRILL UHT FULL CREAM MILK",
+   "price": 12.99
+  },
+  {
+   "name": "IT'S WILD! SOY BEVERAGE",
+   "price": 24.99
+  },
+  {
+   "name": "BOKOMO TRADITIONAL OATS",
+   "price": 52.99
+  },
+  {
+   "name": "ROYCO GRAVY MCHUZI MIX",
+   "price": 49.99
+  },
+  {
+   "name": "LUCKY STAR PILCHARDS",
+   "price": 22.99
+  },
+  {
+   "name": "KOO BAKED BEANS IN TOMATO SAUCE",
+   "price": 25.99
+  },
+  {
+   "name": "BULL BRAND CORNED MEAT",
+   "price": 43.99
+  },
+  {
+   "name": "ONGA SPICE",
+   "price": 24.99
+  },
+  {
+   "name": "HINDS SPICE REFILL",
+   "price": 18.99
+  },
+  {
+   "name": "ROBERTSONS RAJAH CURRY POWDER REFILL",
+   "price": 31.0
+  },
+  {
+   "name": "DODDIES SAUCE",
+   "price": 36.0
+  },
+  {
+   "name": "NOLA MAYO TANGY STREET STYLE",
+   "price": 49.99
+  },
+  {
+   "name": "NOLA MAYONNAISE",
+   "price": 63.99
+  },
+  {
+   "name": "D'LITE MAYONNAISE",
+   "price": 75.0
+  },
+  {
+   "name": "D'LITE BAKED BEANS IN TOMATO SAUCE",
+   "price": 75.0
+  },
+  {
+   "name": "CLOVER OLIVE PRIDE BLEND OF SEED OILS & EXTRA VIRGIN OLIVE OIL",
+   "price": 114.99
+  },
+  {
+   "name": "GOLDEN GOODNESS TASTY SOYA PIECES",
+   "price": 24.99
+  },
+  {
+   "name": "EEZE INSTANT NOODLES",
+   "price": 30.0
+  },
+  {
+   "name": "IT'S WILD! CHAMA WHITE RICE",
+   "price": 132.99
+  },
+  {
+   "name": "PREMUNI BASMATI RICE",
+   "price": 244.99
+  }
+ ]
+}

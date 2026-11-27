@@ -1,0 +1,43 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 124,
+ "items": [
+  {
+   "name": "7-PIECE CARBON STEEL COOKWARE SET",
+   "price": 499.99
+  },
+  {
+   "name": "6-PIECE MAJORÉ CASSEROLE COOKWARE SET",
+   "price": 799.99
+  },
+  {
+   "name": "12-PIECE SILVER STEAM STAINLESS STEEL COOKWARE SET",
+   "price": 899.99
+  },
+  {
+   "name": "FRYING PAN WITH NYLON SPATULA",
+   "price": 149.99
+  },
+  {
+   "name": "INDIA DINNER RANGE",
+   "price": 34.99
+  },
+  {
+   "name": "OPAL DINNER RANGE",
+   "price": 49.99
+  },
+  {
+   "name": "4-PIECE COUP WHITE DINNER RANGE",
+   "price": 99.99
+  },
+  {
+   "name": "12-PIECE SPRING FLOWER DINNER SET",
+   "price": 249.99
+  },
+  {
+   "name": "16-PIECE BLACK CANE DINNER SET",
+   "price": 349.99
+  }
+ ]
+}

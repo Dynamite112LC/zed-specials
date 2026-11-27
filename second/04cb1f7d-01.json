@@ -1,0 +1,35 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 119,
+ "items": [
+  {
+   "name": "MX RACER RIDE-ON EACH",
+   "price": 399.99
+  },
+  {
+   "name": "EXOTICAR RADIO-CONTROLLED CAR ALL VARIANTS EACH",
+   "price": 199.99
+  },
+  {
+   "name": "BABY CUTIE SOFT BABY DOLL ALL VARIANTS 30cm EACH",
+   "price": 199.99
+  },
+  {
+   "name": "GREEN CHRISTMAS TREE 1,8m",
+   "price": 599.99
+  },
+  {
+   "name": "BESTMADE PLUSH BEAR 1m EACH",
+   "price": 399.99
+  },
+  {
+   "name": "ESSENTIALS BLACK/WHITE AUTO KETTLE 1,7L EACH",
+   "price": 349.99
+  },
+  {
+   "name": "BISTRO FLUTE / WINE GLASS SET 4-PIECE PER SET",
+   "price": 139.99
+  }
+ ]
+}

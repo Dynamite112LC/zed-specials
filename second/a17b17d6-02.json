@@ -1,0 +1,119 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 141,
+ "items": [
+  {
+   "name": "Kung Fu Energy Drink",
+   "price": 8
+  },
+  {
+   "name": "Fruitop Cordial",
+   "price": 24
+  },
+  {
+   "name": "Clover Full Cream Milk",
+   "price": 28
+  },
+  {
+   "name": "Clover Low Fat Milk",
+   "price": 28
+  },
+  {
+   "name": "Rhodes Red Grape Juice",
+   "price": 37
+  },
+  {
+   "name": "Ultra Fat Free Spread",
+   "price": 18
+  },
+  {
+   "name": "Creambell Shakez Milkshake",
+   "price": 10
+  },
+  {
+   "name": "Buttercup Margarine",
+   "price": 35
+  },
+  {
+   "name": "Eureka Chicken Hungarian Sausages",
+   "price": 165
+  },
+  {
+   "name": "Goldenlay Large Eggs",
+   "price": 86
+  },
+  {
+   "name": "Kremel Original Creamer",
+   "price": 68
+  },
+  {
+   "name": "Jungle Oats",
+   "price": 49
+  },
+  {
+   "name": "Binto Beef Noodles",
+   "price": 19
+  },
+  {
+   "name": "Premium Long Grain & Aromatic Basmati Rice",
+   "price": 199
+  },
+  {
+   "name": "Rhodes Baked Beans in Tomato Sauce",
+   "price": 18
+  },
+  {
+   "name": "Robertsens Rajah Curry Powder",
+   "price": 15
+  },
+  {
+   "name": "Amigo Cheese Curls",
+   "price": 11
+  },
+  {
+   "name": "Lay's Potato Chips",
+   "price": 24
+  },
+  {
+   "name": "Prego Biscuits",
+   "price": 19
+  },
+  {
+   "name": "Cookie Joe Shorties Butter Cookies",
+   "price": 5
+  },
+  {
+   "name": "Cookie Joe Ginger Cookies",
+   "price": 5
+  },
+  {
+   "name": "Bakers Topper Cream Biscuits",
+   "price": 14
+  },
+  {
+   "name": "Beef Sausage",
+   "price": 100
+  },
+  {
+   "name": "Beef Mince Loose Serve",
+   "price": 95
+  },
+  {
+   "name": "Beef T-Bone Steak",
+   "price": 170
+  },
+  {
+   "name": "Class 1 Golden Delicious Green/Red Apples",
+   "price": 30
+  },
+  {
+   "name": "Class 1 Onions",
+   "price": 120
+  },
+  {
+   "name": "Castle Lite Beer",
+   "price": 110
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 153,
+ "items": [
+  {
+   "name": "POWER X ENERGY SPARKLING VODKA COCKTAIL NRB 275ml",
+   "price": 55
+  },
+  {
+   "name": "MONARCH AGED MALT WHISKY 750ml EACH",
+   "price": 104.99
+  },
+  {
+   "name": "ROYAL CIRCLE WHISKY 750ml EACH",
+   "price": 139.99
+  },
+  {
+   "name": "GORDON'S LONDON DRY GIN 750ml EACH",
+   "price": 174.99
+  },
+  {
+   "name": "JOHNNIE WALKER BLACK LABEL BLENDED SCOTCH WHISKY GIFT PACK 750ml EACH",
+   "price": 949.99
+  },
+  {
+   "name": "VAT 69 BLENDED SCOTCH WHISKY 750ml EACH",
+   "price": 249.99
+  },
+  {
+   "name": "AMARULA CREAM LOUQUEUR 750ml EACH",
+   "price": 289.99
+  },
+  {
+   "name": "JAMESON TRIPLE DISTILLED IRISH WHISKEY 750ml EACH",
+   "price": 489.99
+  },
+  {
+   "name": "CASTLE LITE BEER NRB 6x330ml PER PACK",
+   "price": 119.99
+  },
+  {
+   "name": "BRUTAL FRUIT SPARKLING SPRITZER CANS ALL VARIANTS 6x500ml PER PACK",
+   "price": 159.99
+  },
+  {
+   "name": "HUNTER'S DRY/GOLD CIDER NRB 6x330ml PER PACK",
+   "price": 179.99
+  },
+  {
+   "name": "HEINEKEN LAGER BEER ALL VARIANTS NRB 6x330ml PER PACK",
+   "price": 189.99
+  },
+  {
+   "name": "CORONA EXTRA BEER NRB 6x355ml PER PACK",
+   "price": 199.99
+  },
+  {
+   "name": "SAVANNA PREMIUM DRY CIDER NRB 6x500ml PER PACK",
+   "price": 249.99
+  }
+ ]
+}

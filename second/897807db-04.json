@@ -1,0 +1,99 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 170,
+ "items": [
+  {
+   "name": "DABUR Herbal Toothpaste 150 g Assorted",
+   "price": 22.99
+  },
+  {
+   "name": "NIVEA Body Cream 400 ml Assorted",
+   "price": 139.99
+  },
+  {
+   "name": "MAQ Laundry Bar 500 g",
+   "price": 34.99
+  },
+  {
+   "name": "MOUSSON Bubble Bath 2 L Assorted",
+   "price": 144.99
+  },
+  {
+   "name": "ROMEIO HygienIX Bath Soap 175 g Assorted",
+   "price": 12.99
+  },
+  {
+   "name": "PEACEFUL SLEEP Mosquito Repellent Aerosol 150 g",
+   "price": 84.99
+  },
+  {
+   "name": "MORTEIN Insecticide 600 ml Assorted",
+   "price": 62.99
+  },
+  {
+   "name": "BOOM FORCE Cream Cleaner 750 ml Assorted",
+   "price": 32.99
+  },
+  {
+   "name": "DETTOL Hygiene Soap 175 g Assorted",
+   "price": 19.99
+  },
+  {
+   "name": "BOOM FORCE Thick Bleach 750 ml Assorted",
+   "price": 34.99
+  },
+  {
+   "name": "BOOM Dishwashing Liquid 750 ml Assorted",
+   "price": 35.99
+  },
+  {
+   "name": "MR. MIN Multi Surface Cleaner 2 x 300 ml Assorted",
+   "price": 94.99
+  },
+  {
+   "name": "NIVEA Anti-Perspirant Roll-on 50 ml Assorted",
+   "price": 59.99
+  },
+  {
+   "name": "AIROMA Air Freshener 210 ml Assorted",
+   "price": 34.99
+  },
+  {
+   "name": "BOOM FORCE Toilet Cleaning Gel 500 ml Assorted",
+   "price": 39.99
+  },
+  {
+   "name": "BOOM Fabric Softener 2 L Assorted",
+   "price": 59.99
+  },
+  {
+   "name": "BOOM Washing Powder 500 g",
+   "price": 29.99
+  },
+  {
+   "name": "HI-LIFE Hand Wash Liquid 450 ml Assorted",
+   "price": 19.99
+  },
+  {
+   "name": "DETTOL Antiseptic Liquid 750 ml",
+   "price": 149.99
+  },
+  {
+   "name": "NIVEA Deodorant Spray 150 ml Assorted",
+   "price": 69.99
+  },
+  {
+   "name": "ALWAYS Maxi Sanitary Pads 7-Pack Assorted",
+   "price": 24.99
+  },
+  {
+   "name": "KOTEX Daily Protect Panty Liners 40-Pack",
+   "price": 44.99
+  },
+  {
+   "name": "OMO Auto Washing Powder 3 kg",
+   "price": 164.99
+  }
+ ]
+}

@@ -1,0 +1,123 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 172,
+ "items": [
+  {
+   "name": "Zam Spread Peanut Butter 1kg",
+   "price": 50
+  },
+  {
+   "name": "Milano Macaroni/Elbow Pasta 3kg",
+   "price": 85
+  },
+  {
+   "name": "Nakonde Golden Grain Rice 5kg",
+   "price": 124
+  },
+  {
+   "name": "Farmer's Choice 1kg Mixed Portions Chicken",
+   "price": 290
+  },
+  {
+   "name": "Five Roses Smooth Ceylon Blend Tea Bags 102 per Pack",
+   "price": 80
+  },
+  {
+   "name": "Zam Uchi Honey 500g",
+   "price": 42
+  },
+  {
+   "name": "Freshpak Pure Rooibos Tea Bags 40 per Pack",
+   "price": 44
+  },
+  {
+   "name": "Nescafe Ricoffy Instant Coffee All Variants 250g Each",
+   "price": 64
+  },
+  {
+   "name": "Reina Milk Powder 400g Each",
+   "price": 75
+  },
+  {
+   "name": "Bisto Original Gravy Powder 250g",
+   "price": 20
+  },
+  {
+   "name": "Royco McMuti Mix All Variants 200g Each",
+   "price": 19
+  },
+  {
+   "name": "Queen Tomato Paste 320g Each",
+   "price": 20
+  },
+  {
+   "name": "Nola Mayo Street Style Tangy Mayonnaise 750g Each",
+   "price": 38
+  },
+  {
+   "name": "All Gold Tomato Sauce 700ml Each",
+   "price": 50
+  },
+  {
+   "name": "Crosse & Blackwell Tangy Mayonnaise 750g Each",
+   "price": 55
+  },
+  {
+   "name": "B-Well Omega 3 Cooking Oil Blend 375ml Each",
+   "price": 19
+  },
+  {
+   "name": "Bakers Red Label Biscuits All Variants 200g Each",
+   "price": 25
+  },
+  {
+   "name": "Bakers Eet-Sum-Mor Sootherbread Biscuits All Variants 200g Each",
+   "price": 37
+  },
+  {
+   "name": "Cadbury Chocolate Slab All Variants 80g Each",
+   "price": 19
+  },
+  {
+   "name": "Twix/Snickers/Bounty/Mars Chocolate 40g-57g Each",
+   "price": 25
+  },
+  {
+   "name": "Fruiticana Juice All Variants 430ml Each",
+   "price": 7
+  },
+  {
+   "name": "Enerade Sports Drink All Variants 500ml Each",
+   "price": 9
+  },
+  {
+   "name": "Brutal Fruit Sparkling Spritzer Cans All Variants 6x350ml per Pack",
+   "price": 145
+  },
+  {
+   "name": "Corona Extra Beer NRB 6x355ml per Pack",
+   "price": 170
+  },
+  {
+   "name": "Hineken Premium Gin/Alcohol Free Pure Malt Lager NRB 6x330ml per Pack",
+   "price": 170
+  },
+  {
+   "name": "Hunter's Dry Gold Cider NRB 6x330ml per Pack",
+   "price": 160
+  },
+  {
+   "name": "Four Cousins Wine All Variants 750ml Each",
+   "price": 224
+  },
+  {
+   "name": "Amazula Cream Liqueur 750ml Each",
+   "price": 250
+  },
+  {
+   "name": "Jameson Triple Distilled Irish Whiskey 750ml Each",
+   "price": 460
+  }
+ ]
+}

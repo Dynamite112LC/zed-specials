@@ -1,0 +1,75 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 161,
+ "items": [
+  {
+   "name": "Hisense 154 L Top Freezer Fridge (H225TSTS)",
+   "price": 5999
+  },
+  {
+   "name": "Hisense 20 L Solo Digital Microwave Oven (H20MOB515)",
+   "price": 1599
+  },
+  {
+   "name": "DEFY 20 L Solo Microwave Oven (DM0381)",
+   "price": 1899
+  },
+  {
+   "name": "Russell Hobbs 30 L Electronic Microwave Oven (RHEM31L)",
+   "price": 2999
+  },
+  {
+   "name": "DEFY 60 cm Black Cooker Hood (DCH60B)",
+   "price": 1999
+  },
+  {
+   "name": "DEFY Slimline Box Set (DCB822E)",
+   "price": 10999
+  },
+  {
+   "name": "DEFY Slimline Box Set (DCB866E)",
+   "price": 11999
+  },
+  {
+   "name": "DEFY 50 cm 3-Plate Compact Stove (DSS553)",
+   "price": 8499
+  },
+  {
+   "name": "Hisense 9 kg Front Loader Washing Machine (WFQP9012VMT)",
+   "price": 13999
+  },
+  {
+   "name": "DEFY 14 kg Top Loader Washing Machine (DTL160)",
+   "price": 11999
+  },
+  {
+   "name": "DEFY 90 L White Bar Fridge (DBF90W)",
+   "price": 3899
+  },
+  {
+   "name": "DEFY 481 L White Chest Freezer (DMF456)",
+   "price": 12499
+  },
+  {
+   "name": "KTC 575 L White Chest Freezer (KCC575)",
+   "price": 16999
+  },
+  {
+   "name": "DEFY 496 L Black Glass Side-by-Side Freezer Fridge with Water Dispenser (DFF456)",
+   "price": 32999
+  },
+  {
+   "name": "DEFY 195 L White Chest Freezer (DMF470)",
+   "price": 5999
+  },
+  {
+   "name": "Hisense 195 L Chest Freezer (add model code)",
+   "price": 6999
+  },
+  {
+   "name": "Hisense 514 L Side-by-Side Freezer Fridge with Water Dispenser (H680SMIB-WD)",
+   "price": 22999
+  }
+ ]
+}

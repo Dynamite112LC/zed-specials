@@ -1,0 +1,75 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 164,
+ "items": [
+  {
+   "name": "XSESSIALS STEAM IRON 1600W EACH",
+   "price": 299.99
+  },
+  {
+   "name": "XSESSIALS BLACK/WHITE CORDLESS KETTLE 1,7L EACH",
+   "price": 399.99
+  },
+  {
+   "name": "XSESSIALS BLACK/WHITE MICROWAVE OVEN 20L EACH",
+   "price": 2199.99
+  },
+  {
+   "name": "PLATINUM ECO STEAM IRON 2000W EACH",
+   "price": 549.99
+  },
+  {
+   "name": "XSESSIALS 360° STAINLESS STEEL CORDLESS KETTLE 1,7L EACH",
+   "price": 449.99
+  },
+  {
+   "name": "XSESSIALS 360° GLASS CORDLESS KETTLE 1,7L EACH",
+   "price": 449.99
+  },
+  {
+   "name": "PLATINUM BPA FREE CORDLESS KETTLE 1,7L EACH",
+   "price": 579.99
+  },
+  {
+   "name": "XSESSIALS BROAD PLATE HAIR STRAIGHTENER EACH",
+   "price": 199.99
+  },
+  {
+   "name": "XSESSIALS SOFT GRIP HAIR CLIPPER SET 10W PER SET",
+   "price": 249.99
+  },
+  {
+   "name": "XSESSIALS 2-SLICE SANDWICH MAKER EACH",
+   "price": 399.99
+  },
+  {
+   "name": "XSESSIALS JUG BLENDER 400W 1,5L EACH",
+   "price": 699.99
+  },
+  {
+   "name": "OTTIMO SQUARE ELECTRIC FRY PAN EACH",
+   "price": 749.99
+  },
+  {
+   "name": "XSESSIALS TWIN SPIRAL ELECTRIC HOT PLATE EACH",
+   "price": 479.99
+  },
+  {
+   "name": "OTTIMO ELECTRIC BBQ GRILL 2000W EACH",
+   "price": 649.99
+  },
+  {
+   "name": "XSESSIALS HAIR DRYER 1200W EACH",
+   "price": 299.99
+  },
+  {
+   "name": "OTTIMO AIRFRYER 5L EACH",
+   "price": 1499.99
+  },
+  {
+   "name": "XSESSIALS MINI OVEN 24L EACH",
+   "price": 2199.99
+  }
+ ]
+}

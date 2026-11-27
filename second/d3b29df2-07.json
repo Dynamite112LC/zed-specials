@@ -1,0 +1,159 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 195,
+ "items": [
+  {
+   "name": "LOVIES BABY SOAP",
+   "price": 70
+  },
+  {
+   "name": "JOHNSON'S BABY SOAP",
+   "price": 29.99
+  },
+  {
+   "name": "HUGGIES PURE/NATURAL CARE/SIMPLY CLEAN BABY WIPES",
+   "price": 44.99
+  },
+  {
+   "name": "LOVIES BABY POWDER",
+   "price": 85
+  },
+  {
+   "name": "COMFORT CARE GOLD DISPOSABLE NAPPIES",
+   "price": 108.99
+  },
+  {
+   "name": "BABYMED BABY OIL",
+   "price": 24.99
+  },
+  {
+   "name": "BENNETTS BABY AQUOROUS CREAM",
+   "price": 44.99
+  },
+  {
+   "name": "BABYMED BABY SHOWER GEL",
+   "price": 79.99
+  },
+  {
+   "name": "JOLLY TOTS BASIC BOTTLE",
+   "price": 39.99
+  },
+  {
+   "name": "JOLLY TOTS CHARACTER SPOONS",
+   "price": 49.99
+  },
+  {
+   "name": "JOLLY TOTS BABY SPOON & BOWL",
+   "price": 49.99
+  },
+  {
+   "name": "JOLLY TOTS GRIPPER CUP",
+   "price": 99.99
+  },
+  {
+   "name": "JOLLY TOTS FEEDING SET",
+   "price": 99.99
+  },
+  {
+   "name": "JOLLY TOTS BABY BATH",
+   "price": 99.99
+  },
+  {
+   "name": "JOLLY TOTS FACE CLOTH",
+   "price": 24.99
+  },
+  {
+   "name": "JOLLY TOTS COOLING TEETHER",
+   "price": 79.99
+  },
+  {
+   "name": "JOLLY TOTS BABY MANICURE SET",
+   "price": 79.99
+  },
+  {
+   "name": "JOLLY TOTS BABY TRAINING POTTY",
+   "price": 179.99
+  },
+  {
+   "name": "JOLLY TOTS BABY BATHS",
+   "price": 199.99
+  },
+  {
+   "name": "COLGATE MAXIMUM CAVITY PROTECTION TOOTHPASTE",
+   "price": 26.99
+  },
+  {
+   "name": "LISTERINE ALL VARIANTS",
+   "price": 89.99
+  },
+  {
+   "name": "HYGIENX PURE SOAP",
+   "price": 16.99
+  },
+  {
+   "name": "HYGIENX PURE SOAP",
+   "price": 24.99
+  },
+  {
+   "name": "AXE ROLL-ON FOR MEN",
+   "price": 39.99
+  },
+  {
+   "name": "AXE DEODORANT FOR MEN",
+   "price": 59.99
+  },
+  {
+   "name": "VIRTUS MEN",
+   "price": 99.99
+  },
+  {
+   "name": "HYGIENX PURE SOAP",
+   "price": 40
+  },
+  {
+   "name": "HOBBY HAND WASH",
+   "price": 24.99
+  },
+  {
+   "name": "PROTEX MOISTURE LOCK",
+   "price": 14.99
+  },
+  {
+   "name": "PROTEX DEEP CLEAN",
+   "price": 14.99
+  },
+  {
+   "name": "VASELINE BLUE SEAL ORIGINAL PURE PETROLGUM JELLY",
+   "price": 18.99
+  },
+  {
+   "name": "DERMA PETROLEUM JELLY",
+   "price": 60
+  },
+  {
+   "name": "DERMA MOISTURISING CREAM",
+   "price": 60
+  },
+  {
+   "name": "RENEW SHAMPOO & CONDITIONER",
+   "price": 120
+  },
+  {
+   "name": "ORS ORGANIC ROOT NOURISHING OLIVE OIL SHEEN SPRAY",
+   "price": 69.99
+  },
+  {
+   "name": "KOTEX DAILY PROTECT",
+   "price": 24.99
+  },
+  {
+   "name": "STAYFREE SANITARY PADS",
+   "price": 64
+  },
+  {
+   "name": "HYGIENX ANTISEPTIC LIQUID",
+   "price": 69.99
+  }
+ ]
+}

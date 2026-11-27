@@ -1,0 +1,87 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 187,
+ "items": [
+  {
+   "name": "WINTER PRINCESS DOLL ALL VARIANTS 55cm EACH",
+   "price": 299.99
+  },
+  {
+   "name": "PRETTY/GLAMOUR GIRL DOLL ALL VARIANTS 15cm EACH",
+   "price": 19.99
+  },
+  {
+   "name": "SHANI/TRENDY GIRLS FASHION DOLL ALL VARIANTS 28cm EACH",
+   "price": 49.99
+  },
+  {
+   "name": "VOGUE GIRL FASHION DOLL WITH ACCESSORIES ALL VARIANTS EACH",
+   "price": 59.99
+  },
+  {
+   "name": "ANGEL MOMMY & BABY DOLLS PER SET",
+   "price": 99.99
+  },
+  {
+   "name": "PLUSH SITTING BEAR ALL VARIANTS 20cm EACH",
+   "price": 129.99
+  },
+  {
+   "name": "PLUSH SITTING UNICORN ALL VARIANTS 30cm EACH",
+   "price": 249.99
+  },
+  {
+   "name": "BEAUTY MAKE-UP SET ALL VARIANTS PER SET",
+   "price": 19.99
+  },
+  {
+   "name": "WINTER PRINCESS BLUE/PINK TEA SET PER SET",
+   "price": 39.99
+  },
+  {
+   "name": "ZEUS TEA SET 7-PIECE PER SET",
+   "price": 49.99
+  },
+  {
+   "name": "FOOD KITCHEN PLAY SET ALL VARIANTS PER SET",
+   "price": 59.99
+  },
+  {
+   "name": "SUPER KITCHEN ORANGE KITCHEN PLAY SET",
+   "price": 69.99
+  },
+  {
+   "name": "BEAUTY SET WITH PHONE & WATCH PER SET",
+   "price": 79.99
+  },
+  {
+   "name": "CHARMING BEAUTY SET WITH PHONE PER SET",
+   "price": 79.99
+  },
+  {
+   "name": "LITTLE KITCHEN PINK TEA PLAY SET PER SET",
+   "price": 99.99
+  },
+  {
+   "name": "KITCHEN SET FREE ASSEMBLY PLAY SET PER SET",
+   "price": 79.99
+  },
+  {
+   "name": "HAPPY TOYS TEA SET PER SET",
+   "price": 99.99
+  },
+  {
+   "name": "CUDDLY BABY DOLL 24cm & STROLLER ALL VARIANTS PER SET",
+   "price": 299.99
+  },
+  {
+   "name": "CUDDLY BABY BUKESA/BRITNEY DOLL IN BACKPACK 24cm EACH",
+   "price": 149.99
+  },
+  {
+   "name": "BABY CUTIE MIA/NIA DRINK & WET DOLL WITH ACCESSORIES 43cm EACH",
+   "price": 399.99
+  }
+ ]
+}

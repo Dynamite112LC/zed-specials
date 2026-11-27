@@ -1,0 +1,131 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 184,
+ "items": [
+  {
+   "name": "Koo Baked Beans 410g",
+   "price": 1999
+  },
+  {
+   "name": "Royco Mchuzi Mix 200g",
+   "price": 1899
+  },
+  {
+   "name": "Olivine Tomato Sauce z375ml",
+   "price": 1199
+  },
+  {
+   "name": "Binto Noodles Assorted 65g",
+   "price": 2200
+  },
+  {
+   "name": "Robertson's Box Spices Assorted Excl. Pepper 12-100g",
+   "price": 5500
+  },
+  {
+   "name": "Jungle Oats 500g",
+   "price": 2699
+  },
+  {
+   "name": "First Choice UHT Milk Assorted 1Ltr",
+   "price": 2499
+  },
+  {
+   "name": "Jacob's Instant Coffee Assorted 200g",
+   "price": 2699
+  },
+  {
+   "name": "Bakers Blue Label Marie 200g",
+   "price": 2299
+  },
+  {
+   "name": "Baker's Tennis Biscuit Assorted 200g",
+   "price": 3499
+  },
+  {
+   "name": "First Choice Butter Brick Assorted 500g",
+   "price": 8499
+  },
+  {
+   "name": "Ultra Margarine Brick 500g",
+   "price": 1499
+  },
+  {
+   "name": "Buttercup Margarine Brick 250g",
+   "price": 1799
+  },
+  {
+   "name": "Harvest Low Fat Spread Tub 500g",
+   "price": 1799
+  },
+  {
+   "name": "PnP Traditional Hungarian 1kg",
+   "price": 8999
+  },
+  {
+   "name": "Colgate Triple Action Toothpaste 140g",
+   "price": 2199
+  },
+  {
+   "name": "Lifebuoy Soap Assorted 175g",
+   "price": 1199
+  },
+  {
+   "name": "Dettol Showergel Assorted 500ml",
+   "price": 9499
+  },
+  {
+   "name": "Vaseline Body Lotion or Cream Excl. Cera Glow 400ml",
+   "price": 6999
+  },
+  {
+   "name": "Dawn Roll On Male or Female Assorted 45ml",
+   "price": 1399
+  },
+  {
+   "name": "Lentheric Masculin or I Love Deo 125ml /150ml",
+   "price": 3999
+  },
+  {
+   "name": "Bullet Dish Washing Liquid 750ml",
+   "price": 1999
+  },
+  {
+   "name": "Handy Andy APC Cleaner 750ml",
+   "price": 2799
+  },
+  {
+   "name": "Harpic Toilet Cleaner Assorted 750ml",
+   "price": 2899
+  },
+  {
+   "name": "Sta-Soft Fabric Softener Assorted Refill 500ml",
+   "price": 3199
+  },
+  {
+   "name": "Doom Insecticide Spray Assorted 300ml",
+   "price": 3199
+  },
+  {
+   "name": "Black Label Beer Cans 6x500ml",
+   "price": 14999
+  },
+  {
+   "name": "Jameson Irish Whiskey 750ml",
+   "price": 46999
+  },
+  {
+   "name": "Amarula Cream 750ml",
+   "price": 26999
+  },
+  {
+   "name": "Gordons London Dry Gin 750ml",
+   "price": 15499
+  },
+  {
+   "name": "Raindance Vine Assorted 1Ltr",
+   "price": 7999
+  }
+ ]
+}

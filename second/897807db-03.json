@@ -1,0 +1,67 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 150,
+ "items": [
+  {
+   "name": "AQUACLEAR Spring Water 500 ml",
+   "price": 49.99
+  },
+  {
+   "name": "CADBURY Dairy Milk Chocolate Slab 80 g Assorted",
+   "price": 24.99
+  },
+  {
+   "name": "CHIPSY Potato Chips 30 g Assorted",
+   "price": 6.99
+  },
+  {
+   "name": "LAY'S Potato Chips 105 g Assorted",
+   "price": 34.99
+  },
+  {
+   "name": "SAFARI Roasted Peanuts & Salted Peanuts 150 g",
+   "price": 39.99
+  },
+  {
+   "name": "OREO Cookies 128.8 g Assorted",
+   "price": 24.99
+  },
+  {
+   "name": "BAUMANN'S Marie Biscuits 150 g",
+   "price": 24.99
+  },
+  {
+   "name": "BAKERS Tennis Biscuits 200 g Assorted",
+   "price": 44.99
+  },
+  {
+   "name": "TASTY TREATS Cheezy Bites Cheese Snack 6 x 30 g Assorted",
+   "price": 39.99
+  },
+  {
+   "name": "FANTASY Chocolate Eclairs 100s",
+   "price": 26.99
+  },
+  {
+   "name": "MANHATTAN Scenties OR Sour Worms Sweets Pack 125 g Assorted",
+   "price": 29.99
+  },
+  {
+   "name": "MANHATTAN Pink & White Marshmallows 150 g",
+   "price": 39.99
+  },
+  {
+   "name": "RHODES 100% Fruit Juice Blend 1 L Assorted",
+   "price": 52.99
+  },
+  {
+   "name": "VITAL Spring Water 500 ml",
+   "price": 44.99
+  },
+  {
+   "name": "AMAZON Crembos Coconut Biscuits 75 g Assorted",
+   "price": 29.99
+  }
+ ]
+}

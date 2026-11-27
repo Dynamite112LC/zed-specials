@@ -1,0 +1,99 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 183,
+ "items": [
+  {
+   "name": "LK'S SANDWICH BRAAI GRID",
+   "price": 149.99
+  },
+  {
+   "name": "LK'S FLAT BRAAI GRID",
+   "price": 179.99
+  },
+  {
+   "name": "LK'S HEAVY DUTY BRAAI GRID",
+   "price": 599.99
+  },
+  {
+   "name": "LK'S BRAAI EACH",
+   "price": 349.99
+  },
+  {
+   "name": "LK'S/BUSHBABY LARGE BRAAI EACH",
+   "price": 399.99
+  },
+  {
+   "name": "BUSHBABY PORTABLE CAMPING STOVE EACH",
+   "price": 349.99
+  },
+  {
+   "name": "BUSHBABY GAS STOVE CARTRIDGE 220g",
+   "price": 49.99
+  },
+  {
+   "name": "BESTWAY SINGLE FLOCKED AIR MATTRESS EACH",
+   "price": 349.99
+  },
+  {
+   "name": "BESTWAY DOUBLE FLOCKED AIR MATTRESS EACH",
+   "price": 649.99
+  },
+  {
+   "name": "POLAR CHILL COOLER BOX ALL VARIANTS 22L EACH",
+   "price": 249.99
+  },
+  {
+   "name": "ADDIS COOL CAT COOLER BOX ALL VARIANTS 26L EACH",
+   "price": 399.99
+  },
+  {
+   "name": "GOLD SUN AYORA MUDBACK PLASTIC CHAIR",
+   "price": 119.99
+  },
+  {
+   "name": "BUSHBABY KID'S CAPTAIN'S CHAIR ALL VARIANTS EACH",
+   "price": 229.99
+  },
+  {
+   "name": "SUPER POWER AA/AAA ALKALINE BATTERIES 4 PER PACK",
+   "price": 45.99
+  },
+  {
+   "name": "MASTER PROFESSIONAL 4-WAY MULTIPLUG 4m EACH",
+   "price": 249.99
+  },
+  {
+   "name": "SHIELD SHEEN X-TREME VINYL, PLASTIC & RUBBER CAR CARE SPRAY ALL VARIANTS 750ml EACH",
+   "price": 129.99
+  },
+  {
+   "name": "SHIELD SPLASH CAR SHAMPOO 5L",
+   "price": 279.99
+  },
+  {
+   "name": "SCHULTZ JIG SAW 400W/ SHEET SANDER 135W EACH",
+   "price": 599.99
+  },
+  {
+   "name": "BRILLIANT SPRAY PAINT ALL VARIANTS 300ml EACH",
+   "price": 79.99
+  },
+  {
+   "name": "SLEVER MORTISE LOCK",
+   "price": 199.99
+  },
+  {
+   "name": "QUALITY 5 LEVER MORTISE LOCK SET",
+   "price": 699.99
+  },
+  {
+   "name": "QUALITY TOOL SET 141-PIECE PER SET",
+   "price": 699.99
+  },
+  {
+   "name": "TOTAL ENERGIES MOTOR OIL SAE 40 5L",
+   "price": 589.99
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 149,
+ "items": [
+  {
+   "name": "6L Glass Dispenser",
+   "price": 299.99
+  },
+  {
+   "name": "Hi Ball Glass",
+   "price": 19.99
+  },
+  {
+   "name": "Freehand Colour Base Hi Ball Glass",
+   "price": 19.99
+  },
+  {
+   "name": "Freehand Colour Base Can Glass",
+   "price": 29.99
+  },
+  {
+   "name": "Fishbowl Cocktail Glass",
+   "price": 249.99
+  },
+  {
+   "name": "Frosted Zombie Glass",
+   "price": 34.99
+  },
+  {
+   "name": "Colour Celebration Hi Ball Glasses",
+   "price": 69.99
+  },
+  {
+   "name": "Lav Gaia Stemless Small Glasses",
+   "price": 119.99
+  },
+  {
+   "name": "Lav Misket Glass Range",
+   "price": 119.99
+  },
+  {
+   "name": "Silhouette Glass Drink Set",
+   "price": 139.99
+  },
+  {
+   "name": "Silhouette Glass Bowls",
+   "price": 79.99
+  },
+  {
+   "name": "Silhouette Glass Salad Bowls",
+   "price": 129.99
+  },
+  {
+   "name": "Silhouette Entertainment Glass Set",
+   "price": 269.99
+  },
+  {
+   "name": "Lav Stemmed Balloon/Flute Glasses",
+   "price": 169.99
+  },
+  {
+   "name": "Hi Ball/Tumbler/Willy Beer/Zombie Glasses",
+   "price": 149.99
+  },
+  {
+   "name": "Aloha Glass Bowl Set",
+   "price": 69.99
+  },
+  {
+   "name": "Home Discovery Round Glass Casserole",
+   "price": 349.99
+  },
+  {
+   "name": "Cook & Serve Glass Casserole",
+   "price": 319.99
+  },
+  {
+   "name": "Cook & Serve Glass Roaster",
+   "price": 499.99
+  }
+ ]
+}

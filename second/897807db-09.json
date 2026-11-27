@@ -1,0 +1,51 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 136,
+ "items": [
+  {
+   "name": "REDMI A7",
+   "price": 2799
+  },
+  {
+   "name": "Samsung Galaxy Tab A11",
+   "price": 2499
+  },
+  {
+   "name": "Samsung Galaxy A18",
+   "price": 11799
+  },
+  {
+   "name": "Samsung Galaxy A37 5G",
+   "price": 12699
+  },
+  {
+   "name": "Lenovo",
+   "price": 24999
+  },
+  {
+   "name": "Interfoto 2.0 Multimedia Speakers",
+   "price": 590
+  },
+  {
+   "name": "Samsung 27 FULL HD MONITOR 100HZ",
+   "price": 7999
+  },
+  {
+   "name": "Smart Tank 581 All-in-One Colour Printer",
+   "price": 7500
+  },
+  {
+   "name": "Apex Laminating Pouches 75 Micron 100s",
+   "price": 199
+  },
+  {
+   "name": "Smart Tank 530 Wireless All-in-One Colour Printer",
+   "price": 8499
+  },
+  {
+   "name": "Lunar A3 Laminator",
+   "price": 2999
+  }
+ ]
+}

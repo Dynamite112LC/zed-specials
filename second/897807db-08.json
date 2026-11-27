@@ -1,0 +1,43 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 129,
+ "items": [
+  {
+   "name": "TELEFUNKEN 32\" HD LED TV (TLEDD-32HD)",
+   "price": 3999
+  },
+  {
+   "name": "Hisense 55\" 4K OLED Smart TV (55Q60)",
+   "price": 11999
+  },
+  {
+   "name": "SAMSUNG 55\" Mini-LED TV 4K (55M70H)",
+   "price": 13999
+  },
+  {
+   "name": "Hisense 75\" 4K OLED Smart TV (75Q60)",
+   "price": 20999
+  },
+  {
+   "name": "SKYWORTH 60\" OLED Smart Google TV (60Q6600H)",
+   "price": 17499
+  },
+  {
+   "name": "SAMSUNG 75\" 4K Mini-LED TV (75M1EH)",
+   "price": 29999
+  },
+  {
+   "name": "SAMSUNG 75\" 4K Crystal UHD TV (75U8000H)",
+   "price": 28999
+  },
+  {
+   "name": "Pebble Series Bluetooth Headphones Assorted",
+   "price": 600
+  },
+  {
+   "name": "Impulse Series Bluetooth Headphones (VB-VH100) Assorted",
+   "price": 650
+  }
+ ]
+}

@@ -1,0 +1,115 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 164,
+ "items": [
+  {
+   "name": "Crosse & Blackwell Tangy Matonaise 750g + All Gold Tomato Sauce 700ml",
+   "price": 125
+  },
+  {
+   "name": "Oli Refined Pure Vegetable Oil 2.5L",
+   "price": 299
+  },
+  {
+   "name": "Harvest Margarine 500g",
+   "price": 299
+  },
+  {
+   "name": "Mansa White Sugar 2kg",
+   "price": 299
+  },
+  {
+   "name": "Bela Pasta All Variants 400g",
+   "price": 299
+  },
+  {
+   "name": "Freshpikt Strawberry Jam 500g",
+   "price": 24.99
+  },
+  {
+   "name": "Mother's Pride Popcorn 1kg",
+   "price": 24.99
+  },
+  {
+   "name": "Bigtree Corn Flour 500g",
+   "price": 75
+  },
+  {
+   "name": "Bigtree Caster Sugar 500g",
+   "price": 75
+  },
+  {
+   "name": "Bigtree King Sugar 500g",
+   "price": 75
+  },
+  {
+   "name": "Bigtree Baking Powder 100g",
+   "price": 75
+  },
+  {
+   "name": "Zambia's Pride Self Raising Flour 2.5kg",
+   "price": 59.99
+  },
+  {
+   "name": "Society Candy Assorted 40x30g Jar",
+   "price": 5.99
+  },
+  {
+   "name": "Maynards Jelly Tots 2x100g",
+   "price": 60
+  },
+  {
+   "name": "Manhattan Sweets 2x125g",
+   "price": 70
+  },
+  {
+   "name": "Parle Milk Power/Nice Biscuits 56g Each",
+   "price": 6.99
+  },
+  {
+   "name": "Bakers Eet-Sum-Mor Shortbread Biscuits 200g Each",
+   "price": 41.99
+  },
+  {
+   "name": "Mars/Snickers/Twix/Bounty Chocolate Bar 50g Each",
+   "price": 29.99
+  },
+  {
+   "name": "Beacon MmmMallows 135g Each",
+   "price": 32.99
+  },
+  {
+   "name": "Amigo Cheese Curls 150g Each",
+   "price": 11.99
+  },
+  {
+   "name": "Amigo Crisps 2x110g",
+   "price": 50
+  },
+  {
+   "name": "Lay's Potato Chips 105g Each",
+   "price": 29.99
+  },
+  {
+   "name": "Cheetos Cheese Snacks 35g + Pepsi 500ml",
+   "price": 15
+  },
+  {
+   "name": "Wild Cat Energy Drink 500ml Each",
+   "price": 8.99
+  },
+  {
+   "name": "Energade Sports Drink 500ml Each",
+   "price": 13.99
+  },
+  {
+   "name": "GoFresh Juice 3x300ml",
+   "price": 18
+  },
+  {
+   "name": "Lynx Premium Concentrate Syrup 2L",
+   "price": 44.99
+  }
+ ]
+}

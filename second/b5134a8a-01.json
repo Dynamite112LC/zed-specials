@@ -1,0 +1,55 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 124,
+ "items": [
+  {
+   "name": "Meru Gold Cooking Oil 5Ltr",
+   "price": 188.99
+  },
+  {
+   "name": "Richmond Nakonde Rice 5kg",
+   "price": 129.99
+  },
+  {
+   "name": "Momo Macaroni or Spaghetti 400g",
+   "price": 21.0
+  },
+  {
+   "name": "Whitespoon Household Sugar 2kg",
+   "price": 52.99
+  },
+  {
+   "name": "Fruitop Squash Assorted 1.5 Ltr",
+   "price": 22.99
+  },
+  {
+   "name": "Coke or Fanta Orange Cold Drinks 1 Ltr",
+   "price": 22.0
+  },
+  {
+   "name": "Cadbury's Chocolate Slab Assorted Excl. Bubbly 150g",
+   "price": 27.99
+  },
+  {
+   "name": "It's Wild Peanut Butter Assorted 1kg",
+   "price": 39.99
+  },
+  {
+   "name": "PnP IQF Mixed Chicken Portions 2kg",
+   "price": 107.99
+  },
+  {
+   "name": "No Name Corn Flakes 1kg",
+   "price": 59.99
+  },
+  {
+   "name": "PnP Toilet Paper 2ply 18s",
+   "price": 129.99
+  },
+  {
+   "name": "Boom Washing Powder 4kg",
+   "price": 162.99
+  }
+ ]
+}

@@ -1,0 +1,95 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 181,
+ "items": [
+  {
+   "name": "MONKEY SHOULDER BLENDED MALT SCOTCH WHISKY 750ml EACH",
+   "price": 849.99
+  },
+  {
+   "name": "TIGER EYE WHISKY 750ml EACH",
+   "price": 139.99
+  },
+  {
+   "name": "AMARULA PREMIUM AFRICAN GIN 750ml EACH",
+   "price": 499.99
+  },
+  {
+   "name": "OLMECA SILVER TEQUILA 700ml EACH",
+   "price": 599.99
+  },
+  {
+   "name": "KLIPDRIFT EXPORT BRANDY 750ml EACH",
+   "price": 179.99
+  },
+  {
+   "name": "CLAN MACGREGOR BLENDED SCOTCH WHISKY 750ml EACH",
+   "price": 179.99
+  },
+  {
+   "name": "TULLAMORE D.E.W. IRISH WHISKEY 750ml EACH",
+   "price": 499.99
+  },
+  {
+   "name": "GLENFIDDICH 12-YEAR-OLD SINGLE MALT SCOTCH WHISKY 750ml EACH",
+   "price": 1399.99
+  },
+  {
+   "name": "PAPILLON NON-ALCOHOLIC 100% RED/WHITE GRAPE WINE 750ml EACH",
+   "price": 124.99
+  },
+  {
+   "name": "DROSTDY HOF WINE ALL VARIANTS 750ml EACH",
+   "price": 139.99
+  },
+  {
+   "name": "ROBERTSON NATURAL SWEET WHITE/ROSE/RED WINE 750ml EACH",
+   "price": 169.99
+  },
+  {
+   "name": "GRAHAM BECK CAP CLASSIQUE SPARKLING WINE ALL VARIANTS 750ml EACH",
+   "price": 449.99
+  },
+  {
+   "name": "CHIBUKU SUPER ORIGINAL/BANANA BEER 1,25L EACH",
+   "price": 11.99
+  },
+  {
+   "name": "SKOL LAGER BEER NRB 330ml",
+   "price": 60.0
+  },
+  {
+   "name": "BELGRAVIA GIN COOLER CANS ALL VARIANTS 440ml EACH",
+   "price": 44.99
+  },
+  {
+   "name": "TIPO TINTO R&R COOLER CANS 440ml",
+   "price": 80.0
+  },
+  {
+   "name": "ROYAL CIRCLE WHISKY & COLA COOLER CANS 250ml",
+   "price": 100.0
+  },
+  {
+   "name": "LAY'S POTATO CHIPS ALL VARIANTS 105g EACH",
+   "price": 29.99
+  },
+  {
+   "name": "PREMIUM MASALA PEANUTS 100g EACH",
+   "price": 12.99
+  },
+  {
+   "name": "GLASS TUMBLER 325ml EACH",
+   "price": 16.0
+  },
+  {
+   "name": "WILLY BEER GLASS 385ml EACH",
+   "price": 16.0
+  },
+  {
+   "name": "TEQUILA SHOT GLASS 28ml EACH",
+   "price": 17.0
+  }
+ ]
+}

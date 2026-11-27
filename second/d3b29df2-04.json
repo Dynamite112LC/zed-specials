@@ -1,0 +1,123 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 165,
+ "items": [
+  {
+   "name": "BEEF MINCE",
+   "price": 102.99
+  },
+  {
+   "name": "PORK LEG ROAST",
+   "price": 129.99
+  },
+  {
+   "name": "BEEF FOREQUARTER BULK PACK",
+   "price": 134.99
+  },
+  {
+   "name": "CHAMPIONSHIP THICK BOERWORS",
+   "price": 149.99
+  },
+  {
+   "name": "VARIETY BRADI PACK",
+   "price": 159.99
+  },
+  {
+   "name": "BEEF ROAST",
+   "price": 192.99
+  },
+  {
+   "name": "FARMER'S CHOICE FROZEN WHOLE CHICKEN",
+   "price": 59.99
+  },
+  {
+   "name": "MEAT HOUSE CHICKEN POLONY SLICES",
+   "price": 26.99
+  },
+  {
+   "name": "MEAT HOUSE ANGUS SALAMI SMOKE BEEF & CHICKEN SLICES",
+   "price": 34.99
+  },
+  {
+   "name": "MASTER PORK CHICKEN BITES POLONY",
+   "price": 24.99
+  },
+  {
+   "name": "MEAT HOUSE SANDWICH SLICED MEAT",
+   "price": 39.99
+  },
+  {
+   "name": "MASTER PORK BACK BACON",
+   "price": 59.99
+  },
+  {
+   "name": "MEAT HOUSE BEEF/CHICKEN HUNGARIAN SAUSAGE",
+   "price": 114.99
+  },
+  {
+   "name": "MASTER PORK HUNGARIAN SAUSAGES",
+   "price": 129.99
+  },
+  {
+   "name": "RING DOUGHNUT",
+   "price": 8.99
+  },
+  {
+   "name": "CINNAMON BUN",
+   "price": 12.0
+  },
+  {
+   "name": "JAM DOUGHNUT",
+   "price": 18.0
+  },
+  {
+   "name": "SWEET CHOCOLATE/VANILLA DESSERT TOPPING",
+   "price": 124.99
+  },
+  {
+   "name": "BUNNY CHOW",
+   "price": 5.0
+  },
+  {
+   "name": "CHEESE & TOMATO ROLL",
+   "price": 8.99
+  },
+  {
+   "name": "CHIP ROLL",
+   "price": 9.99
+  },
+  {
+   "name": "EGG & POLONY VETKOEK",
+   "price": 14.99
+  },
+  {
+   "name": "QUARTER CHICKEN & CHIPS COMBO",
+   "price": 21.99
+  },
+  {
+   "name": "VEGETABLE/CURRY FLAVOUR STEW",
+   "price": 39.99
+  },
+  {
+   "name": "MATEBETO COMBO MEAL",
+   "price": 54.99
+  },
+  {
+   "name": "CARROTS",
+   "price": 24.99
+  },
+  {
+   "name": "BEETROOT",
+   "price": 29.99
+  },
+  {
+   "name": "CLASS 1 GRANNY SMITH/GOLDEN DELICIOUS/STARKING APPLES",
+   "price": 69.99
+  },
+  {
+   "name": "CLASS 1 RED/WHITE SEEDLESS GRAPES",
+   "price": 99.99
+  }
+ ]
+}

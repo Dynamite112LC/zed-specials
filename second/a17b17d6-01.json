@@ -1,0 +1,47 @@
+{
+ "model": "unsloth/Qwen3.5-4B-GGUF:Q4_K_M",
+ "read": "2026-11-27",
+ "seconds": 111,
+ "items": [
+  {
+   "name": "Nrich Lacta Milk Drink",
+   "price": 5
+  },
+  {
+   "name": "Coca-Cola/Fanta/Sprite",
+   "price": 20
+  },
+  {
+   "name": "Whitespoon Household White Sugar",
+   "price": 52
+  },
+  {
+   "name": "D'Lite Pure Cooking Oil",
+   "price": 184
+  },
+  {
+   "name": "Zamchick Mixed Chicken Portions",
+   "price": 108
+  },
+  {
+   "name": "Blue Band Margarine",
+   "price": 65
+  },
+  {
+   "name": "Africa Milling Breakfast Meal",
+   "price": 69
+  },
+  {
+   "name": "Bigtree Original Corn Flakes",
+   "price": 72
+  },
+  {
+   "name": "Allsome Long Grain Parboiled White Rice",
+   "price": 99
+  },
+  {
+   "name": "Just Pineapple/Orange/Grannyapple Squash Concentrate",
+   "price": 132
+  }
+ ]
+}
