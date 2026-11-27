@@ -169,6 +169,117 @@ void main() {
       expect(r.notes.single, contains('left out'));
     });
 
+    test('a multi-buy agrees when the second reader gives the deal', () {
+      final r = combineReadings(
+        [_item('Amigo Crisps Assorted (2 for K50)', 25)],
+        [const SecondItem('Amigo Crisps 2x110g', 50)],
+      );
+      expect(r.items.single.agreed, isTrue);
+      expect(r.items.single.price, 25);
+      // The deal stays in the name; "2x110g" is not this item's pack size.
+      expect(r.items.single.name, 'Amigo Crisps Assorted (2 for K50)');
+      expect(r.items.single.sizeQty, isNull);
+    });
+
+    test('ngwee the first reader assumed are taken from the second', () {
+      final rice = ExtractedItem(
+        name: 'White Rice 5kg',
+        price: 99.99,
+        crop: const CropBox(0, 0, 10, 10),
+        assumedNgwee: true,
+      );
+      final r = combineReadings(
+        [rice],
+        [const SecondItem('Parboiled White Rice', 99)],
+      );
+      expect(r.items.single.price, 99);
+      expect(r.items.single.agreed, isTrue);
+      expect(r.items.single.otherPrice, isNull);
+      // Read ngwee are not overruled like that.
+      final sure = combineReadings(
+        [_item('White Rice 5kg', 99.99)],
+        [const SecondItem('Parboiled White Rice', 99)],
+      );
+      expect(sure.items.single.price, 99.99);
+      expect(sure.items.single.otherPrice, 99);
+    });
+
+    test('a dropped point with other ngwee is read as that price', () {
+      // The first reader took the raised 99 for 00; the second ran it in.
+      final r = combineReadings(
+        [_item('Buttercup Margarine Brick 250g', 17)],
+        [const SecondItem('Buttercup Margarine Brick 250g', 1799)],
+      );
+      expect(r.items.single.price, 17);
+      expect(r.items.single.otherPrice, 17.99);
+    });
+
+    test('a dropped point with a digit lost is not a second opinion', () {
+      final r = combineReadings(
+        [_item("Jacob's Instant Coffee 200g", 269.99)],
+        [const SecondItem("Jacob's Instant Coffee 200g", 2699)],
+      );
+      expect(r.items.single.otherPrice, isNull);
+      expect(r.items.single.agreed, isFalse);
+    });
+
+    test('a combo listed piece by piece adds nothing', () {
+      final page = OcrPage(1000, 1000, [
+        OcrLine('299', 400, 400, 120, 60, 60, 1),
+        OcrLine('OLI REFINED PURE VEGETABLE OIL', 380, 470, 200, 20, 20, 1),
+        OcrLine('HARVEST MARGARINE', 380, 495, 200, 20, 20, 1),
+      ]);
+      final r = combineReadings(
+        [
+          _item('Pork Leg Roast', 13),
+          _item('Variety Braai Pack', 19),
+          _item('Beef Mince', 85),
+        ],
+        [
+          const SecondItem('Oli Refined Pure Vegetable Oil 2.5L', 299),
+          const SecondItem('Harvest Margarine 500g', 299),
+        ],
+        page: page,
+      );
+      expect(r.added, 0);
+      expect(r.items, hasLength(3));
+      // One product at that price, with its words beside it, is added.
+      final single = combineReadings(
+        [
+          _item('Pork Leg Roast', 13),
+          _item('Variety Braai Pack', 19),
+          _item('Beef Mince', 85),
+        ],
+        [const SecondItem('Oli Refined Pure Vegetable Oil 2.5L', 299)],
+        page: page,
+      );
+      expect(single.added, 1);
+      expect(single.items.last.price, 299);
+    });
+
+    test('words and sizes run together are pulled apart', () {
+      expect(
+        mergeNames('All Gold Tomato SAUUEOml', 'All Gold Tomato Sauce 700ml'),
+        'All Gold Tomato Sauce 700ml',
+      );
+      expect(
+        mergeNames('Queen Tomato Paste 32oeach', 'Queen Tomato Paste 320g'),
+        'Queen Tomato Paste 320g',
+      );
+      // A real word is not mistaken for a garbled size.
+      expect(
+        mergeNames(
+          "Farmer's Choice IQF Mixed Chicken Portions",
+          "Farmer's Choice 1kg Mixed Portions Chicken",
+        ),
+        "Farmer's Choice IQF 1kg Mixed Chicken Portions",
+      );
+      expect(
+        mergeNames('Pure Cooking Oil 2 Litre', 'Pure Cooking Oil 2L'),
+        'Pure Cooking Oil 2 Litre',
+      );
+    });
+
     test('a failed attempt is not a reading', () {
       expect(parseSecondReading({'failed': 1, 'error': 'timed out'}), isNull);
       expect(parseSecondReading(null), isNull);

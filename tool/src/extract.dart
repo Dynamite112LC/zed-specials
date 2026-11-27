@@ -124,7 +124,12 @@ class ExtractedItem {
     this.agreed = false,
     this.otherPrice,
     this.firstName,
+    this.assumedNgwee = false,
   });
+
+  /// True when the raised ngwee were seen but could not be read, and ".99"
+  /// was assumed.
+  final bool assumedNgwee;
 
   /// True when the second reader (see second_reader.dart) gave this price
   /// too.
@@ -140,6 +145,7 @@ class ExtractedItem {
   /// replaced when one is given.
   ExtractedItem copyWith({
     required String name,
+    double? price,
     String? firstName,
     double? sizeQty,
     String? sizeUnit,
@@ -147,7 +153,7 @@ class ExtractedItem {
     double? otherPrice,
   }) => ExtractedItem(
     name: name,
-    price: price,
+    price: price ?? this.price,
     crop: crop,
     perKg: perKg,
     sizeQty: sizeQty ?? this.sizeQty,
@@ -633,6 +639,8 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
   // prices, which are not red on yellow).
   final values = <OcrLine, (double, bool)>{};
   final prices = <OcrLine>[];
+  // Prices whose raised ngwee were seen but not read.
+  final assumed = <OcrLine>{};
 
   // What general OCR made of the big price lettering, for cross-checking.
   final readPrices = lines
@@ -715,6 +723,9 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
     final line = OcrLine('K${f.kwacha}', f.x, f.y, f.w, f.h, f.th, score);
     prices.add(line);
     values[line] = (value, certain);
+    if (f.raised > 0 && !RegExp(r'^\d{2}$').hasMatch(f.ngwee)) {
+      assumed.add(line);
+    }
   }
   final flashes = [...prices];
   // [pad] in price heights: generous when asking whether OCR read the same
@@ -975,6 +986,7 @@ List<ExtractedItem> _readShoprite(OcrPage page, List<OcrLine> lines) {
         save: save,
         bundle: bundle,
         parts: [p, ...own],
+        assumedNgwee: assumed.contains(p),
         confidence: certain ? _confidence(p, own) : 0.8 * _confidence(p, own),
         // The product photo sits above the price flash.
         crop: _cropAround(

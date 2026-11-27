@@ -36,7 +36,13 @@ List<SecondItem>? parseSecondReading(Object? json) {
     final price = j['price'];
     if (name is! String || price is! num) continue;
     if (price < 1 || price > 250000) continue;
-    final cleaned = cleanName(name);
+    // "6 x 330ml" is one size, like "6x330ml".
+    final cleaned = cleanName(
+      name.replaceAllMapped(
+        RegExp(r'(\d)\s?[xX×]\s?(\d)'),
+        (m) => '${m[1]}x${m[2]}',
+      ),
+    );
     if (RegExp(r'[A-Za-z]{3,}').allMatches(cleaned).isEmpty) continue;
     if (cleaned.length > 110) continue;
     out.add(SecondItem(cleaned, price.toDouble()));
@@ -139,6 +145,17 @@ final _measure = RegExp(
 );
 
 bool _hasMeasure(List<String> tokens) => tokens.any(_measure.hasMatch);
+
+/// Whether [token] could be the first reader's garbling of [size]: it starts
+/// with the same number, or is a letter or two off.
+bool _garbled(String token, String size) {
+  if (!_hasDigit(token) || _measure.hasMatch(token)) return false;
+  final mine = RegExp(r'^\(?(\d+)').firstMatch(token)?.group(1);
+  final theirs = RegExp(r'^\(?(\d+)').firstMatch(size)?.group(1);
+  if (mine != null && theirs != null && theirs.startsWith(mine)) return true;
+  return _distance(token.toLowerCase(), size.toLowerCase(), 2) <= 2;
+}
+
 bool _hasDigit(String t) => RegExp(r'\d').hasMatch(t);
 
 /// [first] with the sizes it garbled or left out taken from [second].
@@ -165,16 +182,7 @@ String mergeNames(String first, String second) {
 
   final out = <String>[];
   void between(List<String> mine, List<String> theirs) {
-    if (_hasMeasure(theirs) && !_hasMeasure(mine)) {
-      // "2" for "2L", "3b" for "36cm", "Alss AA" for "Assorted 2L".
-      if (mine.any(_hasDigit) || theirs.any((t) => !_measure.hasMatch(t))) {
-        out.addAll(theirs);
-      } else {
-        out
-          ..addAll(mine)
-          ..addAll(theirs);
-      }
-    } else if (mine.isEmpty) {
+    if (mine.isEmpty) {
       // A size or model number only the second reader saw. Plain words
       // only it saw are left out: they may not be on the page.
       out.addAll(
@@ -182,9 +190,47 @@ String mergeNames(String first, String second) {
           (t) => _hasDigit(t) && RegExp(r'''[A-Za-z"”]''').hasMatch(t),
         ),
       );
-    } else {
-      out.addAll(mine);
+      return;
     }
+    final sizes = theirs.where(_measure.hasMatch).toList();
+    final sized = _hasMeasure(mine) || parseSize(mine.join(' ')) != null;
+    if (sizes.isEmpty || sized) {
+      out.addAll(mine);
+      return;
+    }
+    // The size, garbled: "2" for "2L", "3b" for "36cm", "s00ml" for "500ml".
+    if (sizes.length == 1) {
+      final at = mine.indexWhere((t) => _garbled(t, sizes.single));
+      if (at >= 0) {
+        out
+          ..addAll(mine.sublist(0, at))
+          ..add(sizes.single)
+          ..addAll(mine.sublist(at + 1));
+        return;
+      }
+    }
+    // "Alss AA" for "ALL VARIANTS 2L": a word or two that are no words,
+    // where the second reader has only the stock phrase and a size.
+    if (mine.length <= 2 &&
+        !mine.any(_hasDigit) &&
+        theirs.any((t) => _key(t) == 'assorted') &&
+        theirs.every((t) => _measure.hasMatch(t) || _key(t) == 'assorted')) {
+      out.addAll(theirs);
+      return;
+    }
+    // "SAUUEOml" for "Sauce 700ml": a word and its size run together.
+    if (mine.length == 1 && sizes.length == 1) {
+      final unit = RegExp(r'[A-Za-z]+$').firstMatch(sizes.single)?.group(0);
+      if (unit != null &&
+          mine.single.length > unit.length + 2 &&
+          mine.single.toLowerCase().endsWith(unit.toLowerCase())) {
+        out.addAll(theirs);
+        return;
+      }
+    }
+    out
+      ..addAll(mine)
+      ..addAll(sizes);
   }
 
   var i = 0, j = 0;
@@ -214,11 +260,56 @@ String mergeNames(String first, String second) {
 
 bool _samePrice(double a, double b) => (a - b).abs() < 0.005;
 
-/// The second reader sometimes runs the small raised ngwee into the kwacha:
-/// 2699 for 26.99. The digits agree; where the point goes is the first
-/// reader's call, which measures the lettering.
-bool _pointDropped(double first, double second) =>
-    (first * 100 - second).abs() < 0.5 && first != first.roundToDouble();
+final _multiBuyNote = RegExp(r'\((\d+) for K(\d+(?:\.\d+)?)\)');
+
+/// How the second reader's price sits with the first reader's item.
+///
+/// [agreed]: the same price. [other]: a different price, to be checked.
+/// [price]: the price to show instead of the first reader's, where that one
+/// rested on an assumption the second reading settles. None of the three:
+/// the digits agree but not where the point goes, which the first reader
+/// decides because it measures the lettering.
+({bool agreed, double? other, double? price}) _compare(
+  ExtractedItem mine,
+  double theirs,
+) {
+  const yes = (agreed: true, other: null, price: null);
+  const unsure = (agreed: false, other: null, price: null);
+  final first = mine.price;
+  if (_samePrice(first, theirs)) return yes;
+
+  // "2 for K70" is shown as K35 each; the second reader gives the K70.
+  final deal = _multiBuyNote.firstMatch(mine.name);
+  if (deal != null) {
+    final total = double.parse(deal.group(2)!);
+    if (_samePrice(total, theirs)) return yes;
+    if (_samePrice(total * 100, theirs)) return unsure;
+  }
+
+  // The raised ngwee could not be read and ".99" was assumed. The second
+  // reader gives the same kwacha: its ngwee are the ones that were read.
+  if (mine.assumedNgwee && theirs.floor() == first.floor()) {
+    return (agreed: true, other: null, price: theirs);
+  }
+
+  // The second reader sometimes runs the small raised ngwee into the
+  // kwacha: 2699 for 26.99.
+  final whole = theirs == theirs.roundToDouble();
+  if (whole && theirs >= 100 && (theirs ~/ 100) == first.floor()) {
+    final meant = theirs / 100;
+    if (_samePrice(meant, first)) return unsure;
+    // Same kwacha, other ngwee: 1799 against 17.00 is a reading of 17.99.
+    if (mine.assumedNgwee) return (agreed: true, other: null, price: meant);
+    return (agreed: false, other: meant, price: null);
+  }
+  // The same, with a digit lost on the way: 2699 for 269.99.
+  if (whole && theirs > 5 * first) {
+    final a = (first * 100).round().toString();
+    final b = theirs.round().toString();
+    if (a.startsWith(b) || b.startsWith(a)) return unsure;
+  }
+  return (agreed: false, other: theirs, price: null);
+}
 
 // ---------------------------------------------------------------- combine
 
@@ -250,13 +341,8 @@ CombinedReading combineReadings(
     }
   }
 
-  // Same price and names that overlap: the same item, read twice.
-  pair(
-    (c, v) =>
-        _samePrice(first[c].price, second[v].price) ||
-        _pointDropped(first[c].price, second[v].price),
-    0.34,
-  );
+  // Prices that fit and names that overlap: the same item, read twice.
+  pair((c, v) => _compare(first[c], second[v].price).other == null, 0.34);
   // Clearly the same name with another price: a disagreement.
   pair((c, v) => true, 0.6);
 
@@ -269,36 +355,59 @@ CombinedReading combineReadings(
       continue;
     }
     final theirs = second[v];
-    final name = mergeNames(mine.name, theirs.name);
+    // A multi-buy's name says what the deal is; the second reader words
+    // deals its own way ("2x125g"), so the name is left as it is.
+    final name = _multiBuyNote.hasMatch(mine.name)
+        ? mine.name
+        : mergeNames(mine.name, theirs.name);
     final renamed = name != mine.name;
     // A repaired name may now show the size the first reader lost.
     final size = renamed ? parseSize(name) : null;
     if (renamed) out.renamed++;
-    final agreed = _samePrice(mine.price, theirs.price);
-    final differs = !agreed && !_pointDropped(mine.price, theirs.price);
-    if (agreed) out.agreed++;
-    if (differs) {
+    final verdict = _compare(mine, theirs.price);
+    if (verdict.agreed) out.agreed++;
+    if (verdict.price != null) {
+      out.notes.add(
+        '"${mine.name}": K${mine.price.toStringAsFixed(2)} assumed its '
+        'ngwee; the second reader read K${verdict.price!.toStringAsFixed(2)}',
+      );
+    }
+    if (verdict.other != null) {
       out.doubted++;
       out.notes.add(
         '"${mine.name}": first reader K${mine.price.toStringAsFixed(2)}, '
-        'second reader K${theirs.price.toStringAsFixed(2)}',
+        'second reader K${verdict.other!.toStringAsFixed(2)}',
       );
     }
     out.items.add(
       mine.copyWith(
         name: name,
+        price: verdict.price,
         firstName: renamed ? mine.name : null,
         sizeQty: size?.$1,
         sizeUnit: size?.$2,
-        agreed: agreed,
-        otherPrice: differs ? theirs.price : null,
+        agreed: verdict.agreed,
+        otherPrice: verdict.other,
       ),
     );
   }
 
+  // Several products the second reader gives one price that the first
+  // reader has nowhere: a combo ("all four for K299") listed piece by
+  // piece. No single one of them costs that.
+  final loose = <int, int>{};
   for (var v = 0; v < second.length; v++) {
     if (taken.contains(v)) continue;
-    final found = page == null ? null : _confirm(second[v], page, out.items);
+    final cents = (second[v].price * 100).round();
+    loose[cents] = (loose[cents] ?? 0) + 1;
+  }
+
+  for (var v = 0; v < second.length; v++) {
+    if (taken.contains(v)) continue;
+    final shared = loose[(second[v].price * 100).round()]! > 1;
+    final found = page == null || shared
+        ? null
+        : _confirm(second[v], page, out.items);
     if (found == null) {
       out.notes.add(
         'only the second reader: K${second[v].price.toStringAsFixed(2)} '
@@ -329,9 +438,12 @@ ExtractedItem? _confirm(
   // settle where the point goes too.
   final spots = <OcrLine>[];
   for (final f in page.flashes) {
-    // The colour reader tells full-size digits from raised ones.
+    // The colour reader tells full-size digits from raised ones. Raised
+    // glyphs it could not read may be ngwee or a dash after whole kwacha.
     if (int.tryParse(f.kwacha) != kwacha) continue;
-    if ((ngwee > 0) != (f.raised > 0)) continue;
+    final read = RegExp(r'^\d{2}$').hasMatch(f.ngwee);
+    if (f.raised == 0 && ngwee > 0) continue;
+    if (read && ngwee == 0) continue;
     spots.add(OcrLine('K${f.kwacha}', f.x, f.y, f.w, f.h, f.th, f.ks));
   }
   // A page whose prices are all whole kwacha has no raised ngwee to run in.
