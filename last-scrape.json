@@ -1,0 +1,180 @@
+{
+ "shoprite": {
+  "at": "2026-11-27",
+  "catalogues": [
+   {
+    "id": "shoprite-zmblackfriday26nov29nov2026",
+    "retailer": "shoprite",
+    "title": "Black Friday",
+    "sourceUrl": "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/index.html",
+    "coverUrl": "https://www.shoprite.co.zm/content/dam/shopriteafrica/specials-leaflets/zambia/2026/nov/ZMFOSRDYMB_CP.pdf/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg",
+    "validFrom": "2026-11-26T00:00:00.000",
+    "validTo": "2026-11-29T00:00:00.000",
+    "stores": "Lusaka stores (Cairo Road leaflet)",
+    "viewImageUrls": [
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0001_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0002_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0003_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0004_3.jpg"
+    ],
+    "ocrImageUrls": [
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0001_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0002_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0003_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0004_5.jpg"
+    ],
+    "pdfUrl": null
+   },
+   {
+    "id": "shoprite-zmfestivesavings23nov06dec2026",
+    "retailer": "shoprite",
+    "title": "Festive Season",
+    "sourceUrl": "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/index.html",
+    "coverUrl": "https://www.shoprite.co.zm/content/dam/shopriteafrica/specials-leaflets/zambia/2026/nov/ZMFOSRDWXT_CP.pdf/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg",
+    "validFrom": "2026-11-23T00:00:00.000",
+    "validTo": "2026-12-06T00:00:00.000",
+    "stores": "Lusaka stores (Cairo Road leaflet)",
+    "viewImageUrls": [
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0001_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0002_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0003_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0004_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0005_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0006_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0007_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0008_3.jpg"
+    ],
+    "ocrImageUrls": [
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0001_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0002_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0003_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0004_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0005_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0006_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0007_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov06dec2026/files/assets/common/page-html5-substrates/page0008_5.jpg"
+    ],
+    "pdfUrl": null
+   },
+   {
+    "id": "shoprite-zmfestivesavings23nov27dec2026",
+    "retailer": "shoprite",
+    "title": "Festive Savings",
+    "sourceUrl": "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/index.html",
+    "coverUrl": "https://www.shoprite.co.zm/content/dam/shopriteafrica/specials-leaflets/zambia/2026/nov/ZMNFSRAAST_CP.pdf/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg",
+    "validFrom": "2026-11-23T00:00:00.000",
+    "validTo": "2026-12-27T00:00:00.000",
+    "stores": "Lusaka stores (Cairo Road leaflet)",
+    "viewImageUrls": [
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0001_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0002_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0003_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0004_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0005_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0006_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0007_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0008_3.jpg"
+    ],
+    "ocrImageUrls": [
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0001_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0002_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0003_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0004_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0005_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0006_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0007_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmfestivesavings23nov27dec2026/files/assets/common/page-html5-substrates/page0008_5.jpg"
+    ],
+    "pdfUrl": null
+   }
+  ]
+ },
+ "picknpay": {
+  "at": "2026-11-27",
+  "catalogues": [
+   {
+    "id": "picknpay-pnp1008-black-friday-catalogue-print",
+    "retailer": "picknpay",
+    "title": "Black Friday Savings",
+    "sourceUrl": "https://www.picknpayzambia.com/wp-content/uploads/2026/11/PNP1008.-Black-Friday-Catalogue-PRINT.pdf",
+    "coverUrl": "https://www.picknpayzambia.com/wp-content/uploads/2026/11/PNP1008.-Black-Friday-Catalogue.webp",
+    "validFrom": "2026-11-27T00:00:00.000",
+    "validTo": "2026-11-29T00:00:00.000",
+    "stores": "All Stores",
+    "viewImageUrls": [],
+    "ocrImageUrls": [],
+    "pdfUrl": "https://www.picknpayzambia.com/wp-content/uploads/2026/11/PNP1008.-Black-Friday-Catalogue-PRINT.pdf"
+   },
+   {
+    "id": "picknpay-november-red-page-print",
+    "retailer": "picknpay",
+    "title": "Fresh Unbeatable Deals",
+    "sourceUrl": "https://www.picknpayzambia.com/wp-content/uploads/2026/11/November-Red-Page-print.pdf",
+    "coverUrl": "https://www.picknpayzambia.com/wp-content/uploads/2026/11/November-Red.webp",
+    "validFrom": "2026-11-24T00:00:00.000",
+    "validTo": "2026-12-03T00:00:00.000",
+    "stores": "Chingola, Garden House, Kafue, Kitwe City Centre, Luanshya, Ndola City Centre, PHI, Northrise",
+    "viewImageUrls": [],
+    "ocrImageUrls": [],
+    "pdfUrl": "https://www.picknpayzambia.com/wp-content/uploads/2026/11/November-Red-Page-print.pdf"
+   },
+   {
+    "id": "picknpay-november-blue-page-print-compressed",
+    "retailer": "picknpay",
+    "title": "The Fresh Food People",
+    "sourceUrl": "https://www.picknpayzambia.com/wp-content/uploads/2026/11/November-Blue-Page-print_compressed.pdf",
+    "coverUrl": "https://www.picknpayzambia.com/wp-content/uploads/2026/11/November-Blue-Page-print_compressed-1.webp",
+    "validFrom": "2026-11-24T00:00:00.000",
+    "validTo": "2026-12-03T00:00:00.000",
+    "stores": "Arcades,  Centro,  Crossroads,  Foxdale,  Garden City,  Kansenshi,  Levy,  Longacres, Makeni,  Memorial Park,  Mukuba,  Solwezi,  Woodlands",
+    "viewImageUrls": [],
+    "ocrImageUrls": [],
+    "pdfUrl": "https://www.picknpayzambia.com/wp-content/uploads/2026/11/November-Blue-Page-print_compressed.pdf"
+   }
+  ]
+ },
+ "game": {
+  "at": "2026-11-27",
+  "catalogues": [
+   {
+    "id": "game-105788",
+    "retailer": "game",
+    "title": "Big Black Friday Energy",
+    "sourceUrl": "http://www.game.co.zm/promotions/promotions",
+    "coverUrl": "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794450624801-p01-cropped.jpg.900x10000_q76.jpg",
+    "validFrom": "2026-11-26T00:00:00.000",
+    "validTo": "2026-12-02T00:00:00.000",
+    "stores": "All Game Zambia stores",
+    "viewImageUrls": [
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794450624801-p01-cropped.jpg.1240x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794450660926-p02-cropped.jpg.1240x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794450868697-p03-cropped.jpg.1240x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794450980877-p04-cropped.jpg.1240x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451075775-p05-cropped.jpg.1240x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451138409-p06-cropped.jpg.1240x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451287581-p07-cropped.jpg.1240x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451412360-p08-cropped.jpg.1240x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451556267-p09-cropped.jpg.1240x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451715741-p10-cropped.jpg.1240x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794452297480-p11-cropped.jpg.1240x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794452448855-p12-cropped.jpg.1240x10000_q90.webp"
+    ],
+    "ocrImageUrls": [
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794450624801-p01-cropped.jpg.1800x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794450660926-p02-cropped.jpg.1800x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794450868697-p03-cropped.jpg.1800x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794450980877-p04-cropped.jpg.1800x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451075775-p05-cropped.jpg.1800x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451138409-p06-cropped.jpg.1800x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451287581-p07-cropped.jpg.1800x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451412360-p08-cropped.jpg.1800x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451556267-p09-cropped.jpg.1800x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794451715741-p10-cropped.jpg.1800x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794452297480-p11-cropped.jpg.1800x10000_q90.webp",
+     "https://media.guzzle.co.za/thumbnails/catalogue-pages/105788/1794452448855-p12-cropped.jpg.1800x10000_q90.webp"
+    ],
+    "pdfUrl": null
+   }
+  ]
+ }
+}
