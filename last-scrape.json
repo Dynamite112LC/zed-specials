@@ -3,6 +3,29 @@
   "at": "2026-11-27",
   "catalogues": [
    {
+    "id": "shoprite-zmblackfriday26nov29nov2026",
+    "retailer": "shoprite",
+    "title": "Black Friday",
+    "sourceUrl": "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/index.html",
+    "coverUrl": "https://www.shoprite.co.zm/content/dam/shopriteafrica/specials-leaflets/zambia/2026/nov/ZMFOSRDYMB_CP.pdf/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg",
+    "validFrom": "2026-11-26T00:00:00.000",
+    "validTo": "2026-11-29T00:00:00.000",
+    "stores": "Lusaka stores (Cairo Road leaflet)",
+    "viewImageUrls": [
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0001_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0002_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0003_3.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0004_3.jpg"
+    ],
+    "ocrImageUrls": [
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0001_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0002_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0003_5.jpg",
+     "https://specials.shoprite.co.zm/deals/zmblackfriday26nov29nov2026/files/assets/common/page-html5-substrates/page0004_5.jpg"
+    ],
+    "pdfUrl": null
+   },
+   {
     "id": "shoprite-zmfestivesavings23nov06dec2026",
     "retailer": "shoprite",
     "title": "Festive Season",
