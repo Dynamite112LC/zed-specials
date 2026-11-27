@@ -540,7 +540,6 @@
   {"retailer":"shoprite","name":"Class 1 Red/white Seedless Grapes 500g","sizeQty":500.0,"sizeUnit":"g","prices":{"d3b29df2":99.99}},
   {"retailer":"shoprite","name":"Vegetable/ Cury Flavour Stew","prices":{"d3b29df2":39.99}},
   {"retailer":"shoprite","name":"Matebeto Combo Meal Assorted","prices":{"d3b29df2":54.99}},
-  {"retailer":"shoprite","name":"Quarter Chicken & Chips Combo","prices":{"d3b29df2":21.99}},
   {"retailer":"shoprite","name":"Egg & Polony Vetkoek","sizeQty":75.0,"sizeUnit":"g","prices":{"d3b29df2":14.99}},
   {"retailer":"shoprite","name":"Cheese& Tomato Roll","prices":{"d3b29df2":8.99}},
   {"retailer":"shoprite","name":"Ring Doughnut Assorted","prices":{"d3b29df2":8.99}},
@@ -795,6 +794,7 @@
   {"retailer":"shoprite","name":"Rainbow Plastic Ball 21cm","prices":{"04cb1f7d":59.99}},
   {"retailer":"shoprite","name":"Bubble Magic Bubbles Assorted 100ml","sizeQty":100.0,"sizeUnit":"ml","prices":{"04cb1f7d":19.99}},
   {"retailer":"shoprite","name":"Beef Roast","perKg":true,"prices":{"d3b29df2":192.99}},
-  {"retailer":"shoprite","name":"Pork Leg Roast","perKg":true,"prices":{"d3b29df2":129.99}}
+  {"retailer":"shoprite","name":"Pork Leg Roast","perKg":true,"prices":{"d3b29df2":129.99}},
+  {"retailer":"shoprite","name":"Quarter Chicken & Chips Combo Meal","prices":{"d3b29df2":21.99}}
  ]
 }
