@@ -777,8 +777,6 @@
   {"retailer":"shoprite","name":"Farmer's Choice 10F Mixed Chicken Portions","prices":{"d3b29df2":329.99}},
   {"retailer":"shoprite","name":"Lynx Premium Concentrate Syrup Assorted 2L","sizeQty":2000.0,"sizeUnit":"ml","prices":{"d3b29df2":44.99}},
   {"retailer":"shoprite","name":"Society Candy Assorted 40x30g Jar","sizeQty":1200.0,"sizeUnit":"g","prices":{"d3b29df2":5.99}},
-  {"retailer":"shoprite","name":"Pork Leg Roast","prices":{"d3b29df2":129.99}},
-  {"retailer":"shoprite","name":"Beef Roast","prices":{"d3b29df2":192.99}},
   {"retailer":"shoprite","name":"Jam Doughnut","prices":{"d3b29df2":18.0}},
   {"retailer":"shoprite","name":"Carrots","prices":{"d3b29df2":24.99}},
   {"retailer":"shoprite","name":"Plush Sitting Bear Assorted 20cm","prices":{"04cb1f7d":129.99}},
@@ -795,6 +793,8 @@
   {"retailer":"shoprite","name":"Lk's Sandwich Braai Grid","prices":{"04cb1f7d":149.99}},
   {"retailer":"shoprite","name":"Shoprite Plastic Ball 21cm","prices":{"04cb1f7d":39.99}},
   {"retailer":"shoprite","name":"Rainbow Plastic Ball 21cm","prices":{"04cb1f7d":59.99}},
-  {"retailer":"shoprite","name":"Bubble Magic Bubbles Assorted 100ml","sizeQty":100.0,"sizeUnit":"ml","prices":{"04cb1f7d":19.99}}
+  {"retailer":"shoprite","name":"Bubble Magic Bubbles Assorted 100ml","sizeQty":100.0,"sizeUnit":"ml","prices":{"04cb1f7d":19.99}},
+  {"retailer":"shoprite","name":"Beef Roast","perKg":true,"prices":{"d3b29df2":192.99}},
+  {"retailer":"shoprite","name":"Pork Leg Roast","perKg":true,"prices":{"d3b29df2":129.99}}
  ]
 }
