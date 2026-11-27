@@ -46,16 +46,36 @@ reach for more than three days the job still publishes, then fails its
 last step so that GitHub emails you.
 
 The list of known leaflets is kept on the `data` branch as
-`last-scrape.json`. To bring a blocked shop up to date, run the feed
-builder on a computer the shop does answer (a home connection works) and
-push that branch:
+`last-scrape.json`. To bring a blocked shop up to date, run this on a
+computer the shop does answer (a home connection works):
 
 ```
-dart run tool/update_feed.dart
-git -C data add -A
-git -C data commit -m "Leaflet lists"
-git -C data push origin HEAD:data
+pwsh -File tool/update-leaflet-lists.ps1
 ```
+
+It asks each shop's specials page once, writes today's lists, and pushes
+them to the `data` branch. When it finds a leaflet GitHub did not know
+about, it also starts the GitHub job, which reads the new leaflet from the
+leaflet host and publishes it. It takes a few seconds and needs neither
+Python nor the OCR setup. Its log is `.cache/leaflet-lists.log`.
+
+### Daily run on your own computer
+
+To have Windows run that script every day (at 07:30, or as soon as the
+computer is next switched on and online):
+
+```
+$script = (Resolve-Path tool/update-leaflet-lists.ps1).Path
+$action = New-ScheduledTaskAction -Execute 'pwsh.exe' -Argument "-NoProfile -WindowStyle Hidden -File `"$script`""
+$trigger = New-ScheduledTaskTrigger -Daily -At 7:30am
+$settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -RunOnlyIfNetworkAvailable -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Minutes 15)
+Register-ScheduledTask -TaskName 'Zed Specials leaflet lists' -Action $action -Trigger $trigger -Settings $settings
+```
+
+The task runs as you, while you are signed in, and pushes with the git
+sign-in already saved on the computer. Remove it with
+`Unregister-ScheduledTask -TaskName 'Zed Specials leaflet lists'`. If the
+project folder moves, register it again from the new place.
 
 The job runs with `--strict`: if a shop fails that has never been reached,
 or a leaflet's pages are missing, it stops and leaves the last complete

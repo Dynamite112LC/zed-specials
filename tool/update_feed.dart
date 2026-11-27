@@ -8,6 +8,15 @@
 //   dart run tool/update_feed.dart --history <file>
 //                                             where old prices are kept
 //                                             (default data/history.json)
+//   dart run tool/update_feed.dart --lists-only
+//                                             only note which leaflets each
+//                                             shop lists today, in
+//                                             data/last-scrape.json. Takes
+//                                             seconds and needs no Python.
+//                                             For a computer that the shops
+//                                             answer, covering for the
+//                                             scheduled job where they do
+//                                             not (tool/update-leaflet-lists.ps1)
 //
 // Needs Python with RapidOCR for reading prices (see tool/ocr.py) and
 // pdftoppm (Poppler) for the shops that publish PDFs. Page images and OCR
@@ -107,6 +116,7 @@ class _Work {
 Future<void> main(List<String> args) async {
   final ocrOnly = args.contains('--ocr-only');
   final strict = args.contains('--strict');
+  final listsOnly = args.contains('--lists-only');
   final historyArg = args.indexOf('--history');
   final historyFile = File(
     historyArg >= 0 && historyArg + 1 < args.length
@@ -134,6 +144,19 @@ Future<void> main(List<String> args) async {
     stderr.writeln('No catalogues found. Keeping the existing feed.');
     client.close();
     exitCode = 1;
+    return;
+  }
+  if (listsOnly) {
+    client.close();
+    for (final r in Retailer.all) {
+      final n = scrape.catalogues.where((c) => c.retailerId == r.id).length;
+      final how = scrape.errors.containsKey(r.id)
+          ? 'could not be reached'
+          : scrape.standIns.containsKey(r.id)
+          ? 'could not be reached; $n remembered'
+          : '$n leaflets listed';
+      stdout.writeln('${r.name}: $how');
+    }
     return;
   }
   if (strict && scrape.errors.isNotEmpty) {
